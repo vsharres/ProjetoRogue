@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\ProjetoRogue.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{94AC97A9-30FD-4EC1-B51D-4C197529A870}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ProjetoRogue.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\ProjetoRogueEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{074BB191-B99C-4283-9C71-55FC805B6B1C}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\ProjetoRogue">
+			<UniqueIdentifier>{24DF6F1F-8B8D-43D9-A7EE-EBE5D4CCB96E}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs">
+			<Filter>Source\ProjetoRogue</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\ProjetoRogue\ProjetoRogue.cpp">
+			<Filter>Source\ProjetoRogue</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ProjetoRogue\ProjetoRogue.h">
+			<Filter>Source\ProjetoRogue</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Sala.cpp">
+			<Filter>Source\ProjetoRogue</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Sala.h">
+			<Filter>Source\ProjetoRogue</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Resources">
+			<UniqueIdentifier>{C10DF3F2-94A4-4E0E-B06A-8A965E08C289}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source\ProjetoRogue\Resources\Windows">
+			<UniqueIdentifier>{363BE950-F506-4E0F-94DB-404FE514B562}</UniqueIdentifier>
+		</Filter>
+		<ResourceCompile Include="..\..\Source\ProjetoRogue\Resources\Windows\ProjetoRogue.rc">
+			<Filter>Source\ProjetoRogue\Resources\Windows</Filter>
+		</ResourceCompile >
+	</ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+offset da sala para o corredor = 2320
+
+offset entre as salas = 4640
