@@ -16,6 +16,16 @@ enum class ENumeroPortas : uint8
 
 };
 
+UENUM(BlueprintType)
+enum class EDirecaoPortas : uint8
+{
+	LESTE,
+	OESTE,
+	NORTE,
+	SUL,
+
+};
+
 UCLASS()
 class PROJETOROGUE_API ASala : public AActor
 {
@@ -30,6 +40,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 		bool bVisited;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TArray<EDirecaoPortas> Direcao_Portas;
 
 
 public:

@@ -11,6 +11,7 @@ ASala::ASala()
 	PrimaryActorTick.bCanEverTick = false;
 	Numero_Portas = ENumeroPortas::ZERO;
 	Salas_Conectadas.Empty();
+	Direcao_Portas.Add(EDirecaoPortas::LESTE);
 	bVisited = false;
 
 }
