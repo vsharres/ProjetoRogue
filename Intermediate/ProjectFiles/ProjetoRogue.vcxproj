@@ -43,6 +43,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogador\Jogador.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Corredor.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2P.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PDireita.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PEsquerda.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3P.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PDireita.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogador\Jogador.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Projeteis\Projectil.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Corredor.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2P.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PDireita.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PEsquerda.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3P.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PDireita.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PEsquerda.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala4P.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\SalasGerador.h" />
     <None Include="..\..\ProjetoRogue.uproject" />
     <None Include="..\..\Source\ProjetoRogue.Target.cs" />
     <None Include="..\..\Source\ProjetoRogueEditor.Target.cs" />
@@ -51,13 +75,9 @@
     <None Include="..\..\Config\DefaultEngine.ini" />
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Projeteis\Projectil.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
-    <ClCompile Include="..\..\Source\ProjetoRogue\Projectil.cpp" />
-    <ClCompile Include="..\..\Source\ProjetoRogue\ProjetoRogue.cpp" />
-    <ClInclude Include="..\..\Source\ProjetoRogue\Projectil.h" />
-    <ClInclude Include="..\..\Source\ProjetoRogue\ProjetoRogue.h" />
-    <ClCompile Include="..\..\Source\ProjetoRogue\Sala.cpp" />
-    <ClInclude Include="..\..\Source\ProjetoRogue\Sala.h" />
     <ResourceCompile Include="..\..\Source\ProjetoRogue\Resources\Windows\ProjetoRogue.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
