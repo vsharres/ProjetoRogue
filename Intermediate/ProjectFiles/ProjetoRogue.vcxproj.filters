@@ -85,6 +85,15 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Corredor.h">
       <Filter>Source\ProjetoRogue\Public\Salas</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\Item.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemAtivo.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemPassivo.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp">
@@ -126,6 +135,15 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Corredor.cpp">
       <Filter>Source\ProjetoRogue\Private\Salas</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\Item.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemAtivo.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemPassivo.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source\ProjetoRogue\Private">
@@ -151,6 +169,12 @@
     </Filter>
     <Filter Include="Source\ProjetoRogue\Private\Jogador">
       <UniqueIdentifier>{f20f0ff5-e629-49a1-8eb4-695834feecd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ProjetoRogue\Public\Itens">
+      <UniqueIdentifier>{996eaf22-0bc6-4c1c-bded-493999cceabe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ProjetoRogue\Private\Itens">
+      <UniqueIdentifier>{27e870bb-a516-46e7-a731-8bb29ad7e25c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
