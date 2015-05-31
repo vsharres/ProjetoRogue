@@ -8,7 +8,7 @@ ASala2P::ASala2P()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	NumeroPortas = ENumeroPortas::DUAS;
-	DirecaoSala = EDirecaoSala::NORMAL;
+	DirecaoSala = EDirecaoSala::PADRAO;
 	SalasConectadas.Empty();
 	DirecaoPortas.Empty();
 	DirecaoPortas.Add(EDirecaoPortas::OESTE);

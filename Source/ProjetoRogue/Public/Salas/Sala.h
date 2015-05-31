@@ -29,7 +29,7 @@ enum class EDirecaoPortas : uint8
 UENUM(BlueprintType)
 enum class EDirecaoSala : uint8
 {
-	NORMAL,
+	PADRAO,
 	ESQUERDA,
 	DIREITA
 
@@ -64,6 +64,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray < TEnumAsByte<EDirecaoPortas> > DirecaoPortas;
 
+	UPROPERTY(EditDefaultsOnly)
+		FVector EscalaPadrao;
+
+	UPROPERTY(EditDefaultsOnly)
+		float OffsetSala;
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -71,6 +77,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bVisitada;
+
+	UFUNCTION()
+		FVector GetEscala();
+
+	UFUNCTION()
+		int32 GetOffset();
 
 	UFUNCTION()
 		ENumeroPortas GetNumPortas();
@@ -82,7 +94,7 @@ public:
 		ETipoSala GetTipo();
 
 	UFUNCTION()
-		TArray<TEnumAsByte<EDirecaoPortas>> GetDirecaoPortas();
+		TArray<TEnumAsByte<EDirecaoPortas>> GetArrayPortas();
 
 	// Sets default values for this actor's properties
 	ASala();

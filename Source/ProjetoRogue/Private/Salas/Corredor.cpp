@@ -10,19 +10,18 @@ ACorredor::ACorredor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	OffsetCorredor = 2320.0f;
+	EscalaPadrao = FVector(12.0f, 12.0f, 12.0f);
+
 }
 
-// Called when the game starts or when spawned
-void ACorredor::BeginPlay()
+FVector ACorredor::GetEscala()
 {
-	Super::BeginPlay();
-	
+	return EscalaPadrao;
 }
 
-// Called every frame
-void ACorredor::Tick( float DeltaTime )
+int32 ACorredor::GetOffset()
 {
-	Super::Tick( DeltaTime );
-
+	return OffsetCorredor;
 }
 

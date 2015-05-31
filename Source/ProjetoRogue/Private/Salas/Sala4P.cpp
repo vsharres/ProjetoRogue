@@ -8,7 +8,7 @@ ASala4P::ASala4P()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	NumeroPortas = ENumeroPortas::QUATRO;
-	DirecaoSala = EDirecaoSala::NORMAL;
+	DirecaoSala = EDirecaoSala::PADRAO;
 	SalasConectadas.Empty();
 	DirecaoPortas.Empty();
 	DirecaoPortas.Add(EDirecaoPortas::OESTE);
