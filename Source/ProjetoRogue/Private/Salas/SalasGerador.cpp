@@ -19,6 +19,7 @@ ASalasGerador::ASalasGerador()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Salas.Empty();
+	UltimasSalasGeradas.Empty();
 	bSalaItemGerada = false;
 	bSalaChaveGerada = false;
 	bSalaBossGerada = false;
@@ -36,10 +37,11 @@ void ASalasGerador::Inicializar(ASala* Inicial)
 }
 
 
-FRotator ASalasGerador::GetDirecaoPorta(const FRotator& DirecaoSala, const EDirecaoPortas& Porta)
+FRotator ASalasGerador::GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPortas& Porta)
 {
 
 	FRotator ARetornar;
+	FVector vec;
 
 	switch (Porta)
 	{
@@ -50,10 +52,12 @@ FRotator ASalasGerador::GetDirecaoPorta(const FRotator& DirecaoSala, const EDire
 		ARetornar = FRotationMatrix(DirecaoSala).GetScaledAxis(EAxis::Y).Rotation();
 		break;
 	case EDirecaoPortas::LESTE:
-		ARetornar = -(DirecaoSala.Vector()).Rotation();
+		vec = -(DirecaoSala.Vector());
+		ARetornar = vec.Rotation();
 		break;
 	case EDirecaoPortas::SUL:
-		ARetornar = -(FRotationMatrix(DirecaoSala).GetScaledAxis(EAxis::Y)).Rotation();
+		vec = -(FRotationMatrix(DirecaoSala).GetScaledAxis(EAxis::Y));
+		ARetornar = vec.Rotation();
 		break;
 
 	default:
@@ -99,26 +103,33 @@ int32 ASalasGerador::UltimaSalaValida()
 	return index;
 }
 
-FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FRotator& DirecaoPorta)
+FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
 	FVector Trans = (DirecaoPorta.Vector() * ((ASala*)SalaGerada->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
 
-	FRotator Rot = (-DirecaoPorta.Vector()).Rotation();
+	FVector dir = -(DirecaoPorta.Vector());
+
+	FRotator Rot = dir.Rotation();
 
 	return FTransform(Rot, Trans, ((ASala*)SalaGerada->GetDefaultObject(true))->GetEscala());
 }
 
-FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, const FRotator& DirecaoPorta)
+FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
 	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
 
-	FRotator Rot = (-DirecaoPorta.Vector()).Rotation();
+	FVector dir = -(DirecaoPorta.Vector());
+
+	FRotator Rot = dir.Rotation();
 
 	return FTransform(Rot, Trans, ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetEscala());
 }
 
-TSubclassOf<ASala> ASalasGerador::SelecionarSala()
+TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 {
+	TSubclassOf<ASala> retornar;
+
+
 	int32 indice = 0;
 	int32 limite = 0;
 
@@ -131,15 +142,11 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala()
 	else if (diferenca > 2)
 	{
 		limite = 4;
+
 	}
 	else if (diferenca > 1)
 	{
 		limite = 3;
-	}
-	else
-	{
-		FRandomStream Stream = FRandomStream(Seed);
-		return TiposSalas[Stream.FRandRange(indice, limite)];
 	}
 
 	if (Salas.Num() <= MinNumSalas)
@@ -148,8 +155,9 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala()
 	}
 
 	FRandomStream Stream = FRandomStream(Seed);
+	retornar = TiposSalas[Stream.FRandRange(indice, limite)];
 
-	return TiposSalas[Stream.FRandRange(indice, limite)];
+	return retornar;
 }
 
 bool ASalasGerador::ColideNaDirecao(EDirecaoPortas Direcao, const FTransform& Trans)
@@ -166,10 +174,39 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPortas Direcao, const FTransform& Tr
 	bool result = GetWorld()->OverlapMulti(Overlaps,
 		Pos,
 		FQuat::Identity,
-		FCollisionShape::MakeSphere(100.0f), SphereParams,
-		FCollisionObjectQueryParams(FCollisionObjectQueryParams::InitType::AllObjects));
+		FCollisionShape::MakeSphere(500.0f), SphereParams,
+		FCollisionObjectQueryParams(FCollisionObjectQueryParams::InitType::AllDynamicObjects));
 
 	return result;
+}
+
+//TODO
+void ASalasGerador::ImpedirRepetida()
+{
+	if (UltimasSalasGeradas.Num() < 3 || 
+		((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
+	{
+		return;
+	}
+
+	for (const auto& sala : UltimasSalasGeradas)
+	{
+		if (!SalaGerada->IsChildOf(sala))
+		{
+			UltimasSalasGeradas.Empty();
+			return;
+		}
+	}
+
+	for (int32 i = TiposSalas.Find(SalaGerada); i > 1; i--)
+	{
+		if (TiposSalas[i] != SalaGerada)
+		{
+			SalaGerada = TiposSalas[i];
+			UltimasSalasGeradas.Empty();
+			return;
+		}
+	}
 }
 
 
@@ -177,12 +214,14 @@ bool ASalasGerador::SalaEspecialGerada()
 {
 	static int32 maxBoss = MaxNumSalas;
 	static int32 minBoss = maxBoss - 4;
-	static int32 maxChave = minBoss;
+	static int32 maxChave = minBoss - 2;
 	static int32 minChave = maxChave - 3;
 	static int32 minItem = 3;
 	static int32 maxItem = 5;
 
-	if (GetNumPortasVazias() > 1 || Salas.Num() < MinNumSalas)
+	int32 portasVazias = GetNumPortasVazias();
+
+	if (portasVazias > 1 && Salas.Num() > minItem)
 	{
 		if (bSalaItemGerada)
 		{
@@ -229,7 +268,8 @@ bool ASalasGerador::SalaEspecialGerada()
 			}
 		}
 	}
-	else
+
+	if (portasVazias == 1 && Salas.Num() == NumeroSalas - 1 && !bSalaBossGerada)
 	{
 		SalaGerada = SalaBoss;
 		bSalaBossGerada = true;
@@ -242,6 +282,11 @@ bool ASalasGerador::SalaEspecialGerada()
 void ASalasGerador::SetNumSalas()
 {
 	FRandomStream Stream = FRandomStream(Seed);
+
+	if (MinNumSalas >= MaxNumSalas)
+	{
+		MinNumSalas = MaxNumSalas - 1;
+	}
 
 	NumeroSalas = Stream.FRandRange(MinNumSalas, MaxNumSalas);
 
@@ -266,13 +311,16 @@ void ASalasGerador::GerarLevel(ASala* SalaAtual)
 }
 
 
-void ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta)
+void ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
 	SalaGerada = nullptr;
 
 	if (!SalaEspecialGerada())
 	{
-		SalaGerada = SelecionarSala();
+		SalaGerada = SelecionarSala(SalaAnterior);
+		ImpedirRepetida();
+		
+		
 	}
 
 	FTransform transSala = GerarTransformSala(SalaAnterior, DirecaoPorta);
@@ -285,6 +333,7 @@ void ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta)
 	{
 		NovaSala->SalasConectadas.Add(SalaAnterior);
 		SalaAnterior->SalasConectadas.Add(NovaSala);
+		UltimasSalasGeradas.Add(SalaGerada);
 	}
 
 	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
@@ -306,15 +355,15 @@ void ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta)
 
 }
 
-void ASalasGerador::ImpedirColisao( const FTransform& Trans, const FRotator& DirecaoPorta)
+void ASalasGerador::ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta)
 {
-	ASala* sala = (ASala*)SalaGerada->GetDefaultObject();
-
-	ENumeroPortas numPortas = sala->GetNumPortas();
 	bool colide = false;
 
 	do
 	{
+		ASala* sala = (ASala*)SalaGerada->GetDefaultObject();
+		ENumeroPortas numPortas = sala->GetNumPortas();
+
 		switch (numPortas)
 		{
 		case ENumeroPortas::DUAS:
@@ -323,7 +372,7 @@ void ASalasGerador::ImpedirColisao( const FTransform& Trans, const FRotator& Dir
 			{
 			case EDirecaoSala::PADRAO:
 				colide = false;
-				if (ColideNaDirecao( EDirecaoPortas::LESTE, Trans))
+				if (ColideNaDirecao(EDirecaoPortas::LESTE, Trans))
 				{
 					SalaGerada = TiposSalas[2];
 					colide = true;
@@ -378,13 +427,16 @@ void ASalasGerador::ImpedirColisao( const FTransform& Trans, const FRotator& Dir
 
 			for (int32 i = 1; i <= 3; i++)
 			{
-				if (ColideNaDirecao( sala->GetArrayPortas()[i], Trans))
+				if (ColideNaDirecao(sala->GetArrayPortas()[i], Trans))
 				{
 					SalaGerada = TiposSalas[4];
 					colide = true;
 					break;
 				}
 			}
+			break;
+		default:
+			colide = false;
 			break;
 		}
 

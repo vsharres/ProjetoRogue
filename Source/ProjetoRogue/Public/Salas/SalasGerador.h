@@ -17,9 +17,6 @@ private:
 		int32 NumeroSalas;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
-		TArray<TSubclassOf<ASala>> TiposSalas;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaItem;
 
 	UPROPERTY(EditDefaultsOnly,  Category = "Salas")
@@ -43,7 +40,13 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		TSubclassOf<ASala> SalaGerada;
 
+	UPROPERTY()
+		TArray<TSubclassOf<ASala>> UltimasSalasGeradas;
+
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
+		TArray<TSubclassOf<ASala>> TiposSalas;
+
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category ="Salas")
 		int32 MaxNumSalas;
 
@@ -67,7 +70,7 @@ public:
 		void Inicializar(ASala* Inicial);
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
-		FRotator GetDirecaoPorta(const FRotator& DirecaoSala, const EDirecaoPortas& Porta);
+		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPortas& Porta);
 
 	UFUNCTION(BlueprintPure,Category="Gerador Salas")
 		int32 GetNumPortasVazias();
@@ -76,13 +79,13 @@ public:
 		int32 UltimaSalaValida();
 
 	UFUNCTION()
-		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator& DirecaoPorta);
+		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator& DirecaoPorta);
+		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		TSubclassOf<ASala> SelecionarSala();
+		TSubclassOf<ASala> SelecionarSala(const ASala* SalaAnterior);
 
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void SetNumSalas();
@@ -91,10 +94,13 @@ public:
 		void GerarLevel(ASala* SalaAtual);
 
 	UFUNCTION()
-		void GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
+		void GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		void ImpedirColisao(const FTransform& Trans, const FRotator& DirecaoPorta);
+		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);
+
+	UFUNCTION()
+		void ImpedirRepetida();
 
 	UFUNCTION()
 		bool SalaEspecialGerada();	
