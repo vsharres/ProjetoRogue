@@ -19,7 +19,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaItem;
 
-	UPROPERTY(EditDefaultsOnly,  Category = "Salas")
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaChave;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
@@ -47,10 +47,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category ="Salas")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
 		int32 MaxNumSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
 		int32 MinNumSalas;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
@@ -72,7 +72,7 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPortas& Porta);
 
-	UFUNCTION(BlueprintPure,Category="Gerador Salas")
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		int32 GetNumPortasVazias();
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
@@ -94,16 +94,13 @@ public:
 		void GerarLevel(ASala* SalaAtual);
 
 	UFUNCTION()
-		void GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
+		ASala* GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
 		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		void ImpedirRepetida();
-
-	UFUNCTION()
-		bool SalaEspecialGerada();	
+		bool SalaEspecialGerada();
 
 	UFUNCTION()
 		bool ColideNaDirecao(EDirecaoPortas Direcao, const FTransform& Trans);
