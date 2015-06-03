@@ -6,10 +6,10 @@
 ASala2PEsquerda::ASala2PEsquerda()
 {
 	NumeroPortas = ENumeroPortas::DUAS;
-	DirecaoSala = EDirecaoSala::ESQUERDA;
+	DirecaoSala = EFormatoSala::ESQUERDA;
 	DirecaoPortas.Empty();
-	DirecaoPortas.Add(EDirecaoPortas::OESTE);
-	DirecaoPortas.Add(EDirecaoPortas::NORTE);
+	DirecaoPortas.Add(EDirecaoPorta::OESTE);
+	DirecaoPortas.Add(EDirecaoPorta::NORTE);
 
 }
 

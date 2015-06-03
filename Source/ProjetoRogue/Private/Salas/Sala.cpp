@@ -10,10 +10,10 @@ ASala::ASala()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	NumeroPortas = ENumeroPortas::UMA;
-	DirecaoSala = EDirecaoSala::PADRAO;
+	DirecaoSala = EFormatoSala::PADRAO;
 	TipoSala = ETipoSala::NORMAL;
 	SalasConectadas.Empty();
-	DirecaoPortas.Add(EDirecaoPortas::OESTE);
+	DirecaoPortas.Add(EDirecaoPorta::OESTE);
 	bVisitada = false;
 
 	OffsetSala = 4640.0f;
@@ -36,7 +36,7 @@ ENumeroPortas ASala::GetNumPortas()
 	return NumeroPortas;
 }
 
-EDirecaoSala ASala::GetDirecao()
+EFormatoSala ASala::GetDirecao()
 {
 	return DirecaoSala;
 }
@@ -46,7 +46,7 @@ ETipoSala ASala::GetTipo()
 	return TipoSala;
 }
 
-TArray<TEnumAsByte<EDirecaoPortas>> ASala::GetArrayPortas()
+TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 {
 	return DirecaoPortas;
 }

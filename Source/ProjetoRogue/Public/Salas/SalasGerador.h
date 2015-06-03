@@ -43,6 +43,9 @@ private:
 	UPROPERTY()
 		TArray<TSubclassOf<ASala>> UltimasSalasGeradas;
 
+	UPROPERTY()
+		TArray<FVector> PosSalas;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
@@ -70,7 +73,7 @@ public:
 		void Inicializar(ASala* Inicial);
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
-		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPortas& Porta);
+		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPorta& Porta);
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		int32 GetNumPortasVazias();
@@ -90,6 +93,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void SetNumSalas();
 
+	UFUNCTION()
+		void AdicionarAoArrayPortas(ASala* sala);
+
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void GerarLevel(ASala* SalaAtual);
 
@@ -103,7 +109,10 @@ public:
 		bool SalaEspecialGerada();
 
 	UFUNCTION()
-		bool ColideNaDirecao(EDirecaoPortas Direcao, const FTransform& Trans);
+		bool EstaNoArrayDePosicoes(const FVector& pos);
+
+	UFUNCTION()
+		bool ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans);
 
 
 };

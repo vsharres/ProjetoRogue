@@ -17,7 +17,7 @@ enum class ENumeroPortas : uint8
 };
 
 UENUM(BlueprintType)
-enum class EDirecaoPortas : uint8
+enum class EDirecaoPorta : uint8
 {
 	OESTE,
 	NORTE,
@@ -27,7 +27,7 @@ enum class EDirecaoPortas : uint8
 };
 
 UENUM(BlueprintType)
-enum class EDirecaoSala : uint8
+enum class EFormatoSala : uint8
 {
 	PADRAO,
 	ESQUERDA,
@@ -53,7 +53,7 @@ class PROJETOROGUE_API ASala : public AActor
 protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-		EDirecaoSala DirecaoSala;
+		EFormatoSala DirecaoSala;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		ETipoSala TipoSala;
@@ -62,7 +62,7 @@ protected:
 		ENumeroPortas NumeroPortas;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray < TEnumAsByte<EDirecaoPortas> > DirecaoPortas;
+		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
 	UPROPERTY(EditDefaultsOnly)
 		FVector EscalaPadrao;
@@ -88,13 +88,13 @@ public:
 		ENumeroPortas GetNumPortas();
 
 	UFUNCTION()
-		EDirecaoSala GetDirecao();
+		EFormatoSala GetDirecao();
 
 	UFUNCTION()
 		ETipoSala GetTipo();
 
 	UFUNCTION()
-		TArray<TEnumAsByte<EDirecaoPortas>> GetArrayPortas();
+		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
 
 	// Sets default values for this actor's properties
 	ASala();

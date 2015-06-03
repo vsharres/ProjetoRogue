@@ -9,12 +9,12 @@ ASala3P::ASala3P()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	NumeroPortas = ENumeroPortas::TRES;
-	DirecaoSala = EDirecaoSala::PADRAO;
+	DirecaoSala = EFormatoSala::PADRAO;
 	SalasConectadas.Empty();
 	DirecaoPortas.Empty();
-	DirecaoPortas.Add(EDirecaoPortas::OESTE);
-	DirecaoPortas.Add(EDirecaoPortas::SUL);
-	DirecaoPortas.Add(EDirecaoPortas::NORTE);
+	DirecaoPortas.Add(EDirecaoPorta::OESTE);
+	DirecaoPortas.Add(EDirecaoPorta::SUL);
+	DirecaoPortas.Add(EDirecaoPorta::NORTE);
 	bVisitada = false;
 }
 
