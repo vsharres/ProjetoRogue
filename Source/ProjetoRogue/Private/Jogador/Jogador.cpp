@@ -2,6 +2,7 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Itens/ItemAtivo.h"
 
 
 // Sets default values
@@ -13,6 +14,9 @@ AJogador::AJogador()
 	bPossuiChave = false;
 	AtivoAtual = NULL;
 	ItensPassivos.Empty();
+	CooldDownRate = 1.0f;
+	TempoCooldown = 10.0f;
+	CooldownAtual = TempoCooldown;
 
 }
 
@@ -27,6 +31,19 @@ void AJogador::BeginPlay()
 void AJogador::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
+
+	if (CooldownAtual < TempoCooldown)
+	{
+		CooldownAtual += CooldDownRate * DeltaTime;
+	}
+	else
+	{
+		CooldownAtual = TempoCooldown;
+		if (AtivoAtual->IsValidLowLevelFast() && AtivoAtual->bAtivo)
+		{
+			AtivoAtual->DesativarItem();
+		}
+	}
 
 }
 

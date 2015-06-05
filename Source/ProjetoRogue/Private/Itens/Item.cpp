@@ -2,28 +2,47 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Itens/Item.h"
+#include "Public/Jogador/Jogador.h"
 
-
-// Sets default values
-AItem::AItem()
+UItem::UItem()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-	Tipo = ETipoItem::ENERGIA;
+	Stats = FItemStats();
+}
+
+void UItem::AplicarStats()
+{
+	Jogador->Stats += Stats;
+}
+
+void UItem::RemoverStats()
+{
+	Jogador->Stats -= Stats;
+}
+
+void UItem::AplicarItem()
+{
+	AplicarStats();
+}
+
+void UItem::RemoverItem()
+{
+	RemoverStats();
+
+	this->BeginDestroy();
+}
+
+UObject* UItem::InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe)
+{
+	if (GEngine)
+	{
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
+		UObject* temp = StaticConstructObject(Classe);
+
+		return temp;
+	}
+
+	return NULL;
 
 }
 
-// Called when the game starts or when spawned
-void AItem::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AItem::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
-
-}
 

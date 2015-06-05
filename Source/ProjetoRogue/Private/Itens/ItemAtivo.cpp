@@ -2,13 +2,50 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Itens/ItemAtivo.h"
+#include "Public/Jogador/Jogador.h"
 
-AItemAtivo::AItemAtivo()
+UItemAtivo::UItemAtivo()
 {
 	Tipo = ETipoItem::ATIVO;
 	Stats = FItemStats();
 	bAtivo = false;
-	Cooldown = 10.0f;
+}
+
+void UItemAtivo::AtivarItem()
+{
+	bAtivo = true;
+	Super::AplicarStats();
+
+}
+
+void UItemAtivo::DesativarItem()
+{
+
+	bAtivo = false;
+	Super::RemoverStats();
+
+}
+
+
+void UItemAtivo::AplicarItem()
+{
+	if (Jogador->IsValidLowLevelFast())
+	{
+		if (Jogador->AtivoAtual->IsValidLowLevelFast())
+		{
+			Jogador->AtivoAtual->RemoverItem();
+			Jogador->AtivoAtual = this;
+		}
+		else
+		{
+			Jogador->AtivoAtual = this;
+		}
+	}
+}
+
+void UItemAtivo::RemoverItem()
+{
+	Super::RemoverItem();
 }
 
 

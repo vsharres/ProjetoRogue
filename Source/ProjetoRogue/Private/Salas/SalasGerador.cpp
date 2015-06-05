@@ -181,14 +181,14 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 	bool result = EstaNoArrayDePosicoes(Pos);
 
-	if (result)
+	/*if (result)
 	{
 		DrawDebugSphere(this->GetWorld(), Pos, 500.0f, 12, FColor::Red, true, 1000);
 	}
 	else
 	{
 		DrawDebugSphere(this->GetWorld(), Pos, 250.0f, 12, FColor::Blue, true, 1000);
-	}
+	}*/
 
 	return result;
 }

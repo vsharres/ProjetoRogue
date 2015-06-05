@@ -2,16 +2,14 @@
 
 #pragma once
 
-#include "GameFramework/Actor.h"
+#include "Object.h"
 #include "Item.generated.h"
 
 UENUM(BlueprintType)
 enum class ETipoItem : uint8
 {
-	CHAVE,
-	ENERGIA,
 	PASSIVO,
-	ATIVO	
+	ATIVO
 };
 
 USTRUCT()
@@ -55,11 +53,12 @@ struct FItemStats
 		this->IncrementaVida += itemStats.IncrementaVida;
 
 		return *this;
-		
+
 	}
 
-	FItemStats(float incVida = 0.0f, float incVel = 0.0f, float incFire =0.0f,float incRange =0.0f, float incDano =0.0f, float incPart =0.0f, int32 incEner = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incRange = 0.0f, float incDano = 0.0f, float incPart = 0.0f, int32 incEner = 0)
 	{
+		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
 		IncrementaVel = incVel;
 		IncrementaFireRate = incFire;
@@ -68,30 +67,48 @@ struct FItemStats
 		IncrementaParticula = incPart;
 		IncrementaEnergia = incEner;
 	}
-	
+
 
 };
 
-UCLASS(Abstract)
-class PROJETOROGUE_API AItem : public AActor
+/**
+ *
+ */
+UCLASS(Abstract, BlueprintType, Blueprintable)
+class PROJETOROGUE_API UItem : public UObject
 {
 	GENERATED_BODY()
 
-protected:
+public:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Item")
+		FItemStats Stats;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Item")
 		ETipoItem Tipo;
-	
-public:	
-	// Sets default values for this actor's properties
-	AItem();
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-	
-	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	class AJogador* Jogador;
 
-	
-	
+	UPROPERTY(EditDefaultsOnly, Category = "Item")
+		FName NomeItem;
+
+	UItem();
+
+	UFUNCTION()
+		void AplicarStats();
+
+	UFUNCTION()
+		void RemoverStats();
+
+	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Aplicar Item", Keywords = "Aplicar item"), Category = "Item")
+		virtual void AplicarItem();
+
+	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Remover Item", Keywords = "Remover item"), Category = "Item")
+		virtual void RemoverItem();
+
+	UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", FriendlyName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
+		static UObject* InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
+
+
 };

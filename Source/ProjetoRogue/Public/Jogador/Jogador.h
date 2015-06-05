@@ -49,6 +49,20 @@ struct FJogadorStats
 		return *this;
 	}
 
+	FORCEINLINE FJogadorStats& operator-=(const FItemStats& itemStats)
+	{
+		this->VidaMaxima -= itemStats.IncrementaVidaMax;
+		this->VelocidadeMov -= itemStats.IncrementaVel;
+		this->FireRate -= itemStats.IncrementaFireRate;
+		this->Range -= itemStats.IncrementaRange;
+		this->Dano -= itemStats.IncrementaDano;
+		this->TamanhoProjetil -= itemStats.IncrementaParticula;
+		this->Energia -= itemStats.IncrementaEnergia;
+		this->Vida -= itemStats.IncrementaVida;
+
+		return *this;
+	}
+
 
 	FJogadorStats(float vidMax = 100.0f, float velMov = 500.0f, float fireRate = 1.0f, float range =1000.0f, float dano =1.0f, float tamanhoProjet = 1.0f, int32 energia =0)
 	{
@@ -71,6 +85,15 @@ class PROJETOROGUE_API AJogador : public ACharacter
 	
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		float CooldownAtual;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		float TempoCooldown;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		float CooldDownRate;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
 
@@ -78,10 +101,10 @@ public:
 		bool bPossuiChave;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Itens")
-		class AItemAtivo* AtivoAtual;
+		class UItemAtivo* AtivoAtual;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Itens")
-		TArray<class AItemPassivo*> ItensPassivos;
+		TArray<class UItemPassivo*> ItensPassivos;
 
 	// Sets default values for this character's properties
 	AJogador();
