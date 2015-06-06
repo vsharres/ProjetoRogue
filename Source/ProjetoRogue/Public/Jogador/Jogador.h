@@ -64,7 +64,7 @@ struct FJogadorStats
 	}
 
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 500.0f, float fireRate = 1.0f, float range =1000.0f, float dano =1.0f, float tamanhoProjet = 1.0f, int32 energia =0)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 1.0f, float range =1000.0f, float dano =1.0f, float tamanhoProjet = 1.0f, int32 energia =0)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
@@ -85,13 +85,13 @@ class PROJETOROGUE_API AJogador : public ACharacter
 	
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		float CooldownAtual;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0", UIMax = "5.0"), Category = "Item")
 		float TempoCooldown;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1", UIMax = "10.0"), Category = "Item")
 		float CooldDownRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
@@ -108,6 +108,9 @@ public:
 
 	// Sets default values for this character's properties
 	AJogador();
+
+	UFUNCTION()
+		void AtualizarStats();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

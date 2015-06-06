@@ -15,9 +15,14 @@ AJogador::AJogador()
 	AtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
-	TempoCooldown = 10.0f;
+	TempoCooldown = 2.0f;
 	CooldownAtual = TempoCooldown;
 
+}
+
+void AJogador::AtualizarStats()
+{
+	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
 }
 
 // Called when the game starts or when spawned

@@ -137,35 +137,42 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 
 	int32 diferenca = NumeroSalas - Salas.Num();
 
-	if (diferenca > 3)
+	if (diferenca == 0)
 	{
-		limite = TiposSalas.Num() - 1;
-	}
-	else if (diferenca > 2)
-	{
-		limite = 4;
+		indice = 0;
+		limite = 0;
 
 	}
-	else if (diferenca > 1)
-	{
-		limite = 3;
-	}
-
-	if (Salas.Num() <= MinNumSalas)
+	else if (diferenca == 1)
 	{
 		indice = 1;
+		limite = 1;
 	}
-
-	if (Salas.Num() >= 3 && !bSalaItemGerada)
+	else if (diferenca == 2)
 	{
 		indice = 4;
-		limite = 6;
-
+		limite = 4;
 	}
-	else if (Salas.Num() >= 5 && !bSalaChaveGerada)
+	else
 	{
-		indice = 7;
-		limite = 7;
+		if (Salas.Num() < NumeroSalas)
+		{
+			indice = 1;
+			limite = TiposSalas.Num() - 1;
+		}
+
+		if (Salas.Num() >= 3 && !bSalaItemGerada)
+		{
+			indice = 4;
+			limite = 6;
+
+		}
+		else if (Salas.Num() >= 5 && !bSalaChaveGerada)
+		{
+			indice = 7;
+			limite = 7;
+		}
+
 	}
 
 	FRandomStream Stream = FRandomStream(Seed);
@@ -181,62 +188,46 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 	bool result = EstaNoArrayDePosicoes(Pos);
 
-	/*if (result)
-	{
-		DrawDebugSphere(this->GetWorld(), Pos, 500.0f, 12, FColor::Red, true, 1000);
-	}
-	else
-	{
-		DrawDebugSphere(this->GetWorld(), Pos, 250.0f, 12, FColor::Blue, true, 1000);
-	}*/
-
 	return result;
 }
 
-bool ASalasGerador::SalaEspecialGerada()
+void ASalasGerador::GerarSalaEspecial()
 {
-	static int32 maxChave = 14;
-	static int32 minChave = 10;
-	static int32 minItem = 6;
-	static int32 maxItem = 8;
-
-	int32 portasVazias = GetNumPortasVazias();
-
-	if (portasVazias > 1 && Salas.Num() >= minItem)
+	if (SalaGerada->IsChildOf(ASala::StaticClass()))
 	{
-		if (!bSalaItemGerada)
-		{
-			FRandomStream Stream(Seed);
+		FRandomStream Stream(Seed);
 
-			if (Salas.Num() >= Stream.FRandRange(minItem, maxItem))
-			{
-				SalaGerada = SalaItem;
-				bSalaItemGerada = true;
-				return true;
-			}
+
+		if (UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) && !bSalaItemGerada)
+		{
+			SalaGerada = SalaItem;
+			bSalaItemGerada = true;
+			return;
 		}
 
-		if (!bSalaChaveGerada)
+		if (UltimaSalaValida() >= Stream.FRandRange(7, 9) && !bSalaChaveGerada)
 		{
-			FRandomStream Stream(Seed);
-
-			if (Salas.Num() >= Stream.FRandRange(minChave, maxChave))
-			{
-				SalaGerada = SalaChave;
-				bSalaChaveGerada = true;
-				return true;
-			}
+			SalaGerada = SalaChave;
+			bSalaChaveGerada = true;
+			return;
 		}
+
+		if (UltimaSalaValida() >= Stream.FRandRange(2, 6) && !bSalaBossGerada)
+		{
+			SalaGerada = SalaBoss;
+			bSalaBossGerada = true;
+			return;
+		}
+
+		if (!bSalaItemGerada == 1 && Salas.Num() == NumeroSalas && GetNumPortasVazias())
+		{
+			SalaGerada = SalaItem;
+			bSalaItemGerada = true;
+			return;
+		}
+
 	}
 
-	if (portasVazias == 1 && Salas.Num() == NumeroSalas - 1 && !bSalaBossGerada)
-	{
-		SalaGerada = SalaBoss;
-		bSalaBossGerada = true;
-		return true;
-	}
-
-	return false;
 }
 
 bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
@@ -349,10 +340,9 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 {
 	SalaGerada = nullptr;
 
-	if (!SalaEspecialGerada())
-	{
-		SalaGerada = SelecionarSala(SalaAnterior);
-	}
+	SalaGerada = SelecionarSala(SalaAnterior);
+
+	GerarSalaEspecial();
 
 	FTransform transSala = GerarTransformSala(SalaAnterior, DirecaoPorta);
 

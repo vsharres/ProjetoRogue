@@ -106,7 +106,7 @@ public:
 		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		bool SalaEspecialGerada();
+		void GerarSalaEspecial();
 
 	UFUNCTION()
 		bool EstaNoArrayDePosicoes(const FVector& pos);
