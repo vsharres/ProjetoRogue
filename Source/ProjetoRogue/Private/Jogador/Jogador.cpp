@@ -2,6 +2,7 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Itens/ItemAtivo.h"
 
 
 // Sets default values
@@ -9,7 +10,19 @@ AJogador::AJogador()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	Stats = FJogadorStats();
+	bPossuiChave = false;
+	AtivoAtual = NULL;
+	ItensPassivos.Empty();
+	CooldDownRate = 1.0f;
+	TempoCooldown = 2.0f;
+	CooldownAtual = TempoCooldown;
 
+}
+
+void AJogador::AtualizarStats()
+{
+	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
 }
 
 // Called when the game starts or when spawned
@@ -23,6 +36,19 @@ void AJogador::BeginPlay()
 void AJogador::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
+
+	if (CooldownAtual < TempoCooldown)
+	{
+		CooldownAtual += CooldDownRate * DeltaTime;
+	}
+	else
+	{
+		CooldownAtual = TempoCooldown;
+		if (AtivoAtual->IsValidLowLevelFast() && AtivoAtual->bAtivo)
+		{
+			AtivoAtual->DesativarItem();
+		}
+	}
 
 }
 

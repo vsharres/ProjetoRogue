@@ -6,11 +6,11 @@
 ASala3PDireita::ASala3PDireita()
 {
 	NumeroPortas = ENumeroPortas::TRES;
-	DirecaoSala = EDirecaoSala::DIREITA;
+	DirecaoSala = EFormatoSala::DIREITA;
 	DirecaoPortas.Empty();
-	DirecaoPortas.Add(EDirecaoPortas::OESTE);
-	DirecaoPortas.Add(EDirecaoPortas::SUL);
-	DirecaoPortas.Add(EDirecaoPortas::LESTE);
+	DirecaoPortas.Add(EDirecaoPorta::OESTE);
+	DirecaoPortas.Add(EDirecaoPorta::SUL);
+	DirecaoPortas.Add(EDirecaoPorta::LESTE);
 }
 
 

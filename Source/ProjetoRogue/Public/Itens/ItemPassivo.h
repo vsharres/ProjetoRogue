@@ -9,16 +9,19 @@
  * 
  */
 UCLASS()
-class PROJETOROGUE_API AItemPassivo : public AItem
+class PROJETOROGUE_API UItemPassivo : public UItem
 {
 	GENERATED_BODY()
-	
-	
+
 public:
 
-	UPROPERTY()
-		FItemStats Stats;
+	UItemPassivo();
 
-	AItemPassivo();
+	virtual void AplicarItem() override;
+
+	virtual void RemoverItem() override;
+	
+	
+	
 	
 };

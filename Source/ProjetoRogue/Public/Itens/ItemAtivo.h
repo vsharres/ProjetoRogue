@@ -9,23 +9,28 @@
  * 
  */
 UCLASS()
-class PROJETOROGUE_API AItemAtivo : public AItem
+class PROJETOROGUE_API UItemAtivo : public UItem
 {
 	GENERATED_BODY()
 
-	
 public:
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		bool bAtivo;
 
-	UPROPERTY()
-		float Cooldown;
+	UItemAtivo();
 
-	UPROPERTY()
-		FItemStats Stats;
+	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")
+		void AtivarItem();
 
-	AItemAtivo();
+	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Desativar Item", Keywords = "Desativar item"), Category = "Item")
+		void DesativarItem();
+
+	virtual void AplicarItem() override;
+
+	virtual void RemoverItem() override;
+	
+	
 	
 	
 };

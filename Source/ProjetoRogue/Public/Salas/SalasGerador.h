@@ -13,107 +13,106 @@ class PROJETOROGUE_API ASalasGerador : public AActor
 
 private:
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		int32 NumeroSalas;
 
-	UPROPERTY(EditDefaultsOnly)
-		int32 OffsetSala;
-
-	UPROPERTY(EditDefaultsOnly)
-		int32 OffsetCorredor;
-
-	UPROPERTY(EditDefaultsOnly)
-		FVector EscalaPadraoSalas;
-
-	UPROPERTY(EditDefaultsOnly)
-		TArray<TSubclassOf<ASala>> TiposSalas;
-
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaItem;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaChave;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaBoss;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		TSubclassOf<class ACorredor> Corredor;
+
+	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaItemGerada;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaChaveGerada;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaBossGerada;
 
+	UPROPERTY(VisibleAnywhere, Category = "Salas")
+		TSubclassOf<ASala> SalaGerada;
+
+	UPROPERTY()
+		TArray<TSubclassOf<ASala>> UltimasSalasGeradas;
+
+	UPROPERTY()
+		TArray<FVector> PosSalas;
+
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
+		TArray<TSubclassOf<ASala>> TiposSalas;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
 		int32 MaxNumSalas;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
 		int32 MinNumSalas;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
 		int32 Seed;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		ASala* SalaInicial;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<ASala*> Salas;
 
 public:
 	// Sets default values for this actor's properties
 	ASalasGerador();
 
-	UFUNCTION()
-		FRotator GetDirecaoPorta(const FRotator& DirecaoSala, const EDirecaoPortas& Porta);
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+		void Inicializar(ASala* Inicial);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
+		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPorta& Porta);
+
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		int32 GetNumPortasVazias();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		int32 UltimaSalaValida();
 
 	UFUNCTION()
-		EDirecaoSala GetDirecaoSala(TSubclassOf<ASala> Classe);
+		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		ENumeroPortas GetNumeroPortas(TSubclassOf<ASala> Classe);
+		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		TArray< TEnumAsByte<EDirecaoPortas> > GerarArrayPortas(TSubclassOf<ASala> Classe);
+		TSubclassOf<ASala> SelecionarSala(const ASala* SalaAnterior);
 
-	UFUNCTION()
-		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator& DirecaoPorta);
-
-	UFUNCTION()
-		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator& DirecaoPorta);
-
-	UFUNCTION()
-		TSubclassOf<ASala> SelecionarSala();
-
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void SetNumSalas();
 
 	UFUNCTION()
+		void AdicionarAoArrayPortas(ASala* sala);
+
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void GerarLevel(ASala* SalaAtual);
 
 	UFUNCTION()
-		void GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
+		ASala* GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		void ImpedirColisao(TSubclassOf<ASala> SalaGerada, const FTransform& Trans, const FRotator& DirecaoPorta);
+		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);
 
 	UFUNCTION()
-		bool SalaEspecialGerada(TSubclassOf<ASala> SalaGerada);	
+		void GerarSalaEspecial();
 
 	UFUNCTION()
-		bool ColideNaDirecao(EDirecaoPortas Direcao, const FTransform& Trans);
+		bool EstaNoArrayDePosicoes(const FVector& pos);
 
-	
+	UFUNCTION()
+		bool ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans);
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 };

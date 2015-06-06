@@ -11,9 +11,11 @@ class PROJETOROGUE_API AProjectil : public AActor
 	GENERATED_BODY()
 
 protected:
-	FFloat16 Velocidade;
+	UPROPERTY()
+	float Velocidade;
 
-	uint16 Dano;
+	UPROPERTY()
+	int32 Dano;
 	
 public:	
 	// Sets default values for this actor's properties
