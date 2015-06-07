@@ -6,6 +6,15 @@
 #include "Sala.generated.h"
 
 UENUM(BlueprintType)
+enum class EDificuldadeSala : uint8
+{
+	FACIL,
+	NORMAL,
+	DIFICIL
+
+};
+
+UENUM(BlueprintType)
 enum class ENumeroPortas : uint8
 {
 	ZERO,
@@ -13,7 +22,6 @@ enum class ENumeroPortas : uint8
 	DUAS,
 	TRES,
 	QUATRO,
-
 };
 
 UENUM(BlueprintType)
@@ -52,30 +60,33 @@ class PROJETOROGUE_API ASala : public AActor
 	GENERATED_BODY()
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EFormatoSala DirecaoSala;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		ETipoSala TipoSala;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		ENumeroPortas NumeroPortas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
+		EDificuldadeSala Dificuldade;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Sala")
 		FVector EscalaPadrao;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Sala")
 		float OffsetSala;
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray<ASala*> SalasConectadas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		bool bVisitada;
 
 	UFUNCTION()

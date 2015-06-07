@@ -11,23 +11,21 @@ UItemAtivo::UItemAtivo()
 	bAtivo = false;
 }
 
-void UItemAtivo::AtivarItem()
+void UItemAtivo::AtivarItem_Implementation()
 {
 	bAtivo = true;
 	Super::AplicarStats();
 
 }
 
-void UItemAtivo::DesativarItem()
+void UItemAtivo::DesativarItem_Implementation()
 {
-
 	bAtivo = false;
 	Super::RemoverStats();
-
 }
 
 
-void UItemAtivo::AplicarItem()
+void UItemAtivo::AplicarItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast())
 	{
@@ -43,9 +41,9 @@ void UItemAtivo::AplicarItem()
 	}
 }
 
-void UItemAtivo::RemoverItem()
+void UItemAtivo::RemoverItem_Implementation()
 {
-	Super::RemoverItem();
+	Super::RemoverItem_Implementation();
 }
 
 

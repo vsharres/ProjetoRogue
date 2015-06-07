@@ -21,12 +21,12 @@ void UItem::RemoverStats()
 	Jogador->AtualizarStats();
 }
 
-void UItem::AplicarItem()
+void UItem::AplicarItem_Implementation()
 {
 	AplicarStats();
 }
 
-void UItem::RemoverItem()
+void UItem::RemoverItem_Implementation()
 {
 	RemoverStats();
 

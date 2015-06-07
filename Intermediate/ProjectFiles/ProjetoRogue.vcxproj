@@ -43,6 +43,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Inimigo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\Item.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemAtivo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemPassivo.cpp" />
@@ -57,6 +58,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\Item.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemAtivo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemPassivo.h" />

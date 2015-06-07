@@ -16,6 +16,15 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		int32 NumeroSalas;
 
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "1"), Category = "Salas")
+		int32 IndexSala2P;
+
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "2"), Category = "Salas")
+		int32 IndexSala3P;
+
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "3"), Category = "Salas")
+		int32 IndexSala4P;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaItem;
 
@@ -50,10 +59,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
 		int32 MaxNumSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "11", UIMax = "31"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
 		int32 MinNumSalas;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
@@ -113,6 +122,9 @@ public:
 
 	UFUNCTION()
 		bool ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
+		virtual void GeracaoTerminada();
 
 
 };

@@ -12,6 +12,7 @@ ASala::ASala()
 	NumeroPortas = ENumeroPortas::UMA;
 	DirecaoSala = EFormatoSala::PADRAO;
 	TipoSala = ETipoSala::NORMAL;
+	Dificuldade = EDificuldadeSala::NORMAL;
 	SalasConectadas.Empty();
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
 	bVisitada = false;
