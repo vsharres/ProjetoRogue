@@ -85,6 +85,11 @@ class PROJETOROGUE_API AJogador : public ACharacter
 	
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+		FJogadorStats Stats;
+
+	//ITENS
+
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		float CooldownAtual;
 
@@ -94,17 +99,28 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1", UIMax = "10.0"), Category = "Item")
 		float CooldDownRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
-		FJogadorStats Stats;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Itens")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		bool bPossuiChave;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Itens")
-		class UItemAtivo* AtivoAtual;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		class UItemAtivo* ItemAtivoAtual;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Itens")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		TArray<class UItemPassivo*> ItensPassivos;
+
+	//PROJETIL
+
+	UPROPERTY()
+		int32 NumProjeteis;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Projetil")
+		TSubclassOf<class AProjectil> ProjetilAtual;
+
+	UPROPERTY()
+		FName ProjetilSocket;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category = "Projetil")
+		TArray<AProjectil*> PoolProjeteis;
 
 	// Sets default values for this character's properties
 	AJogador();

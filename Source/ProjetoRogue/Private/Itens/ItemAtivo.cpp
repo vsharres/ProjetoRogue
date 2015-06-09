@@ -29,14 +29,14 @@ void UItemAtivo::AplicarItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast())
 	{
-		if (Jogador->AtivoAtual->IsValidLowLevelFast())
+		if (Jogador->ItemAtivoAtual->IsValidLowLevelFast())
 		{
-			Jogador->AtivoAtual->RemoverItem();
-			Jogador->AtivoAtual = this;
+			Jogador->ItemAtivoAtual->RemoverItem();
+			Jogador->ItemAtivoAtual = this;
 		}
 		else
 		{
-			Jogador->AtivoAtual = this;
+			Jogador->ItemAtivoAtual = this;
 		}
 	}
 }

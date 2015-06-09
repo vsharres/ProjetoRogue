@@ -44,6 +44,7 @@ struct FInimigoStats
 
 };
 
+//TODO
 UCLASS()
 class PROJETOROGUE_API AInimigo : public APawn
 {

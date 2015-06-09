@@ -2,8 +2,8 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Projeteis/Projectil.h"
 #include "Public/Itens/ItemAtivo.h"
-
 
 // Sets default values
 AJogador::AJogador()
@@ -12,11 +12,16 @@ AJogador::AJogador()
 	PrimaryActorTick.bCanEverTick = true;
 	Stats = FJogadorStats();
 	bPossuiChave = false;
-	AtivoAtual = NULL;
+	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
 	TempoCooldown = 2.0f;
 	CooldownAtual = TempoCooldown;
+
+	NumProjeteis = 10;
+	ProjetilAtual = AProjectil::StaticClass();
+
+	
 
 }
 
@@ -25,10 +30,25 @@ void AJogador::AtualizarStats()
 	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
 }
 
+//TODO
 // Called when the game starts or when spawned
 void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (ProjetilAtual->IsValidLowLevel())
+	{
+		for (int32 i = 0; i < NumProjeteis; i++)
+		{
+			AProjectil* projeTemp = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual, FVector::ZeroVector, FRotator::ZeroRotator);
+
+			if (projeTemp->IsValidLowLevelFast())
+			{
+				projeTemp->SetActorHiddenInGame(true);
+				PoolProjeteis.Add(projeTemp);
+			}
+		}
+	}
 	
 }
 
@@ -44,9 +64,9 @@ void AJogador::Tick( float DeltaTime )
 	else
 	{
 		CooldownAtual = TempoCooldown;
-		if (AtivoAtual->IsValidLowLevelFast() && AtivoAtual->bAtivo)
+		if (ItemAtivoAtual->IsValidLowLevelFast() && ItemAtivoAtual->bAtivo)
 		{
-			AtivoAtual->DesativarItem();
+			ItemAtivoAtual->DesativarItem();
 		}
 	}
 
