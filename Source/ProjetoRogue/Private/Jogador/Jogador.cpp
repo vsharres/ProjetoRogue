@@ -35,20 +35,6 @@ void AJogador::AtualizarStats()
 void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (ProjetilAtual->IsValidLowLevel())
-	{
-		for (int32 i = 0; i < NumProjeteis; i++)
-		{
-			AProjectil* projeTemp = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual, FVector::ZeroVector, FRotator::ZeroRotator);
-
-			if (projeTemp->IsValidLowLevelFast())
-			{
-				projeTemp->SetActorHiddenInGame(true);
-				PoolProjeteis.Add(projeTemp);
-			}
-		}
-	}
 	
 }
 

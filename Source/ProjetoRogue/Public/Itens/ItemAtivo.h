@@ -20,11 +20,11 @@ public:
 
 	UItemAtivo();
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (FriendlyName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")
 		void AtivarItem();
 		virtual void AtivarItem_Implementation();
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (FriendlyName = "Desativar Item", Keywords = "Desativar item"), Category = "Item")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Desativar Item", Keywords = "Desativar item"), Category = "Item")
 		void DesativarItem();
 		virtual void DesativarItem_Implementation();
 

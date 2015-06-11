@@ -13,6 +13,14 @@ enum class ETipoInimigo :uint8
 	BOSS
 };
 
+UENUM(BlueprintType)
+enum class ETipoAtaque :uint8
+{
+	MELEE,
+	RANGE,
+	AOE
+};
+
 USTRUCT()
 struct FInimigoStats
 {
@@ -28,31 +36,39 @@ struct FInimigoStats
 		float Dano;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		float VelRotacao;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		int32 Energia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoInimigo Tipo;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		ETipoAtaque TipoAtaque;
+
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
 		VidaAtual = Vida;
 		Dano = dano;
+		VelRotacao = velRot;
 		Energia = energia;
 		Tipo = tipo;
+		TipoAtaque = ataque;
 	}
 
 };
 
 //TODO
-UCLASS()
+UCLASS(ABSTRACT,Blueprintable)
 class PROJETOROGUE_API AInimigo : public APawn
 {
 	GENERATED_BODY()
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
 
 	// Sets default values for this pawn's properties
@@ -63,9 +79,6 @@ public:
 
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 
 

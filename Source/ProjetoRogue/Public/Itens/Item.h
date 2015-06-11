@@ -95,21 +95,21 @@ public:
 
 	UItem();
 
-	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Aplicar Stats", Keywords = "Aplicar Stats"), Category = "Item")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Aplicar Stats", Keywords = "Aplicar Stats"), Category = "Item")
 		void AplicarStats();
 
-	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Remover Stats", Keywords = "Remover Stats"), Category = "Item")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Remover Stats", Keywords = "Remover Stats"), Category = "Item")
 		void RemoverStats();
 
-	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, meta = (FriendlyName = "Aplicar Item", Keywords = "Aplicar item"), Category = "Item")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Aplicar Item", Keywords = "Aplicar item"), Category = "Item")
 		void AplicarItem();
 		virtual void AplicarItem_Implementation();
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (FriendlyName = "Remover Item", Keywords = "Remover item"), Category = "Item")
+		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Remover Item", Keywords = "Remover item"), Category = "Item")
 		void RemoverItem();
 		virtual void RemoverItem_Implementation();
 
-	UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", FriendlyName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
+		UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", DisplayName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
 		static UObject* InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
 
 

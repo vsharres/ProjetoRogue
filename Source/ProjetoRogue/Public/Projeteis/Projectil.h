@@ -11,7 +11,7 @@ struct FProjetilStats
 {
 	GENERATED_USTRUCT_BODY()
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Velocidade;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
@@ -20,11 +20,15 @@ struct FProjetilStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Tamanho;
 
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+		float ProjetilVida;
+
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float projetilvida = 10.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
 		Tamanho = tamanho;
+		ProjetilVida = projetilvida;
 	}
 
 	FORCEINLINE FProjetilStats& operator+=(const FJogadorStats& statsJogador)
@@ -32,6 +36,7 @@ struct FProjetilStats
 		this->Velocidade += statsJogador.VelocidadeMov;
 		this->Dano += statsJogador.Dano;
 		this->Tamanho += statsJogador.TamanhoProjetil;
+		this->ProjetilVida += statsJogador.Range;
 
 		return *this;
 	}
@@ -40,7 +45,7 @@ struct FProjetilStats
 };
 
 //TODO
-UCLASS()
+UCLASS(ABSTRACT, Blueprintable)
 class PROJETOROGUE_API AProjectil : public AActor
 {
 	GENERATED_BODY()
@@ -49,8 +54,17 @@ public:
 	UPROPERTY()
 		FProjetilStats Stats;
 
+	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+		UProjectileMovementComponent* CompMovimentacao;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+		USphereComponent* CompCollisao;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+		UStaticMeshComponent* Mesh;
+
 	// Sets default values for this actor's properties
-	AProjectil();
+	AProjectil(const FObjectInitializer& ObjectInitializer);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

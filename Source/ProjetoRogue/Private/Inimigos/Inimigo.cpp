@@ -28,10 +28,4 @@ void AInimigo::Tick( float DeltaTime )
 
 }
 
-// Called to bind functionality to input
-void AInimigo::SetupPlayerInputComponent(class UInputComponent* InputComponent)
-{
-	Super::SetupPlayerInputComponent(InputComponent);
-
-}
 

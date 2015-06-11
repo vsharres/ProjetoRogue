@@ -78,6 +78,7 @@ struct FJogadorStats
 
 };
 
+
 UCLASS()
 class PROJETOROGUE_API AJogador : public ACharacter
 {
@@ -118,9 +119,6 @@ public:
 
 	UPROPERTY()
 		FName ProjetilSocket;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category = "Projetil")
-		TArray<AProjectil*> PoolProjeteis;
 
 	// Sets default values for this character's properties
 	AJogador();
