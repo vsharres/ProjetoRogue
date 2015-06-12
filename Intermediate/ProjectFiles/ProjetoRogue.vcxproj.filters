@@ -187,10 +187,24 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h">
       <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DanoInterface.h">
+      <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoRange.cpp">
       <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DanoInterface.cpp">
+      <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source\ProjetoRogue\Public\Interfaces">
+      <UniqueIdentifier>{b4e86632-ee6a-427e-87b4-2203c0018af4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ProjetoRogue\Private\Interfaces">
+      <UniqueIdentifier>{9482b328-201f-4aa3-9224-36e431927b11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

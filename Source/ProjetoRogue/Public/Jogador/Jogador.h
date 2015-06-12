@@ -4,35 +4,37 @@
 
 #include "GameFramework/Character.h"
 #include "Public/Itens/Item.h"
+#include "Public/Interfaces/DanoInterface.h"
 #include "Jogador.generated.h"
+
 
 USTRUCT()
 struct FJogadorStats
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
 		float VidaMaxima;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
 		float VelocidadeMov;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float Range;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float Dano;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
 		float TamanhoProjetil;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
 		int32 Energia;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
 		float Vida;
 
 	FORCEINLINE FJogadorStats& operator+=(const FItemStats& itemStats)
@@ -80,7 +82,7 @@ struct FJogadorStats
 
 
 UCLASS()
-class PROJETOROGUE_API AJogador : public ACharacter
+class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
 {
 	GENERATED_BODY()
 	
@@ -88,6 +90,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
+
+	UPROPERTY()
+		bool bVivo;
 
 	//ITENS
 
@@ -126,14 +131,22 @@ public:
 	UFUNCTION()
 		void AtualizarStats();
 
+	UFUNCTION()
+		bool EstaVivo();
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
 	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;
+	virtual void Tick(float DeltaSeconds) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+
+	virtual void ReceberDano(const float& dano) override;
+
+	UFUNCTION()
+	void Atirar();
 
 	
 	

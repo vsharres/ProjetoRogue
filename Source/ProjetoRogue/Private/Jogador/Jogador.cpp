@@ -12,6 +12,7 @@ AJogador::AJogador()
 	PrimaryActorTick.bCanEverTick = true;
 	Stats = FJogadorStats();
 	bPossuiChave = false;
+	bVivo = true;
 	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
@@ -28,6 +29,16 @@ AJogador::AJogador()
 void AJogador::AtualizarStats()
 {
 	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
+}
+
+bool AJogador::EstaVivo()
+{
+	if (Stats.Vida > 0)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 //TODO
@@ -56,12 +67,24 @@ void AJogador::Tick( float DeltaTime )
 		}
 	}
 
+	bVivo = EstaVivo();
+
 }
 
 // Called to bind functionality to input
 void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
+
+}
+
+void AJogador::ReceberDano(const float& dano)
+{
+	this->Stats.Vida -= dano;
+}
+
+void AJogador::Atirar()
+{
 
 }
 

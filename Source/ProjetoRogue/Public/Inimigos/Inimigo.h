@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Pawn.h"
+#include "Interfaces/DanoInterface.h"
 #include "Inimigo.generated.h"
 
 UENUM(BlueprintType)
@@ -62,7 +63,7 @@ struct FInimigoStats
 
 //TODO
 UCLASS(ABSTRACT,Blueprintable)
-class PROJETOROGUE_API AInimigo : public APawn
+class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 {
 	GENERATED_BODY()
 
@@ -70,6 +71,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
+
+	UPROPERTY()
+		bool bVivo;
 
 	// Sets default values for this pawn's properties
 	AInimigo();
@@ -79,6 +83,11 @@ public:
 
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
+
+	virtual void ReceberDano(const float& dano) override;
+
+	UFUNCTION()
+		bool EstaVivo();
 
 
 
