@@ -72,9 +72,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
 
-	UPROPERTY()
-		bool bVivo;
-
 	// Sets default values for this pawn's properties
 	AInimigo();
 

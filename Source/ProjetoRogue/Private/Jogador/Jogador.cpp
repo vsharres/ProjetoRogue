@@ -12,7 +12,6 @@ AJogador::AJogador()
 	PrimaryActorTick.bCanEverTick = true;
 	Stats = FJogadorStats();
 	bPossuiChave = false;
-	bVivo = true;
 	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
@@ -67,7 +66,6 @@ void AJogador::Tick( float DeltaTime )
 		}
 	}
 
-	bVivo = EstaVivo();
 
 }
 

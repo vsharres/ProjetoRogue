@@ -16,7 +16,7 @@ struct FJogadorStats
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
 		float VidaMaxima;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
@@ -28,7 +28,7 @@ struct FJogadorStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float TamanhoProjetil;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
@@ -90,9 +90,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
-
-	UPROPERTY()
-		bool bVivo;
 
 	//ITENS
 
