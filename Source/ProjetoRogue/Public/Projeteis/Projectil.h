@@ -4,12 +4,14 @@
 
 #include "GameFramework/Actor.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Inimigos/Inimigo.h"
 #include "Projectil.generated.h"
 
 USTRUCT()
 struct FProjetilStats
 {
 	GENERATED_USTRUCT_BODY()
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Velocidade;
@@ -21,24 +23,32 @@ struct FProjetilStats
 		float Tamanho;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
-		float ProjetilVida;
+		float Range;
 
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float projetilvida = 10.0f)
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float range = 10.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
 		Tamanho = tamanho;
-		ProjetilVida = projetilvida;
+		Range = range;
 	}
 
-	FORCEINLINE FProjetilStats& operator+=(const FJogadorStats& statsJogador)
+	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)
 	{
-		this->Velocidade += statsJogador.VelocidadeMov;
-		this->Dano += statsJogador.Dano;
-		this->Tamanho += statsJogador.TamanhoProjetil;
-		this->ProjetilVida += statsJogador.Range;
+		this->Velocidade = statsJogador.VelProjetil;
+		this->Dano = statsJogador.Dano;
+		this->Tamanho = statsJogador.TamanhoProjetil;
+		this->Range = statsJogador.Range;
 
 		return *this;
+	}
+
+	FORCEINLINE FProjetilStats& operator=(const FInimigoStats& statsInimigo)
+	{
+		this->Velocidade = statsInimigo.VelProjetil;
+		this->Dano = statsInimigo.Dano;
+		this->Tamanho = statsInimigo.TamanhoProjetil;
+		this->Range = statsInimigo.Range;
 	}
 
 

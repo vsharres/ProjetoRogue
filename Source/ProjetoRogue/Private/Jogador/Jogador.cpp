@@ -19,8 +19,6 @@ AJogador::AJogador()
 	CooldownAtual = TempoCooldown;
 
 	NumProjeteis = 10;
-	ProjetilAtual = AProjectil::StaticClass();
-
 	
 
 }
@@ -67,6 +65,8 @@ void AJogador::Tick( float DeltaTime )
 	}
 
 
+
+
 }
 
 // Called to bind functionality to input
@@ -79,6 +79,14 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 void AJogador::ReceberDano(const float& dano)
 {
 	this->Stats.Vida -= dano;
+}
+
+void AJogador::AplicarStatsProjetil(AProjectil* projetil)
+{
+	if (projetil)
+	{
+		projetil->Stats = this->Stats;
+	}
 }
 
 void AJogador::Atirar()

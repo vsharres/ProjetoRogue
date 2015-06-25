@@ -40,6 +40,18 @@ struct FInimigoStats
 		float VelRotacao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		float Range;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
+		float FireRate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
+		float TamanhoProjetil;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		float VelProjetil;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		int32 Energia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
@@ -48,12 +60,16 @@ struct FInimigoStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoAtaque TipoAtaque;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float range = 100.0f, float fireRate = 1.0f, float tamanho =1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
 		VidaAtual = Vida;
 		Dano = dano;
 		VelRotacao = velRot;
+		Range = range;
+		FireRate = fireRate;
+		TamanhoProjetil = tamanho;
+		VelProjetil = velProjetil;
 		Energia = energia;
 		Tipo = tipo;
 		TipoAtaque = ataque;
@@ -85,6 +101,9 @@ public:
 
 	UFUNCTION()
 		bool EstaVivo();
+
+	UFUNCTION(BlueprintCallable, Category = "Projetil")
+		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
 
 
 

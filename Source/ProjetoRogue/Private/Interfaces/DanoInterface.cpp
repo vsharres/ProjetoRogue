@@ -14,3 +14,7 @@ void IDanoInterface::ReceberDano(const float& dano)
 
 }
 
+void IDanoInterface::AplicarStatsProjetil(AProjectil* projetil)
+{
+
+}

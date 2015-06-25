@@ -19,4 +19,6 @@ class IDanoInterface
 	GENERATED_IINTERFACE_BODY()
 
 	virtual void ReceberDano(const float& dano);
+
+	virtual void AplicarStatsProjetil(class AProjectil* projetil);
 };

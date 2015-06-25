@@ -21,6 +21,7 @@ public:
 			void Atirar();
 		virtual void Atirar_Implementation();
 
+		AInimigoRange();
 	
 	
 };

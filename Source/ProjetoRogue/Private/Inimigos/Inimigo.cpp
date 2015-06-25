@@ -2,6 +2,7 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Inimigos/Inimigo.h"
+#include "Public/Projeteis/Projectil.h"
 
 
 // Sets default values
@@ -36,6 +37,14 @@ void AInimigo::Tick( float DeltaTime )
 void AInimigo::ReceberDano(const float& dano)
 {
 	Stats.Vida -= dano;
+}
+
+void AInimigo::AplicarStatsProjetil(AProjectil* projetil)
+{
+	if (projetil->IsValidLowLevelFast())
+	{
+		projetil->Stats = this->Stats;
+	}
 }
 
 bool AInimigo::EstaVivo()
