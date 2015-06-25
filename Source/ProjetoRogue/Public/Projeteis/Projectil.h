@@ -49,6 +49,8 @@ public:
 		this->Dano = statsInimigo.Dano;
 		this->Tamanho = statsInimigo.TamanhoProjetil;
 		this->Range = statsInimigo.Range;
+
+		return *this;
 	}
 
 
