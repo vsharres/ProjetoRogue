@@ -32,6 +32,14 @@ ASalasGerador::ASalasGerador()
 
 }
 
+ASalasGerador::~ASalasGerador()
+{
+	Salas.Empty();
+	PosSalas.Empty();
+	UltimasSalasGeradas.Empty();
+	SalaInicial = NULL;
+}
+
 void ASalasGerador::Inicializar(ASala* Inicial)
 {
 	SetNumSalas();

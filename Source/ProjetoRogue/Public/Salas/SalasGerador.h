@@ -78,6 +78,8 @@ public:
 	// Sets default values for this actor's properties
 	ASalasGerador();
 
+	~ASalasGerador();
+
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void Inicializar(ASala* Inicial);
 

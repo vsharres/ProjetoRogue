@@ -12,6 +12,7 @@ AInimigo::AInimigo()
 	PrimaryActorTick.bCanEverTick = true;
 
 	Stats = FInimigoStats();
+	bVivo = true;
 
 }
 
@@ -27,7 +28,9 @@ void AInimigo::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
-	if (!EstaVivo())
+	bVivo = EstaVivo();
+
+	if (!bVivo)
 	{
 		Destroy();
 	}
