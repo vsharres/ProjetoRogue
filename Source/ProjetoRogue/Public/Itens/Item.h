@@ -79,7 +79,7 @@ struct FItemStats
 /**
  *
  */
-UCLASS(Abstract, BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable)
 class PROJETOROGUE_API UItem : public UObject
 {
 	GENERATED_BODY()

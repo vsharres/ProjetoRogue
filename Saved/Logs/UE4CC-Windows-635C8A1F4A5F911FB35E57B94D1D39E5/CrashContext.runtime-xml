@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FGenericCrashContext>
+<RuntimeProperties>
+<Version>1</Version>
+<ProcessId>8092</ProcessId>
+<IsInternalBuild>0</IsInternalBuild>
+<IsPerforceBuild>0</IsPerforceBuild>
+<IsSourceDistribution>1</IsSourceDistribution>
+<GameName>ProjetoRogue</GameName>
+<ExecutableName>UE4Editor</ExecutableName>
+<BuildConfiguration>Development</BuildConfiguration>
+<PlatformName>Windows</PlatformName>
+<PlatformNameIni>Windows</PlatformNameIni>
+<EngineMode>Editor</EngineMode>
+<EngineVersion>4.8.2-0+++depot+UE4-Releases+4.8</EngineVersion>
+<CommandLine> </CommandLine>
+<LanguageLCID>9</LanguageLCID>
+<DefaultLocale>pt_BR</DefaultLocale>
+<IsUE4Release>0</IsUE4Release>
+<UserName></UserName>
+<BaseDir>C:/Users/Vinicius/Documents/GitHub/UnrealEngine/Engine/Binaries/Win64/</BaseDir>
+<RootDir>C:/Users/Vinicius/Documents/GitHub/UnrealEngine/</RootDir>
+<MachineId>32BFEABD4CD58FD3EEF9CB9BC9433282</MachineId>
+<EpicAccountId>a2f4cb210dc941b99db95ad943358b8f</EpicAccountId>
+<CallStack></CallStack>
+<SourceContext></SourceContext>
+<UserDescription></UserDescription>
+<ErrorMessage>Assertion failed: DXGIFactory1 == nullptr || DXGIFactory1.GetRefCount() == 1 [File:C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Runtime\Windows\D3D11RHI\Private\D3D11Device.cpp] [Line: 208] 
+
+</ErrorMessage>
+<MiscNumberOfCores>3</MiscNumberOfCores>
+<MiscNumberOfCoresIncludingHyperthreads>6</MiscNumberOfCoresIncludingHyperthreads>
+<MiscIs64bitOperatingSystem>1</MiscIs64bitOperatingSystem>
+<MiscCPUVendor>AuthenticAMD</MiscCPUVendor>
+<MiscCPUBrand>AMD FX(tm)-6300 Six-Core Processor             </MiscCPUBrand>
+<MiscPrimaryGPUBrand>NVIDIA GeForce GTX 780</MiscPrimaryGPUBrand>
+<MiscOSVersionMajor>Windows 8</MiscOSVersionMajor>
+<MiscOSVersionMinor></MiscOSVersionMinor>
+<MemoryStatsTotalPhysical>17146056704</MemoryStatsTotalPhysical>
+<MemoryStatsTotalVirtual>140737488224256</MemoryStatsTotalVirtual>
+<MemoryStatsPageSize>4096</MemoryStatsPageSize>
+<MemoryStatsTotalPhysicalGB>16</MemoryStatsTotalPhysicalGB>
+</RuntimeProperties>
+<PlatformProperties>
+<Platform.IsRunningWindows>1</Platform.IsRunningWindows>
+</PlatformProperties>
+</FGenericCrashContext>

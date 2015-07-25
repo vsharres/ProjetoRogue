@@ -81,6 +81,22 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Sala")
 		float OffsetSala;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		bool bSalaTemInimigos;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<class AInimigo>> InimigosFacil;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<AInimigo>> InimigosNormal;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<AInimigo>> InimigosDificil;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Itens")
+		TArray<TSubclassOf<class UItem>> PossiveisItens;
+
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
@@ -106,6 +122,12 @@ public:
 
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
+
+	UFUNCTION()
+		void SpawnInimigos(int32 Seed);
+
+	UFUNCTION()
+		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
 	// Sets default values for this actor's properties
 	ASala();

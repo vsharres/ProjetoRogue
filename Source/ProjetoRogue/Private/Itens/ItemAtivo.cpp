@@ -43,7 +43,7 @@ void UItemAtivo::AplicarItem_Implementation()
 
 void UItemAtivo::RemoverItem_Implementation()
 {
-	Super::RemoverItem_Implementation();
+	this->BeginDestroy();
 }
 
 
