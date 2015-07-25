@@ -213,10 +213,16 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h">
       <Filter>Source\ProjetoRogue\Public\Itens</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h">
+      <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp">
       <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp">
+      <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

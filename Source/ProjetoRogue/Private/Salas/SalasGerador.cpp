@@ -373,6 +373,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 		NovaSala->SalasConectadas.Add(SalaAnterior);
 		SalaAnterior->SalasConectadas.Add(NovaSala);
 		UltimasSalasGeradas.Add(SalaGerada);
+		NovaSala->SpawnInimigos(Seed);
 	}
 
 	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);

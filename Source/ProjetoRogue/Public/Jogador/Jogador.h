@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "Public/Itens/Item.h"
 #include "Public/Interfaces/DanoInterface.h"
+#include "Public/Interfaces/DebugInterface.h"
 #include "Jogador.generated.h"
 
 
@@ -89,11 +90,14 @@ struct FJogadorStats
 
 
 UCLASS()
-class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
+class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface , public IDebugInterface
 {
 	GENERATED_BODY()
 	
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
+		bool bDebug;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
@@ -138,6 +142,8 @@ public:
 	UFUNCTION()
 		bool EstaVivo();
 
+	//INTERFACES
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
@@ -149,11 +155,15 @@ public:
 
 	virtual void ReceberDano(const float& dano) override;
 
+	virtual void Debug() override;
+
 	UFUNCTION(BlueprintCallable, Category="Projetil")
 	virtual void AplicarStatsProjetil(AProjectil* projetil) override;
 
 	UFUNCTION()
 	void Atirar();
+
+	
 
 	
 	

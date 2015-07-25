@@ -8,8 +8,10 @@
 // Sets default values
 AJogador::AJogador()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	bDebug = false;
+
 	Stats = FJogadorStats();
 	bPossuiChave = false;
 	ItemAtivoAtual = NULL;
@@ -19,7 +21,7 @@ AJogador::AJogador()
 	CooldownAtual = TempoCooldown;
 
 	NumProjeteis = 10;
-	
+
 
 }
 
@@ -43,13 +45,18 @@ bool AJogador::EstaVivo()
 void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void AJogador::Tick( float DeltaTime )
+void AJogador::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
+
+	if (bDebug)
+	{
+		Debug();
+	}
 
 	if (CooldownAtual < TempoCooldown)
 	{
@@ -76,6 +83,13 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 void AJogador::ReceberDano(const float& dano)
 {
 	this->Stats.Vida -= dano;
+}
+
+void AJogador::Debug()
+{
+#if UE_BUILD_DEVELOPMENT || UE_BUILD_DEBUG
+	GEngine->AddOnScreenDebugMessage(0, 1.0f, FColor::Red, FString::SanitizeFloat(GetControlRotation().Yaw));
+#endif
 }
 
 void AJogador::AplicarStatsProjetil(AProjectil* projetil)

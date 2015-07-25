@@ -38,7 +38,7 @@ UObject* UItem::InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> C
 	if (GEngine)
 	{
 		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
-		UObject* temp = NewObject<UObject>(Classe->GetClass());
+		UObject* temp = NewObject<UObject>(Classe);
 
 		return temp;
 	}

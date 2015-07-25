@@ -55,60 +55,40 @@ TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 	return DirecaoPortas;
 }
 
-void ASala::SpawnInimigos(int32 Seed)
+void ASala::SpawnInimigos_Implementation(int32 Seed)
 {
-	if (!bSalaTemInimigos || TipoSala == ETipoSala::BOSS)
+	if (!bSalaTemInimigos)
 		return;
 
 	TInlineComponentArray<UBillboardComponent*> Componentes;
 	this->GetComponents(Componentes);
 
+	TArray<TSubclassOf<AInimigo>> TipoInimigo;
+
 	switch (Dificuldade)
 	{
 	case EDificuldadeSala::FACIL:
-
-		for (const auto& Spawner : Componentes)
-		{
-			FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
-
-			AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigosFacil, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
-			if (NovoInimigo->IsValidLowLevelFast())
-			{
-				NovoInimigo->SpawnDefaultController();
-			}
-		}	
-
+		TipoInimigo = InimigosFacil;
 		break;
 	case EDificuldadeSala::NORMAL:
-
-		for (const auto& Spawner : Componentes)
-		{
-			FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
-
-			AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigosNormal, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
-			if (NovoInimigo->IsValidLowLevelFast())
-			{
-				NovoInimigo->SpawnDefaultController();
-			}
-		}
-
+		TipoInimigo = InimigosNormal;
 		break;
 	case EDificuldadeSala::DIFICIL:
-
-		for (const auto& Spawner : Componentes)
-		{
-			FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
-
-			AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigosDificil, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
-			if (NovoInimigo->IsValidLowLevelFast())
-			{
-				NovoInimigo->SpawnDefaultController();
-			}
-		}
-
+		TipoInimigo = InimigosDificil;
 		break;
 	default:
 		break;
+	}
+
+	for (const auto& Spawner : Componentes)
+	{
+		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
+
+		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		if (NovoInimigo->IsValidLowLevelFast())
+		{
+			NovoInimigo->SpawnDefaultController();
+		}
 	}
 }
 

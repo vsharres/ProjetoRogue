@@ -75,25 +75,25 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Sala")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		FVector EscalaPadrao;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Sala")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
 		bool bSalaTemInimigos;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
 		TArray<TSubclassOf<class AInimigo>> InimigosFacil;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
 		TArray<TSubclassOf<AInimigo>> InimigosNormal;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
 		TArray<TSubclassOf<AInimigo>> InimigosDificil;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Itens")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Itens")
 		TArray<TSubclassOf<class UItem>> PossiveisItens;
 
 
@@ -123,10 +123,11 @@ public:
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
 		void SpawnInimigos(int32 Seed);
+		virtual void SpawnInimigos_Implementation(int32 Seed);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigo")
 		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
 	// Sets default values for this actor's properties
