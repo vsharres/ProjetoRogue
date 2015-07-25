@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Target.cs" />
+		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Build.cs" />
+		<Filter Include="Private">
+			<UniqueIdentifier>{1C0EF50F-1D90-4697-896D-5F61A6ABF228}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\P4DataCache.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\P4DataCache.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\P4Env.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\P4Env.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\ProcessHelper.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\ProcessHelper.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\UnrealSync.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\UnrealSync.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<Filter Include="Private\Windows">
+			<UniqueIdentifier>{95F0E4FD-AFF7-40D9-9AA8-70841693378D}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\UnrealSyncMainWindows.cpp">
+			<Filter>Private\Windows</Filter>
+		</ClCompile >
+		<Filter Include="Private\Windows\Resources">
+			<UniqueIdentifier>{3585353E-2FFF-47B7-9585-B0D8969D0BB1}</UniqueIdentifier>
+		</Filter>
+		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\Resources\UnrealSync.ico">
+			<Filter>Private\Windows\Resources</Filter>
+		</None >
+		<ResourceCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\Resources\UnrealSync.rc">
+			<Filter>Private\Windows\Resources</Filter>
+		</ResourceCompile >
+	</ItemGroup>
+</Project>

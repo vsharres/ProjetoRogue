@@ -10,23 +10,23 @@ UItemPassivo::UItemPassivo()
 	Stats = FItemStats();
 }
 
-void UItemPassivo::AplicarItem()
+void UItemPassivo::AplicarItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast())
 	{
 		Jogador->ItensPassivos.Add(this);
 
-		Super::AplicarItem();
+		Super::AplicarItem_Implementation();
 	}
 }
 
-void UItemPassivo::RemoverItem()
+void UItemPassivo::RemoverItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast())
 	{
 		Jogador->ItensPassivos.Remove(this);
 
-		Super::RemoverItem();
+		Super::RemoverItem_Implementation();
 	}
 	
 }

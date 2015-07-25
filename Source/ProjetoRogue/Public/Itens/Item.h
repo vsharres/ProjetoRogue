@@ -36,6 +36,9 @@ struct FItemStats
 		float IncrementaParticula;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
+		float IncrementaVelProjetil;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		int32 IncrementaEnergia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
@@ -49,6 +52,7 @@ struct FItemStats
 		this->IncrementaRange += itemStats.IncrementaRange;
 		this->IncrementaDano += itemStats.IncrementaDano;
 		this->IncrementaParticula += itemStats.IncrementaParticula;
+		this->IncrementaVelProjetil += itemStats.IncrementaVelProjetil;
 		this->IncrementaEnergia += itemStats.IncrementaEnergia;
 		this->IncrementaVida += itemStats.IncrementaVida;
 
@@ -56,7 +60,7 @@ struct FItemStats
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incRange = 0.0f, float incDano = 0.0f, float incPart = 0.0f, int32 incEner = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incRange = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
@@ -65,6 +69,7 @@ struct FItemStats
 		IncrementaRange = incRange;
 		IncrementaDano = incDano;
 		IncrementaParticula = incPart;
+		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
 	}
 
@@ -74,7 +79,7 @@ struct FItemStats
 /**
  *
  */
-UCLASS(Abstract, BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable)
 class PROJETOROGUE_API UItem : public UObject
 {
 	GENERATED_BODY()
@@ -95,19 +100,21 @@ public:
 
 	UItem();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Aplicar Stats", Keywords = "Aplicar Stats"), Category = "Item")
 		void AplicarStats();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Remover Stats", Keywords = "Remover Stats"), Category = "Item")
 		void RemoverStats();
 
-	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Aplicar Item", Keywords = "Aplicar item"), Category = "Item")
-		virtual void AplicarItem();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Aplicar Item", Keywords = "Aplicar item"), Category = "Item")
+		void AplicarItem();
+		virtual void AplicarItem_Implementation();
 
-	UFUNCTION(BlueprintCallable, meta = (FriendlyName = "Remover Item", Keywords = "Remover item"), Category = "Item")
-		virtual void RemoverItem();
+		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Remover Item", Keywords = "Remover item"), Category = "Item")
+		void RemoverItem();
+		virtual void RemoverItem_Implementation();
 
-	UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", FriendlyName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
+		UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", DisplayName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
 		static UObject* InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
 
 

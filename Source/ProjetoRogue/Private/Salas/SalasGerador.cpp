@@ -18,13 +18,26 @@ ASalasGerador::ASalasGerador()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	IndexSala2P = 1;
+	IndexSala3P = 2;
+	IndexSala4P = 3;
 	Salas.Empty();
 	PosSalas.Empty();
 	UltimasSalasGeradas.Empty();
 	bSalaItemGerada = false;
 	bSalaChaveGerada = false;
 	bSalaBossGerada = false;
+	MinNumSalas = 5;
+	MaxNumSalas = 30;
 
+}
+
+ASalasGerador::~ASalasGerador()
+{
+	Salas.Empty();
+	PosSalas.Empty();
+	UltimasSalasGeradas.Empty();
+	SalaInicial = NULL;
 }
 
 void ASalasGerador::Inicializar(ASala* Inicial)
@@ -37,6 +50,7 @@ void ASalasGerador::Inicializar(ASala* Inicial)
 	AdicionarAoArrayPortas(Inicial);
 
 	GerarLevel(Inicial);
+	GeracaoTerminada();
 }
 
 
@@ -145,32 +159,37 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 	}
 	else if (diferenca == 1)
 	{
-		indice = 1;
-		limite = 1;
+		indice = IndexSala2P;
+		limite = IndexSala2P;
 	}
 	else if (diferenca == 2)
 	{
-		indice = 4;
-		limite = 4;
+		indice = IndexSala3P;
+		limite = IndexSala3P;
+	}
+	else if (diferenca == 3)
+	{
+		indice = IndexSala4P;
+		limite = IndexSala4P;
 	}
 	else
 	{
 		if (Salas.Num() < NumeroSalas)
 		{
-			indice = 1;
+			indice = IndexSala2P;
 			limite = TiposSalas.Num() - 1;
 		}
 
 		if (Salas.Num() >= 3 && !bSalaItemGerada)
 		{
-			indice = 4;
-			limite = 6;
+			indice = IndexSala3P;
+			limite = TiposSalas.Num() - 1;
 
 		}
 		else if (Salas.Num() >= 5 && !bSalaChaveGerada)
 		{
-			indice = 7;
-			limite = 7;
+			indice = IndexSala4P;
+			limite = TiposSalas.Num() - 1;
 		}
 
 	}
@@ -193,36 +212,35 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 void ASalasGerador::GerarSalaEspecial()
 {
-	if (SalaGerada->IsChildOf(ASala::StaticClass()))
+	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
 	{
 		FRandomStream Stream(Seed);
 
 
-		if (UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) && !bSalaItemGerada)
+		if (!bSalaItemGerada && 
+			(UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) ||
+			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaItem;
 			bSalaItemGerada = true;
 			return;
 		}
 
-		if (UltimaSalaValida() >= Stream.FRandRange(7, 9) && !bSalaChaveGerada)
+		if (!bSalaChaveGerada && 
+			(UltimaSalaValida() >= Stream.FRandRange(7, 9) ||
+			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaChave;
 			bSalaChaveGerada = true;
 			return;
 		}
 
-		if (UltimaSalaValida() >= Stream.FRandRange(2, 6) && !bSalaBossGerada)
+		if (!bSalaBossGerada && 
+			(UltimaSalaValida() >= Stream.FRandRange(2, 6) ||
+			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaBoss;
 			bSalaBossGerada = true;
-			return;
-		}
-
-		if (!bSalaItemGerada == 1 && Salas.Num() == NumeroSalas && GetNumPortasVazias())
-		{
-			SalaGerada = SalaItem;
-			bSalaItemGerada = true;
 			return;
 		}
 
@@ -249,9 +267,9 @@ void ASalasGerador::SetNumSalas()
 {
 	FRandomStream Stream = FRandomStream(Seed);
 
-	if (MinNumSalas >= MaxNumSalas)
+	if (MinNumSalas > MaxNumSalas)
 	{
-		MinNumSalas = MaxNumSalas - 1;
+		MinNumSalas = MaxNumSalas;
 	}
 
 	NumeroSalas = Stream.FRandRange(MinNumSalas, MaxNumSalas);

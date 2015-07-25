@@ -11,41 +11,39 @@ UItemAtivo::UItemAtivo()
 	bAtivo = false;
 }
 
-void UItemAtivo::AtivarItem()
+void UItemAtivo::AtivarItem_Implementation()
 {
 	bAtivo = true;
 	Super::AplicarStats();
 
 }
 
-void UItemAtivo::DesativarItem()
+void UItemAtivo::DesativarItem_Implementation()
 {
-
 	bAtivo = false;
 	Super::RemoverStats();
-
 }
 
 
-void UItemAtivo::AplicarItem()
+void UItemAtivo::AplicarItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast())
 	{
-		if (Jogador->AtivoAtual->IsValidLowLevelFast())
+		if (Jogador->ItemAtivoAtual->IsValidLowLevelFast())
 		{
-			Jogador->AtivoAtual->RemoverItem();
-			Jogador->AtivoAtual = this;
+			Jogador->ItemAtivoAtual->RemoverItem();
+			Jogador->ItemAtivoAtual = this;
 		}
 		else
 		{
-			Jogador->AtivoAtual = this;
+			Jogador->ItemAtivoAtual = this;
 		}
 	}
 }
 
-void UItemAtivo::RemoverItem()
+void UItemAtivo::RemoverItem_Implementation()
 {
-	Super::RemoverItem();
+	this->BeginDestroy();
 }
 
 

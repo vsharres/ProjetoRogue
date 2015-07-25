@@ -2,8 +2,8 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Projeteis/Projectil.h"
 #include "Public/Itens/ItemAtivo.h"
-
 
 // Sets default values
 AJogador::AJogador()
@@ -12,11 +12,14 @@ AJogador::AJogador()
 	PrimaryActorTick.bCanEverTick = true;
 	Stats = FJogadorStats();
 	bPossuiChave = false;
-	AtivoAtual = NULL;
+	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
 	TempoCooldown = 2.0f;
 	CooldownAtual = TempoCooldown;
+
+	NumProjeteis = 10;
+	
 
 }
 
@@ -25,6 +28,17 @@ void AJogador::AtualizarStats()
 	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
 }
 
+bool AJogador::EstaVivo()
+{
+	if (Stats.Vida > 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+//TODO
 // Called when the game starts or when spawned
 void AJogador::BeginPlay()
 {
@@ -44,9 +58,9 @@ void AJogador::Tick( float DeltaTime )
 	else
 	{
 		CooldownAtual = TempoCooldown;
-		if (AtivoAtual->IsValidLowLevelFast() && AtivoAtual->bAtivo)
+		if (ItemAtivoAtual->IsValidLowLevelFast() && ItemAtivoAtual->bAtivo)
 		{
-			AtivoAtual->DesativarItem();
+			ItemAtivoAtual->DesativarItem();
 		}
 	}
 
@@ -56,6 +70,24 @@ void AJogador::Tick( float DeltaTime )
 void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
+
+}
+
+void AJogador::ReceberDano(const float& dano)
+{
+	this->Stats.Vida -= dano;
+}
+
+void AJogador::AplicarStatsProjetil(AProjectil* projetil)
+{
+	if (projetil)
+	{
+		projetil->Stats = this->Stats;
+	}
+}
+
+void AJogador::Atirar()
+{
 
 }
 

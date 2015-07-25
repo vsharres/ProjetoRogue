@@ -21,12 +21,12 @@ void UItem::RemoverStats()
 	Jogador->AtualizarStats();
 }
 
-void UItem::AplicarItem()
+void UItem::AplicarItem_Implementation()
 {
 	AplicarStats();
 }
 
-void UItem::RemoverItem()
+void UItem::RemoverItem_Implementation()
 {
 	RemoverStats();
 
@@ -38,7 +38,7 @@ UObject* UItem::InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> C
 	if (GEngine)
 	{
 		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
-		UObject* temp = StaticConstructObject(Classe);
+		UObject* temp = NewObject<UObject>(Classe->GetClass());
 
 		return temp;
 	}

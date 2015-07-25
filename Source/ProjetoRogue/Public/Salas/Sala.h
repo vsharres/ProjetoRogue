@@ -6,6 +6,15 @@
 #include "Sala.generated.h"
 
 UENUM(BlueprintType)
+enum class EDificuldadeSala : uint8
+{
+	FACIL,
+	NORMAL,
+	DIFICIL
+
+};
+
+UENUM(BlueprintType)
 enum class ENumeroPortas : uint8
 {
 	ZERO,
@@ -13,7 +22,6 @@ enum class ENumeroPortas : uint8
 	DUAS,
 	TRES,
 	QUATRO,
-
 };
 
 UENUM(BlueprintType)
@@ -52,30 +60,49 @@ class PROJETOROGUE_API ASala : public AActor
 	GENERATED_BODY()
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EFormatoSala DirecaoSala;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		ETipoSala TipoSala;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		ENumeroPortas NumeroPortas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
+		EDificuldadeSala Dificuldade;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Sala")
 		FVector EscalaPadrao;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Sala")
 		float OffsetSala;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		bool bSalaTemInimigos;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<class AInimigo>> InimigosFacil;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<AInimigo>> InimigosNormal;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		TArray<TSubclassOf<AInimigo>> InimigosDificil;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Itens")
+		TArray<TSubclassOf<class UItem>> PossiveisItens;
+
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray<ASala*> SalasConectadas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		bool bVisitada;
 
 	UFUNCTION()
@@ -95,6 +122,12 @@ public:
 
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
+
+	UFUNCTION()
+		void SpawnInimigos(int32 Seed);
+
+	UFUNCTION()
+		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
 	// Sets default values for this actor's properties
 	ASala();
