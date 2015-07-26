@@ -6,7 +6,7 @@
 #include "ItemAtivo.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class PROJETOROGUE_API UItemAtivo : public UItem
@@ -22,17 +22,18 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")
 		void AtivarItem();
-		virtual void AtivarItem_Implementation();
+	virtual void AtivarItem_Implementation();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Desativar Item", Keywords = "Desativar item"), Category = "Item")
 		void DesativarItem();
-		virtual void DesativarItem_Implementation();
+	virtual void DesativarItem_Implementation();
 
+	//INTERFACES	
 	virtual void AplicarItem_Implementation() override;
 
 	virtual void RemoverItem_Implementation() override;
-	
-	
-	
-	
+
+
+
+
 };

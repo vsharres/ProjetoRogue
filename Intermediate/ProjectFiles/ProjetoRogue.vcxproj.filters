@@ -202,19 +202,14 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Source\ProjetoRogue\Public\Componentes">
-      <UniqueIdentifier>{ae837c1d-a9fd-4125-8255-7a9ba7c08d05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\ProjetoRogue\Private\Componentes">
-      <UniqueIdentifier>{8afb741c-cf36-42a0-bbfb-9921c7458b3a}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h">
       <Filter>Source\ProjetoRogue\Public\Itens</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h">
       <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp">
       <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

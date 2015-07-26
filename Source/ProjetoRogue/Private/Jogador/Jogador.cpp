@@ -4,6 +4,7 @@
 #include "Public/Jogador/Jogador.h"
 #include "Public/Projeteis/Projectil.h"
 #include "Public/Itens/ItemAtivo.h"
+#include "Public/Itens/ItemProjetil.h"
 
 // Sets default values
 AJogador::AJogador()
@@ -21,6 +22,7 @@ AJogador::AJogador()
 	CooldownAtual = TempoCooldown;
 
 	NumProjeteis = 10;
+	
 
 
 }
@@ -46,6 +48,8 @@ void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ProjetilAtual = Cast<UItemProjetil>(UItem::InstanciarItem(this, ProjetilInicial));
+
 }
 
 // Called every frame
@@ -58,6 +62,13 @@ void AJogador::Tick(float DeltaTime)
 		Debug();
 	}
 
+	ItemCooldown(DeltaTime);
+
+
+}
+
+void AJogador::ItemCooldown(float DeltaTime)
+{
 	if (CooldownAtual < TempoCooldown)
 	{
 		CooldownAtual += CooldDownRate * DeltaTime;
@@ -70,7 +81,6 @@ void AJogador::Tick(float DeltaTime)
 			ItemAtivoAtual->DesativarItem();
 		}
 	}
-
 }
 
 // Called to bind functionality to input
@@ -102,6 +112,6 @@ void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 
 void AJogador::Atirar()
 {
-
+	ProjetilAtual->Atirar();
 }
 

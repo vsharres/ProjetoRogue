@@ -9,6 +9,7 @@ UENUM(BlueprintType)
 enum class ETipoItem : uint8
 {
 	PASSIVO,
+	PROJETIL,
 	ATIVO
 };
 
@@ -27,13 +28,10 @@ struct FItemStats
 		float IncrementaFireRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaRange;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaDano;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaParticula;
+		float IncrementaTamanho;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaVelProjetil;
@@ -49,9 +47,8 @@ struct FItemStats
 		this->IncrementaVidaMax += itemStats.IncrementaVidaMax;
 		this->IncrementaVel += itemStats.IncrementaVel;
 		this->IncrementaFireRate += itemStats.IncrementaFireRate;
-		this->IncrementaRange += itemStats.IncrementaRange;
 		this->IncrementaDano += itemStats.IncrementaDano;
-		this->IncrementaParticula += itemStats.IncrementaParticula;
+		this->IncrementaTamanho += itemStats.IncrementaTamanho;
 		this->IncrementaVelProjetil += itemStats.IncrementaVelProjetil;
 		this->IncrementaEnergia += itemStats.IncrementaEnergia;
 		this->IncrementaVida += itemStats.IncrementaVida;
@@ -60,15 +57,14 @@ struct FItemStats
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incRange = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
 		IncrementaVel = incVel;
 		IncrementaFireRate = incFire;
-		IncrementaRange = incRange;
 		IncrementaDano = incDano;
-		IncrementaParticula = incPart;
+		IncrementaTamanho = incPart;
 		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
 	}

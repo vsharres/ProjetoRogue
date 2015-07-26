@@ -14,7 +14,7 @@ struct FJogadorStats
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
 		float Vida;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
@@ -25,9 +25,6 @@ struct FJogadorStats
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
-		float Range;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
 		float Dano;
@@ -47,9 +44,8 @@ struct FJogadorStats
 		this->VidaMaxima += itemStats.IncrementaVidaMax;
 		this->VelocidadeMov += itemStats.IncrementaVel;
 		this->FireRate += itemStats.IncrementaFireRate;
-		this->Range += itemStats.IncrementaRange;
 		this->Dano += itemStats.IncrementaDano;
-		this->TamanhoProjetil += itemStats.IncrementaParticula;
+		this->TamanhoProjetil += itemStats.IncrementaTamanho;
 		this->VelProjetil += itemStats.IncrementaVelProjetil;
 		this->Energia += itemStats.IncrementaEnergia;
 		this->Vida += itemStats.IncrementaVida;
@@ -62,9 +58,8 @@ struct FJogadorStats
 		this->VidaMaxima -= itemStats.IncrementaVidaMax;
 		this->VelocidadeMov -= itemStats.IncrementaVel;
 		this->FireRate -= itemStats.IncrementaFireRate;
-		this->Range -= itemStats.IncrementaRange;
 		this->Dano -= itemStats.IncrementaDano;
-		this->TamanhoProjetil -= itemStats.IncrementaParticula;
+		this->TamanhoProjetil -= itemStats.IncrementaTamanho;
 		this->VelProjetil -= itemStats.IncrementaVelProjetil;
 		this->Energia -= itemStats.IncrementaEnergia;
 		this->Vida -= itemStats.IncrementaVida;
@@ -73,12 +68,11 @@ struct FJogadorStats
 	}
 
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 1.0f, float range =1000.0f, float dano =1.0f, float tamanhoProjet = 1.0f, float velProjetil =100.0f, int32 energia =0)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 1.0f, float dano = 1.0f, float tamanhoProjet = 1.0f, float velProjetil = 100.0f, int32 energia = 0)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
 		FireRate = fireRate;
-		Range = range;
 		Dano = dano;
 		TamanhoProjetil = tamanhoProjet;
 		VelProjetil = velProjetil;
@@ -90,10 +84,10 @@ struct FJogadorStats
 
 
 UCLASS()
-class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface , public IDebugInterface
+class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface, public IDebugInterface
 {
 	GENERATED_BODY()
-	
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
@@ -117,7 +111,7 @@ public:
 		bool bPossuiChave;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
-		class UItemAtivo* ItemAtivoAtual;
+	class UItemAtivo* ItemAtivoAtual;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		TArray<class UItemPassivo*> ItensPassivos;
@@ -127,8 +121,11 @@ public:
 	UPROPERTY()
 		int32 NumProjeteis;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Projetil")
-		TSubclassOf<class AProjectil> ProjetilAtual;
+	UPROPERTY(EditDefaultsOnly, Category = "Projetil")
+		TSubclassOf<class UItemProjetil> ProjetilInicial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		UItemProjetil* ProjetilAtual;
 
 	UPROPERTY()
 		FName ProjetilSocket;
@@ -146,9 +143,10 @@ public:
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
+
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
@@ -157,14 +155,18 @@ public:
 
 	virtual void Debug() override;
 
-	UFUNCTION(BlueprintCallable, Category="Projetil")
-	virtual void AplicarStatsProjetil(AProjectil* projetil) override;
+	UFUNCTION(BlueprintCallable, Category = "Projetil")
+		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
+
+	UFUNCTION(BlueprintCallable, Category = "Projetil")
+		void Atirar();
+
 
 	UFUNCTION()
-	void Atirar();
+		void ItemCooldown(float DeltaTime);
 
-	
 
-	
-	
+
+
+
 };

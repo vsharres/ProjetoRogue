@@ -7,7 +7,6 @@
 UItemAtivo::UItemAtivo()
 {
 	Tipo = ETipoItem::ATIVO;
-	Stats = FItemStats();
 	bAtivo = false;
 }
 

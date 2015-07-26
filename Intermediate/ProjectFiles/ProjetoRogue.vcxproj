@@ -333,6 +333,7 @@
     <None Include="..\..\Config\DefaultInput.ini" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">true</ExcludedFromBuild>
@@ -356,6 +357,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h" />

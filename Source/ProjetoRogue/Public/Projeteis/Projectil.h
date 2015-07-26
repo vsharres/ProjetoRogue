@@ -22,15 +22,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Tamanho;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
-		float Range;
 
 	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float range = 10.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
 		Tamanho = tamanho;
-		Range = range;
 	}
 
 	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)
@@ -38,7 +35,6 @@ public:
 		this->Velocidade = statsJogador.VelProjetil;
 		this->Dano = statsJogador.Dano;
 		this->Tamanho = statsJogador.TamanhoProjetil;
-		this->Range = statsJogador.Range;
 
 		return *this;
 	}
@@ -48,7 +44,6 @@ public:
 		this->Velocidade = statsInimigo.VelProjetil;
 		this->Dano = statsInimigo.Dano;
 		this->Tamanho = statsInimigo.TamanhoProjetil;
-		this->Range = statsInimigo.Range;
 
 		return *this;
 	}

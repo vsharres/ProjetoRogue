@@ -7,7 +7,6 @@
 UItemPassivo::UItemPassivo()
 {
 	Tipo = ETipoItem::PASSIVO;
-	Stats = FItemStats();
 }
 
 void UItemPassivo::AplicarItem_Implementation()
@@ -16,7 +15,7 @@ void UItemPassivo::AplicarItem_Implementation()
 	{
 		Jogador->ItensPassivos.Add(this);
 
-		Super::AplicarItem_Implementation();
+		Super::AplicarItem();
 	}
 }
 
@@ -26,7 +25,7 @@ void UItemPassivo::RemoverItem_Implementation()
 	{
 		Jogador->ItensPassivos.Remove(this);
 
-		Super::RemoverItem_Implementation();
+		Super::RemoverItem();
 	}
 	
 }
