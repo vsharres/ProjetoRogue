@@ -131,10 +131,13 @@ public:
 		FName ProjetilSocket;
 
 	// Sets default values for this character's properties
-	AJogador();
+	AJogador(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION()
 		void AtualizarStats();
+
+	UFUNCTION()
+		void InicializarProjetil();
 
 	UFUNCTION()
 		bool EstaVivo();
@@ -158,8 +161,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
 
-	UFUNCTION(BlueprintCallable, Category = "Projetil")
-		void Atirar();
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Projetil")
+		virtual void Atirar();
 
 
 	UFUNCTION()

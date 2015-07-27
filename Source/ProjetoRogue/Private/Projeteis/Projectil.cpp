@@ -42,9 +42,9 @@ UProjectileMovementComponent* AProjectil::GetMovementComponent()
 	return CompMovimentacao;
 }
 
-void AProjectil::InicializarProjetil()
+void AProjectil::InicializarProjetil(float DeltaTime)
 {
-	CompMovimentacao->InitialSpeed = Stats.Velocidade;
+	CompMovimentacao->ComputeVelocity(Stats.Velocidade * CompMovimentacao->Velocity, DeltaTime);
 }
 
 // Called when the game starts or when spawned

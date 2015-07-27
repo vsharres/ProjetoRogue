@@ -7,7 +7,8 @@
 #include "Public/Itens/ItemProjetil.h"
 
 // Sets default values
-AJogador::AJogador()
+AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -48,7 +49,14 @@ void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UObject* temp = NewObject<UObject>(ProjetilInicial);
+	InicializarProjetil();
+
+
+}
+
+void AJogador::InicializarProjetil()
+{
+	UObject* temp = NewObject<UObject>(this, ProjetilInicial);
 	ProjetilAtual = Cast<UItemProjetil>(temp);
 
 	if (ProjetilAtual)
@@ -56,8 +64,6 @@ void AJogador::BeginPlay()
 		ProjetilAtual->Jogador = this;
 		ProjetilAtual->AplicarItem();
 	}
-	
-
 }
 
 // Called every frame
@@ -118,17 +124,17 @@ void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 	}
 }
 
-void AJogador::Atirar()
-{
-	FVector tiroPos = GetActorLocation() + (GetActorForwardVector() * 100);
-
-	AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetActorRotation());
-
-	if (Tiro)
-	{
-		Tiro->SetActorScale3D(Tiro->GetActorScale3D()*Tiro->Stats.Tamanho);
-		Tiro->InicializarProjetil();
-	}
-
-}
+//void AJogador::Atirar()
+//{
+//	FVector tiroPos = GetActorLocation() + (GetActorForwardVector() * 100);
+//
+//	AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
+//
+//	if (Tiro)
+//	{
+//		Tiro->SetActorScale3D(Tiro->GetActorScale3D()*Tiro->Stats.Tamanho);
+//		Tiro->InicializarProjetil();
+//	}
+//
+//}
 

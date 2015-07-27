@@ -80,8 +80,8 @@ public:
 	UFUNCTION()
 	UProjectileMovementComponent* GetMovementComponent();
 
-	UFUNCTION()
-		void InicializarProjetil();
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
+		void InicializarProjetil(float Deltatime);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
