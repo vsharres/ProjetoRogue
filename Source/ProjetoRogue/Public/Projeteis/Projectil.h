@@ -61,6 +61,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FProjetilStats Stats;
 
+private:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UProjectileMovementComponent* CompMovimentacao;
 
@@ -70,9 +71,17 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UStaticMeshComponent* Mesh;
 
+
+public:
 	// Sets default values for this actor's properties
 	AProjectil(const FObjectInitializer& ObjectInitializer);
 
+
+	UFUNCTION()
+	UProjectileMovementComponent* GetMovementComponent();
+
+	UFUNCTION()
+		void InicializarProjetil();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

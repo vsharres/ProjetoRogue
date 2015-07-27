@@ -14,14 +14,10 @@ class PROJETOROGUE_API UItemProjetil : public UItem
 	GENERATED_BODY()
 public:
 
-	UPROPERTY(EditDefaultsOnly, Category = "Projetil")
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly, Category = "Projetil")
 		TSubclassOf<class AProjectil> Projetil;
 
-	UItemProjetil();
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Atirar Projetil", Keywords = "Atirar Projetil"), Category = "Item")
-		void Atirar();
-		virtual void Atirar_Implementation();
+	UItemProjetil();	
 
 	//INTERFACES
 	virtual void AplicarItem_Implementation() override;

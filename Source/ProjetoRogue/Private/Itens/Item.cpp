@@ -33,7 +33,7 @@ void UItem::RemoverItem_Implementation()
 	this->BeginDestroy();
 }
 
-UObject* UItem::InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe)
+UObject* UItem::InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe)
 {
 	if (GEngine)
 	{

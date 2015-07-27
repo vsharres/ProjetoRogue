@@ -48,7 +48,15 @@ void AJogador::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ProjetilAtual = Cast<UItemProjetil>(UItem::InstanciarItem(this, ProjetilInicial));
+	UObject* temp = NewObject<UObject>(ProjetilInicial);
+	ProjetilAtual = Cast<UItemProjetil>(temp);
+
+	if (ProjetilAtual)
+	{
+		ProjetilAtual->Jogador = this;
+		ProjetilAtual->AplicarItem();
+	}
+	
 
 }
 
@@ -112,6 +120,15 @@ void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 
 void AJogador::Atirar()
 {
-	ProjetilAtual->Atirar();
+	FVector tiroPos = GetActorLocation() + (GetActorForwardVector() * 100);
+
+	AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetActorRotation());
+
+	if (Tiro)
+	{
+		Tiro->SetActorScale3D(Tiro->GetActorScale3D()*Tiro->Stats.Tamanho);
+		Tiro->InicializarProjetil();
+	}
+
 }
 

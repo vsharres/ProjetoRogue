@@ -9,22 +9,26 @@ UItemProjetil::UItemProjetil()
 	Tipo = ETipoItem::PROJETIL;
 }
 
-void UItemProjetil::Atirar_Implementation()
-{
-
-}
-
 void UItemProjetil::AplicarItem_Implementation()
 {
-	Super::AplicarItem();
+	if (Jogador->IsValidLowLevelFast() && Jogador->ProjetilAtual != this)
+	{
+		if (Jogador->ProjetilAtual->IsValidLowLevelFast())
+		{
+			Jogador->ProjetilAtual->RemoverItem();
+			Jogador->ProjetilAtual = this;
+		}
+		else
+		{
+			Jogador->ProjetilAtual = this;
+		}
+	}
+
+	Super::AplicarItem_Implementation();
 }
 
 void UItemProjetil::RemoverItem_Implementation()
 {
-	Super::RemoverItem();
+	Super::RemoverItem_Implementation();
 }
-
-
-
-
 

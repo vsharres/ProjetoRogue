@@ -37,6 +37,16 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 
 }
 
+UProjectileMovementComponent* AProjectil::GetMovementComponent()
+{
+	return CompMovimentacao;
+}
+
+void AProjectil::InicializarProjetil()
+{
+	CompMovimentacao->InitialSpeed = Stats.Velocidade;
+}
+
 // Called when the game starts or when spawned
 void AProjectil::BeginPlay()
 {

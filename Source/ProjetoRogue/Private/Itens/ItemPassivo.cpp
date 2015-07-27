@@ -15,7 +15,7 @@ void UItemPassivo::AplicarItem_Implementation()
 	{
 		Jogador->ItensPassivos.Add(this);
 
-		Super::AplicarItem();
+		Super::AplicarItem_Implementation();
 	}
 }
 
@@ -25,7 +25,7 @@ void UItemPassivo::RemoverItem_Implementation()
 	{
 		Jogador->ItensPassivos.Remove(this);
 
-		Super::RemoverItem();
+		Super::RemoverItem_Implementation();
 	}
 	
 }

@@ -111,7 +111,7 @@ public:
 		virtual void RemoverItem_Implementation();
 
 		UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", DisplayName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
-		static UObject* InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
+		static UObject* InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
 
 
 };
