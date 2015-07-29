@@ -13,9 +13,15 @@ void UItemProjetil::AplicarItem_Implementation()
 {
 	if (Jogador->IsValidLowLevelFast() && Jogador->ProjetilAtual != this)
 	{
-		if (Jogador->ProjetilAtual->IsValidLowLevelFast())
+		if (Jogador->ProjetilAtual->IsValidLowLevelFast() && this->Projetil->IsValidLowLevelFast())
 		{
 			Jogador->ProjetilAtual->RemoverItem();
+			Jogador->ProjetilAtual = this;
+
+		}
+		else if (Jogador->ProjetilAtual->IsValidLowLevelFast() && !this->Projetil->IsValidLowLevelFast())
+		{
+			this->Projetil = Jogador->ProjetilAtual->Projetil;
 			Jogador->ProjetilAtual = this;
 		}
 		else

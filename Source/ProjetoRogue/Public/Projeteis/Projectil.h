@@ -23,7 +23,7 @@ public:
 		float Tamanho;
 
 
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float range = 10.0f)
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 0.3f, float range = 10.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
@@ -79,9 +79,10 @@ public:
 
 	UFUNCTION()
 	UProjectileMovementComponent* GetMovementComponent();
-
+	
+	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
-		void InicializarProjetil(float Deltatime);
+		void InicializarProjetil(AActor* Inicializador);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

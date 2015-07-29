@@ -7,7 +7,7 @@
 // Sets default values
 AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
 
@@ -42,22 +42,27 @@ UProjectileMovementComponent* AProjectil::GetMovementComponent()
 	return CompMovimentacao;
 }
 
-void AProjectil::InicializarProjetil(float DeltaTime)
+void AProjectil::InicializarProjetil(AActor* Inicializador)
 {
-	CompMovimentacao->ComputeVelocity(Stats.Velocidade * CompMovimentacao->Velocity, DeltaTime);
+	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
+
+	CompCollisao->SetWorldScale3D(FVector(1.0f) * Stats.Tamanho);
+	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
+
+	//CompMovimentacao->ComputeVelocity(Stats.Velocidade * CompMovimentacao->Velocity, DeltaTime);
 }
 
 // Called when the game starts or when spawned
 void AProjectil::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void AProjectil::Tick( float DeltaTime )
+void AProjectil::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
 }
 
@@ -65,7 +70,7 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 {
 	IDanoInterface* danoInterface = Cast<IDanoInterface>(Hit.GetActor());
 
-	if (danoInterface)
+	if (danoInterface && Hit.GetActor() != this->Instigator)
 	{
 		danoInterface->ReceberDano(this->Stats.Dano);
 	}

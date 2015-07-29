@@ -8,34 +8,50 @@
 #include "Public/Interfaces/DebugInterface.h"
 #include "Jogador.generated.h"
 
+const float VIDAMAX_MAX = 500.0F;
+const float VIDAMAX_MIN = 50.0f;
+const int32 ENERGIA_MAX = 200;
+const int32 ENERGIA_MIN = 0;
+const float VELOCIDADEMOV_MAX = 1800.0f;
+const float VELOCIDADEMOV_MIN = 600.0f;
+const float DANO_MAX = 50.0f;
+const float DANO_MIN = 5;
+const float FIRERATE_MAX = 1.0f;
+const float FIRERATE_MIN = 0.005f;
+const float TAMANHO_MAX = 0.6f;
+const float TAMANHAO_MIN = 0.1f;
+const float VELOCIDADEPROJ_MAX = 4500.0f;
+const float VELOCIDADEPROJ_MIN = 1000.f;
+
+
 
 USTRUCT()
 struct FJogadorStats
 {
 	GENERATED_USTRUCT_BODY()
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
 		float Vida;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
 		float VidaMaxima;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
 		int32 Energia;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "600.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "5.0"), Category = "Jogador Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.04"), Category = "Jogador Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "1.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1"), Category = "Jogador Struct")
 		float TamanhoProjetil;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "100.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "250.0"), Category = "Jogador Struct")
 		float VelProjetil;
 
 
@@ -50,7 +66,67 @@ struct FJogadorStats
 		this->Energia += itemStats.IncrementaEnergia;
 		this->Vida += itemStats.IncrementaVida;
 
+		ChecarValores();
+
 		return *this;
+	}
+
+	FORCEINLINE void ChecarValores()
+	{
+		if (VidaMaxima > VIDAMAX_MAX)
+		{
+			VidaMaxima = VIDAMAX_MAX;
+		}
+		else if (VidaMaxima < VIDAMAX_MIN)
+		{
+			VidaMaxima = VIDAMAX_MIN;
+		}
+
+		if (VelocidadeMov > VELOCIDADEMOV_MAX)
+		{
+			VelocidadeMov = VELOCIDADEMOV_MAX;
+		}
+		else if (VelocidadeMov < VELOCIDADEMOV_MIN)
+		{
+			VelocidadeMov = VELOCIDADEMOV_MIN;
+		}
+
+		if (FireRate > FIRERATE_MAX)
+		{
+			FireRate = FIRERATE_MAX;
+		}
+		else if (FireRate < FIRERATE_MIN)
+		{
+			FireRate = FIRERATE_MIN;
+		}
+
+		if (Dano > DANO_MAX)
+		{
+			Dano = DANO_MAX;
+		}
+		else if (Dano < DANO_MIN)
+		{
+			Dano = DANO_MIN;
+		}
+
+		if (TamanhoProjetil > TAMANHO_MAX)
+		{
+			TamanhoProjetil = TAMANHO_MAX;
+		}
+		else if (TamanhoProjetil < TAMANHAO_MIN)
+		{
+			TamanhoProjetil = TAMANHAO_MIN;
+		}
+
+		if (VelProjetil > VELOCIDADEPROJ_MAX)
+		{
+			VelProjetil = VELOCIDADEPROJ_MAX;
+		}
+		else if (VelProjetil < VELOCIDADEPROJ_MIN)
+		{
+			VelProjetil = VELOCIDADEPROJ_MIN;
+		}
+
 	}
 
 	FORCEINLINE FJogadorStats& operator-=(const FItemStats& itemStats)
@@ -64,11 +140,13 @@ struct FJogadorStats
 		this->Energia -= itemStats.IncrementaEnergia;
 		this->Vida -= itemStats.IncrementaVida;
 
+		ChecarValores();
+
 		return *this;
 	}
 
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 1.0f, float dano = 1.0f, float tamanhoProjet = 1.0f, float velProjetil = 100.0f, int32 energia = 0)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float tamanhoProjet = 0.3f, float velProjetil = 1500.0f, int32 energia = 0)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;

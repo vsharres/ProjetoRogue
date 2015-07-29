@@ -38,7 +38,7 @@ UObject* UItem::InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassO
 	if (GEngine)
 	{
 		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
-		UObject* temp = NewObject<UObject>(Classe);
+		UObject* temp = NewObject<UObject>(World,Classe);
 
 		return temp;
 	}
