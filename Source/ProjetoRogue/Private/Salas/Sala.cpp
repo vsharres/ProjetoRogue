@@ -17,11 +17,24 @@ ASala::ASala()
 	Dificuldade = EDificuldadeSala::FACIL;
 	SalasConectadas.Empty();
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
+	bPortasTrancadas = false;
 	bVisitada = false;
 	bSalaTemInimigos = false;
+	bInimigosDerrotados = !bSalaTemInimigos;
+	Inimigos.Empty();
 	OffsetSala = 4640.0f;
 	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
 
+
+}
+
+
+
+void ASala::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	InimigosForamDerrotados();
 
 }
 
@@ -88,6 +101,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 		if (NovoInimigo->IsValidLowLevelFast())
 		{
 			NovoInimigo->SpawnDefaultController();
+			Inimigos.Add(NovoInimigo);
 		}
 	}
 }
@@ -100,5 +114,14 @@ TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>
 
 	return tipoInimigo;
 	
+}
+
+void ASala::InimigosForamDerrotados()
+{
+	if (Inimigos.Num() == 0)
+	{
+		bSalaTemInimigos = false;
+	}
+
 }
 

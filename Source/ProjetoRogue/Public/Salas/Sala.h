@@ -60,6 +60,8 @@ class PROJETOROGUE_API ASala : public AActor
 	GENERATED_BODY()
 protected:
 
+	//SALA
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EFormatoSala DirecaoSala;
 
@@ -81,17 +83,31 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Portas")
+		bool bPortasTrancadas;
+
+
+	//INIMIGOS
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigos")
+		bool bInimigosDerrotados;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		bool bSalaTemInimigos;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
-		TArray<TSubclassOf<class AInimigo>> InimigosFacil;
+	UPROPERTY(BlueprintReadOnly, Category = "Inimigos")
+		TArray<class AInimigo*> Inimigos;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
+		TArray<TSubclassOf<AInimigo>> InimigosFacil;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		TArray<TSubclassOf<AInimigo>> InimigosNormal;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		TArray<TSubclassOf<AInimigo>> InimigosDificil;
+
+	//ITENS
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Itens")
 		TArray<TSubclassOf<class UItem>> PossiveisItens;
@@ -102,7 +118,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray<ASala*> SalasConectadas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
+	UPROPERTY()
 		bool bVisitada;
 
 	UFUNCTION()
@@ -130,7 +146,12 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigo")
 		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
+	UFUNCTION()
+		void InimigosForamDerrotados();
+
 	// Sets default values for this actor's properties
 	ASala();
+
+	virtual void Tick(float DeltaTime) override;
 
 };
