@@ -2,6 +2,7 @@
 
 #include "Public/ProjetoRogue.h"
 #include "Public/Inimigos/Inimigo.h"
+#include "Public/Salas/Sala.h"
 #include "Public/Projeteis/Projectil.h"
 
 
@@ -12,7 +13,6 @@ AInimigo::AInimigo()
 	PrimaryActorTick.bCanEverTick = true;
 
 	Stats = FInimigoStats();
-	bVivo = true;
 
 }
 
@@ -28,10 +28,9 @@ void AInimigo::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
-	bVivo = EstaVivo();
-
-	if (!bVivo)
+	if (!EstaVivo())
 	{
+		SalaPai->RemoverInimigo(this);
 		Destroy();
 	}
 

@@ -12,8 +12,12 @@ UItemAtivo::UItemAtivo()
 
 void UItemAtivo::AtivarItem_Implementation()
 {
-	bAtivo = true;
-	Super::AplicarStats();
+	if (Jogador->Stats.Energia >= EnergiaUtilizada)
+	{
+		Jogador->Stats.AdicionarEnergia(-EnergiaUtilizada);
+		bAtivo = true;
+		Super::AplicarStats();
+	}
 
 }
 

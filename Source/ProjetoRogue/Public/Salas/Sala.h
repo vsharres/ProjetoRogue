@@ -69,13 +69,7 @@ protected:
 		ETipoSala TipoSala;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
-		ENumeroPortas NumeroPortas;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EDificuldadeSala Dificuldade;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
-		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		FVector EscalaPadrao;
@@ -83,19 +77,24 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
+	//PORTAS
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Portas")
+		ENumeroPortas NumeroPortas;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Portas")
+		TArray<class APorta*> Portas;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Portas")
-		bool bPortasTrancadas;
+		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
 
 	//INIMIGOS
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigos")
-		bool bInimigosDerrotados;
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		bool bSalaTemInimigos;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Inimigos")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
 		TArray<class AInimigo*> Inimigos;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
@@ -111,7 +110,6 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Itens")
 		TArray<TSubclassOf<class UItem>> PossiveisItens;
-
 
 public:
 
@@ -139,6 +137,9 @@ public:
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
 
+	UFUNCTION()
+		void RemoverInimigo(AInimigo* inimigo);
+
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
 		void SpawnInimigos(int32 Seed);
 		virtual void SpawnInimigos_Implementation(int32 Seed);
@@ -148,6 +149,13 @@ public:
 
 	UFUNCTION()
 		void InimigosForamDerrotados();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Trancar Portas", Keywords = "Trancar Portas"), Category = "Sala")
+		virtual void TrancarPortas();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
+		virtual void DestrancarPortas();
+
 
 	// Sets default values for this actor's properties
 	ASala();

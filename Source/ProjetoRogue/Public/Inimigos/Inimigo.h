@@ -31,7 +31,7 @@ struct FInimigoStats
 		float Vida;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
-		float VidaAtual;
+		float VidaMax;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float Dano;
@@ -63,7 +63,7 @@ struct FInimigoStats
 	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float range = 100.0f, float fireRate = 1.0f, float tamanho =1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
-		VidaAtual = Vida;
+		VidaMax = vida;
 		Dano = dano;
 		VelRotacao = velRot;
 		Range = range;
@@ -88,8 +88,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
 
-	UPROPERTY()
-		bool bVivo;
+	UPROPERTY(BlueprintReadWrite, Category = "Sala")
+	class ASala* SalaPai;
 
 	// Sets default values for this pawn's properties
 	AInimigo();

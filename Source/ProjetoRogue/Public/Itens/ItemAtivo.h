@@ -18,6 +18,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		bool bAtivo;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Energia")
+		int32 EnergiaUtilizada;
+
 	UItemAtivo();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")

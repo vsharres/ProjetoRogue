@@ -10,7 +10,7 @@
 
 const float VIDAMAX_MAX = 500.0F;
 const float VIDAMAX_MIN = 50.0f;
-const int32 ENERGIA_MAX = 200;
+const int32 ENERGIA_MAX = 300;
 const int32 ENERGIA_MIN = 0;
 const float VELOCIDADEMOV_MAX = 1800.0f;
 const float VELOCIDADEMOV_MIN = 600.0f;
@@ -39,6 +39,9 @@ struct FJogadorStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
 		int32 Energia;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
+		int32 EnergiaMax;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "600.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
 
@@ -58,13 +61,32 @@ struct FJogadorStats
 	FORCEINLINE FJogadorStats& operator+=(const FItemStats& itemStats)
 	{
 		this->VidaMaxima += itemStats.IncrementaVidaMax;
+		this->EnergiaMax += itemStats.IncrementaEnergiaMax;
 		this->VelocidadeMov += itemStats.IncrementaVel;
 		this->FireRate += itemStats.IncrementaFireRate;
 		this->Dano += itemStats.IncrementaDano;
 		this->TamanhoProjetil += itemStats.IncrementaTamanho;
 		this->VelProjetil += itemStats.IncrementaVelProjetil;
-		this->Energia += itemStats.IncrementaEnergia;
-		this->Vida += itemStats.IncrementaVida;
+
+		AdicionarEnergia(itemStats.IncrementaEnergia);
+		AdicionarVida(itemStats.IncrementaVida);
+
+		ChecarValores();
+
+		return *this;
+	}
+
+	FORCEINLINE FJogadorStats& operator-=(const FItemStats& itemStats)
+	{
+		this->VidaMaxima -= itemStats.IncrementaVidaMax;
+		this->EnergiaMax -= itemStats.IncrementaEnergiaMax;
+		this->VelocidadeMov -= itemStats.IncrementaVel;
+		this->FireRate -= itemStats.IncrementaFireRate;
+		this->Dano -= itemStats.IncrementaDano;
+		this->TamanhoProjetil -= itemStats.IncrementaTamanho;
+		this->VelProjetil -= itemStats.IncrementaVelProjetil;
+		AdicionarEnergia(-itemStats.IncrementaEnergia);
+		AdicionarVida(-itemStats.IncrementaVida);
 
 		ChecarValores();
 
@@ -127,26 +149,48 @@ struct FJogadorStats
 			VelProjetil = VELOCIDADEPROJ_MIN;
 		}
 
+		if (EnergiaMax > ENERGIA_MAX)
+		{
+			EnergiaMax = ENERGIA_MAX;
+		}
+		else if (EnergiaMax < ENERGIA_MIN)
+		{
+			EnergiaMax = ENERGIA_MIN;
+		}
+
 	}
 
-	FORCEINLINE FJogadorStats& operator-=(const FItemStats& itemStats)
+	FORCEINLINE void AdicionarVida(float vidaAdicionada)
 	{
-		this->VidaMaxima -= itemStats.IncrementaVidaMax;
-		this->VelocidadeMov -= itemStats.IncrementaVel;
-		this->FireRate -= itemStats.IncrementaFireRate;
-		this->Dano -= itemStats.IncrementaDano;
-		this->TamanhoProjetil -= itemStats.IncrementaTamanho;
-		this->VelProjetil -= itemStats.IncrementaVelProjetil;
-		this->Energia -= itemStats.IncrementaEnergia;
-		this->Vida -= itemStats.IncrementaVida;
+		Vida += vidaAdicionada;
 
-		ChecarValores();
+		if (Vida > VidaMaxima)
+		{
+			Vida = VidaMaxima;
+		}
+		else if (Vida < 0)
+		{
+			Vida = 0;
+		}
 
-		return *this;
+	}
+
+	FORCEINLINE void AdicionarEnergia(int32 energidaAdicionada)
+	{
+		Energia += energidaAdicionada;
+
+		if (Energia > EnergiaMax)
+		{
+			Energia = EnergiaMax;
+		}
+		else if (Energia < 0)
+		{
+			Energia = 0;
+		}
 	}
 
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float tamanhoProjet = 0.3f, float velProjetil = 1500.0f, int32 energia = 0)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float tamanhoProjet = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
@@ -155,6 +199,7 @@ struct FJogadorStats
 		TamanhoProjetil = tamanhoProjet;
 		VelProjetil = velProjetil;
 		Energia = energia;
+		EnergiaMax = Energia;
 		Vida = VidaMaxima;
 	}
 

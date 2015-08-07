@@ -347,6 +347,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogador\Jogador.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Projeteis\Projectil.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Corredor.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Porta.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PDireita.cpp" />
@@ -369,6 +370,7 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogador\Jogador.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Projeteis\Projectil.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Corredor.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Porta.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2P.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PDireita.h" />

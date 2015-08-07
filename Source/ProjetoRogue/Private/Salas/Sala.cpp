@@ -3,13 +3,14 @@
 #include "Public/ProjetoRogue.h"
 #include "Public/Salas/Sala.h"
 #include "Public/Inimigos/Inimigo.h"
+#include "Public/Salas/Porta.h"
 
 
 // Sets default values
 ASala::ASala()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
 	NumeroPortas = ENumeroPortas::UMA;
 	DirecaoSala = EFormatoSala::PADRAO;
@@ -17,10 +18,9 @@ ASala::ASala()
 	Dificuldade = EDificuldadeSala::FACIL;
 	SalasConectadas.Empty();
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
-	bPortasTrancadas = false;
+	Portas.Empty();
 	bVisitada = false;
 	bSalaTemInimigos = false;
-	bInimigosDerrotados = !bSalaTemInimigos;
 	Inimigos.Empty();
 	OffsetSala = 4640.0f;
 	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
@@ -68,6 +68,14 @@ TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 	return DirecaoPortas;
 }
 
+void ASala::RemoverInimigo(AInimigo* inimigo)
+{
+	if (inimigo->IsValidLowLevelFast())
+	{
+		Inimigos.Remove(inimigo);
+	}
+}
+
 void ASala::SpawnInimigos_Implementation(int32 Seed)
 {
 	if (!bSalaTemInimigos)
@@ -102,6 +110,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 		{
 			NovoInimigo->SpawnDefaultController();
 			Inimigos.Add(NovoInimigo);
+			NovoInimigo->SalaPai = this;
 		}
 	}
 }
@@ -118,8 +127,14 @@ TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>
 
 void ASala::InimigosForamDerrotados()
 {
-	if (Inimigos.Num() == 0)
+	if (Inimigos.Num() == 0 && bSalaTemInimigos)
 	{
+		for (const auto& Porta : Portas)
+		{
+			Porta->DestrancarPorta();
+		}
+
+		DestrancarPortas();
 		bSalaTemInimigos = false;
 	}
 

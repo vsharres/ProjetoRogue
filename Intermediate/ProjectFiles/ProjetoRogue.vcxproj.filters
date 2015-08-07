@@ -211,6 +211,9 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h">
       <Filter>Source\ProjetoRogue\Public\Itens</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Porta.h">
+      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp">
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp">
       <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Porta.cpp">
+      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
