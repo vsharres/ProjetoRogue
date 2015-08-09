@@ -4,13 +4,17 @@
 #include "Public/Salas/Sala.h"
 #include "Public/Inimigos/Inimigo.h"
 #include "Public/Salas/Porta.h"
+#include "Public/Jogador/Jogador.h"
 
 
 // Sets default values
-ASala::ASala()
+ASala::ASala(const FObjectInitializer& ObjectInitializer)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	TriggerInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerInimigos"));
+
 	bCanBeDamaged = false;
 	NumeroPortas = ENumeroPortas::UMA;
 	DirecaoSala = EFormatoSala::PADRAO;
@@ -136,6 +140,15 @@ void ASala::InimigosForamDerrotados()
 
 		DestrancarPortas();
 		bSalaTemInimigos = false;
+	}
+
+}
+
+void ASala::TrancarPortas()
+{
+	for (const auto& Porta : Portas)
+	{
+		Porta->TrancarPorta();
 	}
 
 }

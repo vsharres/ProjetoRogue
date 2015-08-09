@@ -370,6 +370,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 
 	if (NovaSala->IsValidLowLevelFast())
 	{
+		NovaSala->SetActorScale3D(NovaSala->GetEscala());
 		NovaSala->SalasConectadas.Add(SalaAnterior);
 		SalaAnterior->SalasConectadas.Add(NovaSala);
 		UltimasSalasGeradas.Add(SalaGerada);

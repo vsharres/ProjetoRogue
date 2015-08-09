@@ -4,7 +4,8 @@
 #include "Public/Salas/Sala3P.h"
 
 
-ASala3P::ASala3P()
+ASala3P::ASala3P(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	NumeroPortas = ENumeroPortas::TRES;
 	DirecaoSala = EFormatoSala::PADRAO;

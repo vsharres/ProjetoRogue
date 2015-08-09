@@ -15,7 +15,7 @@ class PROJETOROGUE_API ASala3PEsquerda : public ASala
 	
 public:
 
-	ASala3PEsquerda();
+	ASala3PEsquerda(const FObjectInitializer& ObjectInitializer);
 	
 	
 };

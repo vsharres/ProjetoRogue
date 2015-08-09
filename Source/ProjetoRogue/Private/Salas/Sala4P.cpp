@@ -3,7 +3,8 @@
 #include "Public/ProjetoRogue.h"
 #include "Public/Salas/Sala4P.h"
 
-ASala4P::ASala4P()
+ASala4P::ASala4P(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	NumeroPortas = ENumeroPortas::QUATRO;

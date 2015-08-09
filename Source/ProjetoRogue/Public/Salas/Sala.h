@@ -77,6 +77,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
+		UBoxComponent* TriggerInimigos;
+
 	//PORTAS
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Portas")
@@ -150,15 +153,15 @@ public:
 	UFUNCTION()
 		void InimigosForamDerrotados();
 
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Trancar Portas", Keywords = "Trancar Portas"), Category = "Sala")
-		virtual void TrancarPortas();
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trancar Portas", Keywords = "Trancar Portas"), Category = "Sala")
+		void TrancarPortas();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
 		virtual void DestrancarPortas();
 
 
 	// Sets default values for this actor's properties
-	ASala();
+	ASala(const FObjectInitializer& ObjectInitializer);
 
 	virtual void Tick(float DeltaTime) override;
 

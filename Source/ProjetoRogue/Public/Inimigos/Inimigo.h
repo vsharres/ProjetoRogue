@@ -100,6 +100,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	UFUNCTION(BlueprintCallable, Category ="Inimigos")
 	virtual void ReceberDano(const float& dano) override;
 
 	UFUNCTION()

@@ -3,7 +3,8 @@
 #include "Public/ProjetoRogue.h"
 #include "Public/Salas/Sala2PEsquerda.h"
 
-ASala2PEsquerda::ASala2PEsquerda()
+ASala2PEsquerda::ASala2PEsquerda(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	NumeroPortas = ENumeroPortas::DUAS;
 	DirecaoSala = EFormatoSala::ESQUERDA;

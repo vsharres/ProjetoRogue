@@ -250,6 +250,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
 		UItemProjetil* ProjetilAtual;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		TArray<AProjectil*> ProjetilPool;
+
 	UPROPERTY()
 		FName ProjetilSocket;
 
@@ -277,6 +280,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	UFUNCTION(BlueprintCallable, Category = "Jogador")
 	virtual void ReceberDano(const float& dano) override;
 
 	virtual void Debug() override;
