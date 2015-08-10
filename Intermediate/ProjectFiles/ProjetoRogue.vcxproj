@@ -335,6 +335,9 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUp.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpEnergia.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpVida.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -360,6 +363,9 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUp.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpEnergia.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpVida.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h" />

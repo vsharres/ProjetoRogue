@@ -7,7 +7,7 @@
 /**
  * 
  */
-UINTERFACE(MinimalAPI, Blueprintable)
+UINTERFACE(MinimalAPI, Blueprintable, meta = (CannotImplementInterfaceInBlueprint))
 class UDanoInterface : public UInterface
 {
 	GENERATED_UINTERFACE_BODY()

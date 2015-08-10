@@ -214,6 +214,15 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Porta.h">
       <Filter>Source\ProjetoRogue\Public\Salas</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUp.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpVida.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpEnergia.h">
+      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp">
@@ -227,6 +236,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Porta.cpp">
       <Filter>Source\ProjetoRogue\Private\Salas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUp.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpVida.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpEnergia.cpp">
+      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

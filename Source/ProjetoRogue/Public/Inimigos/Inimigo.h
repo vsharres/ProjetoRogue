@@ -83,6 +83,24 @@ class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 {
 	GENERATED_BODY()
 
+private:
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		int32 NumPickUps;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		int32 ChanceSpawnVida;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		int32 ChanceSpawnEnergia;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpEnergia> PickUpEnergiaClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpVida> PickUpVidaClass;
+
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
@@ -105,6 +123,9 @@ public:
 
 	UFUNCTION()
 		bool EstaVivo();
+
+	UFUNCTION()
+		void SpawnPickUp();
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;

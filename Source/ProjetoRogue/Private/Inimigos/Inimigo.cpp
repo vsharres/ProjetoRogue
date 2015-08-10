@@ -9,10 +9,13 @@
 // Sets default values
 AInimigo::AInimigo()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	Stats = FInimigoStats();
+	NumPickUps = 1;
+	ChanceSpawnVida = 30;
+	ChanceSpawnEnergia = 5;
 
 }
 
@@ -20,16 +23,17 @@ AInimigo::AInimigo()
 void AInimigo::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void AInimigo::Tick( float DeltaTime )
+void AInimigo::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
 	if (!EstaVivo())
 	{
+		SpawnPickUp();
 		SalaPai->RemoverInimigo(this);
 		Destroy();
 	}
@@ -57,4 +61,26 @@ bool AInimigo::EstaVivo()
 	}
 
 	return false;
+}
+
+void AInimigo::SpawnPickUp()
+{
+	FRandomStream stream = FRandomStream();
+	stream.GenerateNewSeed();
+
+	for (int32 index = 0; index < NumPickUps; index++)
+	{
+		if (stream.FRandRange(0, ChanceSpawnVida) == 0)
+		{
+			//SpawnVida
+			continue;
+		}
+
+		if (stream.FRandRange(0, ChanceSpawnEnergia) == 0)
+		{
+			//SpawnEnergia
+			continue;
+		}
+	}
+
 }

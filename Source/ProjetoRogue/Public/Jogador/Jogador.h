@@ -260,13 +260,19 @@ public:
 	AJogador(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION()
-		void AtualizarStats();
+		void AtualizarPropriedadesComStats();
 
 	UFUNCTION()
 		void InicializarProjetil();
 
 	UFUNCTION()
 		bool EstaVivo();
+
+	UFUNCTION(BlueprintCallable, Category = "Jogador")
+		void AdicionarVida(float vida);
+
+	UFUNCTION(BlueprintCallable, Category = "Jogador")
+		void AdicionarEnerngia(int32 energia);
 
 	//INTERFACES
 

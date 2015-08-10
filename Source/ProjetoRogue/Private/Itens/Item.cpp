@@ -12,13 +12,13 @@ UItem::UItem()
 void UItem::AplicarStats()
 {
 	Jogador->Stats += Stats;
-	Jogador->AtualizarStats();
+	Jogador->AtualizarPropriedadesComStats();
 }
 
 void UItem::RemoverStats()
 {
 	Jogador->Stats -= Stats;
-	Jogador->AtualizarStats();
+	Jogador->AtualizarPropriedadesComStats();
 }
 
 void UItem::AplicarItem_Implementation()

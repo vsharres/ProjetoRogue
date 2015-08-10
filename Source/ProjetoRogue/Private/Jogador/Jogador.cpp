@@ -28,7 +28,7 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 
 }
 
-void AJogador::AtualizarStats()
+void AJogador::AtualizarPropriedadesComStats()
 {
 	GetCharacterMovement()->MaxWalkSpeed = Stats.VelocidadeMov;
 }
@@ -41,6 +41,26 @@ bool AJogador::EstaVivo()
 	}
 
 	return false;
+}
+
+void AJogador::AdicionarVida(float vida)
+{
+	this->Stats.Vida += vida;
+
+	if (Stats.Vida > Stats.VidaMaxima)
+	{
+		Stats.Vida = VIDAMAX_MAX;
+	}
+}
+
+void AJogador::AdicionarEnerngia(int32 energia)
+{
+	Stats.Energia += energia;
+
+	if (Stats.Energia > Stats.EnergiaMax)
+	{
+		Stats.Energia = Stats.EnergiaMax;
+	}
 }
 
 //TODO
