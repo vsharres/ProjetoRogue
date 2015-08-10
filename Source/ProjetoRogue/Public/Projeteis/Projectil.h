@@ -61,6 +61,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FProjetilStats Stats;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+		bool bAtivo;
+
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UProjectileMovementComponent* CompMovimentacao;
@@ -83,6 +86,12 @@ public:
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
 		void InicializarProjetil(AActor* Inicializador);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projetil", Keywords = "Ativar Projetil"), Category = "Projetil")
+		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
+		void DesativarProjetil();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

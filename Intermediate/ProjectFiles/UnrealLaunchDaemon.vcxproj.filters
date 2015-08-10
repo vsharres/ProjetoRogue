@@ -6,16 +6,16 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\IOS\UnrealLaunchDaemon\UnrealLaunchDaemon.Build.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\IOS\UnrealLaunchDaemon\UnrealLaunchDaemon.uproject" />
 		<Filter Include="Build">
-			<UniqueIdentifier>{CD934DD4-A311-4A71-873C-105483E49615}</UniqueIdentifier>
+			<UniqueIdentifier>{3372E824-2A34-47F2-ADDB-167D59B4C16D}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Build\IOS">
-			<UniqueIdentifier>{43FF346F-9B7B-4EA5-AB71-5FDB903D7860}</UniqueIdentifier>
+			<UniqueIdentifier>{2B85A8DF-5A30-469A-B3D9-CB30880962EA}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\IOS\UnrealLaunchDaemon\Build\IOS\UnrealLaunchDaemon-Info.plist">
 			<Filter>Build\IOS</Filter>
 		</None >
 		<Filter Include="Private">
-			<UniqueIdentifier>{7C11014A-26CC-4B5A-A417-0A80B74D4EF9}</UniqueIdentifier>
+			<UniqueIdentifier>{CB988567-EA69-4C56-8FC0-1BFB18748349}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\IOS\UnrealLaunchDaemon\Private\LaunchDaemonMessageHandler.cpp">
 			<Filter>Private</Filter>
@@ -33,7 +33,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\IOS">
-			<UniqueIdentifier>{19935AB5-8F2E-4659-A62B-2CAD7362BE33}</UniqueIdentifier>
+			<UniqueIdentifier>{9507C125-4022-495D-B6B2-B65893C9053F}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\IOS\UnrealLaunchDaemon\Private\IOS\IOSLaunchDaemonAppMain.cpp">
 			<Filter>Private\IOS</Filter>

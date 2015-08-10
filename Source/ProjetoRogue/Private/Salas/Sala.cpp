@@ -9,11 +9,13 @@
 
 // Sets default values
 ASala::ASala(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	TriggerInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerInimigos"));
+	/*TriggerInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerInimigos"));
+	TriggerInimigos->AttachTo(RootComponent);*/
 
 	bCanBeDamaged = false;
 	NumeroPortas = ENumeroPortas::UMA;

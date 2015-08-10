@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrossCompilerTool\CrossCompilerTool.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrossCompilerTool\CrossCompilerTool.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{F8FB0600-890C-40BC-AB73-4C669F97E125}</UniqueIdentifier>
+			<UniqueIdentifier>{F96AA11D-C74B-4C05-9088-15E4253FF6EF}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrossCompilerTool\Private\CrossCompilerTool.cpp">
 			<Filter>Private</Filter>

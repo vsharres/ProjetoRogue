@@ -84,6 +84,33 @@ void AJogador::InicializarProjetil()
 		ProjetilAtual->Jogador = this;
 		ProjetilAtual->AplicarItem();
 	}
+
+	AtualizarProjetilPool();
+}
+
+void AJogador::AtualizarProjetilPool()
+{
+	if (ProjetilPool.Num() > 0)
+	{
+		ProjetilPool.Empty();
+	}
+
+	for (int32 index = 0; index < NumProjeteis; index++)
+	{
+		FVector tiroPos = FVector(0,0,-1000);
+		FActorSpawnParameters params;
+		params.bNoCollisionFail = true;
+		
+		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation(),params);
+		
+		if (Tiro->IsValidLowLevel())
+		{
+			Tiro->SetActorHiddenInGame(true);
+			Tiro->Instigator = this;
+			ProjetilPool.Add(Tiro);
+		}
+	}
+
 }
 
 // Called every frame

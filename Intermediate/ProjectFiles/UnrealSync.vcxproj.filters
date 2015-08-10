@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{1C0EF50F-1D90-4697-896D-5F61A6ABF228}</UniqueIdentifier>
+			<UniqueIdentifier>{104FF046-FFB3-4DBB-8B43-691C792DAEBF}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.cpp">
 			<Filter>Private</Filter>
@@ -38,13 +38,13 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{95F0E4FD-AFF7-40D9-9AA8-70841693378D}</UniqueIdentifier>
+			<UniqueIdentifier>{F84D0471-9274-4F08-BF86-3F1846CAAA05}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\UnrealSyncMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows\Resources">
-			<UniqueIdentifier>{3585353E-2FFF-47B7-9585-B0D8969D0BB1}</UniqueIdentifier>
+			<UniqueIdentifier>{C1F6C9CE-EE14-44E5-9FC6-0D1FDD711F42}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\Resources\UnrealSync.ico">
 			<Filter>Private\Windows\Resources</Filter>

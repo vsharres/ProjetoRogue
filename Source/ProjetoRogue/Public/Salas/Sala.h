@@ -77,8 +77,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
-		UBoxComponent* TriggerInimigos;
+	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
+	//	UBoxComponent* TriggerInimigos;
 
 	//PORTAS
 

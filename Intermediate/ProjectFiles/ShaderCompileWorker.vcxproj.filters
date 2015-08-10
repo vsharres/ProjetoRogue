@@ -4,20 +4,20 @@
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\ShaderCompileWorker.Target.cs" />
 		<Filter Include="Config">
-			<UniqueIdentifier>{1D1E22C8-B55F-4B2D-BE9A-D3249F5F3161}</UniqueIdentifier>
+			<UniqueIdentifier>{E927AF86-F9DC-4A08-8F71-F45090E5F3BD}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Programs\ShaderCompileWorker\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\ShaderCompileWorker.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{360BE2A3-B235-404A-A1E2-327F3BE3CF4C}</UniqueIdentifier>
+			<UniqueIdentifier>{17CAA8C5-A483-4555-9566-CD0D45B67A40}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\Private\ShaderCompileWorker.cpp">
 			<Filter>Private</Filter>
 		</ClCompile >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{BAA3AB29-A651-481E-84F7-A2359A111E7C}</UniqueIdentifier>
+			<UniqueIdentifier>{A2E712BD-691D-4D77-BF1B-BE50C15A07EF}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\Resources\Debug-Win32.manifest">
 			<Filter>Resources</Filter>

@@ -10,6 +10,7 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
+	bAtivo = false;
 
 	CompCollisao = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("ColisaoEsfera"));
 	CompCollisao->InitSphereRadius(52.0f);
@@ -21,6 +22,8 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	CompCollisao->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Block);
 	CompCollisao->SetCollisionResponseToChannel(ECC_Pawn, ECR_Block);
 	CompCollisao->OnComponentHit.AddDynamic(this, &AProjectil::OnHit);
+	CompCollisao->bAutoActivate = false;
+	CompCollisao->bAutoRegister = true;
 	RootComponent = CompCollisao;
 
 	Mesh = ObjectInitializer.CreateAbstractDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
@@ -32,6 +35,7 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	CompMovimentacao->MaxSpeed = 4000.0f;
 	CompMovimentacao->bRotationFollowsVelocity = true;
 	CompMovimentacao->ProjectileGravityScale = 0.f;
+	CompMovimentacao->bAutoActivate = false;
 
 	Stats = FProjetilStats();
 
@@ -48,8 +52,29 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 
 	CompCollisao->SetWorldScale3D(FVector(1.0f) * Stats.Tamanho);
 	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
+	
 
 	//CompMovimentacao->ComputeVelocity(Stats.Velocidade * CompMovimentacao->Velocity, DeltaTime);
+}
+
+void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador)
+{
+	bAtivo = true;
+	SetActorLocation(Location);
+	SetActorRotation(Rotator);	
+	SetActorHiddenInGame(false);
+	CompCollisao->Activate();
+	CompMovimentacao->Activate();
+	InicializarProjetil(Inicializador);
+	
+}
+
+void AProjectil::DesativarProjetil()
+{
+	bAtivo = false;
+	SetActorHiddenInGame(true);
+	CompCollisao->Deactivate();
+	SetActorLocation(FVector(0, 0, 1000));
 }
 
 // Called when the game starts or when spawned
@@ -62,7 +87,10 @@ void AProjectil::BeginPlay()
 // Called every frame
 void AProjectil::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+	if (bAtivo)
+	{
+		Super::Tick(DeltaTime);
+	}
 
 }
 
@@ -75,7 +103,7 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 		danoInterface->ReceberDano(this->Stats.Dano);
 	}
 
-	Destroy();
+	DesativarProjetil();
 }
 
 UProjectileMovementComponent* AProjectil::GetMovProjetil()

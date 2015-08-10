@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealPak\UnrealPak.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealPak\UnrealPak.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{50BA4273-BAD8-4D29-9D5A-24BDD2C0D8A2}</UniqueIdentifier>
+			<UniqueIdentifier>{C39A75DD-2563-4CDF-BF24-21EF63EFF29D}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealPak\Private\KeyGenerator.cpp">
 			<Filter>Private</Filter>
@@ -29,7 +29,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{72E91C84-74C4-4F11-8F71-2FE14F95CDE1}</UniqueIdentifier>
+			<UniqueIdentifier>{EA693121-49CD-4993-BFB8-D8E18742C560}</UniqueIdentifier>
 		</Filter>
 		<ResourceCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealPak\Resources\PCLaunch.rc">
 			<Filter>Resources</Filter>
