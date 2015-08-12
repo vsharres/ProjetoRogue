@@ -86,16 +86,16 @@ class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
-		int32 NumPickUps;
+		float NumPickUps;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
-		int32 ChanceSpawnVida;
+		float ChanceSpawnVida;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
-		int32 ChanceSpawnEnergia;
+		float ChanceSpawnEnergia;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
-		int32 ChanceSpawnMoeda;
+		float ChanceSpawnMoeda;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class APickUpEnergia> PickUpEnergiaClass;

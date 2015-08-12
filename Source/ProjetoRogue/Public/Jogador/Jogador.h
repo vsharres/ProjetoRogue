@@ -189,6 +189,18 @@ struct FJogadorStats
 		}
 	}
 
+	FORCEINLINE void SetStats(const FJogadorStats& stats)
+	{
+		this->Vida = stats.Vida;
+		this->VidaMaxima = stats.VidaMaxima;
+		this->Energia = stats.Energia;
+		this->EnergiaMax = stats.EnergiaMax;
+		this->VelocidadeMov = stats.VelocidadeMov;
+		this->Dano = stats.Dano;
+		this->FireRate = stats.FireRate;
+		this->TamanhoProjetil = stats.TamanhoProjetil;
+		this->VelProjetil = stats.VelProjetil;
+	}
 
 	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float tamanhoProjet = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
 	{
@@ -212,6 +224,9 @@ class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface, publ
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Nome")
+		FString Nome;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
 		bool bDebug;
@@ -241,6 +256,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		TArray<class UItemPassivo*> ItensPassivos;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+		bool bItemEncontrado;
 
 	//PROJETIL
 

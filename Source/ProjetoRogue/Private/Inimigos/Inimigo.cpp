@@ -17,9 +17,9 @@ AInimigo::AInimigo()
 
 	Stats = FInimigoStats();
 	NumPickUps = 1;
-	ChanceSpawnVida = 10;
-	ChanceSpawnEnergia = 5;
-	ChanceSpawnMoeda = 3;
+	ChanceSpawnVida = 10.0f;
+	ChanceSpawnEnergia = 5.0f;
+	ChanceSpawnMoeda = 3.0f;
 
 }
 
@@ -77,7 +77,7 @@ void AInimigo::SpawnPickUp()
 	{
 		stream.GenerateNewSeed();
 
-		if (stream.FRandRange(0, ChanceSpawnVida) == 0)
+		if (stream.FRandRange(0, ChanceSpawnVida) >= ChanceSpawnVida/2)
 		{
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
 
@@ -93,7 +93,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, ChanceSpawnEnergia) == 0)
+		if (stream.FRandRange(0, ChanceSpawnEnergia) >= ChanceSpawnEnergia/2)
 		{
 			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
 
@@ -110,7 +110,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, ChanceSpawnMoeda) == 0)
+		if (stream.FRandRange(0, ChanceSpawnMoeda) >= ChanceSpawnMoeda/2)
 		{
 			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
 
@@ -125,8 +125,6 @@ void AInimigo::SpawnPickUp()
 
 			continue;
 		}
-
-
 
 
 	}

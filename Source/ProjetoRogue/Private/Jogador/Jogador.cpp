@@ -22,8 +22,11 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 	TempoCooldown = 2.0f;
 	Moedas = 0;
 	CooldownAtual = TempoCooldown;
+	bItemEncontrado = false;
 
 	NumProjeteis = 10;
+
+	Nome = "Mark I";
 	
 
 

@@ -333,6 +333,7 @@
     <None Include="..\..\Config\DefaultInput.ini" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpMoeda.cpp" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarJogo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Inimigo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoRange.cpp" />
@@ -360,6 +361,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpMoeda.h" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarJogo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h" />
