@@ -4,6 +4,9 @@
 #include "Public/Inimigos/Inimigo.h"
 #include "Public/Salas/Sala.h"
 #include "Public/Projeteis/Projectil.h"
+#include "Public/Itens/PickUpEnergia.h"
+#include "Public/Itens/PickUpMoeda.h"
+#include "Public/Itens/PickUpVida.h"
 
 
 // Sets default values
@@ -14,8 +17,9 @@ AInimigo::AInimigo()
 
 	Stats = FInimigoStats();
 	NumPickUps = 1;
-	ChanceSpawnVida = 30;
+	ChanceSpawnVida = 10;
 	ChanceSpawnEnergia = 5;
+	ChanceSpawnMoeda = 3;
 
 }
 
@@ -65,22 +69,66 @@ bool AInimigo::EstaVivo()
 
 void AInimigo::SpawnPickUp()
 {
+	const float EXPLOSAO_DELTA = 15.0f;
+
 	FRandomStream stream = FRandomStream();
-	stream.GenerateNewSeed();
 
 	for (int32 index = 0; index < NumPickUps; index++)
 	{
+		stream.GenerateNewSeed();
+
 		if (stream.FRandRange(0, ChanceSpawnVida) == 0)
 		{
-			//SpawnVida
+			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
+
+			if (pickSpawn)
+			{
+				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
+					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),
+					pickSpawn->GetActorLocation().Z - EXPLOSAO_DELTA * 10.0f);
+
+				pickSpawn->GetColisor()->AddRadialImpulse(origem, 50.0f, stream.FRandRange(25, 50.0f), ERadialImpulseFalloff::RIF_Constant);
+			}
+
 			continue;
 		}
 
 		if (stream.FRandRange(0, ChanceSpawnEnergia) == 0)
 		{
-			//SpawnEnergia
+			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
+
+			if (pickSpawn)
+			{
+
+				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
+					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),
+					pickSpawn->GetActorLocation().Z - EXPLOSAO_DELTA * 10.0f);
+
+				pickSpawn->GetColisor()->AddRadialImpulse(origem, 50.0f, stream.FRandRange(25, 50.0f), ERadialImpulseFalloff::RIF_Constant);
+			}
+
 			continue;
 		}
+
+		if (stream.FRandRange(0, ChanceSpawnMoeda) == 0)
+		{
+			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
+
+			if (pickSpawn)
+			{
+				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
+					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),
+					pickSpawn->GetActorLocation().Z - EXPLOSAO_DELTA * 10.0f);
+
+				pickSpawn->GetColisor()->AddRadialImpulse(origem, 50.0f, stream.FRandRange(25, 50.0f), ERadialImpulseFalloff::RIF_Constant);
+			}
+
+			continue;
+		}
+
+
+
+
 	}
 
 }

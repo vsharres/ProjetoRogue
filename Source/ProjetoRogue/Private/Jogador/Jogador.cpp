@@ -20,6 +20,7 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
 	TempoCooldown = 2.0f;
+	Moedas = 0;
 	CooldownAtual = TempoCooldown;
 
 	NumProjeteis = 10;
@@ -63,7 +64,17 @@ void AJogador::AdicionarEnerngia(int32 energia)
 	}
 }
 
-//TODO
+void AJogador::AdicionarMoedas(int32 valor)
+{
+	Moedas += valor;
+
+	if (Moedas < 0)
+	{
+		Moedas = 0;
+	}
+}
+
+
 // Called when the game starts or when spawned
 void AJogador::BeginPlay()
 {

@@ -31,7 +31,7 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 
 	CompMovimentacao = ObjectInitializer.CreateAbstractDefaultSubobject<UProjectileMovementComponent>(this, TEXT("CompMovimentacao"));
 	CompMovimentacao->UpdatedComponent = CompCollisao;
-	CompMovimentacao->InitialSpeed = 2000.0f;
+	CompMovimentacao->InitialSpeed = 0.0f;
 	CompMovimentacao->MaxSpeed = 4000.0f;
 	CompMovimentacao->bRotationFollowsVelocity = true;
 	CompMovimentacao->ProjectileGravityScale = 0.f;
@@ -51,29 +51,41 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
 
 	CompCollisao->SetWorldScale3D(FVector(1.0f) * Stats.Tamanho);
-	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
 	
+	if (!CompMovimentacao->UpdatedComponent->IsValidLowLevelFast())
+	{
+		CompMovimentacao->SetUpdatedComponent(this->RootComponent);
+		
+	}
+	
+	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
 
-	//CompMovimentacao->ComputeVelocity(Stats.Velocidade * CompMovimentacao->Velocity, DeltaTime);
 }
 
 void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador)
 {
 	bAtivo = true;
+
 	SetActorLocation(Location);
-	SetActorRotation(Rotator);	
+	SetActorRotation(Rotator);
+
 	SetActorHiddenInGame(false);
-	CompCollisao->Activate();
-	CompMovimentacao->Activate();
+
 	InicializarProjetil(Inicializador);
+	CompCollisao->Activate(true);
+	CompMovimentacao->Activate(true);
 	
+
 }
 
 void AProjectil::DesativarProjetil()
 {
 	bAtivo = false;
+
 	SetActorHiddenInGame(true);
 	CompCollisao->Deactivate();
+	CompMovimentacao->Deactivate();
+
 	SetActorLocation(FVector(0, 0, 1000));
 }
 
@@ -87,10 +99,7 @@ void AProjectil::BeginPlay()
 // Called every frame
 void AProjectil::Tick(float DeltaTime)
 {
-	if (bAtivo)
-	{
-		Super::Tick(DeltaTime);
-	}
+	Super::Tick(DeltaTime);
 
 }
 

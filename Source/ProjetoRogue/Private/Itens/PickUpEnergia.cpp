@@ -18,7 +18,8 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 	if (jogador->IsValidLowLevelFast())
 	{
 		jogador->AdicionarEnerngia(IncEnergia);
+		Destroy();
 	}
 
-	Destroy();
+	
 }

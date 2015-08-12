@@ -3,7 +3,6 @@
 #include "ProjetoRogue.h"
 #include "PickUp.h"
 
-
 // Sets default values
 APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 {
@@ -11,6 +10,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	PrimaryActorTick.bCanEverTick = false;
 
 	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
+	Colisor->SetSimulatePhysics(true);
 	RootComponent = Colisor;
 
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
@@ -18,6 +18,12 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 
 	IncVida = 0.0f;
 	IncEnergia = 0;
+	IncMoedas = 0;
+}
+
+UCapsuleComponent* APickUp::GetColisor()
+{
+	return Colisor;
 }
 
 // Called when the game starts or when spawned

@@ -219,6 +219,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Moedas")
+		int32 Moedas;
+
 	//ITENS
 
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
@@ -276,6 +279,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
 		void AdicionarEnerngia(int32 energia);
+
+	UFUNCTION(BlueprintCallable, Category = "Jogador")
+		void AdicionarMoedas(int32 valor);
 
 	//INTERFACES
 

@@ -20,14 +20,21 @@ protected:
 	
 
 public:
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		float IncVida;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		int32 IncEnergia;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
+		int32 IncMoedas;
+
 	// Sets default values for this actor's properties
 	APickUp(const FObjectInitializer& ObjectInitializer);
+
+	UFUNCTION(BlueprintPure, Category = "Colisor")
+		UCapsuleComponent* GetColisor();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

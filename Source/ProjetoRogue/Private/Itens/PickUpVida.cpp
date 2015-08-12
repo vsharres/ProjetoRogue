@@ -18,7 +18,8 @@ void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCompo
 	if (jogador->IsValidLowLevelFast())
 	{
 		jogador->AdicionarVida(IncVida);
+		Destroy();
 	}
 
-	Destroy();
+	
 }

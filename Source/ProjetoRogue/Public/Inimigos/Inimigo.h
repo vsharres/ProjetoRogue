@@ -95,10 +95,16 @@ private:
 		int32 ChanceSpawnEnergia;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		int32 ChanceSpawnMoeda;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class APickUpEnergia> PickUpEnergiaClass;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class APickUpVida> PickUpVidaClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpMoeda> PickUpMoedaClass;
 
 
 public:
