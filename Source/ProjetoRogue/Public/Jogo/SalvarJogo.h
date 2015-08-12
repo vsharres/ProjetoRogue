@@ -9,12 +9,13 @@
 /**
  *
  */
-UCLASS()
+UCLASS(Blueprintable)
 class PROJETOROGUE_API USalvarJogo : public USaveGame
 {
 	GENERATED_BODY()
 
 public:
+
 
 	//Slot
 	UPROPERTY(VisibleAnywhere, Category = "SaveGame")
@@ -22,6 +23,13 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = "SaveGame")
 		uint32 Userindex;
+
+	//GameMode
+	UPROPERTY(VisibleAnywhere, Category = "Game")
+		bool bNovoJogo;
+
+	UPROPERTY(VisibleAnywhere, Category = "Game")
+		uint32 NumJogos;
 
 	//Salas
 	UPROPERTY(VisibleAnywhere, Category = "Salas")

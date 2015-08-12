@@ -6,6 +6,9 @@
 
 USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 {
-	SaveSlot = TEXT("Save_1");
+	SaveSlot = "ProtuX_Save";
 	Userindex = 0;
+
+	NumJogos = 0;
+	bNovoJogo = true;
 }

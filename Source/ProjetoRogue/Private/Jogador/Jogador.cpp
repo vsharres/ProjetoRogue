@@ -27,8 +27,148 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 	NumProjeteis = 10;
 
 	Nome = "Mark I";
-	
 
+}
+
+void AJogador::InicializarJogador()
+{
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
+
+	if (gameMode->bNovoJogo)
+	{
+		NovoJogador();
+	}
+	else
+	{
+		CarregarJogador();
+	}
+}
+
+void AJogador::GerarNome(int32 index)
+{
+	FString num;
+
+	int32 temp = index;
+
+	while (temp != 0 && temp <= 999)
+	{
+		if (temp >= 100)
+		{
+			switch (temp / 100)
+			{
+			case 1:
+				num += "C";
+				break;
+			case 2:
+				num += "CC";
+				break;
+			case 3:
+				num += "CCC";
+				break;
+			case 4:
+				num += "CD";
+				break;
+			case 5:
+				num += "D";
+				break;
+			case 6:
+				num += "DC";
+				break;
+			case 7:
+				num += "DCC";
+				break;
+			case 8:
+				num += "DCCC";
+				break;
+			case 9:
+				num += "MC";
+				break;
+			default:
+				break;
+			}
+
+			temp = temp - (temp / 100 * 100);
+		}
+		else if (temp >= 10)
+		{
+
+			switch (temp / 10)
+			{
+			case 1:
+				num += "X";
+				break;
+			case 2:
+				num += "XX";
+				break;
+			case 3:
+				num += "XXX";
+				break;
+			case 4:
+				num += "XL";
+				break;
+			case 5:
+				num += "L";
+				break;
+			case 6:
+				num += "LX";
+				break;
+			case 7:
+				num += "LXX";
+				break;
+			case 8:
+				num += "LXXX";
+				break;
+			case 9:
+				num += "XC";
+				break;
+			default:
+				break;
+			}
+
+			temp = temp - (temp / 10 * 10);
+		}
+		else if (temp < 10)
+		{
+			switch (temp)
+			{
+			case 1:
+				num += "I";
+				break;
+			case 2:
+				num += "II";
+				break;
+			case 3:
+				num += "III";
+				break;
+			case 4:
+				num += "IV";
+				break;
+			case 5:
+				num += "V";
+				break;
+			case 6:
+				num += "VI";
+				break;
+			case 7:
+				num += "VII";
+				break;
+			case 8:
+				num += "VIII";
+				break;
+			case 9:
+				num += "IX";
+				break;
+			default:
+				break;
+			}
+
+			temp = 0;
+
+		}
+
+	}
+
+	Nome = "Mark " + num;
 
 }
 
@@ -78,6 +218,23 @@ void AJogador::AdicionarMoedas(int32 valor)
 }
 
 
+void AJogador::CarregarJogador()
+{
+	//TODO
+}
+
+void AJogador::NovoJogador()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		GerarNome(SaveInst->NumJogos);
+	}
+
+}
+
 // Called when the game starts or when spawned
 void AJogador::BeginPlay()
 {
@@ -111,12 +268,12 @@ void AJogador::AtualizarProjetilPool()
 
 	for (int32 index = 0; index < NumProjeteis; index++)
 	{
-		FVector tiroPos = FVector(0,0,-1000);
+		FVector tiroPos = FVector(0, 0, -1000);
 		FActorSpawnParameters params;
 		params.bNoCollisionFail = true;
-		
-		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation(),params);
-		
+
+		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation(), params);
+
 		if (Tiro->IsValidLowLevel())
 		{
 			Tiro->SetActorHiddenInGame(true);

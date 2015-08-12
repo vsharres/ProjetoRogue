@@ -280,6 +280,12 @@ public:
 	// Sets default values for this character's properties
 	AJogador(const FObjectInitializer& ObjectInitializer);
 
+	UFUNCTION(BlueprintCallable, Category ="Jogador")
+		void InicializarJogador();
+
+	UFUNCTION(BlueprintCallable, Category = "Nome")
+		void GerarNome(int32 index);
+
 	UFUNCTION()
 		void AtualizarPropriedadesComStats();
 
@@ -300,6 +306,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
 		void AdicionarMoedas(int32 valor);
+
+	UFUNCTION(BlueprintCallable, Category = "Jogo")
+		void CarregarJogador();
+
+	UFUNCTION(BlueprintCallable, Category = "Jogo")
+		void NovoJogador();
 
 	//INTERFACES
 

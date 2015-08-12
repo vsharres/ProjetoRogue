@@ -4,4 +4,5 @@
 
 #include "Engine.h"
 #include "Public/Jogo/SalvarJogo.h"
+#include "Public/Jogo/ProtuXGameMode.h"
 #include "Kismet/GameplayStatics.h"
