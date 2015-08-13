@@ -4,6 +4,7 @@
 #include "Public/Jogador/Jogador.h"
 #include "Public/Projeteis/Projectil.h"
 #include "Public/Itens/ItemAtivo.h"
+#include "Public/Itens/ItemPassivo.h"
 #include "Public/Itens/ItemProjetil.h"
 
 // Sets default values
@@ -218,9 +219,56 @@ void AJogador::AdicionarMoedas(int32 valor)
 }
 
 
+void AJogador::SalvarJogador()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		SaveInst->bNovoJogo = false;
+		SaveInst->Stats.SetStats(this->Stats);
+		SaveInst->Moedas = this->Moedas;
+		SaveInst->bPossuiChave = this->bPossuiChave;
+		SaveInst->JogadorLocation = this->GetActorLocation();
+		SaveInst->JogadorRotation = this->GetActorRotation();
+
+		if (ProjetilAtual->IsValidLowLevelFast())
+			SaveInst->ProjetilInicial = this->ProjetilAtual->GetClass();
+
+		if (ItemAtivoAtual->IsValidLowLevelFast())
+			SaveInst->ItemAtivo = this->ItemAtivoAtual->GetClass();
+		SaveInst->bItemEncontrado = this->bItemEncontrado;
+
+		SaveInst->ItensPassivos.Empty();
+		for (const auto& item : ItensPassivos)
+		{
+			SaveInst->ItensPassivos.Add(item->GetClass());
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}	
+}
+
 void AJogador::CarregarJogador()
 {
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		GerarNome(SaveInst->NumJogos);
+		this->Stats.SetStats(SaveInst->Stats);
+		this->Moedas = SaveInst->Moedas;
+		this->bPossuiChave = SaveInst->bPossuiChave;
+		
+		//this->SetActorLocation(SaveInst->JogadorLocation);
+		//this->SetActorRotation(SaveInst->JogadorRotation);
+	}
+
+
 	//TODO
+	//ITENS
 }
 
 void AJogador::NovoJogador()
@@ -289,10 +337,6 @@ void AJogador::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (bDebug)
-	{
-		Debug();
-	}
 
 	ItemCooldown(DeltaTime);
 
@@ -325,6 +369,11 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 void AJogador::ReceberDano(const float& dano)
 {
 	this->Stats.Vida -= dano;
+
+	if (Stats.Vida <= 0)
+	{
+		JogadorMorreu();
+	}
 }
 
 void AJogador::Debug()
@@ -342,17 +391,4 @@ void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 	}
 }
 
-//void AJogador::Atirar()
-//{
-//	FVector tiroPos = GetActorLocation() + (GetActorForwardVector() * 100);
-//
-//	AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
-//
-//	if (Tiro)
-//	{
-//		Tiro->SetActorScale3D(Tiro->GetActorScale3D()*Tiro->Stats.Tamanho);
-//		Tiro->InicializarProjetil();
-//	}
-//
-//}
 

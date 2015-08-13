@@ -55,6 +55,9 @@ private:
 	UPROPERTY()
 		TArray<FVector> PosSalas;
 
+	UPROPERTY()
+		TArray<bool> SalasCarregadas;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
@@ -79,6 +82,9 @@ public:
 	ASalasGerador();
 
 	~ASalasGerador();
+
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
+		static ASalasGerador* GetGeradorSalas(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void Inicializar(ASala* Inicial);
@@ -127,6 +133,12 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
 		virtual void GeracaoTerminada();
+
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+		void CarregarSalas();
+
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+		void SalvarSalas();
 
 
 };

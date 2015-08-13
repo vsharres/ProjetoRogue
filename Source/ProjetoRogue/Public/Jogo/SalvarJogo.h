@@ -18,57 +18,56 @@ public:
 
 
 	//Slot
-	UPROPERTY(VisibleAnywhere, Category = "SaveGame")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SaveGame")
 		FString SaveSlot;
 
-	UPROPERTY(VisibleAnywhere, Category = "SaveGame")
-		uint32 Userindex;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SaveGame")
+		int32 Userindex;
 
 	//GameMode
-	UPROPERTY(VisibleAnywhere, Category = "Game")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
 		bool bNovoJogo;
 
-	UPROPERTY(VisibleAnywhere, Category = "Game")
-		uint32 NumJogos;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
+		int32 NumJogos;
 
 	//Salas
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<bool> SalasComInimigos;
 
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		int32 Seed;
 
 	//Jogador
 
-	UPROPERTY(VisibleAnywhere, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		FJogadorStats Stats;
 
-	UPROPERTY(VisibleAnywhere, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		int32 Moedas;
 
-	UPROPERTY(VisibleAnywhere, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		bool bPossuiChave;
 
-	UPROPERTY(VisibleAnywhere, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		FVector JogadorLocation;
 
-	UPROPERTY(VisibleAnywhere, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		FRotator JogadorRotation;
-
 
 
 	//Itens
 
-	UPROPERTY(VisibleAnywhere, Category = "Itens")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		TSubclassOf<class UItemProjetil> ProjetilInicial;
 
-	UPROPERTY(VisibleAnywhere, Category = "Itens")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		TArray < TSubclassOf<class UItemPassivo>> ItensPassivos;
 
-	UPROPERTY(VisibleAnywhere, Category = "Itens")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		TSubclassOf < class UItemAtivo> ItemAtivo;
 
-	UPROPERTY(VisibleAnywhere, Category = "Itens")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		bool bItemEncontrado;
 
 

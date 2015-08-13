@@ -26,6 +26,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 		void LoadProfile();
-	
+
+	UFUNCTION(BlueprintCallable, Category = "GameMode")
+		void ContinuarJogo();
 	
 };

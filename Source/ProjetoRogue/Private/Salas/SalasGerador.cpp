@@ -40,6 +40,26 @@ ASalasGerador::~ASalasGerador()
 	SalaInicial = NULL;
 }
 
+ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
+{
+	if (WorldContextObject)
+	{
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
+		if (World != nullptr)
+		{
+			for (TActorIterator<ASalasGerador> ActorItr(World); ActorItr; ++ActorItr)
+			{				
+				if ((*ActorItr)->IsValidLowLevel())
+				{
+					return *ActorItr;
+				}
+			}
+		}
+	}
+
+	return nullptr;
+}
+
 void ASalasGerador::Inicializar(ASala* Inicial)
 {
 	SetNumSalas();
@@ -48,7 +68,7 @@ void ASalasGerador::Inicializar(ASala* Inicial)
 	Salas.Add(NULL);
 
 	AdicionarAoArrayPortas(Inicial);
-
+	CarregarSalas();
 	GerarLevel(Inicial);
 	GeracaoTerminada();
 }
@@ -210,6 +230,40 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 	return result;
 }
 
+void ASalasGerador::CarregarSalas()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo)
+	{
+		this->Seed = SaveInst->Seed;
+		this->SalasCarregadas.Empty();
+		this->SalasCarregadas = SaveInst->SalasComInimigos;
+
+	}
+}
+
+void ASalasGerador::SalvarSalas()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		SaveInst->Seed = this->Seed;
+
+		SaveInst->SalasComInimigos.Empty();
+
+		for (const auto& Sala : Salas)
+		{
+			SaveInst->SalasComInimigos.Add(Sala->bSalaTemInimigos);
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+}
+
 void ASalasGerador::GerarSalaEspecial()
 {
 	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
@@ -217,7 +271,7 @@ void ASalasGerador::GerarSalaEspecial()
 		FRandomStream Stream(Seed);
 
 
-		if (!bSalaItemGerada && 
+		if (!bSalaItemGerada &&
 			(UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) ||
 			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
@@ -226,7 +280,7 @@ void ASalasGerador::GerarSalaEspecial()
 			return;
 		}
 
-		if (!bSalaChaveGerada && 
+		if (!bSalaChaveGerada &&
 			(UltimaSalaValida() >= Stream.FRandRange(7, 9) ||
 			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
@@ -235,7 +289,7 @@ void ASalasGerador::GerarSalaEspecial()
 			return;
 		}
 
-		if (!bSalaBossGerada && 
+		if (!bSalaBossGerada &&
 			(UltimaSalaValida() >= Stream.FRandRange(2, 6) ||
 			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
@@ -374,7 +428,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 		NovaSala->SalasConectadas.Add(SalaAnterior);
 		SalaAnterior->SalasConectadas.Add(NovaSala);
 		UltimasSalasGeradas.Add(SalaGerada);
-		NovaSala->SpawnInimigos(Seed);
+
 	}
 
 	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
@@ -394,6 +448,13 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 	Salas[UltimaSalaValida() + 1] = NovaSala;
 
 	AdicionarAoArrayPortas(NovaSala);
+
+	if (SalasCarregadas.Num() >= Salas.Num())
+	{
+		NovaSala->bSalaTemInimigos = SalasCarregadas[Salas.Find(NovaSala)];
+	}
+
+	NovaSala->SpawnInimigos(Seed);
 
 	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *NovaSala->GetName(), Salas.Num());
 

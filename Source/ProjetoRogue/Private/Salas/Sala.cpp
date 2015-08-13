@@ -142,6 +142,13 @@ void ASala::InimigosForamDerrotados()
 
 		DestrancarPortas();
 		bSalaTemInimigos = false;
+
+		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+		if (jogador->IsValidLowLevelFast())
+		{
+			jogador->SalvarJogador();
+		}
 	}
 
 }

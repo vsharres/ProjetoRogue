@@ -215,6 +215,19 @@ struct FJogadorStats
 		Vida = VidaMaxima;
 	}
 
+	FJogadorStats(const FJogadorStats& Outro)
+	{
+		VidaMaxima = Outro.VidaMaxima;
+		VelocidadeMov = Outro.VelocidadeMov;
+		FireRate = Outro.FireRate;
+		Dano = Outro.Dano;
+		TamanhoProjetil = Outro.TamanhoProjetil;
+		VelProjetil = Outro.VelProjetil;
+		Energia = Outro.Energia;
+		EnergiaMax = Outro.EnergiaMax;
+		Vida = Outro.Vida;
+	}
+
 };
 
 
@@ -308,6 +321,9 @@ public:
 		void AdicionarMoedas(int32 valor);
 
 	UFUNCTION(BlueprintCallable, Category = "Jogo")
+		void SalvarJogador();
+
+	UFUNCTION(BlueprintCallable, Category = "Jogo")
 		void CarregarJogador();
 
 	UFUNCTION(BlueprintCallable, Category = "Jogo")
@@ -334,6 +350,9 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Projetil")
 		virtual void Atirar();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Jogador Morreu", Keywords = "Jogador Morreu"), Category = "Jogador")
+		virtual void JogadorMorreu();
 
 
 	UFUNCTION()

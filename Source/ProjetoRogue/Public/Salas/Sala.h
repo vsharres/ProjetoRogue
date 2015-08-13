@@ -94,9 +94,6 @@ protected:
 
 	//INIMIGOS
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
-		bool bSalaTemInimigos;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
 		TArray<class AInimigo*> Inimigos;
 
@@ -115,6 +112,9 @@ protected:
 		TArray<TSubclassOf<class UItem>> PossiveisItens;
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inimigos")
+		bool bSalaTemInimigos;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray<ASala*> SalasConectadas;
