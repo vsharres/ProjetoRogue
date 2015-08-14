@@ -5,6 +5,7 @@
 #include "Public/Inimigos/Inimigo.h"
 #include "Public/Salas/Porta.h"
 #include "Public/Jogador/Jogador.h"
+#include "Public/Salas/SalasGerador.h"
 
 
 // Sets default values
@@ -140,14 +141,16 @@ void ASala::InimigosForamDerrotados()
 			Porta->DestrancarPorta();
 		}
 
-		DestrancarPortas();
 		bSalaTemInimigos = false;
+		DestrancarPortas();
 
 		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
+		ASalasGerador* gerador = ASalasGerador::GetGeradorSalas(GetWorld());
 
-		if (jogador->IsValidLowLevelFast())
+		if (jogador->IsValidLowLevelFast() && gerador->IsValidLowLevelFast())
 		{
 			jogador->SalvarJogador();
+			gerador->SalvarSalas();
 		}
 	}
 

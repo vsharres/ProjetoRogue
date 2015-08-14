@@ -43,6 +43,8 @@ void AJogador::InicializarJogador()
 	{
 		CarregarJogador();
 	}
+
+	InicializarProjetil();
 }
 
 void AJogador::GerarNome(int32 index)
@@ -230,24 +232,32 @@ void AJogador::SalvarJogador()
 		SaveInst->Stats.SetStats(this->Stats);
 		SaveInst->Moedas = this->Moedas;
 		SaveInst->bPossuiChave = this->bPossuiChave;
-		SaveInst->JogadorLocation = this->GetActorLocation();
-		SaveInst->JogadorRotation = this->GetActorRotation();
+
+		//SaveInst->JogadorLocation = this->GetActorLocation();
+		//SaveInst->JogadorRotation = this->GetActorRotation();
 
 		if (ProjetilAtual->IsValidLowLevelFast())
-			SaveInst->ProjetilInicial = this->ProjetilAtual->GetClass();
+		{
+			SaveInst->ProjetilInicial_Referencia = FStringAssetReference(this->ProjetilAtual->GetClass()).ToString();
+		}
 
-		if (ItemAtivoAtual->IsValidLowLevelFast())
-			SaveInst->ItemAtivo = this->ItemAtivoAtual->GetClass();
 		SaveInst->bItemEncontrado = this->bItemEncontrado;
 
-		SaveInst->ItensPassivos.Empty();
+		if (ItemAtivoAtual->IsValidLowLevelFast())
+		{
+
+			SaveInst->ItemAtivo_Referencia = FStringAssetReference(this->ItemAtivoAtual->GetClass()).ToString();
+		}
+
+		SaveInst->ItensPassivos_Referencias.Empty();
 		for (const auto& item : ItensPassivos)
 		{
-			SaveInst->ItensPassivos.Add(item->GetClass());
+
+			SaveInst->ItensPassivos_Referencias.Add(FStringAssetReference(item->GetClass()).ToString());
 		}
 
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-	}	
+	}
 }
 
 void AJogador::CarregarJogador()
@@ -261,14 +271,41 @@ void AJogador::CarregarJogador()
 		this->Stats.SetStats(SaveInst->Stats);
 		this->Moedas = SaveInst->Moedas;
 		this->bPossuiChave = SaveInst->bPossuiChave;
-		
+
 		//this->SetActorLocation(SaveInst->JogadorLocation);
 		//this->SetActorRotation(SaveInst->JogadorRotation);
+
+		UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this,StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilInicial_Referencia));
+		
+		if (itemProjetil->IsValidLowLevelFast())
+		{
+			this->ProjetilInicial = itemProjetil->GetClass();
+		}
+
+		UItemAtivo* itemAtivo = NewObject<UItemAtivo>(this, StaticLoadClass(UItemAtivo::StaticClass(), NULL, *SaveInst->ItemAtivo_Referencia));
+
+		if (itemAtivo->IsValidLowLevelFast())
+		{
+			itemAtivo->InicializarItem(this);
+		}
+
+
+		if (SaveInst->ItensPassivos_Referencias.Num() > 0)
+		{
+			this->ItensPassivos.Empty();
+			for (const auto& passivo : SaveInst->ItensPassivos_Referencias)
+			{
+				UItemPassivo* itemPassivo = NewObject<UItemPassivo>(this,StaticLoadClass(UItemPassivo::StaticClass(), NULL, *passivo));
+
+				if (itemPassivo->IsValidLowLevelFast())
+				{
+					itemPassivo->InicializarItem(this);
+				}
+			}
+		}
+
 	}
 
-
-	//TODO
-	//ITENS
 }
 
 void AJogador::NovoJogador()
@@ -283,15 +320,6 @@ void AJogador::NovoJogador()
 
 }
 
-// Called when the game starts or when spawned
-void AJogador::BeginPlay()
-{
-	Super::BeginPlay();
-
-	InicializarProjetil();
-
-
-}
 
 void AJogador::InicializarProjetil()
 {

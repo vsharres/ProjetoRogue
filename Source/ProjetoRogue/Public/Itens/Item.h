@@ -102,6 +102,9 @@ public:
 
 	UItem();
 
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Inicializar Item", Keywords = "Inicializar Item"), Category = "Item")
+		void InicializarItem(AJogador* inicializador);
+
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Aplicar Stats", Keywords = "Aplicar Stats"), Category = "Item")
 		void AplicarStats();
 

@@ -9,6 +9,15 @@ UItem::UItem()
 	Stats = FItemStats();
 }
 
+void UItem::InicializarItem(AJogador* inicializador)
+{
+	if (inicializador->IsValidLowLevelFast())
+	{
+		this->Jogador = inicializador;
+		AplicarItem();
+	}
+}
+
 void UItem::AplicarStats()
 {
 	Jogador->Stats += Stats;

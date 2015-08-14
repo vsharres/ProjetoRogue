@@ -55,17 +55,16 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		FRotator JogadorRotation;
 
-
 	//Itens
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
-		TSubclassOf<class UItemProjetil> ProjetilInicial;
+		FString ProjetilInicial_Referencia;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
-		TArray < TSubclassOf<class UItemPassivo>> ItensPassivos;
+		TArray <FString> ItensPassivos_Referencias;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
-		TSubclassOf < class UItemAtivo> ItemAtivo;
+		FString ItemAtivo_Referencia;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		bool bItemEncontrado;
