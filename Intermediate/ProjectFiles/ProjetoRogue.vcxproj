@@ -332,6 +332,7 @@
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigosControlador.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpMoeda.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\ProtuXGameMode.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarJogo.cpp" />
@@ -361,6 +362,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigosControlador.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpMoeda.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\ProtuXGameMode.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarJogo.h" />

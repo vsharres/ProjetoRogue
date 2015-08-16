@@ -77,8 +77,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
-	//	UBoxComponent* TriggerInimigos;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
+		UBoxComponent* TriggerAtivarInimigos;
 
 	//PORTAS
 
@@ -93,6 +93,9 @@ protected:
 
 
 	//INIMIGOS
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
+		bool bInimigosAtivos;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
 		TArray<class AInimigo*> Inimigos;
@@ -145,9 +148,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
 		void SpawnInimigos(int32 Seed);
-		virtual void SpawnInimigos_Implementation(int32 Seed);
+	virtual void SpawnInimigos_Implementation(int32 Seed);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigo")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
 		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
 	UFUNCTION()
@@ -159,10 +162,17 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
 		virtual void DestrancarPortas();
 
+	UFUNCTION()
+		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	UFUNCTION()
+		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	// Sets default values for this actor's properties
 	ASala(const FObjectInitializer& ObjectInitializer);
 
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
 
 };

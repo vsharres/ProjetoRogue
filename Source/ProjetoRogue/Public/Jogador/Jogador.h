@@ -306,7 +306,7 @@ public:
 		void InicializarProjetil();
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
-		void AtualizarProjetilPool();
+		void GerarProjetilPool();
 
 	UFUNCTION()
 		bool EstaVivo();

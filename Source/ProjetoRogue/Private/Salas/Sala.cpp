@@ -3,6 +3,7 @@
 #include "Public/ProjetoRogue.h"
 #include "Public/Salas/Sala.h"
 #include "Public/Inimigos/Inimigo.h"
+#include "Public/Inimigos/InimigosControlador.h"
 #include "Public/Salas/Porta.h"
 #include "Public/Jogador/Jogador.h"
 #include "Public/Salas/SalasGerador.h"
@@ -12,11 +13,14 @@
 ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	/*TriggerInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerInimigos"));
-	TriggerInimigos->AttachTo(RootComponent);*/
+	TriggerAtivarInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerAtivarInimigos"));
+	TriggerAtivarInimigos->SetBoxExtent(FVector(300.0f, 300.0f, 32.0f));
+	TriggerAtivarInimigos->OnComponentBeginOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerOnOverlap);
+	TriggerAtivarInimigos->OnComponentEndOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerEndOverlap);
+	RootComponent = TriggerAtivarInimigos;
 
 	bCanBeDamaged = false;
 	NumeroPortas = ENumeroPortas::UMA;
@@ -43,6 +47,17 @@ void ASala::Tick(float DeltaTime)
 
 	InimigosForamDerrotados();
 
+}
+
+void ASala::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (!bSalaTemInimigos)
+	{
+		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
+		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
+	}
 }
 
 FVector ASala::GetEscala()
@@ -119,6 +134,13 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 			Inimigos.Add(NovoInimigo);
 			NovoInimigo->SalaPai = this;
 		}
+
+		AInimigosControlador* Controlador = Cast<AInimigosControlador>(NovoInimigo->GetController());
+
+		if (Controlador->IsValidLowLevelFast())
+		{
+			Controlador->SalaPai = this;
+		}
 	}
 }
 
@@ -129,7 +151,7 @@ TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>
 	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)];
 
 	return tipoInimigo;
-	
+
 }
 
 void ASala::InimigosForamDerrotados()
@@ -142,6 +164,9 @@ void ASala::InimigosForamDerrotados()
 		}
 
 		bSalaTemInimigos = false;
+		bInimigosAtivos = false;
+		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
+		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
 		DestrancarPortas();
 
 		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
@@ -163,5 +188,37 @@ void ASala::TrancarPortas()
 		Porta->TrancarPorta();
 	}
 
+}
+
+void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && !bInimigosAtivos && bSalaTemInimigos)
+	{
+		for (auto const& Inimigo : Inimigos)
+		{
+			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
+
+			if (controlador)
+			{
+				controlador->AtivarInimigo();
+			}
+		}
+	}
+}
+
+void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && bInimigosAtivos && bSalaTemInimigos)
+	{
+		for (auto const& Inimigo : Inimigos)
+		{
+			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
+
+			if (controlador)
+			{
+				controlador->DesativarInimigo();
+			}
+		}
+	}
 }
 

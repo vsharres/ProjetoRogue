@@ -196,7 +196,7 @@ void AJogador::AdicionarVida(float vida)
 
 	if (Stats.Vida > Stats.VidaMaxima)
 	{
-		Stats.Vida = VIDAMAX_MAX;
+		Stats.Vida = Stats.VidaMaxima;
 	}
 }
 
@@ -275,18 +275,24 @@ void AJogador::CarregarJogador()
 		//this->SetActorLocation(SaveInst->JogadorLocation);
 		//this->SetActorRotation(SaveInst->JogadorRotation);
 
-		UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this,StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilInicial_Referencia));
-		
-		if (itemProjetil->IsValidLowLevelFast())
+		if (!SaveInst->ProjetilInicial_Referencia.IsEmpty())
 		{
-			this->ProjetilInicial = itemProjetil->GetClass();
+			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilInicial_Referencia));
+
+			if (itemProjetil->IsValidLowLevelFast())
+			{
+				this->ProjetilInicial = itemProjetil->GetClass();
+			}
 		}
 
-		UItemAtivo* itemAtivo = NewObject<UItemAtivo>(this, StaticLoadClass(UItemAtivo::StaticClass(), NULL, *SaveInst->ItemAtivo_Referencia));
-
-		if (itemAtivo->IsValidLowLevelFast())
+		if (!SaveInst->ItemAtivo_Referencia.IsEmpty())
 		{
-			itemAtivo->InicializarItem(this);
+			UItemAtivo* itemAtivo = NewObject<UItemAtivo>(this, StaticLoadClass(UItemAtivo::StaticClass(), NULL, *SaveInst->ItemAtivo_Referencia));
+
+			if (itemAtivo->IsValidLowLevelFast())
+			{
+				itemAtivo->InicializarItem(this);
+			}
 		}
 
 
@@ -295,7 +301,7 @@ void AJogador::CarregarJogador()
 			this->ItensPassivos.Empty();
 			for (const auto& passivo : SaveInst->ItensPassivos_Referencias)
 			{
-				UItemPassivo* itemPassivo = NewObject<UItemPassivo>(this,StaticLoadClass(UItemPassivo::StaticClass(), NULL, *passivo));
+				UItemPassivo* itemPassivo = NewObject<UItemPassivo>(this, StaticLoadClass(UItemPassivo::StaticClass(), NULL, *passivo));
 
 				if (itemPassivo->IsValidLowLevelFast())
 				{
@@ -332,10 +338,10 @@ void AJogador::InicializarProjetil()
 		ProjetilAtual->AplicarItem();
 	}
 
-	AtualizarProjetilPool();
+	GerarProjetilPool();
 }
 
-void AJogador::AtualizarProjetilPool()
+void AJogador::GerarProjetilPool()
 {
 	if (ProjetilPool.Num() > 0)
 	{

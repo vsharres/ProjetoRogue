@@ -253,6 +253,9 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\ProtuXGameMode.h">
       <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigosControlador.h">
+      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpMoeda.cpp">
@@ -263,6 +266,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\ProtuXGameMode.cpp">
       <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigosControlador.cpp">
+      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

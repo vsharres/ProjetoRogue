@@ -69,7 +69,7 @@ bool AInimigo::EstaVivo()
 
 void AInimigo::SpawnPickUp()
 {
-	const float EXPLOSAO_DELTA = 15.0f;
+	const float EXPLOSAO_DELTA = 10.0f;
 
 	FRandomStream stream = FRandomStream();
 

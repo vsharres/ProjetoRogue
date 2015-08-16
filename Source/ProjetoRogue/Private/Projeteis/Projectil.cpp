@@ -48,6 +48,7 @@ UProjectileMovementComponent* AProjectil::GetMovementComponent()
 
 void AProjectil::InicializarProjetil(AActor* Inicializador)
 {
+
 	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
 
 	CompCollisao->SetWorldScale3D(FVector(1.0f) * Stats.Tamanho);
@@ -83,10 +84,12 @@ void AProjectil::DesativarProjetil()
 	bAtivo = false;
 
 	SetActorHiddenInGame(true);
+
+	SetActorLocation(FVector(0, 0, -1000));
+
 	CompCollisao->Deactivate();
 	CompMovimentacao->Deactivate();
-
-	SetActorLocation(FVector(0, 0, 1000));
+	
 }
 
 // Called when the game starts or when spawned
