@@ -2,7 +2,7 @@
 
 #include "ProjetoRogue.h"
 #include "PickUpEnergia.h"
-#include "Public/Jogador/Jogador.h"
+#include "Jogador.h"
 
 APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)

@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Interfaces/DebugInterface.h"
+#include "ProjetoRogue.h"
+#include "DebugInterface.h"
 
 UDebugInterface::UDebugInterface(const class FObjectInitializer& PCIP)
 	: Super(PCIP)

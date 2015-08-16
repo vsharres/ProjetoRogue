@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Inimigos/Inimigo.h"
+#include "Inimigo.h"
 #include "InimigoRange.generated.h"
 
 /**
@@ -24,6 +24,8 @@ public:
 			int32 NumProjeteis;
 
 		virtual void BeginPlay() override;
+
+		virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 		UFUNCTION()
 			void GerarProjetilPool();

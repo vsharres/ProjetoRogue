@@ -26,7 +26,7 @@ private:
 		int32 IndexSala4P;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
-		TSubclassOf<ASala> SalaItem;
+		TSubclassOf<class ASala> SalaItem;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaChave;

@@ -3,9 +3,9 @@
 #pragma once
 
 #include "GameFramework/Character.h"
-#include "Public/Itens/Item.h"
-#include "Public/Interfaces/DanoInterface.h"
-#include "Public/Interfaces/DebugInterface.h"
+#include "DanoInterface.h"
+#include "DebugInterface.h"
+#include "Item.h"
 #include "Jogador.generated.h"
 
 const float VIDAMAX_MAX = 500.0F;
@@ -20,7 +20,7 @@ const float FIRERATE_MAX = 1.0f;
 const float FIRERATE_MIN = 0.005f;
 const float TAMANHO_MAX = 0.6f;
 const float TAMANHAO_MIN = 0.1f;
-const float VELOCIDADEPROJ_MAX = 4500.0f;
+const float VELOCIDADEPROJ_MAX = 6000.0f;
 const float VELOCIDADEPROJ_MIN = 1000.f;
 
 
@@ -334,6 +334,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
@@ -351,6 +353,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Jogador Morreu", Keywords = "Jogador Morreu"), Category = "Jogador")
 		virtual void JogadorMorreu();
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar PopUp", Keywords = "Gerar PopUp"), Category = "Jogador")
+		virtual void GerarPopUp(float dano, AInimigo* alvo);
 
 	UFUNCTION()
 		void ItemCooldown(float DeltaTime);

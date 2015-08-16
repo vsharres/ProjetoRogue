@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Salas/Sala2PDireita.h"
+#include "ProjetoRogue.h"
+#include "Sala2PDireita.h"
 
 ASala2PDireita::ASala2PDireita(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)

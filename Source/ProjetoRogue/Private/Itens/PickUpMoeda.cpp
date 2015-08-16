@@ -2,7 +2,7 @@
 
 #include "ProjetoRogue.h"
 #include "PickUpMoeda.h"
-#include "Public/Jogador/Jogador.h"
+#include "Jogador.h"
 
 
 APickUpMoeda::APickUpMoeda(const FObjectInitializer& ObjectInitializer)

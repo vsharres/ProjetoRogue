@@ -1,13 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Inimigos/Inimigo.h"
-#include "Public/Salas/Sala.h"
-#include "Public/Projeteis/Projectil.h"
-#include "Public/Itens/PickUpEnergia.h"
-#include "Public/Itens/PickUpMoeda.h"
-#include "Public/Itens/PickUpVida.h"
-
+#include "ProjetoRogue.h"
+#include "Inimigos/Inimigo.h"
+#include "Sala.h"
+#include "Projectil.h"
+#include "PickUpEnergia.h"
+#include "PickUpMoeda.h"
+#include "PickUpVida.h"
 
 // Sets default values
 AInimigo::AInimigo()
@@ -28,6 +27,7 @@ void AInimigo::BeginPlay()
 {
 	Super::BeginPlay();
 
+	
 }
 
 // Called every frame
@@ -42,11 +42,26 @@ void AInimigo::Tick(float DeltaTime)
 		Destroy();
 	}
 
+
+}
+
+void AInimigo::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	
+
+	Super::EndPlay(EndPlayReason);
 }
 
 void AInimigo::ReceberDano(const float& dano)
 {
 	Stats.Vida -= dano;
+
+	AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
+
+	if (jogador)
+	{
+		jogador->GerarPopUp(dano, this);
+	}
 }
 
 void AInimigo::AplicarStatsProjetil(AProjectil* projetil)
@@ -69,7 +84,7 @@ bool AInimigo::EstaVivo()
 
 void AInimigo::SpawnPickUp()
 {
-	const float EXPLOSAO_DELTA = 10.0f;
+	const float EXPLOSAO_DELTA = 100.0f;
 
 	FRandomStream stream = FRandomStream();
 
@@ -83,11 +98,11 @@ void AInimigo::SpawnPickUp()
 
 			if (pickSpawn)
 			{
-				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
-					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),
-					pickSpawn->GetActorLocation().Z - EXPLOSAO_DELTA * 10.0f);
+				FVector origem = FVector(stream.FRandRange(GetActorLocation().X - EXPLOSAO_DELTA, GetActorLocation().X + EXPLOSAO_DELTA),
+					stream.FRandRange(GetActorLocation().Y - EXPLOSAO_DELTA, GetActorLocation().Y + EXPLOSAO_DELTA),
+					GetActorLocation().Z - EXPLOSAO_DELTA * 10.0f);
 
-				pickSpawn->GetColisor()->AddRadialImpulse(origem, 50.0f, stream.FRandRange(25, 50.0f), ERadialImpulseFalloff::RIF_Constant);
+				pickSpawn->GetColisor()->AddRadialImpulse(origem, 500.0f, stream.FRandRange(25, 50.0f), ERadialImpulseFalloff::RIF_Constant);
 			}
 
 			continue;
@@ -130,3 +145,5 @@ void AInimigo::SpawnPickUp()
 	}
 
 }
+
+

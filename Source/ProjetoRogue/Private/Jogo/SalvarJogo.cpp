@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ProjetoRogue.h"
-#include "Public/Jogo/SalvarJogo.h"
+#include "SalvarJogo.h"
 
 
 USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)

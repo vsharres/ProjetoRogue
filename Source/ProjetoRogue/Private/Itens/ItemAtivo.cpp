@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Itens/ItemAtivo.h"
-#include "Public/Jogador/Jogador.h"
+#include "ProjetoRogue.h"
+#include "ItemAtivo.h"
+#include "Jogador.h"
 
 UItemAtivo::UItemAtivo()
 {

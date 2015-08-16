@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Itens/Item.h"
+#include "Item.h"
 #include "ItemAtivo.generated.h"
 
 /**

@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Projeteis/Projectil.h"
+#include "ProjetoRogue.h"
+#include "Projectil.h"
 
 
 // Sets default values
@@ -85,7 +85,7 @@ void AProjectil::DesativarProjetil()
 
 	SetActorHiddenInGame(true);
 
-	SetActorLocation(FVector(0, 0, -1000));
+	SetActorLocation(FVector(0, 0, 1000));
 
 	CompCollisao->Deactivate();
 	CompMovimentacao->Deactivate();

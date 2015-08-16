@@ -1,16 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Public/ProjetoRogue.h"
-#include "Public/Salas/SalasGerador.h"
-#include "Public/Salas/Corredor.h"
-#include "Public/Salas/Sala.h"
-#include "Public/Salas/Sala2P.h"
-#include "Public/Salas/Sala2PDireita.h"
-#include "Public/Salas/Sala2PEsquerda.h"
-#include "Public/Salas/Sala3P.h"
-#include "Public/Salas/Sala3PDireita.h"
-#include "Public/Salas/Sala3PEsquerda.h"
-#include "Public/Salas/Sala4P.h"
+#include "SalasGerador.h"
+#include "Corredor.h"
+#include "Sala.h"
+#include "Sala2P.h"
+#include "Sala2PDireita.h"
+#include "Sala2PEsquerda.h"
+#include "Sala3P.h"
+#include "Sala3PDireita.h"
+#include "Sala3PEsquerda.h"
+#include "Sala4P.h"
 
 
 // Sets default values

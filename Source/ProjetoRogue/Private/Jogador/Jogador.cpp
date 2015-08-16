@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Jogador/Jogador.h"
-#include "Public/Projeteis/Projectil.h"
-#include "Public/Itens/ItemAtivo.h"
-#include "Public/Itens/ItemPassivo.h"
-#include "Public/Itens/ItemProjetil.h"
+#include "ProjetoRogue.h"
+#include "Jogador.h"
+#include "Projectil.h"
+#include "ItemAtivo.h"
+#include "ItemPassivo.h"
+#include "ItemProjetil.h"
 
 // Sets default values
 AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
@@ -233,8 +233,8 @@ void AJogador::SalvarJogador()
 		SaveInst->Moedas = this->Moedas;
 		SaveInst->bPossuiChave = this->bPossuiChave;
 
-		//SaveInst->JogadorLocation = this->GetActorLocation();
-		//SaveInst->JogadorRotation = this->GetActorRotation();
+		SaveInst->JogadorLocation = this->GetActorLocation();
+		SaveInst->JogadorRotation = this->GetActorRotation();
 
 		if (ProjetilAtual->IsValidLowLevelFast())
 		{
@@ -272,8 +272,8 @@ void AJogador::CarregarJogador()
 		this->Moedas = SaveInst->Moedas;
 		this->bPossuiChave = SaveInst->bPossuiChave;
 
-		//this->SetActorLocation(SaveInst->JogadorLocation);
-		//this->SetActorRotation(SaveInst->JogadorRotation);
+		this->SetActorLocation(SaveInst->JogadorLocation);
+		this->SetActorRotation(SaveInst->JogadorRotation);
 
 		if (!SaveInst->ProjetilInicial_Referencia.IsEmpty())
 		{
@@ -375,6 +375,14 @@ void AJogador::Tick(float DeltaTime)
 	ItemCooldown(DeltaTime);
 
 
+}
+
+void AJogador::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	ProjetilPool.Empty();
+	ItensPassivos.Empty();
+
+	Super::EndPlay(EndPlayReason);
 }
 
 void AJogador::ItemCooldown(float DeltaTime)

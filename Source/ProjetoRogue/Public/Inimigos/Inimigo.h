@@ -3,8 +3,9 @@
 #pragma once
 
 #include "GameFramework/Pawn.h"
-#include "Interfaces/DanoInterface.h"
+#include "DanoInterface.h"
 #include "Inimigo.generated.h"
+
 
 UENUM(BlueprintType)
 enum class ETipoInimigo :uint8
@@ -27,7 +28,7 @@ struct FInimigoStats
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float Vida;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
@@ -42,10 +43,10 @@ struct FInimigoStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float Range;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float TamanhoProjetil;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
@@ -60,7 +61,7 @@ struct FInimigoStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoAtaque TipoAtaque;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float range = 100.0f, float fireRate = 1.0f, float tamanho =1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float range = 100.0f, float fireRate = 1.0f, float tamanho = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
 		VidaMax = vida;
@@ -78,7 +79,7 @@ struct FInimigoStats
 };
 
 //TODO
-UCLASS(ABSTRACT,Blueprintable)
+UCLASS(ABSTRACT, Blueprintable)
 class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 {
 	GENERATED_BODY()
@@ -86,7 +87,7 @@ class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
-		float NumPickUps;
+		int32 NumPickUps;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		float ChanceSpawnVida;
@@ -124,8 +125,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
-	UFUNCTION(BlueprintCallable, Category ="Inimigos")
-	virtual void ReceberDano(const float& dano) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UFUNCTION(BlueprintCallable, Category = "Inimigos")
+		virtual void ReceberDano(const float& dano) override;
 
 	UFUNCTION()
 		bool EstaVivo();

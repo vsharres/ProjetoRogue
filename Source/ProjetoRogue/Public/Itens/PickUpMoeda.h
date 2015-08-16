@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Itens/PickUp.h"
+#include "PickUp.h"
 #include "PickUpMoeda.generated.h"
 
 /**

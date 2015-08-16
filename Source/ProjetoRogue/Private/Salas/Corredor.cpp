@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Salas/Corredor.h"
+#include "ProjetoRogue.h"
+#include "Corredor.h"
 
 
 // Sets default values

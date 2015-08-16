@@ -3,8 +3,8 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Public/Jogador/Jogador.h"
-#include "Public/Inimigos/Inimigo.h"
+#include "Jogador.h"
+#include "Inimigo.h"
 #include "Projectil.generated.h"
 
 USTRUCT()

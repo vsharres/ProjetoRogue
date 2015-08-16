@@ -3,7 +3,7 @@
 #pragma once
 
 #include "GameFramework/SaveGame.h"
-#include "Public/Jogador/Jogador.h"
+#include "Jogador.h"
 #include "SalvarJogo.generated.h"
 
 /**
