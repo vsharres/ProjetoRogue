@@ -4,7 +4,8 @@
 #include "InimigoRange.h"
 #include "Projectil.h"
 
-AInimigoRange::AInimigoRange()
+AInimigoRange::AInimigoRange(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	Stats.Tipo = ETipoInimigo::TORRE;
 	Stats.TipoAtaque = ETipoAtaque::RANGE;

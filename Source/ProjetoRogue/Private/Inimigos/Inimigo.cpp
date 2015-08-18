@@ -9,10 +9,14 @@
 #include "PickUpVida.h"
 
 // Sets default values
-AInimigo::AInimigo()
+AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
+	:Super(ObjectInitializer)
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
+	RootComponent = Colisor;
 
 	Stats = FInimigoStats();
 	NumPickUps = 1;
@@ -20,6 +24,11 @@ AInimigo::AInimigo()
 	ChanceSpawnEnergia = 5.0f;
 	ChanceSpawnMoeda = 3.0f;
 
+}
+
+UCapsuleComponent* AInimigo::GetColisor()
+{
+	return Colisor;
 }
 
 // Called when the game starts or when spawned

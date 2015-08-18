@@ -238,6 +238,8 @@ void ASalasGerador::CarregarSalas()
 	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo)
 	{
 		this->Seed = SaveInst->Seed;
+		this->MaxNumSalas = SaveInst->MaxNumSalas;
+		this->MinNumSalas = SaveInst->MinNumSalas;
 		this->SalasCarregadas.Empty();
 		this->SalasCarregadas = SaveInst->SalasComInimigos;
 
@@ -247,12 +249,19 @@ void ASalasGerador::CarregarSalas()
 void ASalasGerador::SalvarSalas()
 {
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
+	{
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst->IsValidLowLevelFast())
 	{
 		SaveInst->Seed = this->Seed;
-
+		SaveInst->MaxNumSalas = this->MaxNumSalas;
+		SaveInst->MinNumSalas = this->MinNumSalas;
 		SaveInst->SalasComInimigos.Empty();
 
 		for (const auto& Sala : Salas)

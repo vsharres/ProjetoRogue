@@ -59,10 +59,10 @@ class PROJETOROGUE_API AProjectil : public AActor
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
-		FProjetilStats Stats;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		bool bAtivo;
+
+	UPROPERTY(VisibleAnywhere, Category = "Stats")
+		FProjetilStats Stats;
 
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
@@ -73,7 +73,6 @@ private:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UStaticMeshComponent* Mesh;
-
 
 public:
 	// Sets default values for this actor's properties

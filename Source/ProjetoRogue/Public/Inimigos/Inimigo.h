@@ -86,6 +86,9 @@ class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 
 private:
 
+	UPROPERTY(VisibleDefaultsOnly, Category = "Colisor")
+		UCapsuleComponent* Colisor;
+
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		int32 NumPickUps;
 
@@ -117,7 +120,10 @@ public:
 	class ASala* SalaPai;
 
 	// Sets default values for this pawn's properties
-	AInimigo();
+	AInimigo(const FObjectInitializer& ObjectInitializer);
+
+	UFUNCTION(BlueprintPure, Category = "Colisor")
+		UCapsuleComponent* GetColisor();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

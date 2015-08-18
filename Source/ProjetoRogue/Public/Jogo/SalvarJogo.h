@@ -38,6 +38,12 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		int32 Seed;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
+		int32 MaxNumSalas;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
+		int32 MinNumSalas;
+
 	//Jogador
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
