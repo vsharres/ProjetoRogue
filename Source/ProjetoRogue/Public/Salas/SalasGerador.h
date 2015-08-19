@@ -37,6 +37,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<class ACorredor> Corredor;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		TSubclassOf<ACorredor> CorredorLoja;
+
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaItemGerada;
 

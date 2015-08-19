@@ -20,7 +20,7 @@ private:
 
 public:	
 	// Sets default values for this actor's properties
-	ACorredor();
+	ACorredor(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION()
 		FVector GetEscala();

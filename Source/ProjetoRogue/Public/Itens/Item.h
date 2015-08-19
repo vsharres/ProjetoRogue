@@ -45,6 +45,9 @@ struct FItemStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		int32 IncrementaEnergiaMax;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Strucht")
+		int32 Custo;
+
 
 	FORCEINLINE	FItemStats& operator+=(const FItemStats& itemStats)
 	{
@@ -62,7 +65,7 @@ struct FItemStats
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0, int32 custo = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
@@ -73,6 +76,7 @@ struct FItemStats
 		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
 		IncrementaEnergiaMax = incEnerMax;
+		Custo = custo;
 	}
 
 
