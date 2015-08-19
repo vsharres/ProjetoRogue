@@ -31,10 +31,14 @@ struct FLojaSlot{
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
 	class UItem* Item;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+		bool bComprado;
+
 	FLojaSlot() : Custo(10),
 		Efeito(0),
 		Tipo(ESlotTipo::ENERGIA),
-		Item(nullptr)
+		Item(nullptr),
+		bComprado(false)
 	{}
 
 	~FLojaSlot()
@@ -54,6 +58,9 @@ class PROJETOROGUE_API ACorredorLoja : public ACorredor
 	GENERATED_BODY()
 	
 private:
+
+	UPROPERTY(VisibleDefaultsOnly, Category = "Root")
+		USceneComponent* CorredorLoja;
 
 	UPROPERTY(VisibleDefaultsOnly, Category ="Trigger")
 		UBoxComponent* TriggerLoja;
@@ -76,6 +83,12 @@ public:
 
 	UFUNCTION()
 		void ComprarSlot(int32 slot, class AJogador* jogador);
+
+	UFUNCTION()
+		void SalvarLoja();
+
+	UFUNCTION()
+		void CarregarLoja();
 	
 	
 };

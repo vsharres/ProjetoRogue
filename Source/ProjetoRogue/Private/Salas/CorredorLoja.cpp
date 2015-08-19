@@ -10,6 +10,9 @@
 ACorredorLoja::ACorredorLoja(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	CorredorLoja = ObjectInitializer.CreateDefaultSubobject<USceneComponent>(this, TEXT("Corredor Loja"));
+	RootComponent = CorredorLoja;
+
 	TriggerLoja = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("Trigger Loja"));
 	TriggerLoja->AttachTo(RootComponent);
 	Slots.AddDefaulted(3);
@@ -21,7 +24,7 @@ void ACorredorLoja::BeginPlay()
 	Super::BeginPlay();
 
 	InicializarLoja();
-	
+
 }
 
 void ACorredorLoja::InicializarLoja()
@@ -65,6 +68,12 @@ void ACorredorLoja::InicializarLoja()
 
 	}
 
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
+
+	if (!gameMode->bNovoJogo)
+	{
+		CarregarLoja();
+	}
 
 }
 
@@ -84,6 +93,41 @@ void ACorredorLoja::ComprarSlot(int32 slot, AJogador* jogador)
 	}
 
 	jogador->AdicionarMoedas(-Slots[slot].Custo);
-		
+
+	SalvarLoja();
+
+}
+
+void ACorredorLoja::SalvarLoja()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		for (int32 index = 0; index < Slots.Num(); index++)
+		{
+			if (Slots[index].bComprado)
+			{
+				SaveInst->ItensComprados[index] = true;
+			}
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+}
+
+void ACorredorLoja::CarregarLoja()
+{
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		for (int32 index = 0; index < Slots.Num(); index++)
+		{
+			Slots[index].bComprado = SaveInst->ItensComprados[index];
+		}
+	}
 }
 

@@ -75,6 +75,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		bool bItemEncontrado;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
+		TArray<bool> ItensComprados;
+
 
 	//Construtor
 	USalvarJogo(const FObjectInitializer& ObjectInitializer);

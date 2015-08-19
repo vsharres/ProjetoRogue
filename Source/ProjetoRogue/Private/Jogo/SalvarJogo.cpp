@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ProjetoRogue.h"
-#include "SalvarJogo.h"
+#include "Public/Jogo/SalvarJogo.h"
 
 
 USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
@@ -14,4 +14,6 @@ USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 
 	MaxNumSalas = 5;
 	MinNumSalas = 5;
+
+	ItensComprados.AddDefaulted(3);
 }

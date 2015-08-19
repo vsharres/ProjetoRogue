@@ -40,6 +40,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ACorredor> CorredorLoja;
 
+	UPROPERTY(VisibleAnywhere, Category = "Corredor")
+		bool bCorredorLojaGerado;
+
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaItemGerada;
 
@@ -49,7 +52,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaBossGerada;
 
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	UPROPERTY()
 		TSubclassOf<ASala> SalaGerada;
 
 	UPROPERTY()
@@ -120,7 +123,10 @@ public:
 		void GerarLevel(ASala* SalaAtual);
 
 	UFUNCTION()
-		ASala* GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
+		ASala* GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
+
+	UFUNCTION()
+		void GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPorta);
 
 	UFUNCTION()
 		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);

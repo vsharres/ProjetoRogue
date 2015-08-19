@@ -3,6 +3,7 @@
 #include "Public/ProjetoRogue.h"
 #include "SalasGerador.h"
 #include "Corredor.h"
+#include "CorredorLoja.h"
 #include "Sala.h"
 #include "Sala2P.h"
 #include "Sala2PDireita.h"
@@ -27,6 +28,7 @@ ASalasGerador::ASalasGerador()
 	bSalaItemGerada = false;
 	bSalaChaveGerada = false;
 	bSalaBossGerada = false;
+	bCorredorLojaGerado = false;
 	MinNumSalas = 5;
 	MaxNumSalas = 30;
 
@@ -68,8 +70,16 @@ void ASalasGerador::Inicializar(ASala* Inicial)
 	Salas.Add(NULL);
 
 	AdicionarAoArrayPortas(Inicial);
-	CarregarSalas();
+	
+	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
+	
+	if (!game->bNovoJogo)
+	{
+		CarregarSalas();
+	}
+
 	GerarLevel(Inicial);
+
 	GeracaoTerminada();
 }
 
@@ -417,7 +427,7 @@ void ASalasGerador::GerarLevel(ASala* SalaAtual)
 }
 
 
-ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta)
+ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta)
 {
 	SalaGerada = nullptr;
 
@@ -440,14 +450,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 
 	}
 
-	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
-
-	ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(Corredor, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
-
-	if (!NovoCorredor->IsValidLowLevelFast())
-	{
-		//WARNING
-	}
+	GerarCorredor(SalaAnterior, DirecaoPorta);
 
 	if (NovaSala->GetNumPortas() > ENumeroPortas::UMA)
 	{
@@ -468,6 +471,31 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *NovaSala->GetName(), Salas.Num());
 
 	return NovaSala;
+}
+
+void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPorta)
+{
+	FRandomStream Stream = FRandomStream(Seed);
+
+	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
+
+	int32 Valor = Stream.FRandRange(0, 100);
+
+	if ((Valor >= 70 && !bCorredorLojaGerado) || 
+		(!bCorredorLojaGerado && ((ASala*)SalaGerada->GetDefaultObject(true))->GetTipo() == ETipoSala::BOSS))
+	{
+		ACorredorLoja* NovoCorredor = GetWorld()->SpawnActor<ACorredorLoja>(CorredorLoja, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
+		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
+		bCorredorLojaGerado = true;
+	}
+	else
+	{
+		ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(Corredor, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
+		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
+	}
+
+	
+
 }
 
 void ASalasGerador::ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta)
