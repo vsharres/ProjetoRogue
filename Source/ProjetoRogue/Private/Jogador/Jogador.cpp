@@ -33,7 +33,7 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 
 void AJogador::InicializarJogador()
 {
-	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
 	if (gameMode->bNovoJogo)
 	{
@@ -379,7 +379,6 @@ void AJogador::Tick(float DeltaTime)
 
 
 	ItemCooldown(DeltaTime);
-
 
 }
 

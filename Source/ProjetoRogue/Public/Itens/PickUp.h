@@ -5,7 +5,7 @@
 #include "GameFramework/Actor.h"
 #include "PickUp.generated.h"
 
-UCLASS()
+UCLASS(abstract)
 class PROJETOROGUE_API APickUp : public AActor
 {
 	GENERATED_BODY()

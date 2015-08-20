@@ -20,9 +20,9 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 
 	Stats = FInimigoStats();
 	NumPickUps = 1;
-	ChanceSpawnVida = 10.0f;
-	ChanceSpawnEnergia = 5.0f;
-	ChanceSpawnMoeda = 3.0f;
+	ChanceSpawnVida = 90.0f;
+	ChanceSpawnEnergia = 60.0f;
+	ChanceSpawnMoeda = 30.0f;
 
 }
 
@@ -93,7 +93,7 @@ bool AInimigo::EstaVivo()
 
 void AInimigo::SpawnPickUp()
 {
-	const float EXPLOSAO_DELTA = 100.0f;
+	const float EXPLOSAO_DELTA = 50.0f;
 
 	FRandomStream stream = FRandomStream();
 
@@ -101,7 +101,7 @@ void AInimigo::SpawnPickUp()
 	{
 		stream.GenerateNewSeed();
 
-		if (stream.FRandRange(0, ChanceSpawnVida) >= ChanceSpawnVida/2)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnVida)
 		{
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
 
@@ -117,7 +117,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, ChanceSpawnEnergia) >= ChanceSpawnEnergia/2)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnEnergia)
 		{
 			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
 
@@ -134,7 +134,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, ChanceSpawnMoeda) >= ChanceSpawnMoeda/2)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnMoeda)
 		{
 			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
 
