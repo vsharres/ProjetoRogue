@@ -1,9 +1,9 @@
 ------------------
 System Information
 ------------------
-Time of this report: 5/17/2015, 20:45:26
+Time of this report: 8/21/2015, 15:31:58
        Machine name: HARRESHAUSEN
-   Operating System: Windows 8.1 Pro 64-bit (6.3, Build 9600) (9600.winblue_r9.150322-1500)
+   Operating System: Windows 8.1 Pro 64-bit (6.3, Build 9600) (9600.winblue_ltsb.150715-0840)
            Language: Portuguese (Regional Setting: Portuguese)
 System Manufacturer: Gigabyte Technology Co., Ltd.
        System Model: To be filled by O.E.M.
@@ -11,7 +11,7 @@ System Manufacturer: Gigabyte Technology Co., Ltd.
           Processor: AMD FX(tm)-6300 Six-Core Processor              (6 CPUs), ~3.5GHz
              Memory: 16384MB RAM
 Available OS Memory: 16352MB RAM
-          Page File: 5343MB used, 13440MB available
+          Page File: 9194MB used, 10628MB available
         Windows Dir: C:\Windows
     DirectX Version: DirectX 11
 DX Setup Parameters: Not found
@@ -50,8 +50,8 @@ Display Devices
            DAC type: Integrated RAMDAC
         Device Type: Full Device
          Device Key: Enum\PCI\VEN_10DE&DEV_1004&SUBSYS_07843842&REV_A1
-     Display Memory: 11159 MB
-   Dedicated Memory: 2983 MB
+     Display Memory: 11157 MB
+   Dedicated Memory: 2981 MB
       Shared Memory: 8175 MB
        Current Mode: 1920 x 1080 (32 bit) (60Hz)
        Monitor Name: AOC 2240w
@@ -60,26 +60,26 @@ Display Devices
         Native Mode: 1920 x 1080(p) (60.000Hz)
         Output Type: DVI
         Driver Name: nvd3dumx.dll,nvwgf2umx.dll,nvwgf2umx.dll,nvd3dum,nvwgf2um,nvwgf2um
-Driver File Version: 9.18.0013.5012 (English)
-     Driver Version: 9.18.13.5012
+Driver File Version: 10.18.0013.5560 (English)
+     Driver Version: 10.18.13.5560
         DDI Version: 11
      Feature Levels: 11.0,10.1,10.0,9.3,9.2,9.1
        Driver Model: WDDM 1.3
 Graphics Preemption: DMA
  Compute Preemption: DMA
            Miracast: Not Supported by Graphics driver
-Hybrid Graphics GPU: Not Supported
+Hybrid Graphics GPU: Integrated
      Power P-states: Not Supported
   Driver Attributes: Final Retail
-   Driver Date/Size: 4/8/2015 21:58:18, 15818528 bytes
+   Driver Date/Size: 8/7/2015 08:06:30, 15510112 bytes
         WHQL Logo'd: Yes
     WHQL Date Stamp: 
-  Device Identifier: {D7B71E3E-5344-11CF-6648-89271CC2C435}
+  Device Identifier: {D7B71E3E-5344-11CF-4A4E-89271CC2C735}
           Vendor ID: 0x10DE
           Device ID: 0x1004
           SubSys ID: 0x07843842
         Revision ID: 0x00A1
- Driver Strong Name: oem60.inf:0f066de3181e420a:Section034:9.18.13.5012:pci\ven_10de&dev_1004
+ Driver Strong Name: oem214.inf:0f066de3181e420a:Section034:10.18.13.5560:pci\ven_10de&dev_1004
      Rank Of Driver: 00DA2001
         Video Accel: ModeMPEG2_A ModeMPEG2_C ModeVC1_C ModeWMV9_C 
         DXVA2 Modes: DXVA2_ModeMPEG2_IDCT  DXVA2_ModeMPEG2_VLD  DXVA2_ModeVC1_VLD  DXVA2_ModeVC1_IDCT  DXVA2_ModeWMV9_IDCT  DXVA2_ModeH264_VLD_NoFGT  
@@ -319,22 +319,22 @@ Vendor/Product ID: 0x1532, 0x0037
 Vendor/Product ID: 0x1532, 0x0037
         FF Driver: n/a
 
+      Device Name: Razer DeathAdder
+         Attached: 1
+    Controller ID: 0x0
+Vendor/Product ID: 0x1532, 0x0037
+        FF Driver: n/a
+
+      Device Name: Razer DeathAdder
+         Attached: 1
+    Controller ID: 0x0
+Vendor/Product ID: 0x1532, 0x0037
+        FF Driver: n/a
+
       Device Name: USB Receiver
          Attached: 1
     Controller ID: 0x0
 Vendor/Product ID: 0x046D, 0xC52B
-        FF Driver: n/a
-
-      Device Name: Razer DeathAdder
-         Attached: 1
-    Controller ID: 0x0
-Vendor/Product ID: 0x1532, 0x0037
-        FF Driver: n/a
-
-      Device Name: Razer DeathAdder
-         Attached: 1
-    Controller ID: 0x0
-Vendor/Product ID: 0x1532, 0x0037
         FF Driver: n/a
 
       Device Name: USB Receiver
@@ -386,6 +386,13 @@ Gameport Devices
 ------------
 PS/2 Devices
 ------------
++ HID Keyboard Device
+| Vendor/Product ID: 0x046D, 0xC52B
+| Matching Device ID: HID_DEVICE_SYSTEM_KEYBOARD
+| Service: kbdhid
+| Driver: kbdhid.sys, 11/4/2014 03:54:47, 32256 bytes
+| Driver: kbdclass.sys, 11/4/2014 16:25:09, 59712 bytes
+| 
 + Razer DeathAdder
 | Vendor/Product ID: 0x1532, 0x0037
 | Matching Device ID: HID\VID_1532&PID_0037&MI_01&Col01
@@ -395,13 +402,6 @@ PS/2 Devices
 | Driver: kbdhid.sys, 11/4/2014 03:54:47, 32256 bytes
 | Driver: kbdclass.sys, 11/4/2014 16:25:09, 59712 bytes
 | Driver: WdfCoInstaller01009.dll, 7/14/2009 03:21:12, 1721576 bytes
-| 
-+ HID Keyboard Device
-| Vendor/Product ID: 0x046D, 0xC52B
-| Matching Device ID: HID_DEVICE_SYSTEM_KEYBOARD
-| Service: kbdhid
-| Driver: kbdhid.sys, 11/4/2014 03:54:47, 32256 bytes
-| Driver: kbdclass.sys, 11/4/2014 16:25:09, 59712 bytes
 | 
 + HID Keyboard Device
 | Vendor/Product ID: 0x1532, 0x0037
@@ -431,25 +431,25 @@ PS/2 Devices
 Disk & DVD/CD-ROM Drives
 ------------------------
       Drive: C:
- Free Space: 104.1 GB
+ Free Space: 44.8 GB
 Total Space: 237.9 GB
 File System: NTFS
       Model: Samsung SSD 840 EVO 250GB
 
       Drive: E:
- Free Space: 757.9 GB
+ Free Space: 600.0 GB
 Total Space: 953.7 GB
 File System: NTFS
       Model: WDC WD10EZEX-00KUWA0
 
       Drive: F:
- Free Space: 689.7 GB
+ Free Space: 691.3 GB
 Total Space: 953.8 GB
 File System: NTFS
       Model: WD My Passport 0830 USB Device
 
       Drive: H:
- Free Space: 7.0 GB
+ Free Space: 54.1 GB
 Total Space: 113.9 GB
 File System: NTFS
       Model: KINGSTON SH103S3120G
@@ -549,7 +549,7 @@ Device ID: PCI\VEN_1022&DEV_1605&SUBSYS_00000000&REV_00\3&11583659&0&C5
      Name: Etron USB 3.0 eXtensible Host Controller - 0100 (Microsoft)
 Device ID: PCI\VEN_1B6F&DEV_7023&SUBSYS_50071458&REV_01\4&186C6B44&0&00A9
    Driver: C:\Windows\system32\DRIVERS\UCX01000.SYS, 6.03.9600.17393 (English), 10/7/2014 03:54:45, 189248 bytes
-   Driver: C:\Windows\system32\DRIVERS\USBXHCI.SYS, 6.03.9600.17393 (English), 10/7/2014 03:54:45, 324928 bytes
+   Driver: C:\Windows\system32\DRIVERS\USBXHCI.SYS, 6.03.9600.17795 (English), 4/16/2015 03:17:07, 325464 bytes
 
      Name: PCI standard ISA bridge
 Device ID: PCI\VEN_1002&DEV_439D&SUBSYS_439D1002&REV_40\3&11583659&0&A3
@@ -565,58 +565,58 @@ Device ID: PCI\VEN_1002&DEV_5A1C&SUBSYS_5A141002&REV_00\3&11583659&0&48
 
      Name: NVIDIA GeForce GTX 780
 Device ID: PCI\VEN_10DE&DEV_1004&SUBSYS_07843842&REV_A1\4&2534E90F&0&0010
-   Driver: C:\Program Files\NVIDIA Corporation\Drs\dbInstaller.exe, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 447632 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\Drs\nvdrsdb.bin, 4/8/2015 21:58:18, 1285136 bytes
-   Driver: C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_c625470f30f3e1c0\NvCplSetupInt.exe, 1.00.0005.0000 (Portuguese), 4/8/2015 21:58:18, 95351944 bytes
-   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\Nvd3d9wrap.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 153208 bytes
-   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\detoured.dll, 4/8/2015 21:58:18, 12104 bytes
-   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\nvdxgiwrap.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 105512 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\Nvd3d9wrapx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 184096 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\detoured.dll, 4/8/2015 21:58:18, 12104 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\nvdxgiwrapx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 125392 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\Drs\dbInstaller.exe, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 448120 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\Drs\nvdrsdb.bin, 8/7/2015 08:06:30, 1302184 bytes
+   Driver: C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_7e8e78715a0d1180\NvCplSetupInt.exe, 1.00.0005.0000 (Portuguese), 8/7/2015 08:06:30, 95390344 bytes
+   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\detoured.dll, 8/7/2015 08:06:30, 12080 bytes
+   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\nvd3d9wrap.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 153232 bytes
+   Driver: C:\Program Files (x86)\NVIDIA Corporation\coprocmanager\nvdxgiwrap.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 105328 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\detoured.dll, 8/7/2015 08:06:30, 12080 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\nvd3d9wrapx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 183096 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\coprocmanager\nvdxgiwrapx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 125392 bytes
    Driver: C:\Program Files\NVIDIA Corporation\license.txt, 3/13/2015 16:41:47, 21910 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\MCU.exe, 1.01.5204.20580 (Portuguese), 4/8/2015 21:58:18, 841360 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvdebugdump.exe, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 227984 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.1.pdf, 4/8/2015 21:58:18, 69277 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 415560 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvml.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 1174344 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\OpenCL\OpenCL.dll, 1.02.0011.0000 (English), 4/8/2015 21:58:18, 66704 bytes
-   Driver: C:\Program Files\NVIDIA Corporation\OpenCL\OpenCL64.dll, 1.02.0011.0000 (English), 4/8/2015 21:58:18, 78480 bytes
-   Driver: C:\Windows\system32\DRIVERS\nvlddmkm.sys, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 10423952 bytes
-   Driver: C:\Windows\system32\NvFBC64.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 1037640 bytes
-   Driver: C:\Windows\system32\NvIFR64.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 1047368 bytes
-   Driver: C:\Windows\system32\NvIFROpenGL.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 390472 bytes
-   Driver: C:\Windows\system32\nvEncodeAPI64.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 499344 bytes
-   Driver: C:\Windows\system32\nvapi64.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 3317344 bytes
-   Driver: C:\Windows\system32\nvcompiler.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 30397072 bytes
-   Driver: C:\Windows\system32\nvcuda.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 14006752 bytes
-   Driver: C:\Windows\system32\nvcuvid.dll, 7.17.0013.5012 (English), 4/8/2015 21:58:18, 2896528 bytes
-   Driver: C:\Windows\system32\nvd3dumx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 15818528 bytes
-   Driver: C:\Windows\system32\nvinfo.pb, 4/8/2015 21:58:18, 29329 bytes
-   Driver: C:\Windows\system32\nvinitx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 175880 bytes
-   Driver: C:\Windows\system32\nvmcumd.dll, 4/8/2015 21:58:18, 849552 bytes
-   Driver: C:\Windows\system32\nvoglshim64.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 150648 bytes
-   Driver: C:\Windows\system32\nvoglv64.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 31570064 bytes
-   Driver: C:\Windows\system32\nvopencl.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 15716232 bytes
-   Driver: C:\Windows\system32\nvumdshimx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 1086424 bytes
-   Driver: C:\Windows\system32\nvwgf2umx.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 17176128 bytes
-   Driver: C:\Windows\SysWow64\NvFBC.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 962192 bytes
-   Driver: C:\Windows\SysWow64\NvIFR.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 970568 bytes
-   Driver: C:\Windows\SysWow64\NvIFROpenGL.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 346256 bytes
-   Driver: C:\Windows\SysWow64\nvEncodeAPI.dll, 6.14.0013.5012 (English), 4/8/2015 21:58:18, 402576 bytes
-   Driver: C:\Windows\SysWow64\nvapi.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 2935416 bytes
-   Driver: C:\Windows\SysWow64\nvcompiler.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 25375048 bytes
-   Driver: C:\Windows\SysWow64\nvcuda.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 11380728 bytes
-   Driver: C:\Windows\SysWow64\nvcuvid.dll, 7.17.0013.5012 (English), 4/8/2015 21:58:18, 2573456 bytes
-   Driver: C:\Windows\SysWow64\nvd3dum.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 12689592 bytes
-   Driver: C:\Windows\SysWow64\nvinit.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 154256 bytes
-   Driver: C:\Windows\SysWow64\nvoglshim32.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 128512 bytes
-   Driver: C:\Windows\SysWow64\nvoglv32.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 24053576 bytes
-   Driver: C:\Windows\SysWow64\nvopencl.dll, 8.17.0013.5012 (English), 4/8/2015 21:58:18, 12852784 bytes
-   Driver: C:\Windows\SysWow64\nvumdshim.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 927440 bytes
-   Driver: C:\Windows\SysWow64\nvwgf2um.dll, 9.18.0013.5012 (English), 4/8/2015 21:58:18, 14617288 bytes
-   Driver: C:\Windows\system32\nvdispco6435012.dll, 2.00.0043.0004 (English), 4/8/2015 21:58:18, 1895568 bytes
-   Driver: C:\Windows\system32\nvdispgenco6435012.dll, 2.00.0020.0002 (English), 4/8/2015 21:58:18, 1557648 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\MCU.exe, 1.01.5204.20580 (Portuguese), 8/7/2015 08:06:30, 841336 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvdebugdump.exe, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 227960 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.1.pdf, 8/7/2015 08:06:30, 72643 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 415536 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\NVSMI\nvml.dll, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 1195128 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\OpenCL\OpenCL.dll, 1.02.0011.0000 (English), 8/7/2015 08:06:30, 105080 bytes
+   Driver: C:\Program Files\NVIDIA Corporation\OpenCL\OpenCL64.dll, 1.02.0011.0000 (English), 8/7/2015 08:06:30, 112760 bytes
+   Driver: C:\Windows\system32\DRIVERS\nvlddmkm.sys, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 11076216 bytes
+   Driver: C:\Windows\system32\NvFBC64.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 1059960 bytes
+   Driver: C:\Windows\system32\NvIFR64.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 1063216 bytes
+   Driver: C:\Windows\system32\NvIFROpenGL.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 408184 bytes
+   Driver: C:\Windows\system32\nvEncodeAPI64.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 512720 bytes
+   Driver: C:\Windows\system32\nvapi64.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 3518248 bytes
+   Driver: C:\Windows\system32\nvcompiler.dll, 8/7/2015 08:06:30, 42840184 bytes
+   Driver: C:\Windows\system32\nvcuda.dll, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 14928048 bytes
+   Driver: C:\Windows\system32\nvcuvid.dll, 7.17.0013.5560 (English), 8/7/2015 08:06:30, 2937648 bytes
+   Driver: C:\Windows\system32\nvd3dumx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 15510112 bytes
+   Driver: C:\Windows\system32\nvinfo.pb, 8/7/2015 08:06:30, 33050 bytes
+   Driver: C:\Windows\system32\nvinitx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 177088 bytes
+   Driver: C:\Windows\system32\nvmcumd.dll, 8/7/2015 08:06:30, 878816 bytes
+   Driver: C:\Windows\system32\nvoglshim64.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 150648 bytes
+   Driver: C:\Windows\system32\nvoglv64.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 22520624 bytes
+   Driver: C:\Windows\system32\nvopencl.dll, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 16630096 bytes
+   Driver: C:\Windows\system32\nvumdshimx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 1104440 bytes
+   Driver: C:\Windows\system32\nvwgf2umx.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 17124832 bytes
+   Driver: C:\Windows\SysWow64\NvFBC.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 931448 bytes
+   Driver: C:\Windows\SysWow64\NvIFR.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 985208 bytes
+   Driver: C:\Windows\SysWow64\NvIFROpenGL.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 364152 bytes
+   Driver: C:\Windows\SysWow64\nvEncodeAPI.dll, 6.14.0013.5560 (English), 8/7/2015 08:06:30, 421544 bytes
+   Driver: C:\Windows\SysWow64\nvapi.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 3106384 bytes
+   Driver: C:\Windows\SysWow64\nvcompiler.dll, 8/7/2015 08:06:30, 37819000 bytes
+   Driver: C:\Windows\SysWow64\nvcuda.dll, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 12179496 bytes
+   Driver: C:\Windows\SysWow64\nvcuvid.dll, 7.17.0013.5560 (English), 8/7/2015 08:06:30, 2624816 bytes
+   Driver: C:\Windows\SysWow64\nvd3dum.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 12513288 bytes
+   Driver: C:\Windows\SysWow64\nvinit.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 155792 bytes
+   Driver: C:\Windows\SysWow64\nvoglshim32.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 128512 bytes
+   Driver: C:\Windows\SysWow64\nvoglv32.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 18540336 bytes
+   Driver: C:\Windows\SysWow64\nvopencl.dll, 8.17.0013.5560 (English), 8/7/2015 08:06:30, 13656016 bytes
+   Driver: C:\Windows\SysWow64\nvumdshim.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 942688 bytes
+   Driver: C:\Windows\SysWow64\nvwgf2um.dll, 10.18.0013.5560 (English), 8/7/2015 08:06:30, 14673920 bytes
+   Driver: C:\Windows\system32\nvdispco6435560.dll, 2.00.0043.0004 (English), 8/7/2015 08:06:30, 1898104 bytes
+   Driver: C:\Windows\system32\nvdispgenco6435560.dll, 2.00.0021.0002 (English), 8/7/2015 08:06:30, 1558832 bytes
 
      Name: Sound Blaster Audio Controller
 Device ID: PCI\VEN_1102&DEV_0012&SUBSYS_00101102&REV_01\4&33E4407A&0&0058
@@ -664,7 +664,7 @@ Device ID: PCI\VEN_1002&DEV_5A16&SUBSYS_5A141002&REV_00\3&11583659&0&10
      Name: Etron USB 3.0 eXtensible Host Controller - 0100 (Microsoft)
 Device ID: PCI\VEN_1B6F&DEV_7023&SUBSYS_50071458&REV_01\4&6F5B703&0&0048
    Driver: C:\Windows\system32\DRIVERS\UCX01000.SYS, 6.03.9600.17393 (English), 10/7/2014 03:54:45, 189248 bytes
-   Driver: C:\Windows\system32\DRIVERS\USBXHCI.SYS, 6.03.9600.17393 (English), 10/7/2014 03:54:45, 324928 bytes
+   Driver: C:\Windows\system32\DRIVERS\USBXHCI.SYS, 6.03.9600.17795 (English), 4/16/2015 03:17:07, 325464 bytes
 
      Name: Standard OpenHCD USB Host Controller
 Device ID: PCI\VEN_1002&DEV_4399&SUBSYS_50041458&REV_00\3&11583659&0&A5
@@ -1196,13 +1196,13 @@ Diagnostics
 
 Windows Error Reporting:
 +++ WER0 +++:
-Fault bucket -743656393, type 5
+Fault bucket -747753147, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
 Cab Id: 0
 
 Problem signature:
-P1: Data Connect
+P1: Data Reconnect
 P2: 880403fa
 P3: WNP
 P4: Unknown
@@ -1234,13 +1234,13 @@ P10:
 
 
 +++ WER2 +++:
-Fault bucket -747753147, type 5
+Fault bucket -743656393, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
 Cab Id: 0
 
 Problem signature:
-P1: Data Reconnect
+P1: Data Connect
 P2: 880403fa
 P3: WNP
 P4: Unknown
@@ -1253,6 +1253,63 @@ P10:
 
 
 +++ WER3 +++:
+Fault bucket 120292296207, type 4
+Event Name: APPCRASH
+Response: Not available
+Cab Id: 0
+
+Problem signature:
+P1: NvStreamNetworkService.exe
+P2: 4.1.1977.6980
+P3: 55a97f26
+P4: ntdll.dll
+P5: 6.3.9600.17936
+P6: 55a68e0c
+P7: c0000005
+P8: 000000000003b189
+P9: 
+P10: 
+
+
++++ WER4 +++:
+Fault bucket , type 0
+Event Name: APPCRASH
+Response: Not available
+Cab Id: 0
+
+Problem signature:
+P1: NvStreamNetworkService.exe
+P2: 4.1.1977.6980
+P3: 55a97f26
+P4: ntdll.dll
+P5: 6.3.9600.17936
+P6: 55a68e0c
+P7: c0000005
+P8: 000000000003b189
+P9: 
+P10: 
+
+
++++ WER5 +++:
+Fault bucket 128880567441, type 5
+Event Name: FaultTolerantHeap
+Response: Not available
+Cab Id: 0
+
+Problem signature:
+P1: NvStreamNetworkService.exe
+P2: 4.1.1977.6980
+P3: 55A97F26
+P4: ffffbaad
+P5: 
+P6: 
+P7: 
+P8: 
+P9: 
+P10: 
+
+
++++ WER6 +++:
 Fault bucket -743656393, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
@@ -1271,72 +1328,15 @@ P9:
 P10: 
 
 
-+++ WER4 +++:
-Fault bucket 73965843164, type 1
-Event Name: APPCRASH
-Response: Not available
-Cab Id: 0
-
-Problem signature:
-P1: Unity.exe
-P2: 4.6.4.63619
-P3: 551156ff
-P4: KERNELBASE.dll
-P5: 6.3.9600.17415
-P6: 54504ade
-P7: 40010006
-P8: 00014598
-P9: 
-P10: 
-
-
-+++ WER5 +++:
-Fault bucket , type 0
-Event Name: APPCRASH
-Response: Not available
-Cab Id: 0
-
-Problem signature:
-P1: Unity.exe
-P2: 4.6.4.63619
-P3: 551156ff
-P4: KERNELBASE.dll
-P5: 6.3.9600.17415
-P6: 54504ade
-P7: 40010006
-P8: 00014598
-P9: 
-P10: 
-
-
-+++ WER6 +++:
-Fault bucket 91541585923, type 5
-Event Name: PDUWICA
-Response: Not available
-Cab Id: 0
-
-Problem signature:
-P1: 48
-P2: 2.1
-P3: 6.3.0.0
-P4: 1046
-P5: 69
-P6: 
-P7: 
-P8: 
-P9: 
-P10: 
-
-
 +++ WER7 +++:
-Fault bucket -743656393, type 5
+Fault bucket -1972573155, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
 Cab Id: 0
 
 Problem signature:
-P1: Data Connect
-P2: 880403fa
+P1: Test Fast-Reconnect
+P2: 8007274c
 P3: WNP
 P4: Unknown
 P5: Unknown
@@ -1348,13 +1348,13 @@ P10:
 
 
 +++ WER8 +++:
-Fault bucket -1972687002, type 5
+Fault bucket -1972573155, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
 Cab Id: 0
 
 Problem signature:
-P1: Data Fast-Reconnect
+P1: Test Fast-Reconnect
 P2: 8007274c
 P3: WNP
 P4: Unknown
@@ -1367,14 +1367,14 @@ P10:
 
 
 +++ WER9 +++:
-Fault bucket -749155180, type 5
+Fault bucket -1972573155, type 5
 Event Name: WPNConnectionFailure
 Response: Not available
 Cab Id: 0
 
 Problem signature:
-P1: Data Fast-Reconnect
-P2: 880403fa
+P1: Test Fast-Reconnect
+P2: 8007274c
 P3: WNP
 P4: Unknown
 P5: Unknown

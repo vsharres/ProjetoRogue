@@ -45,9 +45,8 @@ struct FItemStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		int32 IncrementaEnergiaMax;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Strucht")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		int32 Custo;
-
 
 	FORCEINLINE	FItemStats& operator+=(const FItemStats& itemStats)
 	{
@@ -101,7 +100,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	class AJogador* Jogador;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FName NomeItem;
 
 	UItem();

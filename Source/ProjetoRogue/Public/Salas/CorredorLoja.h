@@ -81,13 +81,13 @@ public:
 	UFUNCTION()
 		void InicializarLoja();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Loja")
 		void ComprarSlot(int32 slot, class AJogador* jogador);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Loja")
 		void SalvarLoja();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Loja")
 		void CarregarLoja();
 	
 	
