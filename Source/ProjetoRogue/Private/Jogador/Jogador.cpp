@@ -35,7 +35,7 @@ void AJogador::InicializarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (gameMode->bNovoJogo)
+	if (gameMode->bNovoJogo && gameMode->bNaoSalvar)
 	{
 		NovoJogador();
 	}
@@ -224,11 +224,6 @@ void AJogador::AdicionarMoedas(int32 valor)
 void AJogador::SalvarJogador()
 {
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
-
-	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
-	{
-		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-	}
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 

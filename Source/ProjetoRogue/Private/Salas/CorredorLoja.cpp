@@ -70,7 +70,7 @@ void ACorredorLoja::InicializarLoja()
 
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	if (!gameMode->bNovoJogo)
+	if (!gameMode->bNovoJogo && !gameMode->bNaoSalvar)
 	{
 		CarregarLoja();
 	}

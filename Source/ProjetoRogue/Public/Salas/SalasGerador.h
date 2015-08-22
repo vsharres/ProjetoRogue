@@ -64,14 +64,23 @@ private:
 	UPROPERTY()
 		TArray<bool> SalasCarregadas;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		float ComprimentoMax;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		float LarguraMax;
+
+	UPROPERTY()
+		FRandomStream StreamGeracao;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
 		int32 MaxNumSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
 		int32 MinNumSalas;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
@@ -83,7 +92,6 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<ASala*> Salas;
 
-public:
 	// Sets default values for this actor's properties
 	ASalasGerador();
 
@@ -93,7 +101,7 @@ public:
 		static ASalasGerador* GetGeradorSalas(UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void Inicializar(ASala* Inicial);
+		void Inicializar(ASala* Inicial, int32 NovoSeed);
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPorta& Porta);

@@ -18,7 +18,7 @@
 ASalasGerador::ASalasGerador()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 	IndexSala2P = 1;
 	IndexSala3P = 2;
 	IndexSala4P = 3;
@@ -31,6 +31,9 @@ ASalasGerador::ASalasGerador()
 	bCorredorLojaGerado = false;
 	MinNumSalas = 5;
 	MaxNumSalas = 30;
+
+	ComprimentoMax = 80000.0f;
+	LarguraMax = 80000.0f;
 
 }
 
@@ -50,7 +53,7 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 		if (World != nullptr)
 		{
 			for (TActorIterator<ASalasGerador> ActorItr(World); ActorItr; ++ActorItr)
-			{				
+			{
 				if ((*ActorItr)->IsValidLowLevel())
 				{
 					return *ActorItr;
@@ -62,18 +65,21 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 	return nullptr;
 }
 
-void ASalasGerador::Inicializar(ASala* Inicial)
+void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed)
 {
+	this->Seed = NovoSeed;
+	StreamGeracao = FRandomStream(NovoSeed);
+
 	SetNumSalas();
 
 	Salas.Add(Inicial);
 	Salas.Add(NULL);
 
 	AdicionarAoArrayPortas(Inicial);
-	
+
 	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
-	
-	if (!game->bNovoJogo)
+
+	if (!game->bNovoJogo && !game->bNaoSalvar)
 	{
 		CarregarSalas();
 	}
@@ -204,12 +210,10 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 	}
 	else
 	{
-		if (Salas.Num() < NumeroSalas)
-		{
-			indice = IndexSala2P;
-			limite = TiposSalas.Num() - 1;
-		}
 
+		indice = IndexSala2P;
+		limite = TiposSalas.Num() - 1;
+		/*
 		if (Salas.Num() >= 3 && !bSalaItemGerada)
 		{
 			indice = IndexSala3P;
@@ -221,11 +225,11 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 			indice = IndexSala4P;
 			limite = TiposSalas.Num() - 1;
 		}
+		*/
 
 	}
 
-	FRandomStream Stream = FRandomStream(Seed);
-	retornar = TiposSalas[Stream.FRandRange(indice, limite)];
+	retornar = TiposSalas[StreamGeracao.FRandRange(indice, limite)];
 
 	return retornar;
 }
@@ -236,6 +240,7 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 	FVector Pos = (GetDirecaoPorta(Trans.Rotator(), Direcao).Vector() * sala->GetOffset()) + Trans.GetLocation();
 
 	bool result = EstaNoArrayDePosicoes(Pos);
+
 
 	return result;
 }
@@ -287,11 +292,9 @@ void ASalasGerador::GerarSalaEspecial()
 {
 	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
 	{
-		FRandomStream Stream(Seed);
-
 
 		if (!bSalaItemGerada &&
-			(UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) ||
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(MinNumSalas, NumeroSalas) ||
 			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaItem;
@@ -300,7 +303,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaChaveGerada &&
-			(UltimaSalaValida() >= Stream.FRandRange(7, 9) ||
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(7, 9) ||
 			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaChave;
@@ -309,7 +312,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaBossGerada &&
-			(UltimaSalaValida() >= Stream.FRandRange(2, 6) ||
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(2, 6) ||
 			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaBoss;
@@ -331,6 +334,13 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 		{
 			return true;
 		}
+		else if (pos.X > SalaInicial->GetActorLocation().X + ComprimentoMax ||
+			pos.X < SalaInicial->GetActorLocation().X ||
+			pos.Y > SalaInicial->GetActorLocation().Y + LarguraMax / 2 ||
+			pos.Y < SalaInicial->GetActorLocation().Y - LarguraMax / 2)
+		{
+			return true;
+		}
 	}
 
 	return false;
@@ -338,14 +348,12 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 
 void ASalasGerador::SetNumSalas()
 {
-	FRandomStream Stream = FRandomStream(Seed);
-
 	if (MinNumSalas > MaxNumSalas)
 	{
 		MinNumSalas = MaxNumSalas;
 	}
 
-	NumeroSalas = Stream.FRandRange(MinNumSalas, MaxNumSalas);
+	NumeroSalas = StreamGeracao.FRandRange(MinNumSalas, MaxNumSalas);
 
 }
 
@@ -481,7 +489,7 @@ void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPo
 
 	int32 Valor = Stream.FRandRange(0, 100);
 
-	if ((Valor >= 70 && !bCorredorLojaGerado) || 
+	if ((Valor >= 70 && !bCorredorLojaGerado) ||
 		(!bCorredorLojaGerado && ((ASala*)SalaGerada->GetDefaultObject(true))->GetTipo() == ETipoSala::BOSS))
 	{
 		ACorredorLoja* NovoCorredor = GetWorld()->SpawnActor<ACorredorLoja>(CorredorLoja, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
@@ -494,7 +502,7 @@ void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPo
 		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
 	}
 
-	
+
 
 }
 

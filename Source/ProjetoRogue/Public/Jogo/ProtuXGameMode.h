@@ -36,6 +36,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		int32 NumJogos;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+		bool bNaoSalvar;
+
 	AProtuXGameMode(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION()
