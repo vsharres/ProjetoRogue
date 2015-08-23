@@ -79,7 +79,7 @@ void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed)
 
 	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	if (!game->bNovoJogo && !game->bNaoSalvar)
+	if (!game->bNovoJogo)
 	{
 		CarregarSalas();
 	}

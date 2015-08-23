@@ -9,6 +9,7 @@ APickUpMoeda::APickUpMoeda(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
 	IncMoedas = 1;
+	Tipo = ETipoPickUp::MOEDA;
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpMoeda::ColisorOverlap);
 }
 
@@ -19,6 +20,7 @@ void APickUpMoeda::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComp
 	if (jogador->IsValidLowLevelFast())
 	{
 		jogador->AdicionarMoedas(IncMoedas);
+		jogador->GerarPickUpPopUp(this);
 		Destroy();
 	}
 

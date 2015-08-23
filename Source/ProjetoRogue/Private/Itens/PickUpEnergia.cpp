@@ -8,6 +8,7 @@ APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
 	IncEnergia = 10;
+	Tipo = ETipoPickUp::ENERGIA;
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
 }
 
@@ -18,6 +19,7 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 	if (jogador->IsValidLowLevelFast())
 	{
 		jogador->AdicionarEnerngia(IncEnergia);
+		jogador->GerarPickUpPopUp(this);
 		Destroy();
 	}
 

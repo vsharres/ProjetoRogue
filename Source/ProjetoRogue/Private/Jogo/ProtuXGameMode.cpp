@@ -8,7 +8,6 @@
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 {
 	bNovoJogo = true;
-	bNaoSalvar = false;
 	
 }
 
@@ -98,15 +97,12 @@ void AProtuXGameMode::LoadProfile()
 
 		if (bNovoJogo)
 		{
-			NumJogos = SaveInst->NumJogos;
-
 			SaveInst->NumJogos += 1;
-			UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-
-			
 		}
 
 		NumJogos = SaveInst->NumJogos;
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 		
 	}
 }

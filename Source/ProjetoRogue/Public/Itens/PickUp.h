@@ -5,6 +5,13 @@
 #include "GameFramework/Actor.h"
 #include "PickUp.generated.h"
 
+UENUM(BlueprintType)
+enum class ETipoPickUp : uint8 {
+	MOEDA,
+	ENERGIA,
+	VIDA
+};
+
 UCLASS(abstract)
 class PROJETOROGUE_API APickUp : public AActor
 {
@@ -29,6 +36,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		int32 IncMoedas;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp")
+		ETipoPickUp Tipo;
 
 	// Sets default values for this actor's properties
 	APickUp(const FObjectInitializer& ObjectInitializer);

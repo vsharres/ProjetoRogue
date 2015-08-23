@@ -69,7 +69,7 @@ void AInimigo::ReceberDano(const float& dano)
 
 	if (jogador)
 	{
-		jogador->GerarPopUp(dano, this);
+		jogador->GerarDanoPopUp(dano, this);
 	}
 }
 

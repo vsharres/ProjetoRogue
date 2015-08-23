@@ -35,7 +35,7 @@ void AJogador::InicializarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (gameMode->bNovoJogo && gameMode->bNaoSalvar)
+	if (gameMode->bNovoJogo)
 	{
 		NovoJogador();
 	}
@@ -275,6 +275,11 @@ void AJogador::CarregarJogador()
 
 		this->SetActorLocation(SaveInst->JogadorLocation);
 		this->SetActorRotation(SaveInst->JogadorRotation);
+
+		if (this->GetActorLocation().Z < 100.f)
+		{
+			this->AddActorLocalOffset(FVector(0, 0, 127.f));
+		}
 
 		if (!SaveInst->ProjetilInicial_Referencia.IsEmpty())
 		{

@@ -8,6 +8,7 @@ APickUpVida::APickUpVida(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
 	IncVida = 25;
+	Tipo = ETipoPickUp::VIDA;
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpVida::ColisorOverlap);
 }
 
@@ -18,6 +19,7 @@ void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCompo
 	if (jogador->IsValidLowLevelFast())
 	{
 		jogador->AdicionarVida(IncVida);
+		jogador->GerarPickUpPopUp(this);
 		Destroy();
 	}
 
