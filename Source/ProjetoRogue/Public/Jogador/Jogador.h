@@ -359,6 +359,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar PickUp PopUp", Keywords = "Gerar PickUp PopUp"), Category = "Jogador")
 		virtual void GerarPickUpPopUp(class APickUp* novoPicUp);
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar Item PopUp", Keywords = "Gerar Item PopUp"), Category = "Jogador")
+		virtual void GerarItemPopUp(class AActor* novoItem);
+
 	UFUNCTION()
 		void ItemCooldown(float DeltaTime);
 

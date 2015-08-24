@@ -9,6 +9,111 @@ UItem::UItem()
 	Stats = FItemStats();
 }
 
+TArray<FString> UItem::GetNomeEfeitos()
+{
+	TArray<FString> ARetornar;
+
+	if (Stats.IncrementaDano != 0.0f)
+	{
+		ARetornar.Add("Dano");
+	}
+
+	if (Stats.IncrementaEnergia != 0)
+	{
+		ARetornar.Add("Energia");
+	}
+
+	if (Stats.IncrementaEnergiaMax != 0)
+	{
+		ARetornar.Add("Energia Máxima");
+	}
+
+	if (Stats.IncrementaFireRate != 0.0f)
+	{
+		ARetornar.Add("Frequência de Tiro");
+	}
+
+	if (Stats.IncrementaTamanho != 0.0f)
+	{
+		ARetornar.Add("Tamanho do projétil");
+	}
+
+	if (Stats.IncrementaVel != 0.0f)
+	{
+		ARetornar.Add("Velocidade");
+	}
+
+	if (Stats.IncrementaVelProjetil != 0.0f)
+	{
+		ARetornar.Add("Velocidade do Projétil");
+	}
+
+	if (Stats.IncrementaVida != 0.0f)
+	{
+		ARetornar.Add("Vida");
+	}
+
+	if (Stats.IncrementaVidaMax != 0.0f)
+	{
+		ARetornar.Add("Vida Máxima");
+	}
+
+	return ARetornar;
+
+}
+
+TArray<float> UItem::GetEfeitos()
+{
+	TArray<float> ARetornar;
+
+	if (Stats.IncrementaDano != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaDano);
+	}
+
+	if (Stats.IncrementaEnergia != 0)
+	{
+		ARetornar.Add(Stats.IncrementaEnergia);
+	}
+
+	if (Stats.IncrementaEnergiaMax != 0)
+	{
+		ARetornar.Add(Stats.IncrementaEnergiaMax);
+	}
+
+	if (Stats.IncrementaFireRate != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaFireRate);
+	}
+
+	if (Stats.IncrementaTamanho != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaTamanho);
+	}
+
+	if (Stats.IncrementaVel != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaVel);
+	}
+
+	if (Stats.IncrementaVelProjetil != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaVelProjetil);
+	}
+
+	if (Stats.IncrementaVida != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaVida);
+	}
+
+	if (Stats.IncrementaVidaMax != 0.0f)
+	{
+		ARetornar.Add(Stats.IncrementaVidaMax);
+	}
+
+	return ARetornar;
+}
+
 void UItem::InicializarItem(AJogador* inicializador)
 {
 	if (inicializador->IsValidLowLevelFast())

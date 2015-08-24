@@ -91,10 +91,10 @@ class PROJETOROGUE_API UItem : public UObject
 
 public:
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FItemStats Stats;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		ETipoItem Tipo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
@@ -104,6 +104,12 @@ public:
 		FName NomeItem;
 
 	UItem();
+
+	UFUNCTION(BlueprintPure, Category = "Item")
+		TArray<FString> GetNomeEfeitos();
+
+	UFUNCTION(BlueprintPure, Category = "Item")
+		TArray<float> GetEfeitos();
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Inicializar Item", Keywords = "Inicializar Item"), Category = "Item")
 		void InicializarItem(AJogador* inicializador);
@@ -124,6 +130,8 @@ public:
 
 		UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", DisplayName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
 		static UObject* InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
+
+		
 
 
 };
