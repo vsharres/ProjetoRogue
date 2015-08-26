@@ -321,7 +321,6 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 	}
-
 }
 
 bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)

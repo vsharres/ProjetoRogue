@@ -364,6 +364,7 @@ void AJogador::GerarProjetilPool()
 
 		if (Tiro->IsValidLowLevel())
 		{
+			Tiro->Instigator = this;
 			Tiro->SetActorHiddenInGame(true);
 			Tiro->Instigator = this;
 			ProjetilPool.Add(Tiro);

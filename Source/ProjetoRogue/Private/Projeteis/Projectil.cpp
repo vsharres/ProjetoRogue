@@ -51,6 +51,7 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 
 	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
 
+
 	CompCollisao->SetWorldScale3D(FVector(1.0f) * Stats.Tamanho);
 	
 	if (!CompMovimentacao->UpdatedComponent->IsValidLowLevelFast())
@@ -116,6 +117,7 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	}
 
 	DesativarProjetil();
+	Atingiu();
 }
 
 UProjectileMovementComponent* AProjectil::GetMovProjetil()
