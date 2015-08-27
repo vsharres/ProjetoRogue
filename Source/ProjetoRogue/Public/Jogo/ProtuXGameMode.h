@@ -31,6 +31,9 @@ private:
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+		bool bNaoSalvar;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		bool bNovoJogo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")

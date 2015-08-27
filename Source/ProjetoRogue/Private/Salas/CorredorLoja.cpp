@@ -70,7 +70,7 @@ void ACorredorLoja::InicializarLoja()
 
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	if (!gameMode->bNovoJogo)
+	if (!gameMode->bNovoJogo && !gameMode->bNaoSalvar)
 	{
 		CarregarLoja();
 	}
@@ -119,6 +119,11 @@ void ACorredorLoja::SalvarLoja()
 
 void ACorredorLoja::CarregarLoja()
 {
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+		return;
+
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 

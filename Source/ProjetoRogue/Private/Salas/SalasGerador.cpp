@@ -30,7 +30,7 @@ ASalasGerador::ASalasGerador()
 	bSalaBossGerada = false;
 	bCorredorLojaGerado = false;
 	MinNumSalas = 5;
-	MaxNumSalas = 30;
+	MaxNumSalas = 10;
 
 	ComprimentoMax = 80000.0f;
 	LarguraMax = 80000.0f;
@@ -79,7 +79,7 @@ void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed)
 
 	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	if (!game->bNovoJogo)
+	if (!game->bNovoJogo && !game->bNaoSalvar)
 	{
 		CarregarSalas();
 	}
@@ -213,19 +213,6 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 
 		indice = IndexSala2P;
 		limite = TiposSalas.Num() - 1;
-		/*
-		if (Salas.Num() >= 3 && !bSalaItemGerada)
-		{
-			indice = IndexSala3P;
-			limite = TiposSalas.Num() - 1;
-
-		}
-		else if (Salas.Num() >= 5 && !bSalaChaveGerada)
-		{
-			indice = IndexSala4P;
-			limite = TiposSalas.Num() - 1;
-		}
-		*/
 
 	}
 
@@ -247,6 +234,8 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 void ASalasGerador::CarregarSalas()
 {
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
@@ -263,6 +252,12 @@ void ASalasGerador::CarregarSalas()
 
 void ASalasGerador::SalvarSalas()
 {
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+		return;
+	
+
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
@@ -482,11 +477,10 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 
 void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPorta)
 {
-	FRandomStream Stream = FRandomStream(Seed);
 
 	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
 
-	int32 Valor = Stream.FRandRange(0, 100);
+	int32 Valor = StreamGeracao.FRandRange(0, 100);
 
 	if ((Valor >= 70 && !bCorredorLojaGerado) ||
 		(!bCorredorLojaGerado && ((ASala*)SalaGerada->GetDefaultObject(true))->GetTipo() == ETipoSala::BOSS))

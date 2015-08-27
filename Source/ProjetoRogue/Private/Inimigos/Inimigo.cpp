@@ -99,8 +99,6 @@ void AInimigo::SpawnPickUp()
 
 	for (int32 index = 0; index < NumPickUps; index++)
 	{
-		stream.GenerateNewSeed();
-
 		if (stream.FRandRange(0, 100) >= ChanceSpawnVida)
 		{
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());

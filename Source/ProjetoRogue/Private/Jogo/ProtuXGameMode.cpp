@@ -8,6 +8,7 @@
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 {
 	bNovoJogo = true;
+	bNaoSalvar = false;
 	
 }
 
@@ -109,6 +110,10 @@ void AProtuXGameMode::LoadProfile()
 
 void AProtuXGameMode::ContinuarJogo()
 {
+
+	if (bNaoSalvar)
+		return;
+
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
