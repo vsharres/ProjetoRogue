@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\BlankProgram.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\BlankProgram.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{01153A9F-A0E7-4700-BC8F-F98BE49A9F6F}</UniqueIdentifier>
+			<UniqueIdentifier>{98C23AC4-16A5-4D5E-8FC3-85D6B7F45785}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\Private\BlankProgram.cpp">
 			<Filter>Private</Filter>

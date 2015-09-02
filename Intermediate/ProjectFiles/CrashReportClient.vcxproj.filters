@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\CrashReportClient.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\CrashReportClient.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{435B3A52-E040-4131-90A4-AC09516E7700}</UniqueIdentifier>
+			<UniqueIdentifier>{617CBBD0-0811-4B12-BC75-378A0564EB47}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\CrashDescription.cpp">
 			<Filter>Private</Filter>
@@ -77,7 +77,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{DE6A8D20-1EF8-4530-B6EB-BD734A2BB700}</UniqueIdentifier>
+			<UniqueIdentifier>{74535E14-A143-4D7D-AA08-66DAC7B08727}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Linux\CrashReportClientMainLinux.cpp">
 			<Filter>Private\Linux</Filter>
@@ -86,7 +86,7 @@
 			<Filter>Private\Linux</Filter>
 		</ClInclude >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{4ADB0D05-CEDB-42EF-9819-CC849E5111A1}</UniqueIdentifier>
+			<UniqueIdentifier>{133049FC-F9D9-482A-B96D-01641AAD0A3D}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Mac\CrashReportClientMainMac.cpp">
 			<Filter>Private\Mac</Filter>
@@ -98,7 +98,7 @@
 			<Filter>Private\Mac</Filter>
 		</ClInclude >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{CADA2006-7A18-438D-A7C8-F05F9C3D3EE1}</UniqueIdentifier>
+			<UniqueIdentifier>{21F8F0A9-8794-4C02-95F2-D3F095F5015D}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Windows\CrashReportClientMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
@@ -110,16 +110,16 @@
 			<Filter>Private\Windows</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{3D882747-3FAA-4C49-8B64-B0DB14CC7C2E}</UniqueIdentifier>
+			<UniqueIdentifier>{11044B3E-9954-466E-A099-C5834414EE11}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Public\CrashReportClientApp.h">
 			<Filter>Public</Filter>
 		</ClInclude >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{696C29B8-E2FB-42B6-ADB2-C1AA3D61C07A}</UniqueIdentifier>
+			<UniqueIdentifier>{9616CB63-7743-4512-9281-58EFADFC5F8A}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Resources\Windows">
-			<UniqueIdentifier>{D9295403-BC7D-4AF6-9F9C-E177C97BD8DB}</UniqueIdentifier>
+			<UniqueIdentifier>{E5736CD2-259E-405C-BB12-6FB6FF14E509}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Resources\Windows\CrashReportClient-Win32.manifest">
 			<Filter>Resources\Windows</Filter>

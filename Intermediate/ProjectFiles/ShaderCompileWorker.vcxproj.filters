@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\ShaderCompileWorker.Target.cs" />
 		<Filter Include="Config">
-			<UniqueIdentifier>{E927AF86-F9DC-4A08-8F71-F45090E5F3BD}</UniqueIdentifier>
+			<UniqueIdentifier>{20D537AC-891B-45D2-AB3D-4D532EF23126}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Programs\ShaderCompileWorker\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\ShaderCompileWorker.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{17CAA8C5-A483-4555-9566-CD0D45B67A40}</UniqueIdentifier>
+			<UniqueIdentifier>{7F445C84-A1DC-4863-930F-B9D66D740F49}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\Private\ShaderCompileWorker.cpp">
 			<Filter>Private</Filter>
 		</ClCompile >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{A2E712BD-691D-4D77-BF1B-BE50C15A07EF}</UniqueIdentifier>
+			<UniqueIdentifier>{2E258717-CD5A-4F3F-B5E3-2EC6697FA49F}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ShaderCompileWorker\Resources\Debug-Win32.manifest">
 			<Filter>Resources</Filter>
