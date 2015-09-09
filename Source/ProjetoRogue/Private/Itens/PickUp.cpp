@@ -10,10 +10,10 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	PrimaryActorTick.bCanEverTick = false;
 
 	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
-	Colisor->SetSimulatePhysics(true);
 	RootComponent = Colisor;
 
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
+	Mesh->SetSimulatePhysics(true);
 	Mesh->AttachTo(Colisor);
 
 	IncVida = 0.0f;

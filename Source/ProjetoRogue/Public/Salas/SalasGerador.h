@@ -149,7 +149,7 @@ public:
 		bool ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
-		virtual void GeracaoTerminada();
+		void GeracaoTerminada();
 
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void CarregarSalas();

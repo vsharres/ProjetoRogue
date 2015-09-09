@@ -18,9 +18,9 @@ const float DANO_MAX = 50.0f;
 const float DANO_MIN = 5;
 const float FIRERATE_MAX = 1.0f;
 const float FIRERATE_MIN = 0.005f;
-const float TAMANHO_MAX = 0.6f;
-const float TAMANHAO_MIN = 0.1f;
-const float VELOCIDADEPROJ_MAX = 6000.0f;
+const float PRECISAO_MAX = 5.0f;
+const float PRECISAO_MIN = 1.0f;
+const float VELOCIDADEPROJ_MAX = 7000.0f;
 const float VELOCIDADEPROJ_MIN = 1000.f;
 
 
@@ -52,7 +52,7 @@ struct FJogadorStats
 		float FireRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1"), Category = "Jogador Struct")
-		float TamanhoProjetil;
+		float Precisao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "250.0"), Category = "Jogador Struct")
 		float VelProjetil;
@@ -65,7 +65,7 @@ struct FJogadorStats
 		this->VelocidadeMov += itemStats.IncrementaVel;
 		this->FireRate += itemStats.IncrementaFireRate;
 		this->Dano += itemStats.IncrementaDano;
-		this->TamanhoProjetil += itemStats.IncrementaTamanho;
+		this->Precisao += itemStats.IncrementaPrecisao;
 		this->VelProjetil += itemStats.IncrementaVelProjetil;
 
 		AdicionarEnergia(itemStats.IncrementaEnergia);
@@ -83,7 +83,7 @@ struct FJogadorStats
 		this->VelocidadeMov -= itemStats.IncrementaVel;
 		this->FireRate -= itemStats.IncrementaFireRate;
 		this->Dano -= itemStats.IncrementaDano;
-		this->TamanhoProjetil -= itemStats.IncrementaTamanho;
+		this->Precisao -= itemStats.IncrementaPrecisao;
 		this->VelProjetil -= itemStats.IncrementaVelProjetil;
 		AdicionarEnergia(-itemStats.IncrementaEnergia);
 		AdicionarVida(-itemStats.IncrementaVida);
@@ -131,13 +131,13 @@ struct FJogadorStats
 			Dano = DANO_MIN;
 		}
 
-		if (TamanhoProjetil > TAMANHO_MAX)
+		if (Precisao > PRECISAO_MAX)
 		{
-			TamanhoProjetil = TAMANHO_MAX;
+			Precisao = PRECISAO_MAX;
 		}
-		else if (TamanhoProjetil < TAMANHAO_MIN)
+		else if (Precisao < PRECISAO_MIN)
 		{
-			TamanhoProjetil = TAMANHAO_MIN;
+			Precisao = PRECISAO_MIN;
 		}
 
 		if (VelProjetil > VELOCIDADEPROJ_MAX)
@@ -198,17 +198,17 @@ struct FJogadorStats
 		this->VelocidadeMov = stats.VelocidadeMov;
 		this->Dano = stats.Dano;
 		this->FireRate = stats.FireRate;
-		this->TamanhoProjetil = stats.TamanhoProjetil;
+		this->Precisao = stats.Precisao;
 		this->VelProjetil = stats.VelProjetil;
 	}
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float tamanhoProjet = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
 		FireRate = fireRate;
 		Dano = dano;
-		TamanhoProjetil = tamanhoProjet;
+		Precisao = precisao;
 		VelProjetil = velProjetil;
 		Energia = energia;
 		EnergiaMax = Energia;
@@ -221,7 +221,7 @@ struct FJogadorStats
 		VelocidadeMov = Outro.VelocidadeMov;
 		FireRate = Outro.FireRate;
 		Dano = Outro.Dano;
-		TamanhoProjetil = Outro.TamanhoProjetil;
+		Precisao = Outro.Precisao;
 		VelProjetil = Outro.VelProjetil;
 		Energia = Outro.Energia;
 		EnergiaMax = Outro.EnergiaMax;
@@ -232,7 +232,7 @@ struct FJogadorStats
 
 
 UCLASS()
-class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface, public IDebugInterface
+class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
 {
 	GENERATED_BODY()
 
@@ -342,25 +342,23 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
 	virtual void ReceberDano(const float& dano) override;
 
-	virtual void Debug() override;
-
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Projetil")
-		virtual void Atirar();
+		void Atirar();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Jogador Morreu", Keywords = "Jogador Morreu"), Category = "Jogador")
-		virtual void JogadorMorreu();
+		void JogadorMorreu();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar DanoPopUp", Keywords = "Gerar Dano PopUp"), Category = "Jogador")
-		virtual void GerarDanoPopUp(float dano, AInimigo* alvo);
+		void GerarDanoPopUp(float dano, AInimigo* alvo);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar PickUp PopUp", Keywords = "Gerar PickUp PopUp"), Category = "Jogador")
-		virtual void GerarPickUpPopUp(class APickUp* novoPicUp);
+		void GerarPickUpPopUp(class APickUp* novoPicUp);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar Item PopUp", Keywords = "Gerar Item PopUp"), Category = "Jogador")
-		virtual void GerarItemPopUp(class AActor* novoItem);
+		void GerarItemPopUp(class AActor* novoItem);
 
 	UFUNCTION()
 		void ItemCooldown(float DeltaTime);

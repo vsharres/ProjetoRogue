@@ -361,11 +361,9 @@ void AJogador::GerarProjetilPool()
 
 	for (int32 index = 0; index < NumProjeteis; index++)
 	{
-		FVector tiroPos = FVector(0, 0, -1000);
-		FActorSpawnParameters params;
-		params.bNoCollisionFail = true;
+		FVector tiroPos = FVector(0, 0, 1000);
 
-		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation(), params);
+		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
 
 		if (Tiro->IsValidLowLevel())
 		{
@@ -427,13 +425,6 @@ void AJogador::ReceberDano(const float& dano)
 	{
 		JogadorMorreu();
 	}
-}
-
-void AJogador::Debug()
-{
-#if UE_BUILD_DEVELOPMENT || UE_BUILD_DEBUG
-	GEngine->AddOnScreenDebugMessage(0, 1.0f, FColor::Red, FString::SanitizeFloat(GetControlRotation().Yaw));
-#endif
 }
 
 void AJogador::AplicarStatsProjetil(AProjectil* projetil)

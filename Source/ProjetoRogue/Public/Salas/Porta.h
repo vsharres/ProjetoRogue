@@ -25,10 +25,10 @@ public:
 	class ASala* SalaPai;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Trancar Porta", Keywords = "Trancar Porta"), Category = "Porta")
-		virtual void TrancarPorta();
+		void TrancarPorta();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Porta", Keywords = "Destrancar Porta"), Category = "Porta")
-		virtual void DestrancarPorta();
+		void DestrancarPorta();
 
 
 	// Sets default values for this actor's properties

@@ -44,7 +44,7 @@ struct FInimigoStats
 		float FireRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
-		float TamanhoProjetil;
+		float Precisao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float VelProjetil;
@@ -58,14 +58,14 @@ struct FInimigoStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoAtaque TipoAtaque;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float fireRate = 1.0f, float tamanho = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float fireRate = 1.0f, float precisao = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
 		VidaMax = vida;
 		Dano = dano;
 		VelRotacao = velRot;
 		FireRate = fireRate;
-		TamanhoProjetil = tamanho;
+		Precisao = precisao;
 		VelProjetil = velProjetil;
 		Energia = energia;
 		Tipo = tipo;

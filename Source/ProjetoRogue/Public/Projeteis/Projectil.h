@@ -19,22 +19,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
-		float Tamanho;
 
-
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 0.3f, float range = 10.0f)
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
-		Tamanho = tamanho;
 	}
 
 	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)
 	{
 		this->Velocidade = statsJogador.VelProjetil;
 		this->Dano = statsJogador.Dano;
-		this->Tamanho = statsJogador.TamanhoProjetil;
 
 		return *this;
 	}
@@ -43,7 +38,6 @@ public:
 	{
 		this->Velocidade = statsInimigo.VelProjetil;
 		this->Dano = statsInimigo.Dano;
-		this->Tamanho = statsInimigo.TamanhoProjetil;
 
 		return *this;
 	}
@@ -99,7 +93,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Particula")
-		virtual void Atingiu();
+		void Atingiu();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "On Hit", Keywords = "On Hit"), Category = "Particula")
 		void OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);

@@ -33,7 +33,7 @@ TArray<FString> UItem::GetNomeEfeitos()
 		ARetornar.Add("Frequência de Tiro");
 	}
 
-	if (Stats.IncrementaTamanho != 0.0f)
+	if (Stats.IncrementaPrecisao != 0.0f)
 	{
 		ARetornar.Add("Tamanho do projétil");
 	}
@@ -86,9 +86,9 @@ TArray<float> UItem::GetEfeitos()
 		ARetornar.Add(Stats.IncrementaFireRate);
 	}
 
-	if (Stats.IncrementaTamanho != 0.0f)
+	if (Stats.IncrementaPrecisao != 0.0f)
 	{
-		ARetornar.Add(Stats.IncrementaTamanho);
+		ARetornar.Add(Stats.IncrementaPrecisao);
 	}
 
 	if (Stats.IncrementaVel != 0.0f)

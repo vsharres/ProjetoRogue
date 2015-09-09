@@ -36,11 +36,9 @@ void AInimigoRange::GerarProjetilPool()
 
 	for (int32 index = 0; index < NumProjeteis; index++)
 	{
-		FVector tiroPos = FVector(GetActorLocation().X, GetActorLocation().Y, -1000);
-		FActorSpawnParameters params;
-		params.bNoCollisionFail = true;
+		FVector tiroPos = FVector(GetActorLocation().X, GetActorLocation().Y, 1000);
 
-		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(Projetil, tiroPos, GetControlRotation(), params);
+		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(Projetil, tiroPos, GetControlRotation());
 
 		if (Tiro->IsValidLowLevel())
 		{

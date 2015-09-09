@@ -34,7 +34,7 @@ struct FItemStats
 		float IncrementaDano;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaTamanho;
+		float IncrementaPrecisao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaVelProjetil;
@@ -55,7 +55,7 @@ struct FItemStats
 		this->IncrementaVel += itemStats.IncrementaVel;
 		this->IncrementaFireRate += itemStats.IncrementaFireRate;
 		this->IncrementaDano += itemStats.IncrementaDano;
-		this->IncrementaTamanho += itemStats.IncrementaTamanho;
+		this->IncrementaPrecisao += itemStats.IncrementaPrecisao;
 		this->IncrementaVelProjetil += itemStats.IncrementaVelProjetil;
 		this->IncrementaEnergia += itemStats.IncrementaEnergia;
 		this->IncrementaEnergiaMax += itemStats.IncrementaEnergiaMax;
@@ -64,14 +64,14 @@ struct FItemStats
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0, int32 custo = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0, int32 custo = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
 		IncrementaVel = incVel;
 		IncrementaFireRate = incFire;
 		IncrementaDano = incDano;
-		IncrementaTamanho = incPart;
+		IncrementaPrecisao = incPrec;
 		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
 		IncrementaEnergiaMax = incEnerMax;

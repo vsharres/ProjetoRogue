@@ -160,7 +160,7 @@ public:
 		void TrancarPortas();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
-		virtual void DestrancarPortas();
+		void DestrancarPortas();
 
 	UFUNCTION()
 		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
