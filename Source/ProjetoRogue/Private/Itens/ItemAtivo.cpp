@@ -1,20 +1,23 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Itens/ItemAtivo.h"
-#include "Public/Jogador/Jogador.h"
+#include "ProjetoRogue.h"
+#include "ItemAtivo.h"
+#include "Jogador.h"
 
 UItemAtivo::UItemAtivo()
 {
 	Tipo = ETipoItem::ATIVO;
-	Stats = FItemStats();
 	bAtivo = false;
 }
 
 void UItemAtivo::AtivarItem_Implementation()
 {
-	bAtivo = true;
-	Super::AplicarStats();
+	if (Jogador->Stats.Energia >= EnergiaUtilizada)
+	{
+		Jogador->Stats.AdicionarEnergia(-EnergiaUtilizada);
+		bAtivo = true;
+		Super::AplicarStats();
+	}
 
 }
 

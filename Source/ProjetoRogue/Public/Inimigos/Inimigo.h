@@ -3,8 +3,9 @@
 #pragma once
 
 #include "GameFramework/Pawn.h"
-#include "Interfaces/DanoInterface.h"
+#include "DanoInterface.h"
 #include "Inimigo.generated.h"
+
 
 UENUM(BlueprintType)
 enum class ETipoInimigo :uint8
@@ -27,11 +28,11 @@ struct FInimigoStats
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float Vida;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
-		float VidaAtual;
+		float VidaMax;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float Dano;
@@ -40,13 +41,10 @@ struct FInimigoStats
 		float VelRotacao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
-		float Range;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,  Category = "Inimigo Struct")
-		float TamanhoProjetil;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		float Precisao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		float VelProjetil;
@@ -60,15 +58,14 @@ struct FInimigoStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoAtaque TipoAtaque;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float range = 100.0f, float fireRate = 1.0f, float tamanho =1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float fireRate = 1.0f, float precisao = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
-		VidaAtual = Vida;
+		VidaMax = vida;
 		Dano = dano;
 		VelRotacao = velRot;
-		Range = range;
 		FireRate = fireRate;
-		TamanhoProjetil = tamanho;
+		Precisao = precisao;
 		VelProjetil = velProjetil;
 		Energia = energia;
 		Tipo = tipo;
@@ -78,21 +75,51 @@ struct FInimigoStats
 };
 
 //TODO
-UCLASS(ABSTRACT,Blueprintable)
+UCLASS(ABSTRACT, Blueprintable)
 class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
 {
 	GENERATED_BODY()
+
+private:
+
+	UPROPERTY(VisibleDefaultsOnly, Category = "Colisor")
+		UCapsuleComponent* Colisor;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		int32 NumPickUps;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		float ChanceSpawnVida;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		float ChanceSpawnEnergia;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		float ChanceSpawnMoeda;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpEnergia> PickUpEnergiaClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpVida> PickUpVidaClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpMoeda> PickUpMoedaClass;
+
 
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
 
-	UPROPERTY()
-		bool bVivo;
+	UPROPERTY(BlueprintReadWrite, Category = "Sala")
+	class ASala* SalaPai;
 
 	// Sets default values for this pawn's properties
-	AInimigo();
+	AInimigo(const FObjectInitializer& ObjectInitializer);
+
+	UFUNCTION(BlueprintPure, Category = "Colisor")
+		UCapsuleComponent* GetColisor();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -100,10 +127,16 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
-	virtual void ReceberDano(const float& dano) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UFUNCTION(BlueprintCallable, Category = "Inimigos")
+		virtual void ReceberDano(const float& dano) override;
 
 	UFUNCTION()
 		bool EstaVivo();
+
+	UFUNCTION()
+		void SpawnPickUp();
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;

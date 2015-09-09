@@ -14,7 +14,7 @@ class PROJETOROGUE_API ASala4P : public ASala
 	GENERATED_BODY()
 	
 public:
-	ASala4P();
+	ASala4P(const FObjectInitializer& ObjectInitializer);
 	
 	
 };

@@ -17,6 +17,6 @@ class PROJETOROGUE_API ASala3P : public ASala
 
 public:
 	// Sets default values for this actor's properties
-	ASala3P();
+	ASala3P(const FObjectInitializer& ObjectInitializer);
 
 };

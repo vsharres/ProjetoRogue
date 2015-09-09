@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\UnrealFrontend.Target.cs" />
 		<Filter Include="Config">
-			<UniqueIdentifier>{0E2D3585-F55A-46A5-B518-2F2B1144749E}</UniqueIdentifier>
+			<UniqueIdentifier>{B038E59E-9B74-4F6F-9917-2666DBDAF6A8}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Programs\UnrealFrontend\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\UnrealFrontend.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{F99E4F30-EF35-4A60-962B-920A306B9ADE}</UniqueIdentifier>
+			<UniqueIdentifier>{256A118A-0F2B-4B5B-AE0B-E18477C7BCF0}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Private\UnrealFrontendMain.cpp">
 			<Filter>Private</Filter>
@@ -23,7 +23,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Commands">
-			<UniqueIdentifier>{B86BCB5D-CB43-4121-9D99-82D9665A8AAB}</UniqueIdentifier>
+			<UniqueIdentifier>{43E2BAC7-EE92-4E56-AAF0-08A5A35DC089}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Private\Commands\DeployCommand.cpp">
 			<Filter>Private\Commands</Filter>
@@ -62,28 +62,28 @@
 			<Filter>Private\Commands</Filter>
 		</ClInclude >
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{A87126F6-5468-421A-A50E-C18663F46E99}</UniqueIdentifier>
+			<UniqueIdentifier>{B423B649-5ABE-4A59-B79F-29025AF159E4}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Private\Linux\LinuxUnrealFrontendMain.cpp">
 			<Filter>Private\Linux</Filter>
 		</ClCompile >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{65BFBFA3-D0DC-4347-AC5C-BADB8F2F03E4}</UniqueIdentifier>
+			<UniqueIdentifier>{2BD39401-18D9-4245-9DD4-D09F212F2167}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Private\Mac\MacUnrealFrontendMain.cpp">
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{96CC36B2-21F9-49F3-BDF7-1DDAF7096C22}</UniqueIdentifier>
+			<UniqueIdentifier>{081FB22B-662E-4EA6-9A1A-DA0BAA78906E}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Private\Windows\WindowsUnrealFrontendMain.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{51975BFE-8239-4A0A-BE72-0483D7D40EBC}</UniqueIdentifier>
+			<UniqueIdentifier>{703C915D-ABA7-4BFE-A247-A06A1F94D2A8}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Resources\Windows">
-			<UniqueIdentifier>{50E27AA7-3D35-4832-B805-8BDDC71BF28D}</UniqueIdentifier>
+			<UniqueIdentifier>{7B177D33-B996-4ECE-B6E8-BBC41073AF62}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealFrontend\Resources\Windows\Debug-UnrealFrontend-Win32.manifest">
 			<Filter>Resources\Windows</Filter>

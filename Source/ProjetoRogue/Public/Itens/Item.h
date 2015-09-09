@@ -9,6 +9,7 @@ UENUM(BlueprintType)
 enum class ETipoItem : uint8
 {
 	PASSIVO,
+	PROJETIL,
 	ATIVO
 };
 
@@ -16,6 +17,9 @@ USTRUCT()
 struct FItemStats
 {
 	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
+		float IncrementaVida;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaVidaMax;
@@ -27,13 +31,10 @@ struct FItemStats
 		float IncrementaFireRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaRange;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaDano;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaParticula;
+		float IncrementaPrecisao;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaVelProjetil;
@@ -42,35 +43,39 @@ struct FItemStats
 		int32 IncrementaEnergia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		float IncrementaVida;
+		int32 IncrementaEnergiaMax;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
+		int32 Custo;
 
 	FORCEINLINE	FItemStats& operator+=(const FItemStats& itemStats)
 	{
+		this->IncrementaVida += itemStats.IncrementaVida;
 		this->IncrementaVidaMax += itemStats.IncrementaVidaMax;
 		this->IncrementaVel += itemStats.IncrementaVel;
 		this->IncrementaFireRate += itemStats.IncrementaFireRate;
-		this->IncrementaRange += itemStats.IncrementaRange;
 		this->IncrementaDano += itemStats.IncrementaDano;
-		this->IncrementaParticula += itemStats.IncrementaParticula;
+		this->IncrementaPrecisao += itemStats.IncrementaPrecisao;
 		this->IncrementaVelProjetil += itemStats.IncrementaVelProjetil;
 		this->IncrementaEnergia += itemStats.IncrementaEnergia;
-		this->IncrementaVida += itemStats.IncrementaVida;
+		this->IncrementaEnergiaMax += itemStats.IncrementaEnergiaMax;
 
 		return *this;
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incRange = 0.0f, float incDano = 0.0f, float incPart = 0.0f, float incVelProj = 0.0f, int32 incEner = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0, int32 custo = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
 		IncrementaVel = incVel;
 		IncrementaFireRate = incFire;
-		IncrementaRange = incRange;
 		IncrementaDano = incDano;
-		IncrementaParticula = incPart;
+		IncrementaPrecisao = incPrec;
 		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
+		IncrementaEnergiaMax = incEnerMax;
+		Custo = custo;
 	}
 
 
@@ -79,26 +84,35 @@ struct FItemStats
 /**
  *
  */
-UCLASS(BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable, abstract)
 class PROJETOROGUE_API UItem : public UObject
 {
 	GENERATED_BODY()
 
 public:
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FItemStats Stats;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		ETipoItem Tipo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	class AJogador* Jogador;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FName NomeItem;
 
 	UItem();
+
+	UFUNCTION(BlueprintPure, Category = "Item")
+		TArray<FString> GetNomeEfeitos();
+
+	UFUNCTION(BlueprintPure, Category = "Item")
+		TArray<float> GetEfeitos();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Inicializar Item", Keywords = "Inicializar Item"), Category = "Item")
+		void InicializarItem(AJogador* inicializador);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Aplicar Stats", Keywords = "Aplicar Stats"), Category = "Item")
 		void AplicarStats();
@@ -115,7 +129,9 @@ public:
 		virtual void RemoverItem_Implementation();
 
 		UFUNCTION(BlueprintCallable, meta = (HidePin = "WorldContextObject", DefaultToSelf = "WorldContextObject", DisplayName = "Instanciar Item", Keywords = "Instanciar item"), Category = Item)
-		static UObject* InstanciarItem(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
+		static UObject* InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe);
+
+		
 
 
 };

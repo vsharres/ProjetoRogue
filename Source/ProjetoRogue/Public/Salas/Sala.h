@@ -60,6 +60,8 @@ class PROJETOROGUE_API ASala : public AActor
 	GENERATED_BODY()
 protected:
 
+	//SALA
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EFormatoSala DirecaoSala;
 
@@ -67,42 +69,60 @@ protected:
 		ETipoSala TipoSala;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
-		ENumeroPortas NumeroPortas;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		EDificuldadeSala Dificuldade;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
-		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Sala")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		FVector EscalaPadrao;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Sala")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sala")
 		float OffsetSala;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
-		bool bSalaTemInimigos;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
+		UBoxComponent* TriggerAtivarInimigos;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
-		TArray<TSubclassOf<class AInimigo>> InimigosFacil;
+	//PORTAS
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Portas")
+		ENumeroPortas NumeroPortas;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Portas")
+		TArray<class APorta*> Portas;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Portas")
+		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
+
+
+	//INIMIGOS
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
+		bool bInimigosAtivos;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
+		TArray<class AInimigo*> Inimigos;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
+		TArray<TSubclassOf<AInimigo>> InimigosFacil;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		TArray<TSubclassOf<AInimigo>> InimigosNormal;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
 		TArray<TSubclassOf<AInimigo>> InimigosDificil;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Itens")
+	//ITENS
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Itens")
 		TArray<TSubclassOf<class UItem>> PossiveisItens;
 
-
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inimigos")
+		bool bSalaTemInimigos;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
 		TArray<ASala*> SalasConectadas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
+	UPROPERTY()
 		bool bVisitada;
 
 	UFUNCTION()
@@ -124,12 +144,35 @@ public:
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
 
 	UFUNCTION()
-		void SpawnInimigos(int32 Seed);
+		void RemoverInimigo(AInimigo* inimigo);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
+		void SpawnInimigos(int32 Seed);
+	virtual void SpawnInimigos_Implementation(int32 Seed);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
 		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed);
 
+	UFUNCTION()
+		void InimigosForamDerrotados();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trancar Portas", Keywords = "Trancar Portas"), Category = "Sala")
+		void TrancarPortas();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
+		void DestrancarPortas();
+
+	UFUNCTION()
+		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	UFUNCTION()
+		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
 	// Sets default values for this actor's properties
-	ASala();
+	ASala(const FObjectInitializer& ObjectInitializer);
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
 
 };

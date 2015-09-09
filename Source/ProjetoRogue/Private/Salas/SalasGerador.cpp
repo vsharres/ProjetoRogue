@@ -1,23 +1,24 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Public/ProjetoRogue.h"
-#include "Public/Salas/SalasGerador.h"
-#include "Public/Salas/Corredor.h"
-#include "Public/Salas/Sala.h"
-#include "Public/Salas/Sala2P.h"
-#include "Public/Salas/Sala2PDireita.h"
-#include "Public/Salas/Sala2PEsquerda.h"
-#include "Public/Salas/Sala3P.h"
-#include "Public/Salas/Sala3PDireita.h"
-#include "Public/Salas/Sala3PEsquerda.h"
-#include "Public/Salas/Sala4P.h"
+#include "SalasGerador.h"
+#include "Corredor.h"
+#include "CorredorLoja.h"
+#include "Sala.h"
+#include "Sala2P.h"
+#include "Sala2PDireita.h"
+#include "Sala2PEsquerda.h"
+#include "Sala3P.h"
+#include "Sala3PDireita.h"
+#include "Sala3PEsquerda.h"
+#include "Sala4P.h"
 
 
 // Sets default values
 ASalasGerador::ASalasGerador()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 	IndexSala2P = 1;
 	IndexSala3P = 2;
 	IndexSala4P = 3;
@@ -27,8 +28,12 @@ ASalasGerador::ASalasGerador()
 	bSalaItemGerada = false;
 	bSalaChaveGerada = false;
 	bSalaBossGerada = false;
+	bCorredorLojaGerado = false;
 	MinNumSalas = 5;
-	MaxNumSalas = 30;
+	MaxNumSalas = 10;
+
+	ComprimentoMax = 80000.0f;
+	LarguraMax = 80000.0f;
 
 }
 
@@ -40,8 +45,31 @@ ASalasGerador::~ASalasGerador()
 	SalaInicial = NULL;
 }
 
-void ASalasGerador::Inicializar(ASala* Inicial)
+ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 {
+	if (WorldContextObject)
+	{
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
+		if (World != nullptr)
+		{
+			for (TActorIterator<ASalasGerador> ActorItr(World); ActorItr; ++ActorItr)
+			{
+				if ((*ActorItr)->IsValidLowLevel())
+				{
+					return *ActorItr;
+				}
+			}
+		}
+	}
+
+	return nullptr;
+}
+
+void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed)
+{
+	this->Seed = NovoSeed;
+	StreamGeracao = FRandomStream(NovoSeed);
+
 	SetNumSalas();
 
 	Salas.Add(Inicial);
@@ -49,7 +77,15 @@ void ASalasGerador::Inicializar(ASala* Inicial)
 
 	AdicionarAoArrayPortas(Inicial);
 
+	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
+
+	if (!game->bNovoJogo && !game->bNaoSalvar)
+	{
+		CarregarSalas();
+	}
+
 	GerarLevel(Inicial);
+
 	GeracaoTerminada();
 }
 
@@ -174,28 +210,13 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
 	}
 	else
 	{
-		if (Salas.Num() < NumeroSalas)
-		{
-			indice = IndexSala2P;
-			limite = TiposSalas.Num() - 1;
-		}
 
-		if (Salas.Num() >= 3 && !bSalaItemGerada)
-		{
-			indice = IndexSala3P;
-			limite = TiposSalas.Num() - 1;
-
-		}
-		else if (Salas.Num() >= 5 && !bSalaChaveGerada)
-		{
-			indice = IndexSala4P;
-			limite = TiposSalas.Num() - 1;
-		}
+		indice = IndexSala2P;
+		limite = TiposSalas.Num() - 1;
 
 	}
 
-	FRandomStream Stream = FRandomStream(Seed);
-	retornar = TiposSalas[Stream.FRandRange(indice, limite)];
+	retornar = TiposSalas[StreamGeracao.FRandRange(indice, limite)];
 
 	return retornar;
 }
@@ -207,18 +228,68 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 	bool result = EstaNoArrayDePosicoes(Pos);
 
+
 	return result;
+}
+
+void ASalasGerador::CarregarSalas()
+{
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo)
+	{
+		this->Seed = SaveInst->Seed;
+		this->MaxNumSalas = SaveInst->MaxNumSalas;
+		this->MinNumSalas = SaveInst->MinNumSalas;
+		this->SalasCarregadas.Empty();
+		this->SalasCarregadas = SaveInst->SalasComInimigos;
+
+	}
+}
+
+void ASalasGerador::SalvarSalas()
+{
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+		return;
+	
+
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
+	{
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		SaveInst->Seed = this->Seed;
+		SaveInst->MaxNumSalas = this->MaxNumSalas;
+		SaveInst->MinNumSalas = this->MinNumSalas;
+		SaveInst->SalasComInimigos.Empty();
+
+		for (const auto& Sala : Salas)
+		{
+			SaveInst->SalasComInimigos.Add(Sala->bSalaTemInimigos);
+		}
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
 }
 
 void ASalasGerador::GerarSalaEspecial()
 {
 	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
 	{
-		FRandomStream Stream(Seed);
 
-
-		if (!bSalaItemGerada && 
-			(UltimaSalaValida() >= Stream.FRandRange(MinNumSalas, NumeroSalas) ||
+		if (!bSalaItemGerada &&
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(MinNumSalas, NumeroSalas) ||
 			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaItem;
@@ -226,8 +297,8 @@ void ASalasGerador::GerarSalaEspecial()
 			return;
 		}
 
-		if (!bSalaChaveGerada && 
-			(UltimaSalaValida() >= Stream.FRandRange(7, 9) ||
+		if (!bSalaChaveGerada &&
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(7, 9) ||
 			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaChave;
@@ -235,8 +306,8 @@ void ASalasGerador::GerarSalaEspecial()
 			return;
 		}
 
-		if (!bSalaBossGerada && 
-			(UltimaSalaValida() >= Stream.FRandRange(2, 6) ||
+		if (!bSalaBossGerada &&
+			(UltimaSalaValida() >= StreamGeracao.FRandRange(2, 6) ||
 			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaBoss;
@@ -245,7 +316,6 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 	}
-
 }
 
 bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
@@ -258,6 +328,13 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 		{
 			return true;
 		}
+		else if (pos.X > SalaInicial->GetActorLocation().X + ComprimentoMax ||
+			pos.X < SalaInicial->GetActorLocation().X ||
+			pos.Y > SalaInicial->GetActorLocation().Y + LarguraMax / 2 ||
+			pos.Y < SalaInicial->GetActorLocation().Y - LarguraMax / 2)
+		{
+			return true;
+		}
 	}
 
 	return false;
@@ -265,14 +342,12 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 
 void ASalasGerador::SetNumSalas()
 {
-	FRandomStream Stream = FRandomStream(Seed);
-
 	if (MinNumSalas > MaxNumSalas)
 	{
 		MinNumSalas = MaxNumSalas;
 	}
 
-	NumeroSalas = Stream.FRandRange(MinNumSalas, MaxNumSalas);
+	NumeroSalas = StreamGeracao.FRandRange(MinNumSalas, MaxNumSalas);
 
 }
 
@@ -354,7 +429,7 @@ void ASalasGerador::GerarLevel(ASala* SalaAtual)
 }
 
 
-ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta)
+ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta)
 {
 	SalaGerada = nullptr;
 
@@ -370,19 +445,14 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 
 	if (NovaSala->IsValidLowLevelFast())
 	{
+		NovaSala->SetActorScale3D(NovaSala->GetEscala());
 		NovaSala->SalasConectadas.Add(SalaAnterior);
 		SalaAnterior->SalasConectadas.Add(NovaSala);
 		UltimasSalasGeradas.Add(SalaGerada);
+
 	}
 
-	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
-
-	ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(Corredor, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
-
-	if (!NovoCorredor->IsValidLowLevelFast())
-	{
-		//WARNING
-	}
+	GerarCorredor(SalaAnterior, DirecaoPorta);
 
 	if (NovaSala->GetNumPortas() > ENumeroPortas::UMA)
 	{
@@ -393,9 +463,40 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta
 
 	AdicionarAoArrayPortas(NovaSala);
 
+	if (SalasCarregadas.Num() >= Salas.Num())
+	{
+		NovaSala->bSalaTemInimigos = SalasCarregadas[Salas.Find(NovaSala)];
+	}
+
+	NovaSala->SpawnInimigos(Seed);
+
 	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *NovaSala->GetName(), Salas.Num());
 
 	return NovaSala;
+}
+
+void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPorta)
+{
+
+	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta);
+
+	int32 Valor = StreamGeracao.FRandRange(0, 100);
+
+	if ((Valor >= 70 && !bCorredorLojaGerado) ||
+		(!bCorredorLojaGerado && ((ASala*)SalaGerada->GetDefaultObject(true))->GetTipo() == ETipoSala::BOSS))
+	{
+		ACorredorLoja* NovoCorredor = GetWorld()->SpawnActor<ACorredorLoja>(CorredorLoja, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
+		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
+		bCorredorLojaGerado = true;
+	}
+	else
+	{
+		ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(Corredor, transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
+		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
+	}
+
+
+
 }
 
 void ASalasGerador::ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta)

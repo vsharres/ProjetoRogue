@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{67998C7A-47DB-58FC-6E85-08ACB3BE26B6}",
+	"EngineAssociation": "{4F245919-4D20-F907-39DB-7D9B65D7DDE1}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -10,8 +10,15 @@
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"CoreUObject",
-				"Engine"
+				"Engine",
+				"AIModule"
 			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "CodeView",
+			"Enabled": true
 		}
 	]
 }

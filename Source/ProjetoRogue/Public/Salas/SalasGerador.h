@@ -26,7 +26,7 @@ private:
 		int32 IndexSala4P;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
-		TSubclassOf<ASala> SalaItem;
+		TSubclassOf<class ASala> SalaItem;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaChave;
@@ -37,6 +37,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<class ACorredor> Corredor;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		TSubclassOf<ACorredor> CorredorLoja;
+
+	UPROPERTY(VisibleAnywhere, Category = "Corredor")
+		bool bCorredorLojaGerado;
+
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaItemGerada;
 
@@ -46,7 +52,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
 		bool bSalaBossGerada;
 
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	UPROPERTY()
 		TSubclassOf<ASala> SalaGerada;
 
 	UPROPERTY()
@@ -55,14 +61,26 @@ private:
 	UPROPERTY()
 		TArray<FVector> PosSalas;
 
+	UPROPERTY()
+		TArray<bool> SalasCarregadas;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		float ComprimentoMax;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+		float LarguraMax;
+
+	UPROPERTY()
+		FRandomStream StreamGeracao;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
 		int32 MaxNumSalas;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "30"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
 		int32 MinNumSalas;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
@@ -74,14 +92,16 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<ASala*> Salas;
 
-public:
 	// Sets default values for this actor's properties
 	ASalasGerador();
 
 	~ASalasGerador();
 
+	UFUNCTION(BlueprintPure, Category = "Gerador Salas", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
+		static ASalasGerador* GetGeradorSalas(UObject* WorldContextObject);
+
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void Inicializar(ASala* Inicial);
+		void Inicializar(ASala* Inicial, int32 NovoSeed);
 
 	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
 		FRotator GetDirecaoPorta(const FRotator DirecaoSala, const EDirecaoPorta& Porta);
@@ -111,7 +131,10 @@ public:
 		void GerarLevel(ASala* SalaAtual);
 
 	UFUNCTION()
-		ASala* GerarSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
+		ASala* GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
+
+	UFUNCTION()
+		void GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPorta);
 
 	UFUNCTION()
 		void ImpedirColisao(const FTransform& Trans, const FRotator DirecaoPorta);
@@ -126,7 +149,13 @@ public:
 		bool ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
-		virtual void GeracaoTerminada();
+		void GeracaoTerminada();
+
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+		void CarregarSalas();
+
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+		void SalvarSalas();
 
 
 };

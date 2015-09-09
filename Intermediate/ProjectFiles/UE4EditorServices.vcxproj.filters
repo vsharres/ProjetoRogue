@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\UE4EditorServices.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\UE4EditorServices.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{28C51E7C-DFB8-486E-A68C-8C3D904651B8}</UniqueIdentifier>
+			<UniqueIdentifier>{28F7EBA4-D65F-424E-9E56-E7562B595AAD}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{BA0A7586-417F-485B-ADAB-57B93FE46D67}</UniqueIdentifier>
+			<UniqueIdentifier>{BD27B794-5E38-439C-A1E6-54825AD5FF19}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Linux\UE4EditorServicesMain.cpp">
 			<Filter>Private\Linux</Filter>
 		</ClCompile >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{F83ACDBD-BF26-4A95-8D34-CC861A6D5568}</UniqueIdentifier>
+			<UniqueIdentifier>{F7EA0536-8A0A-4609-BE4E-5024683D5982}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Mac\UE4EditorServicesAppDelegate.cpp">
 			<Filter>Private\Mac</Filter>
@@ -26,19 +26,10 @@
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{D9B25F25-4DBE-4B91-ADE0-40429914F51D}</UniqueIdentifier>
+			<UniqueIdentifier>{7D4C19FC-B10F-46A6-888E-59FA5705C827}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Windows\UE4EditorServicesMain.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
-		<Filter Include="Resources">
-			<UniqueIdentifier>{ACDA1CBF-4B09-4B4E-BA20-B64E1B6D8D15}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="Resources\Mac">
-			<UniqueIdentifier>{AFFDB3C1-F42D-4BC6-B02A-EEDD11CD932F}</UniqueIdentifier>
-		</Filter>
-		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Resources\Mac\Info.plist">
-			<Filter>Resources\Mac</Filter>
-		</None >
 	</ItemGroup>
 </Project>

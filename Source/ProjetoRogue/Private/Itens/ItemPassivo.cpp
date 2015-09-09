@@ -1,13 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Public/ProjetoRogue.h"
-#include "Public/Itens/ItemPassivo.h"
-#include "Public/Jogador/Jogador.h"
+#include "ProjetoRogue.h"
+#include "ItemPassivo.h"
+#include "Jogador.h"
 
 UItemPassivo::UItemPassivo()
 {
 	Tipo = ETipoItem::PASSIVO;
-	Stats = FItemStats();
 }
 
 void UItemPassivo::AplicarItem_Implementation()

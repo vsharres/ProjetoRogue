@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{1C0EF50F-1D90-4697-896D-5F61A6ABF228}</UniqueIdentifier>
+			<UniqueIdentifier>{865F43A3-20B2-435D-BA5D-5C97F96457E5}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.cpp">
 			<Filter>Private</Filter>
 		</ClCompile >
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\LabelNameProvider.h">
 			<Filter>Private</Filter>
 		</ClInclude >
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\P4DataCache.cpp">
@@ -31,26 +34,47 @@
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\ProcessHelper.h">
 			<Filter>Private</Filter>
 		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\SettingsCache.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\SettingsCache.h">
+			<Filter>Private</Filter>
+		</ClInclude >
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\SyncingThread.cpp">
+			<Filter>Private</Filter>
+		</ClCompile >
+		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\SyncingThread.h">
+			<Filter>Private</Filter>
+		</ClInclude >
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\UnrealSync.cpp">
 			<Filter>Private</Filter>
 		</ClCompile >
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\UnrealSync.h">
 			<Filter>Private</Filter>
 		</ClInclude >
+		<Filter Include="Private\Mac">
+			<UniqueIdentifier>{C2C2553C-6D92-405A-911F-DDD17FA06EEC}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Mac\UnrealSyncMainMac.cpp">
+			<Filter>Private\Mac</Filter>
+		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{95F0E4FD-AFF7-40D9-9AA8-70841693378D}</UniqueIdentifier>
+			<UniqueIdentifier>{701374A5-285C-4024-A3DB-F753A9F46D2D}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\UnrealSyncMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
-		<Filter Include="Private\Windows\Resources">
-			<UniqueIdentifier>{3585353E-2FFF-47B7-9585-B0D8969D0BB1}</UniqueIdentifier>
+		<Filter Include="Resources">
+			<UniqueIdentifier>{F8AD0DF8-0DA1-4EBE-AD6B-745E29419082}</UniqueIdentifier>
 		</Filter>
-		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\Resources\UnrealSync.ico">
-			<Filter>Private\Windows\Resources</Filter>
+		<Filter Include="Resources\Windows">
+			<UniqueIdentifier>{8D78F562-66AD-42C0-854C-6D9761A9D5D7}</UniqueIdentifier>
+		</Filter>
+		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Resources\Windows\UnrealSync.ico">
+			<Filter>Resources\Windows</Filter>
 		</None >
-		<ResourceCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\Resources\UnrealSync.rc">
-			<Filter>Private\Windows\Resources</Filter>
+		<ResourceCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Resources\Windows\UnrealSync.rc">
+			<Filter>Resources\Windows</Filter>
 		</ResourceCompile >
 	</ItemGroup>
 </Project>

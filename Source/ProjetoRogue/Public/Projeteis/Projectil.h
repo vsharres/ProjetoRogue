@@ -3,8 +3,8 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Public/Jogador/Jogador.h"
-#include "Public/Inimigos/Inimigo.h"
+#include "Jogador.h"
+#include "Inimigo.h"
 #include "Projectil.generated.h"
 
 USTRUCT()
@@ -19,26 +19,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
-		float Tamanho;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
-		float Range;
-
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float tamanho = 1.0f, float range = 10.0f)
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
-		Tamanho = tamanho;
-		Range = range;
 	}
 
 	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)
 	{
 		this->Velocidade = statsJogador.VelProjetil;
 		this->Dano = statsJogador.Dano;
-		this->Tamanho = statsJogador.TamanhoProjetil;
-		this->Range = statsJogador.Range;
 
 		return *this;
 	}
@@ -47,8 +38,6 @@ public:
 	{
 		this->Velocidade = statsInimigo.VelProjetil;
 		this->Dano = statsInimigo.Dano;
-		this->Tamanho = statsInimigo.TamanhoProjetil;
-		this->Range = statsInimigo.Range;
 
 		return *this;
 	}
@@ -64,8 +53,12 @@ class PROJETOROGUE_API AProjectil : public AActor
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+		bool bAtivo;
+
+	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjetilStats Stats;
 
+private:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UProjectileMovementComponent* CompMovimentacao;
 
@@ -75,15 +68,32 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
 		UStaticMeshComponent* Mesh;
 
+public:
 	// Sets default values for this actor's properties
 	AProjectil(const FObjectInitializer& ObjectInitializer);
 
+
+	UFUNCTION()
+	UProjectileMovementComponent* GetMovementComponent();
+	
+	
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
+		void InicializarProjetil(AActor* Inicializador);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projetil", Keywords = "Ativar Projetil"), Category = "Projetil")
+		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
+		void DesativarProjetil();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Particula")
+		void Atingiu();
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "On Hit", Keywords = "On Hit"), Category = "Particula")
 		void OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);

@@ -15,7 +15,7 @@ class PROJETOROGUE_API ASala2PDireita : public ASala
 	
 public:
 
-	ASala2PDireita();
+	ASala2PDireita(const FObjectInitializer& ObjectInitializer);
 	
 	
 	
