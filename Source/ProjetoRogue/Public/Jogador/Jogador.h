@@ -241,9 +241,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Nome")
 		FString Nome;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
-		bool bDebug;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
 

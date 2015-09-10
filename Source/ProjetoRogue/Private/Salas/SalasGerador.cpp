@@ -256,7 +256,7 @@ void ASalasGerador::SalvarSalas()
 
 	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
 		return;
-	
+
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
@@ -288,8 +288,10 @@ void ASalasGerador::GerarSalaEspecial()
 	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
 	{
 
+		int32 prob = StreamGeracao.FRandRange(0, 100);
+
 		if (!bSalaItemGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(MinNumSalas, NumeroSalas) ||
+			(prob > 66 ||
 			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaItem;
@@ -298,7 +300,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaChaveGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(7, 9) ||
+			(prob > 33 ||
 			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaChave;
@@ -307,7 +309,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaBossGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(2, 6) ||
+			(prob < 33 ||
 			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaBoss;
@@ -329,7 +331,7 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 			return true;
 		}
 		else if (pos.X > SalaInicial->GetActorLocation().X + ComprimentoMax ||
-			pos.X < SalaInicial->GetActorLocation().X ||
+			pos.X < SalaInicial->GetActorLocation().X - SalaInicial->GetOffset() / 2 ||
 			pos.Y > SalaInicial->GetActorLocation().Y + LarguraMax / 2 ||
 			pos.Y < SalaInicial->GetActorLocation().Y - LarguraMax / 2)
 		{
