@@ -10,8 +10,8 @@
 
 const float VIDAMAX_MAX = 500.0F;
 const float VIDAMAX_MIN = 50.0f;
-const int32 ENERGIA_MAX = 300;
-const int32 ENERGIA_MIN = 0;
+const float ENERGIA_MAX = 300;
+const float ENERGIA_MIN = 0;
 const float VELOCIDADEMOV_MAX = 1800.0f;
 const float VELOCIDADEMOV_MIN = 600.0f;
 const float DANO_MAX = 50.0f;
@@ -37,10 +37,10 @@ struct FJogadorStats
 		float VidaMaxima;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
-		int32 Energia;
+		float Energia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
-		int32 EnergiaMax;
+		float EnergiaMax;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "600.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
@@ -202,7 +202,7 @@ struct FJogadorStats
 		this->VelProjetil = stats.VelProjetil;
 	}
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 0.3f, float velProjetil = 1500.0f, float energia = 100)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
@@ -262,9 +262,6 @@ public:
 		bool bPossuiChave;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
-	class UItemAtivo* ItemAtivoAtual;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		TArray<class UItemPassivo*> ItensPassivos;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
@@ -277,6 +274,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Projetil")
 		TSubclassOf<class UItemProjetil> ProjetilInicial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		TSubclassOf<UItemProjetil> ProjetilEncontrado;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
 		UItemProjetil* ProjetilAtual;
@@ -325,6 +325,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Jogo")
 		void NovoJogador();
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+		void UsarItem(bool bDesativar = false);
 
 	//INTERFACES
 

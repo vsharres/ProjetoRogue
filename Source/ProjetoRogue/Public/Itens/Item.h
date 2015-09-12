@@ -9,8 +9,7 @@ UENUM(BlueprintType)
 enum class ETipoItem : uint8
 {
 	PASSIVO,
-	PROJETIL,
-	ATIVO
+	PROJETIL
 };
 
 USTRUCT()
@@ -40,10 +39,10 @@ struct FItemStats
 		float IncrementaVelProjetil;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		int32 IncrementaEnergia;
+		float IncrementaEnergia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		int32 IncrementaEnergiaMax;
+		float IncrementaEnergiaMax;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		int32 Custo;
@@ -64,7 +63,7 @@ struct FItemStats
 
 	}
 
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, int32 incEner = 0, int32 incEnerMax = 0, int32 custo = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, float incEner = 0, float incEnerMax = 0, int32 custo = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;

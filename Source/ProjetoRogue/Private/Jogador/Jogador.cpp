@@ -3,7 +3,6 @@
 #include "ProjetoRogue.h"
 #include "Jogador.h"
 #include "Projectil.h"
-#include "ItemAtivo.h"
 #include "ItemPassivo.h"
 #include "ItemProjetil.h"
 
@@ -16,7 +15,6 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 
 	Stats = FJogadorStats();
 	bPossuiChave = false;
-	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
 	TempoCooldown = 2.0f;
@@ -241,18 +239,12 @@ void AJogador::SalvarJogador()
 		SaveInst->JogadorLocation = this->GetActorLocation();
 		SaveInst->JogadorRotation = this->GetActorRotation();
 
-		if (ProjetilAtual->IsValidLowLevelFast())
+		if (ProjetilEncontrado->IsValidLowLevelFast())
 		{
-			SaveInst->ProjetilInicial_Referencia = FStringAssetReference(this->ProjetilAtual->GetClass()).ToString();
+			SaveInst->ProjetilEncontrado_Referencia = FStringAssetReference(this->ProjetilEncontrado).ToString();
 		}
 
 		SaveInst->bItemEncontrado = this->bItemEncontrado;
-
-		if (ItemAtivoAtual->IsValidLowLevelFast())
-		{
-
-			SaveInst->ItemAtivo_Referencia = FStringAssetReference(this->ItemAtivoAtual->GetClass()).ToString();
-		}
 
 		SaveInst->ItensPassivos_Referencias.Empty();
 		for (const auto& item : ItensPassivos)
@@ -285,23 +277,13 @@ void AJogador::CarregarJogador()
 			this->AddActorLocalOffset(FVector(0, 0, 127.f));
 		}
 
-		if (!SaveInst->ProjetilInicial_Referencia.IsEmpty())
+		if (!SaveInst->ProjetilEncontrado_Referencia.IsEmpty())
 		{
-			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilInicial_Referencia));
+			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilEncontrado_Referencia));
 
 			if (itemProjetil->IsValidLowLevelFast())
 			{
-				this->ProjetilInicial = itemProjetil->GetClass();
-			}
-		}
-
-		if (!SaveInst->ItemAtivo_Referencia.IsEmpty())
-		{
-			UItemAtivo* itemAtivo = NewObject<UItemAtivo>(this, StaticLoadClass(UItemAtivo::StaticClass(), NULL, *SaveInst->ItemAtivo_Referencia));
-
-			if (itemAtivo->IsValidLowLevelFast())
-			{
-				itemAtivo->InicializarItem(this);
+				this->ProjetilEncontrado = itemProjetil->GetClass();
 			}
 		}
 
@@ -337,15 +319,39 @@ void AJogador::NovoJogador()
 }
 
 
+void AJogador::UsarItem(bool bDesativar)
+{
+	if (ProjetilEncontrado->IsValidLowLevelFast())
+	{
+		if (bDesativar)
+		{
+			ProjetilAtual->RemoverItem();
+			ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
+			ProjetilAtual->InicializarItem(this);
+		}
+		else
+		{
+			ProjetilAtual->RemoverItem();
+			ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilEncontrado);
+			ProjetilAtual->InicializarItem(this);
+
+		}
+	}
+}
+
 void AJogador::InicializarProjetil()
 {
-	UObject* temp = NewObject<UObject>(this, ProjetilInicial);
-	ProjetilAtual = Cast<UItemProjetil>(temp);
-
-	if (ProjetilAtual)
+	if (ProjetilAtual ==  NULL)
 	{
-		ProjetilAtual->Jogador = this;
-		ProjetilAtual->AplicarItem();
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
+		ProjetilAtual->InicializarItem(this);
+
+	}
+	else
+	{
+		ProjetilAtual->RemoverItem();
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
+		ProjetilAtual->InicializarItem(this);
 	}
 
 	GerarProjetilPool();
@@ -378,11 +384,9 @@ void AJogador::GerarProjetilPool()
 // Called every frame
 void AJogador::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
-
 	ItemCooldown(DeltaTime);
 
+	Super::Tick(DeltaTime);
 }
 
 void AJogador::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -395,18 +399,18 @@ void AJogador::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AJogador::ItemCooldown(float DeltaTime)
 {
-	if (CooldownAtual < TempoCooldown)
+	if (ProjetilAtual->bAtivo)
 	{
-		CooldownAtual += CooldDownRate * DeltaTime;
-	}
-	else
-	{
-		CooldownAtual = TempoCooldown;
-		if (ItemAtivoAtual->IsValidLowLevelFast() && ItemAtivoAtual->bAtivo)
+		Stats.Energia -= ProjetilAtual->EnergiaUtilizada * DeltaTime;
+
+		if (Stats.Energia <= 0.0f)
 		{
-			ItemAtivoAtual->DesativarItem();
+			Stats.Energia = 0.0f;
+			ProjetilAtual->DesativarItem();
 		}
+
 	}
+
 }
 
 // Called to bind functionality to input

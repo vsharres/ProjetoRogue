@@ -12,13 +12,13 @@ class PROJETOROGUE_API AItemSpawner : public AActor
 
 protected:
 
-	UPROPERTY(BlueprintReadWrite,Category=Itens)
-		class UItem* ItemGerado;
+	UPROPERTY(BlueprintReadWrite, Category = Itens)
+	class UItem* ItemGerado;
 
 	UPROPERTY(BlueprintReadWrite, Category = Itens)
 		TSubclassOf<UItem> TipoItem;
 
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly, Category = Itens)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Itens)
 		TArray<TSubclassOf<UItem>> PossiveisItens;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Collision)
@@ -26,14 +26,14 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Sprite)
 		UBillboardComponent* Sprite;
-	
-public:	
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
+public:
+
+	UPROPERTY(BlueprintReadWrite, Category = "Seed")
 		int32 Seed;
 
 	// Sets default values for this actor's properties
 	AItemSpawner(const FObjectInitializer& ObjectInitializer);
-	
-	
+
+
 };

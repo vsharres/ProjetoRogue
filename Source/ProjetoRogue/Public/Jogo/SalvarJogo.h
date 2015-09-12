@@ -64,13 +64,10 @@ public:
 	//Itens
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
-		FString ProjetilInicial_Referencia;
+		FString ProjetilEncontrado_Referencia;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		TArray <FString> ItensPassivos_Referencias;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
-		FString ItemAtivo_Referencia;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		bool bItemEncontrado;
