@@ -40,7 +40,7 @@ void AInimigoRange::GerarProjetilPool()
 
 		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(Projetil, tiroPos, GetControlRotation());
 
-		if (Tiro->IsValidLowLevel())
+		if (Tiro)
 		{
 			Tiro->Instigator = this;
 			Tiro->SetActorHiddenInGame(true);

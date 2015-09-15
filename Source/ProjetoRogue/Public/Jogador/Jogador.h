@@ -4,7 +4,6 @@
 
 #include "GameFramework/Character.h"
 #include "DanoInterface.h"
-#include "DebugInterface.h"
 #include "Item.h"
 #include "Jogador.generated.h"
 

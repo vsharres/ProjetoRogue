@@ -11,7 +11,7 @@ UItemPassivo::UItemPassivo()
 
 void UItemPassivo::AplicarItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast())
+	if (Jogador)
 	{
 		Jogador->ItensPassivos.Add(this);
 
@@ -21,7 +21,7 @@ void UItemPassivo::AplicarItem_Implementation()
 
 void UItemPassivo::RemoverItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast())
+	if (Jogador)
 	{
 		Jogador->ItensPassivos.Remove(this);
 

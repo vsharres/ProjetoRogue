@@ -1741,12 +1741,12 @@
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Inimigo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoRange.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigosControlador.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DanoInterface.cpp" />
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\Item.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemPassivo.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp" />
@@ -1771,12 +1771,12 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigosControlador.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DanoInterface.h" />
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\Item.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemPassivo.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h" />

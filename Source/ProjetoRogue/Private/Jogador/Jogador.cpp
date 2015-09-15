@@ -222,14 +222,14 @@ void AJogador::SalvarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+	if (!gameMode || gameMode->bNaoSalvar)
 		return;
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		SaveInst->bNovoJogo = false;
 		SaveInst->Stats.SetStats(this->Stats);
@@ -239,7 +239,7 @@ void AJogador::SalvarJogador()
 		SaveInst->JogadorLocation = this->GetActorLocation();
 		SaveInst->JogadorRotation = this->GetActorRotation();
 
-		if (ProjetilEncontrado->IsValidLowLevelFast())
+		if (ProjetilEncontrado)
 		{
 			SaveInst->ProjetilEncontrado_Referencia = FStringAssetReference(this->ProjetilEncontrado).ToString();
 		}
@@ -262,7 +262,7 @@ void AJogador::CarregarJogador()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		GerarNome(SaveInst->NumJogos);
 		this->Stats.SetStats(SaveInst->Stats);
@@ -281,7 +281,7 @@ void AJogador::CarregarJogador()
 		{
 			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilEncontrado_Referencia));
 
-			if (itemProjetil->IsValidLowLevelFast())
+			if (itemProjetil)
 			{
 				this->ProjetilEncontrado = itemProjetil->GetClass();
 			}
@@ -295,7 +295,7 @@ void AJogador::CarregarJogador()
 			{
 				UItemPassivo* itemPassivo = NewObject<UItemPassivo>(this, StaticLoadClass(UItemPassivo::StaticClass(), NULL, *passivo));
 
-				if (itemPassivo->IsValidLowLevelFast())
+				if (itemPassivo)
 				{
 					itemPassivo->InicializarItem(this);
 				}
@@ -311,7 +311,7 @@ void AJogador::NovoJogador()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		GerarNome(SaveInst->NumJogos);
 	}
@@ -321,7 +321,7 @@ void AJogador::NovoJogador()
 
 void AJogador::UsarItem(bool bDesativar)
 {
-	if (ProjetilEncontrado->IsValidLowLevelFast())
+	if (ProjetilEncontrado)
 	{
 		if (bDesativar)
 		{
@@ -370,7 +370,7 @@ void AJogador::GerarProjetilPool()
 
 		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
 
-		if (Tiro->IsValidLowLevel())
+		if (Tiro)
 		{
 			Tiro->Instigator = this;
 			Tiro->SetActorHiddenInGame(true);

@@ -44,7 +44,7 @@ void ACorredorLoja::InicializarLoja()
 
 			UItem* itemSlot = NewObject<UItem>(this, Itens[Stream.FRandRange(0, Itens.Num() - 1)]);
 
-			if (itemSlot->IsValidLowLevelFast())
+			if (itemSlot)
 			{
 				Slots[index].Item = itemSlot;
 				Slots[index].Custo = itemSlot->Stats.Custo;
@@ -121,7 +121,7 @@ void ACorredorLoja::CarregarLoja()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+	if (!gameMode|| gameMode->bNaoSalvar)
 		return;
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));

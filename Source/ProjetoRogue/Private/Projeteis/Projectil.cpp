@@ -51,7 +51,7 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 
 	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
 	
-	if (!CompMovimentacao->UpdatedComponent->IsValidLowLevelFast())
+	if (!CompMovimentacao->UpdatedComponent)
 	{
 		CompMovimentacao->SetUpdatedComponent(this->RootComponent);
 		

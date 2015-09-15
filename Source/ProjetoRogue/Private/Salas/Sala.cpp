@@ -92,7 +92,7 @@ TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 
 void ASala::RemoverInimigo(AInimigo* inimigo)
 {
-	if (inimigo->IsValidLowLevelFast())
+	if (inimigo)
 	{
 		Inimigos.Remove(inimigo);
 	}
@@ -128,7 +128,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
 		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
-		if (NovoInimigo->IsValidLowLevelFast())
+		if (NovoInimigo)
 		{
 			NovoInimigo->SpawnDefaultController();
 			Inimigos.Add(NovoInimigo);
@@ -137,7 +137,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 
 		AInimigosControlador* Controlador = Cast<AInimigosControlador>(NovoInimigo->GetController());
 
-		if (Controlador->IsValidLowLevelFast())
+		if (Controlador)
 		{
 			Controlador->SalaPai = this;
 		}
@@ -172,7 +172,7 @@ void ASala::InimigosForamDerrotados()
 		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 		ASalasGerador* gerador = ASalasGerador::GetGeradorSalas(GetWorld());
 
-		if (jogador->IsValidLowLevelFast() && gerador->IsValidLowLevelFast())
+		if (jogador && gerador)
 		{
 			jogador->SalvarJogador();
 			gerador->SalvarSalas();
@@ -192,7 +192,7 @@ void ASala::TrancarPortas()
 
 void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && !bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && !bInimigosAtivos && bSalaTemInimigos)
 	{
 		for (auto const& Inimigo : Inimigos)
 		{
@@ -208,7 +208,7 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 
 void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && bInimigosAtivos && bSalaTemInimigos)
 	{
 		for (auto const& Inimigo : Inimigos)
 		{

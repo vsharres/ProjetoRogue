@@ -59,9 +59,6 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DanoInterface.cpp">
       <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DebugInterface.cpp">
-      <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
-    </ClCompile>
     <Filter Include="Source\ProjetoRogue\Private\Itens">
       <UniqueIdentifier>{190133A3-54C1-4213-B839-7940DC256330}</UniqueIdentifier>
     </Filter>
@@ -173,9 +170,6 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DanoInterface.h">
       <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DebugInterface.h">
-      <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
-    </ClInclude>
     <Filter Include="Source\ProjetoRogue\Public\Itens">
       <UniqueIdentifier>{F8B3D3E1-149E-451B-9577-A457427F2A5C}</UniqueIdentifier>
     </Filter>
@@ -272,5 +266,15 @@
     <ResourceCompile Include="..\..\Source\ProjetoRogue\Resources\Windows\ProjetoRogue.rc">
       <Filter>Source\ProjetoRogue\Resources\Windows</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h">
+      <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp">
+      <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -92,7 +92,7 @@ void AProtuXGameMode::LoadProfile()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		bNovoJogo = SaveInst->bNovoJogo;
 
@@ -118,7 +118,7 @@ void AProtuXGameMode::ContinuarJogo()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		SaveInst->bNovoJogo = false;
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);

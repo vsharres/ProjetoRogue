@@ -67,7 +67,7 @@ void AInimigo::ReceberDano(const float& dano)
 
 void AInimigo::AplicarStatsProjetil(AProjectil* projetil)
 {
-	if (projetil->IsValidLowLevelFast())
+	if (projetil)
 	{
 		projetil->Stats = this->Stats;
 	}

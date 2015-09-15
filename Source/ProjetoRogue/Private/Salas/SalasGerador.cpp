@@ -54,7 +54,7 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 		{
 			for (TActorIterator<ASalasGerador> ActorItr(World); ActorItr; ++ActorItr)
 			{
-				if ((*ActorItr)->IsValidLowLevel())
+				if ((*ActorItr))
 				{
 					return *ActorItr;
 				}
@@ -143,7 +143,7 @@ int32 ASalasGerador::UltimaSalaValida()
 
 	for (int32 i = 0; i < Salas.Num(); i++)
 	{
-		if (Salas[i]->IsValidLowLevel())
+		if (Salas[i])
 		{
 			index = i;
 		}
@@ -239,7 +239,7 @@ void ASalasGerador::CarregarSalas()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo)
+	if (SaveInst && !SaveInst->bNovoJogo)
 	{
 		this->Seed = SaveInst->Seed;
 		this->MaxNumSalas = SaveInst->MaxNumSalas;
@@ -254,7 +254,7 @@ void ASalasGerador::SalvarSalas()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+	if (!gameMode || gameMode->bNaoSalvar)
 		return;
 
 
@@ -267,7 +267,7 @@ void ASalasGerador::SalvarSalas()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		SaveInst->Seed = this->Seed;
 		SaveInst->MaxNumSalas = this->MaxNumSalas;
@@ -445,7 +445,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 
 	ASala* NovaSala = GetWorld()->SpawnActor<ASala>(SalaGerada, transSala.GetLocation(), transSala.GetRotation().Rotator());
 
-	if (NovaSala->IsValidLowLevelFast())
+	if (NovaSala)
 	{
 		NovaSala->SetActorScale3D(NovaSala->GetEscala());
 		NovaSala->SalasConectadas.Add(SalaAnterior);

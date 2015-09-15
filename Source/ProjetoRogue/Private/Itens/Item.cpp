@@ -116,7 +116,7 @@ TArray<float> UItem::GetEfeitos()
 
 void UItem::InicializarItem(AJogador* inicializador)
 {
-	if (inicializador->IsValidLowLevelFast())
+	if (inicializador)
 	{
 		this->Jogador = inicializador;
 		AplicarItem();

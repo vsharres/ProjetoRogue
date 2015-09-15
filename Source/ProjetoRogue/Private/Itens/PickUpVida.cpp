@@ -16,7 +16,7 @@ void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCompo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast())
+	if (jogador)
 	{
 		jogador->AdicionarVida(IncVida);
 		jogador->GerarPickUpPopUp(this);
