@@ -41,7 +41,7 @@ void AJogador::InicializarJogador()
 		CarregarJogador();
 	}
 
-	InicializarProjetil();
+	InicializarProjetil(false);
 }
 
 void AJogador::GerarNome(int32 index)
@@ -323,38 +323,39 @@ void AJogador::UsarItem(bool bDesativar)
 {
 	if (ProjetilEncontrado)
 	{
-		if (bDesativar)
-		{
-			ProjetilAtual->RemoverItem();
-			ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
-			ProjetilAtual->InicializarItem(this);
-		}
-		else
-		{
-			ProjetilAtual->RemoverItem();
-			ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilEncontrado);
-			ProjetilAtual->InicializarItem(this);
-
-		}
+		InicializarProjetil(bDesativar);
 	}
 }
 
-void AJogador::InicializarProjetil()
+void AJogador::InicializarProjetil(bool bDesativar)
 {
-	if (ProjetilAtual ==  NULL)
+	if (ProjetilAtual ==  NULL && !bDesativar)
 	{
 		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
 		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
 
 	}
-	else
+	else if (bDesativar)
 	{
+		ProjetilAtual->DesativarItem();
 		ProjetilAtual->RemoverItem();
 		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
 		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
+	}
+	else
+	{
+		ProjetilAtual->DesativarItem();
+		ProjetilAtual->RemoverItem();
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilEncontrado);
+		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
+
+		ProjetilAtual->AtivarItem();
 	}
 
-	GerarProjetilPool();
+	
 }
 
 void AJogador::GerarProjetilPool()

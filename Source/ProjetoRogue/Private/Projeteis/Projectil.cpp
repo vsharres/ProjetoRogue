@@ -61,7 +61,7 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 
 }
 
-void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador)
+void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, APawn* Inicializador)
 {
 	bAtivo = true;
 
@@ -112,9 +112,11 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	{
 		danoInterface->ReceberDano(this->Stats.Dano);
 	}
-
-	DesativarProjetil();
-	Atingiu();
+	else if (Hit.GetActor() != this->Instigator)
+	{
+		DesativarProjetil();
+		Atingiu();
+	}
 }
 
 UProjectileMovementComponent* AProjectil::GetMovProjetil()

@@ -144,7 +144,7 @@ void UItem::RemoverItem_Implementation()
 {
 	RemoverStats();
 
-	this->BeginDestroy();
+	this->ConditionalBeginDestroy();
 }
 
 UObject* UItem::InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe)

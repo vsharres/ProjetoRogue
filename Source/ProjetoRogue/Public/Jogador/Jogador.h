@@ -17,7 +17,7 @@ const float DANO_MAX = 50.0f;
 const float DANO_MIN = 5;
 const float FIRERATE_MAX = 1.0f;
 const float FIRERATE_MIN = 0.005f;
-const float PRECISAO_MAX = 5.0f;
+const float PRECISAO_MAX = 10.0f;
 const float PRECISAO_MIN = 1.0f;
 const float VELOCIDADEPROJ_MAX = 7000.0f;
 const float VELOCIDADEPROJ_MIN = 1000.f;
@@ -199,9 +199,11 @@ struct FJogadorStats
 		this->FireRate = stats.FireRate;
 		this->Precisao = stats.Precisao;
 		this->VelProjetil = stats.VelProjetil;
+
+		ChecarValores();
 	}
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 0.3f, float velProjetil = 1500.0f, float energia = 100)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 5.0f, float velProjetil = 1500.0f, float energia = 100)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
@@ -212,6 +214,8 @@ struct FJogadorStats
 		Energia = energia;
 		EnergiaMax = Energia;
 		Vida = VidaMaxima;
+
+		ChecarValores();
 	}
 
 	FJogadorStats(const FJogadorStats& Outro)
@@ -225,6 +229,8 @@ struct FJogadorStats
 		Energia = Outro.Energia;
 		EnergiaMax = Outro.EnergiaMax;
 		Vida = Outro.Vida;
+
+		ChecarValores();
 	}
 
 };
@@ -299,7 +305,7 @@ public:
 		void AtualizarPropriedadesComStats();
 
 	UFUNCTION()
-		void InicializarProjetil();
+		void InicializarProjetil(bool bDesativar);
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		void GerarProjetilPool();

@@ -14,24 +14,19 @@ UItemProjetil::UItemProjetil()
 
 void UItemProjetil::AplicarItem_Implementation()
 {
-	/*if (Jogador->IsValidLowLevelFast() && this->bProjetilPadrao)
+	if (Jogador->IsValidLowLevelFast() && this->bProjetilPadrao)
 	{
 		Jogador->ProjetilAtual = this;
 	}
-	else if (Jogador->IsValidLowLevelFast() && Jogador->ProjetilEncontrado->IsValidLowLevelFast() && !this->bProjetilPadrao)
+	else 
 	{
-		Jogador->ProjetilEncontrado->RemoverItem();
-		Jogador->ProjetilEncontrado = this;
+		Jogador->ProjetilEncontrado = this->GetClass();
 	}
-	else if (!this->bProjetilPadrao)
-	{
-		Jogador->ProjetilEncontrado = this;
-	}*/
 }
 
 void UItemProjetil::RemoverItem_Implementation()
 {
-	this->BeginDestroy();
+	this->ConditionalBeginDestroy();
 }
 
 void UItemProjetil::AtivarItem_Implementation()

@@ -58,15 +58,19 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjetilStats Stats;
 
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Efeitos")
+		TSubclassOf<UCameraShake> FireCameraShake;
+
 private:
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UProjectileMovementComponent* CompMovimentacao;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		USphereComponent* CompCollisao;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UStaticMeshComponent* Mesh;
+
 
 public:
 	// Sets default values for this actor's properties
@@ -81,7 +85,7 @@ public:
 		void InicializarProjetil(AActor* Inicializador);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projetil", Keywords = "Ativar Projetil"), Category = "Projetil")
-		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador);
+		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, APawn* Inicializador);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
 		void DesativarProjetil();
