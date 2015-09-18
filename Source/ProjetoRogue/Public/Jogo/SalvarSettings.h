@@ -33,6 +33,9 @@ public:
 		bool IsFullScreen();
 
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
+		bool GetVSync();
+
+	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		FIntPoint GetResolution();
 
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
@@ -43,6 +46,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetFullScreenMode(bool bFullScreen);
+
+	UFUNCTION(BlueprintCallable, Category = "UserSettings")
+		void SetVSyncEnable(bool bEnable);
 
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void ApplySettings(bool bApply);

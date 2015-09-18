@@ -15,47 +15,47 @@ TArray<FString> UItem::GetNomeEfeitos()
 
 	if (Stats.IncrementaDano != 0.0f)
 	{
-		ARetornar.Add("Dano");
+		ARetornar.Add("Damage");
 	}
 
 	if (Stats.IncrementaEnergia != 0)
 	{
-		ARetornar.Add("Energia");
+		ARetornar.Add("Energy");
 	}
 
 	if (Stats.IncrementaEnergiaMax != 0)
 	{
-		ARetornar.Add("Energia Máxima");
+		ARetornar.Add("Max Energy");
 	}
 
 	if (Stats.IncrementaFireRate != 0.0f)
 	{
-		ARetornar.Add("Frequência de Tiro");
+		ARetornar.Add("Fire Rate");
 	}
 
 	if (Stats.IncrementaPrecisao != 0.0f)
 	{
-		ARetornar.Add("Tamanho do projétil");
+		ARetornar.Add("Accuracy");
 	}
 
 	if (Stats.IncrementaVel != 0.0f)
 	{
-		ARetornar.Add("Velocidade");
+		ARetornar.Add("Speed");
 	}
 
 	if (Stats.IncrementaVelProjetil != 0.0f)
 	{
-		ARetornar.Add("Velocidade do Projétil");
+		ARetornar.Add("Muzzle Speed");
 	}
 
 	if (Stats.IncrementaVida != 0.0f)
 	{
-		ARetornar.Add("Vida");
+		ARetornar.Add("Health");
 	}
 
 	if (Stats.IncrementaVidaMax != 0.0f)
 	{
-		ARetornar.Add("Vida Máxima");
+		ARetornar.Add("Max Health");
 	}
 
 	return ARetornar;

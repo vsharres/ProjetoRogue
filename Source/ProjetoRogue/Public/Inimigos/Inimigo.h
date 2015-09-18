@@ -124,8 +124,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
 		virtual void ReceberDano(const float& dano) override;
 

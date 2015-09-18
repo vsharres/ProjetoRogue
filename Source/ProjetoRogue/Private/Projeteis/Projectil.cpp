@@ -13,8 +13,7 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	bAtivo = false;
 
 	CompCollisao = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("ColisaoEsfera"));
-	CompCollisao->InitSphereRadius(52.0f);
-	CompCollisao->SetWorldScale3D(FVector(0.5f));
+	CompCollisao->InitSphereRadius(10.0f);
 	CompCollisao->bTraceComplexOnMove = true;
 	CompCollisao->SetCollisionObjectType(ECC_WorldDynamic);
 	CompCollisao->SetCollisionResponseToAllChannels(ECR_Ignore);
@@ -111,6 +110,8 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	if (danoInterface && Hit.GetActor() != this->Instigator)
 	{
 		danoInterface->ReceberDano(this->Stats.Dano);
+		DesativarProjetil();
+		Atingiu();
 	}
 	else if (Hit.GetActor() != this->Instigator)
 	{

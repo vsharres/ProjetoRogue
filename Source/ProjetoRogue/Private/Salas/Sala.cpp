@@ -33,7 +33,7 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	bVisitada = false;
 	bSalaTemInimigos = false;
 	Inimigos.Empty();
-	OffsetSala = 4640.0f;
+	OffsetSala = 6000.0f;
 	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
 
 

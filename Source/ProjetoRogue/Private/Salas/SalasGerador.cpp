@@ -169,13 +169,13 @@ FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FR
 
 FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
-	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
+	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)Corredor->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
 
 	FVector dir = -(DirecaoPorta.Vector());
 
 	FRotator Rot = dir.Rotation();
 
-	return FTransform(Rot, Trans, ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetEscala());
+	return FTransform(Rot, Trans, ((ACorredor*)Corredor->GetDefaultObject(true))->GetEscala());
 }
 
 TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)

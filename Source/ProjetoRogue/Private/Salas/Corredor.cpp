@@ -12,8 +12,8 @@ ACorredor::ACorredor(const FObjectInitializer& ObjectInitializer)
 	PrimaryActorTick.bCanEverTick = false;
 	bCanBeDamaged = false;
 
-	OffsetCorredor = 2320.0f;
-	EscalaPadrao = FVector(12.0f, 12.0f, 12.0f);
+	OffsetCorredor = 3000.0f;
+	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
 
 }
 

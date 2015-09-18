@@ -96,7 +96,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		ETipoItem Tipo;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	UPROPERTY(BlueprintReadWrite, Category = "Item")
 	class AJogador* Jogador;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")

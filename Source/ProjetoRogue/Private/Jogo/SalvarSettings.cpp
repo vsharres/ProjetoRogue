@@ -49,6 +49,18 @@ bool USalvarSettings::IsFullScreen()
 	return inFullscreen;
 }
 
+bool USalvarSettings::GetVSync()
+{
+	bool vsyncActive = true;
+
+	if (UserSettings)
+	{
+		vsyncActive = UserSettings->bUseVSync;
+	}
+
+	return vsyncActive;
+}
+
 FIntPoint USalvarSettings::GetResolution()
 {
 	if (UserSettings)
@@ -92,6 +104,14 @@ void USalvarSettings::SetFullScreenMode(bool bFullscreen)
 		}
 
 		UserSettings->SaveSettings();
+	}
+}
+
+void USalvarSettings::SetVSyncEnable(bool bEnable)
+{
+	if (UserSettings)
+	{
+		UserSettings->SetVSyncEnabled(bEnable);
 	}
 }
 

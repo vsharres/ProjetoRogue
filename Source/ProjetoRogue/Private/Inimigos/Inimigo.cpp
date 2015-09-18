@@ -46,13 +46,6 @@ void AInimigo::Tick(float DeltaTime)
 
 }
 
-void AInimigo::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
-	
-
-	Super::EndPlay(EndPlayReason);
-}
-
 void AInimigo::ReceberDano(const float& dano)
 {
 	Stats.Vida -= dano;

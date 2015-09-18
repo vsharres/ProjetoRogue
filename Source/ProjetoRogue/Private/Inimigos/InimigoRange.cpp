@@ -19,12 +19,11 @@ void AInimigoRange::BeginPlay()
 	GerarProjetilPool();
 }
 
-void AInimigoRange::EndPlay(const EEndPlayReason::Type EndPlayReason)
+void AInimigoRange::Destroyed()
 {
-
 	ProjetilPool.Empty();
 
-	Super::EndPlay(EndPlayReason);
+	Super::Destroyed();
 }
 
 void AInimigoRange::GerarProjetilPool()
