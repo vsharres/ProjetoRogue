@@ -16,7 +16,7 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador)
+	if (jogador && OtherActor != this && OtherComp)
 	{
 		jogador->AdicionarEnerngia(IncEnergia);
 		jogador->GerarPickUpPopUp(this);
