@@ -15,9 +15,9 @@ const float VELOCIDADEMOV_MAX = 1800.0f;
 const float VELOCIDADEMOV_MIN = 600.0f;
 const float DANO_MAX = 50.0f;
 const float DANO_MIN = 5;
-const float FIRERATE_MAX = 20.0f;
+const float FIRERATE_MAX = 10.0f;
 const float FIRERATE_MIN = 1.0f;
-const float PRECISAO_MAX = 10.0f;
+const float PRECISAO_MAX = 30.0f;
 const float PRECISAO_MIN = 1.0f;
 const float VELOCIDADEPROJ_MAX = 7000.0f;
 const float VELOCIDADEPROJ_MIN = 1000.f;
@@ -29,31 +29,31 @@ struct FJogadorStats
 {
 	GENERATED_USTRUCT_BODY()
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "50.0", ClampMax = "500.0", UIMin = "50.0", UIMax = "500.0"), Category = "Jogador Struct")
 		float Vida;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "50.0", ClampMax = "500.0", UIMin = "50.0", UIMax = "500.0"), Category = "Jogador Struct")
 		float VidaMaxima;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "300.0", UIMin = "0.0", UIMax = "300.0"), Category = "Jogador Struct")
 		float Energia;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "300.0", UIMin = "0.0", UIMax = "300.0"), Category = "Jogador Struct")
 		float EnergiaMax;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "600.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "600.0", ClampMax = "1800.0", UIMin = "600.0", UIMax = "1800.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "5.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "5.0", ClampMax = "50.0", UIMin = "5.0", UIMax = "50.0"), Category = "Jogador Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.04"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1.0", ClampMax = "10.0", UIMin = "1.0", UIMax = "10.0"), Category = "Jogador Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1.0", ClampMax = "30.0", UIMin = "1.0", UIMax = "30.0"), Category = "Jogador Struct")
 		float Precisao;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "250.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1000.0", ClampMax = "7000.0", UIMin = "1000.0", UIMax = "7000.0"), Category = "Jogador Struct")
 		float VelProjetil;
 
 
@@ -91,6 +91,95 @@ struct FJogadorStats
 
 		return *this;
 	}
+
+	FORCEINLINE FItemStats ClampAdicionarStats(const FItemStats& itemStats)
+	{
+		FItemStats aRetornar;
+
+		if (itemStats.IncrementaDano + this->Dano > DANO_MAX)
+		{
+			aRetornar.IncrementaDano = DANO_MAX - this->Dano;
+		}
+		else if (itemStats.IncrementaDano + this->Dano < DANO_MIN)
+		{
+			aRetornar.IncrementaDano = DANO_MIN - this->Dano;
+		}
+
+		if (itemStats.IncrementaFireRate + this->FireRate > FIRERATE_MAX)
+		{
+			aRetornar.IncrementaFireRate = FIRERATE_MAX - this->FireRate;
+		}
+		else if (itemStats.IncrementaFireRate + this->FireRate < FIRERATE_MIN)
+		{
+			aRetornar.IncrementaFireRate = FIRERATE_MIN - this->FireRate;
+		}
+
+		if (itemStats.IncrementaPrecisao + this->Precisao > PRECISAO_MAX)
+		{
+			aRetornar.IncrementaPrecisao = PRECISAO_MAX - this->Precisao;
+		}
+		else if (itemStats.IncrementaPrecisao + this->Precisao < PRECISAO_MIN)
+		{
+			aRetornar.IncrementaPrecisao = PRECISAO_MIN - this->Precisao;
+		}
+
+		if (itemStats.IncrementaVel + this->VelocidadeMov > VELOCIDADEMOV_MAX)
+		{
+			aRetornar.IncrementaVida = VELOCIDADEMOV_MAX - this->VelocidadeMov;
+		}
+		else if (itemStats.IncrementaVel + this->VelocidadeMov < VELOCIDADEMOV_MIN)
+		{
+			aRetornar.IncrementaVel = VELOCIDADEMOV_MIN - this->VelocidadeMov;
+		}
+
+		if (itemStats.IncrementaVelProjetil + this->VelProjetil > VELOCIDADEPROJ_MAX)
+		{
+			aRetornar.IncrementaVelProjetil = VELOCIDADEPROJ_MAX - this->VelProjetil;
+		}
+		else if (itemStats.IncrementaVelProjetil + this->VelProjetil < VELOCIDADEPROJ_MIN)
+		{
+			aRetornar.IncrementaVelProjetil = VELOCIDADEPROJ_MIN - this->VelProjetil;
+		}
+
+		if (itemStats.IncrementaVidaMax + this->VidaMaxima > VIDAMAX_MAX)
+		{
+			aRetornar.IncrementaVidaMax = VIDAMAX_MAX - this->VidaMaxima;
+		}
+		else if (itemStats.IncrementaVidaMax + this->VidaMaxima < VIDAMAX_MIN)
+		{
+			aRetornar.IncrementaVidaMax = VIDAMAX_MIN - this->VidaMaxima;
+		}
+
+		if (itemStats.IncrementaVida + this->Vida > VidaMaxima)
+		{
+			aRetornar.IncrementaVida = VidaMaxima - this->Vida;
+		}
+		else if (itemStats.IncrementaVida + this->Vida < VIDAMAX_MIN)
+		{
+			aRetornar.IncrementaVida = VIDAMAX_MIN - this->Vida;
+		}
+
+		if (itemStats.IncrementaEnergiaMax + this->EnergiaMax > ENERGIA_MAX)
+		{
+			aRetornar.IncrementaEnergiaMax = ENERGIA_MAX - this->EnergiaMax;
+		}
+		else if (itemStats.IncrementaEnergiaMax + this->EnergiaMax < ENERGIA_MIN)
+		{
+			aRetornar.IncrementaEnergiaMax = ENERGIA_MIN - this->EnergiaMax;
+		}
+
+		if (itemStats.IncrementaEnergia + this->Energia > EnergiaMax)
+		{
+			aRetornar.IncrementaEnergia = EnergiaMax - this->Energia;
+		}
+		else if (itemStats.IncrementaEnergia + this->Energia < ENERGIA_MIN)
+		{
+			aRetornar.IncrementaEnergia = ENERGIA_MIN - this->Energia;
+		}
+
+		return aRetornar;
+	}
+
 
 	FORCEINLINE void ChecarValores()
 	{
@@ -274,7 +363,7 @@ public:
 
 	//PROJETIL
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projetil")
 		int32 NumProjeteis;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Projetil")

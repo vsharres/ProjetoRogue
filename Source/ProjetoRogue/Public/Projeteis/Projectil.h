@@ -19,11 +19,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Dano;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+		float TiroDesvio;
 
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f)
+
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float desvio =1.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
+		TiroDesvio = desvio;
 	}
 
 	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)

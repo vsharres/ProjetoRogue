@@ -1,5 +1,5 @@
-ProjetoRogue\Binaries\Win64\ProjetoRogue.exe	2015-09-21T01:16:14.983Z
-ProjetoRogue.exe	2015-09-21T01:17:04.266Z
+ProjetoRogue\Binaries\Win64\ProjetoRogue.exe	2015-09-24T00:54:36.836Z
+ProjetoRogue.exe	2015-09-24T00:55:21.354Z
 Engine\Extras\Redist\en-us\UE4PrereqSetup_x64.exe	2015-08-31T16:28:28.097Z
 Engine\Binaries\ThirdParty\PhysX\PhysX-3.3\Win64\VS2013\PhysX3PROFILE_x64.dll	2015-08-31T16:15:09.397Z
 Engine\Binaries\ThirdParty\PhysX\PhysX-3.3\Win64\VS2013\PhysX3GpuPROFILE_x64.dll	2015-08-31T16:41:39.208Z

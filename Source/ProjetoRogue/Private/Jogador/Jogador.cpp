@@ -22,7 +22,7 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 	CooldownAtual = TempoCooldown;
 	bItemEncontrado = false;
 
-	NumProjeteis = 10;
+	NumProjeteis = 20;
 
 	Nome = "Mark I";
 
@@ -407,7 +407,7 @@ void AJogador::ItemCooldown(float DeltaTime)
 		if (Stats.Energia <= 0.0f)
 		{
 			Stats.Energia = 0.0f;
-			ProjetilAtual->DesativarItem();
+			UsarItem(true);
 		}
 
 	}

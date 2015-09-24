@@ -119,6 +119,7 @@ void UItem::InicializarItem(AJogador* inicializador)
 	if (inicializador)
 	{
 		this->Jogador = inicializador;
+		Stats = Jogador->Stats.ClampAdicionarStats(Stats);
 		AplicarItem();
 	}
 }
