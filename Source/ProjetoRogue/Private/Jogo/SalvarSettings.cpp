@@ -76,7 +76,6 @@ void USalvarSettings::SetQualitySettings(int32 newSetting)
 	if (UserSettings)
 	{
 		UserSettings->ScalabilityQuality.SetFromSingleQualityLevel(newSetting);
-		UserSettings->SaveSettings();
 	}
 }
 
@@ -85,7 +84,6 @@ void USalvarSettings::SetResolution(FIntPoint newResolution)
 	if (UserSettings)
 	{
 		UserSettings->SetScreenResolution(newResolution);
-		UserSettings->SaveSettings();
 	}
 }
 
@@ -103,7 +101,6 @@ void USalvarSettings::SetFullScreenMode(bool bFullscreen)
 			UserSettings->SetFullscreenMode(EWindowMode::Type::Windowed);
 		}
 
-		UserSettings->SaveSettings();
 	}
 }
 
