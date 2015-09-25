@@ -98,7 +98,7 @@ void ASala::RemoverInimigo(AInimigo* inimigo)
 	}
 }
 
-void ASala::SpawnInimigos_Implementation(int32 Seed)
+void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 {
 	if (!bSalaTemInimigos)
 		return;
@@ -127,7 +127,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 	{
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
-		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 		if (NovoInimigo)
 		{
 			NovoInimigo->SpawnDefaultController();
@@ -144,10 +144,8 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 	}
 }
 
-TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed)
+TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, const FRandomStream& Stream)
 {
-	FRandomStream Stream = FRandomStream(Seed);
-
 	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)];
 
 	return tipoInimigo;

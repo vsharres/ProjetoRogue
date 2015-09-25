@@ -86,8 +86,10 @@ void ACorredorLoja::ComprarSlot(int32 slot, AJogador* jogador)
 		break;
 	case ESlotTipo::ENERGIA:
 		jogador->AdicionarEnerngia(Slots[slot].Efeito);
+		break;
 	case ESlotTipo::ITEM:
 		Slots[slot].Item->InicializarItem(jogador);
+		break;
 	default:
 		break;
 	}
@@ -119,10 +121,6 @@ void ACorredorLoja::SalvarLoja()
 
 void ACorredorLoja::CarregarLoja()
 {
-	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
-
-	if (!gameMode|| gameMode->bNaoSalvar)
-		return;
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));

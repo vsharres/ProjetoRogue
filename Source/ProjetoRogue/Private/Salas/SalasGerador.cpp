@@ -37,14 +37,6 @@ ASalasGerador::ASalasGerador()
 
 }
 
-ASalasGerador::~ASalasGerador()
-{
-	Salas.Empty();
-	PosSalas.Empty();
-	UltimasSalasGeradas.Empty();
-	SalaInicial = NULL;
-}
-
 ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 {
 	if (WorldContextObject)
@@ -470,7 +462,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 		NovaSala->bSalaTemInimigos = SalasCarregadas[Salas.Find(NovaSala)];
 	}
 
-	NovaSala->SpawnInimigos(Seed);
+	NovaSala->SpawnInimigos(StreamGeracao);
 
 	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *NovaSala->GetName(), Salas.Num());
 
