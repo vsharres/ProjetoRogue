@@ -434,7 +434,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
-	virtual void ReceberDano(const float& dano) override;
+		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
@@ -446,7 +446,7 @@ public:
 		void JogadorMorreu();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar DanoPopUp", Keywords = "Gerar Dano PopUp"), Category = "Jogador")
-		void GerarDanoPopUp(float dano, AInimigo* alvo);
+		void GerarDanoPopUp(float dano, AInimigo* alvo, AProjectil* projetil);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar PickUp PopUp", Keywords = "Gerar PickUp PopUp"), Category = "Jogador")
 		void GerarPickUpPopUp(class APickUp* novoPicUp);

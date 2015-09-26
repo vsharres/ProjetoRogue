@@ -47,7 +47,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 		{
 			AInimigosControlador* inimgControlador = Cast<AInimigosControlador>(Actor);
 
-			if (inimgControlador)
+			if (inimgControlador->IsValidLowLevelFast())
 			{
 				inimgControlador->DesativarInimigo();
 			}
@@ -55,7 +55,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 
 		controlador = UGameplayStatics::GetPlayerController(this, 0);
 
-		if (controlador)
+		if (controlador->IsValidLowLevelFast())
 		{
 			controlador->SetCinematicMode(true, true, true);
 			controlador->bShowMouseCursor = true;
@@ -92,7 +92,7 @@ void AProtuXGameMode::LoadProfile()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		bNovoJogo = SaveInst->bNovoJogo;
 
@@ -118,7 +118,7 @@ void AProtuXGameMode::ContinuarJogo()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		SaveInst->bNovoJogo = false;
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);

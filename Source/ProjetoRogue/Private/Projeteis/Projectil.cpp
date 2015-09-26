@@ -40,7 +40,12 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 
 }
 
-UProjectileMovementComponent* AProjectil::GetMovementComponent()
+UStaticMeshComponent* AProjectil::GetProjetilMesh()
+{
+	return Mesh;
+}
+
+UProjectileMovementComponent* AProjectil::GetMovProjetil()
 {
 	return CompMovimentacao;
 }
@@ -109,7 +114,7 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 
 	if (danoInterface && Hit.GetActor() != this->Instigator)
 	{
-		danoInterface->ReceberDano(this->Stats.Dano);
+		danoInterface->ReceberDano(this->Stats.Dano, this);
 		DesativarProjetil();
 		Atingiu();
 	}
@@ -120,8 +125,5 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	}
 }
 
-UProjectileMovementComponent* AProjectil::GetMovProjetil()
-{
-	return CompMovimentacao;
-}
+
 

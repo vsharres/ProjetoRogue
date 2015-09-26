@@ -266,7 +266,7 @@ public:
 	* Evento que é disparado quando a geração foi terminada.
 	*/
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
-		virtual void GeracaoTerminada();
+		void GeracaoTerminada();
 
 	/*
 	* Função que carregar de um save game as salas.

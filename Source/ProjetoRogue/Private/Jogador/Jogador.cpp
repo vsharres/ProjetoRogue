@@ -321,7 +321,7 @@ void AJogador::NovoJogador()
 
 void AJogador::UsarItem(bool bDesativar)
 {
-	if (ProjetilEncontrado)
+	if (ProjetilEncontrado->IsValidLowLevelFast())
 	{
 		InicializarProjetil(bDesativar);
 	}
@@ -371,7 +371,7 @@ void AJogador::GerarProjetilPool()
 
 		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
 
-		if (Tiro)
+		if (Tiro->IsValidLowLevelFast())
 		{
 			Tiro->Instigator = this;
 			Tiro->SetActorHiddenInGame(true);
@@ -421,7 +421,7 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 }
 
-void AJogador::ReceberDano(const float& dano)
+void AJogador::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	this->Stats.Vida -= dano;
 
@@ -433,7 +433,7 @@ void AJogador::ReceberDano(const float& dano)
 
 void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 {
-	if (projetil)
+	if (projetil->IsValidLowLevelFast())
 	{
 		projetil->Stats = this->Stats;
 	}

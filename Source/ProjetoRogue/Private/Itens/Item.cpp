@@ -116,7 +116,7 @@ TArray<float> UItem::GetEfeitos()
 
 void UItem::InicializarItem(AJogador* inicializador)
 {
-	if (inicializador)
+	if (inicializador->IsValidLowLevelFast())
 	{
 		this->Jogador = inicializador;
 		Stats = Jogador->Stats.ClampAdicionarStats(Stats);

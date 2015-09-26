@@ -80,10 +80,11 @@ public:
 	// Sets default values for this actor's properties
 	AProjectil(const FObjectInitializer& ObjectInitializer);
 
+	UFUNCTION(BlueprintPure, Category = "Component")
+		UStaticMeshComponent* GetProjetilMesh();
 
-	UFUNCTION()
-	UProjectileMovementComponent* GetMovementComponent();
-	
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Proj", Keywords = "Get Mov Proj"), Category = "Particula")
+		UProjectileMovementComponent* GetMovProjetil();
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
 		void InicializarProjetil(AActor* Inicializador);
@@ -107,8 +108,6 @@ public:
 		void OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 		virtual void OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Proj", Keywords = "Get Mov Proj"), Category = "Particula")
-			UProjectileMovementComponent* GetMovProjetil();
 
 
 

@@ -128,7 +128,7 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
 		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
-		if (NovoInimigo)
+		if (NovoInimigo->IsValidLowLevelFast())
 		{
 			NovoInimigo->SpawnDefaultController();
 			Inimigos.Add(NovoInimigo);
@@ -137,7 +137,7 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 
 		AInimigosControlador* Controlador = Cast<AInimigosControlador>(NovoInimigo->GetController());
 
-		if (Controlador)
+		if (Controlador->IsValidLowLevelFast())
 		{
 			Controlador->SalaPai = this;
 		}
@@ -170,7 +170,7 @@ void ASala::InimigosForamDerrotados()
 		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 		ASalasGerador* gerador = ASalasGerador::GetGeradorSalas(GetWorld());
 
-		if (jogador && gerador)
+		if (jogador->IsValidLowLevelFast() && gerador->IsValidLowLevelFast())
 		{
 			jogador->SalvarJogador();
 			gerador->SalvarSalas();
@@ -196,7 +196,7 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
-			if (controlador)
+			if (controlador->IsValidLowLevelFast())
 			{
 				controlador->AtivarInimigo();
 			}
@@ -212,7 +212,7 @@ void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPri
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
-			if (controlador)
+			if (controlador->IsValidLowLevelFast())
 			{
 				controlador->DesativarInimigo();
 			}

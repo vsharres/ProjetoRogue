@@ -46,21 +46,21 @@ void AInimigo::Tick(float DeltaTime)
 
 }
 
-void AInimigo::ReceberDano(const float& dano)
+void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	Stats.Vida -= dano;
 
 	AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	if (jogador)
+	if (jogador->IsValidLowLevelFast())
 	{
-		jogador->GerarDanoPopUp(dano, this);
+		jogador->GerarDanoPopUp(dano, this, projetil);
 	}
 }
 
 void AInimigo::AplicarStatsProjetil(AProjectil* projetil)
 {
-	if (projetil)
+	if (projetil->IsValidLowLevelFast())
 	{
 		projetil->Stats = this->Stats;
 	}
@@ -88,7 +88,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 				FVector origem = FVector(stream.FRandRange(GetActorLocation().X - EXPLOSAO_DELTA, GetActorLocation().X + EXPLOSAO_DELTA),
 					stream.FRandRange(GetActorLocation().Y - EXPLOSAO_DELTA, GetActorLocation().Y + EXPLOSAO_DELTA),
@@ -104,7 +104,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 
 				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
@@ -121,7 +121,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
 					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),

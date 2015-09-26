@@ -105,7 +105,7 @@ void ACorredorLoja::SalvarLoja()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		for (int32 index = 0; index < Slots.Num(); index++)
 		{
@@ -125,7 +125,7 @@ void ACorredorLoja::CarregarLoja()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		for (int32 index = 0; index < Slots.Num(); index++)
 		{

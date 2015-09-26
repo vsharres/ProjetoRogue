@@ -7,18 +7,18 @@
 
 
 
-/**
- * 
- */
+/*
+*	Classe que representa uma sala com duas portas. Sala orientada com a orientação padrão (portas na direção Oeste/Leste)
+*/
 UCLASS()
 class PROJETOROGUE_API ASala2P : public ASala
 {
 	GENERATED_BODY()
-	
+
 public:
 
-	// Sets default values for this actor's properties
+	// Construtor
 	ASala2P(const FObjectInitializer& ObjectInitializer);
-	
-	
+
+
 };

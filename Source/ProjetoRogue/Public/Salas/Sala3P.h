@@ -6,9 +6,9 @@
 #include "Sala3P.generated.h"
 
 
-/**
- *
- */
+/*
+*	Classe que representa uma sala com três portas. Sala orientada com a orientação padrão (portas na direção Oeste/Sul/Norte)
+*/
 UCLASS()
 class PROJETOROGUE_API ASala3P : public ASala
 {
@@ -16,7 +16,7 @@ class PROJETOROGUE_API ASala3P : public ASala
 
 
 public:
-	// Sets default values for this actor's properties
+	//Construtor
 	ASala3P(const FObjectInitializer& ObjectInitializer);
 
 };

@@ -231,7 +231,7 @@ void ASalasGerador::CarregarSalas()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst && !SaveInst->bNovoJogo)
+	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo)
 	{
 		this->Seed = SaveInst->Seed;
 		this->MaxNumSalas = SaveInst->MaxNumSalas;
@@ -259,7 +259,7 @@ void ASalasGerador::SalvarSalas()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		SaveInst->Seed = this->Seed;
 		SaveInst->MaxNumSalas = this->MaxNumSalas;
@@ -437,7 +437,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 
 	ASala* NovaSala = GetWorld()->SpawnActor<ASala>(SalaGerada, transSala.GetLocation(), transSala.GetRotation().Rotator());
 
-	if (NovaSala)
+	if (NovaSala->IsValidLowLevelFast())
 	{
 		NovaSala->SetActorScale3D(NovaSala->GetEscala());
 		NovaSala->SalasConectadas.Add(SalaAnterior);

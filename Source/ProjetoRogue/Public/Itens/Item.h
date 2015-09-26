@@ -97,7 +97,7 @@ public:
 		ETipoItem Tipo;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
-	class AJogador* Jogador;
+	TWeakObjectPtr<class AJogador> Jogador;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FName NomeItem;

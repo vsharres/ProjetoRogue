@@ -110,7 +110,7 @@ public:
 		FInimigoStats Stats;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
-	class ASala* SalaPai;
+		TWeakObjectPtr<class ASala> SalaPai;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador")
 		TArray<FVector> UltimasVelJogador;
@@ -125,7 +125,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
-		virtual void ReceberDano(const float& dano) override;
+		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
 
 	UFUNCTION()
 		bool EstaVivo();
