@@ -38,6 +38,8 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 
 	Stats = FProjetilStats();
 
+	ImapctoEfeitos = FProjetilImpactoEfeito();
+
 }
 
 UStaticMeshComponent* AProjectil::GetProjetilMesh()
@@ -94,6 +96,22 @@ void AProjectil::DesativarProjetil()
 	
 }
 
+void AProjectil::SpawnEfeitos(const FHitResult& Hit)
+{
+	FRandomStream Stream;
+
+	FRotator rotTemp = Hit.ImpactNormal.Rotation();
+
+	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180));
+
+	UGameplayStatics::SpawnEmitterAtLocation(this, ImapctoEfeitos.Efeito, Hit.ImpactPoint, FRotator::ZeroRotator, true);
+
+	//UGameplayStatics::PlaySoundAtLocation(this, SomImpacto, Hit.ImpactPoint);
+
+	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.Tamanho, ImapctoEfeitos.Tamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
+
+}
+
 // Called when the game starts or when spawned
 void AProjectil::BeginPlay()
 {
@@ -116,11 +134,13 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	{
 		danoInterface->ReceberDano(this->Stats.Dano, this);
 		DesativarProjetil();
-		Atingiu();
+		SpawnEfeitos(Hit);
+		Atingiu();		
 	}
 	else if (Hit.GetActor() != this->Instigator)
 	{
 		DesativarProjetil();
+		SpawnEfeitos(Hit);
 		Atingiu();
 	}
 }

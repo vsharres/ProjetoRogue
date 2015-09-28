@@ -49,6 +49,64 @@ public:
 
 };
 
+USTRUCT()
+struct FProjetilImpactoEfeito
+{
+	GENERATED_USTRUCT_BODY()
+public:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UParticleSystem* Efeito;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		USoundCue* SomImpacto;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UMaterial* DecalMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Tamanho;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float DecalVida;
+
+	FProjetilImpactoEfeito()
+	{
+		Efeito = NULL;
+		SomImpacto = NULL;
+		DecalMaterial = NULL;
+		Tamanho = 2.0f;
+		DecalVida = 3.0f;
+	}
+};
+
+USTRUCT()
+struct FProjetilAtirarEfeitos
+{
+	GENERATED_USTRUCT_BODY()
+public:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UParticleSystem* TiroFlash;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		USoundCue* SomTiro;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Tamanho;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float DecalVida;
+
+	FProjetilAtirarEfeitos()
+	{
+		TiroFlash = NULL;
+		SomTiro = NULL;
+		Tamanho = 1.0f;
+		DecalVida = 2.0f;
+	}
+};
+
 //TODO
 UCLASS(ABSTRACT, Blueprintable)
 class PROJETOROGUE_API AProjectil : public AActor
@@ -62,10 +120,12 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjetilStats Stats;
 
+
+
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Efeitos")
 		TSubclassOf<UCameraShake> FireCameraShake;
 
-private:
+protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UProjectileMovementComponent* CompMovimentacao;
 
@@ -74,6 +134,9 @@ private:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UStaticMeshComponent* Mesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Efeitos")
+		FProjetilImpactoEfeito ImapctoEfeitos;
 
 
 public:
@@ -94,6 +157,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
 		void DesativarProjetil();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos", Keywords = "Spawn Efeitos"), Category = "Projetil")
+		void SpawnEfeitos(const FHitResult& Hit);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
