@@ -4,21 +4,20 @@
 
 #include "GameFramework/Character.h"
 #include "DanoInterface.h"
-#include "DebugInterface.h"
 #include "Item.h"
 #include "Jogador.generated.h"
 
 const float VIDAMAX_MAX = 500.0F;
 const float VIDAMAX_MIN = 50.0f;
-const int32 ENERGIA_MAX = 300;
-const int32 ENERGIA_MIN = 0;
+const float ENERGIA_MAX = 300;
+const float ENERGIA_MIN = 0;
 const float VELOCIDADEMOV_MAX = 1800.0f;
 const float VELOCIDADEMOV_MIN = 600.0f;
 const float DANO_MAX = 50.0f;
 const float DANO_MIN = 5;
-const float FIRERATE_MAX = 1.0f;
-const float FIRERATE_MIN = 0.005f;
-const float PRECISAO_MAX = 5.0f;
+const float FIRERATE_MAX = 10.0f;
+const float FIRERATE_MIN = 1.0f;
+const float PRECISAO_MAX = 30.0f;
 const float PRECISAO_MIN = 1.0f;
 const float VELOCIDADEPROJ_MAX = 7000.0f;
 const float VELOCIDADEPROJ_MIN = 1000.f;
@@ -30,31 +29,31 @@ struct FJogadorStats
 {
 	GENERATED_USTRUCT_BODY()
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "50.0", ClampMax = "500.0", UIMin = "50.0", UIMax = "500.0"), Category = "Jogador Struct")
 		float Vida;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "50.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "50.0", ClampMax = "500.0", UIMin = "50.0", UIMax = "500.0"), Category = "Jogador Struct")
 		float VidaMaxima;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
-		int32 Energia;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "300.0", UIMin = "0.0", UIMax = "300.0"), Category = "Jogador Struct")
+		float Energia;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0"), Category = "Jogador Struct")
-		int32 EnergiaMax;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "300.0", UIMin = "0.0", UIMax = "300.0"), Category = "Jogador Struct")
+		float EnergiaMax;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "600.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "600.0", ClampMax = "1800.0", UIMin = "600.0", UIMax = "1800.0"), Category = "Jogador Struct")
 		float VelocidadeMov;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "5.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "5.0", ClampMax = "50.0", UIMin = "5.0", UIMax = "50.0"), Category = "Jogador Struct")
 		float Dano;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.04"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1.0", ClampMax = "10.0", UIMin = "1.0", UIMax = "10.0"), Category = "Jogador Struct")
 		float FireRate;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "0.1"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1.0", ClampMax = "30.0", UIMin = "1.0", UIMax = "30.0"), Category = "Jogador Struct")
 		float Precisao;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (UIMin = "250.0"), Category = "Jogador Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "1000.0", ClampMax = "7000.0", UIMin = "1000.0", UIMax = "7000.0"), Category = "Jogador Struct")
 		float VelProjetil;
 
 
@@ -92,6 +91,95 @@ struct FJogadorStats
 
 		return *this;
 	}
+
+	FORCEINLINE FItemStats ClampAdicionarStats(const FItemStats& itemStats)
+	{
+		FItemStats aRetornar;
+
+		if (itemStats.IncrementaDano + this->Dano > DANO_MAX)
+		{
+			aRetornar.IncrementaDano = DANO_MAX - this->Dano;
+		}
+		else if (itemStats.IncrementaDano + this->Dano < DANO_MIN)
+		{
+			aRetornar.IncrementaDano = DANO_MIN - this->Dano;
+		}
+
+		if (itemStats.IncrementaFireRate + this->FireRate > FIRERATE_MAX)
+		{
+			aRetornar.IncrementaFireRate = FIRERATE_MAX - this->FireRate;
+		}
+		else if (itemStats.IncrementaFireRate + this->FireRate < FIRERATE_MIN)
+		{
+			aRetornar.IncrementaFireRate = FIRERATE_MIN - this->FireRate;
+		}
+
+		if (itemStats.IncrementaPrecisao + this->Precisao > PRECISAO_MAX)
+		{
+			aRetornar.IncrementaPrecisao = PRECISAO_MAX - this->Precisao;
+		}
+		else if (itemStats.IncrementaPrecisao + this->Precisao < PRECISAO_MIN)
+		{
+			aRetornar.IncrementaPrecisao = PRECISAO_MIN - this->Precisao;
+		}
+
+		if (itemStats.IncrementaVel + this->VelocidadeMov > VELOCIDADEMOV_MAX)
+		{
+			aRetornar.IncrementaVida = VELOCIDADEMOV_MAX - this->VelocidadeMov;
+		}
+		else if (itemStats.IncrementaVel + this->VelocidadeMov < VELOCIDADEMOV_MIN)
+		{
+			aRetornar.IncrementaVel = VELOCIDADEMOV_MIN - this->VelocidadeMov;
+		}
+
+		if (itemStats.IncrementaVelProjetil + this->VelProjetil > VELOCIDADEPROJ_MAX)
+		{
+			aRetornar.IncrementaVelProjetil = VELOCIDADEPROJ_MAX - this->VelProjetil;
+		}
+		else if (itemStats.IncrementaVelProjetil + this->VelProjetil < VELOCIDADEPROJ_MIN)
+		{
+			aRetornar.IncrementaVelProjetil = VELOCIDADEPROJ_MIN - this->VelProjetil;
+		}
+
+		if (itemStats.IncrementaVidaMax + this->VidaMaxima > VIDAMAX_MAX)
+		{
+			aRetornar.IncrementaVidaMax = VIDAMAX_MAX - this->VidaMaxima;
+		}
+		else if (itemStats.IncrementaVidaMax + this->VidaMaxima < VIDAMAX_MIN)
+		{
+			aRetornar.IncrementaVidaMax = VIDAMAX_MIN - this->VidaMaxima;
+		}
+
+		if (itemStats.IncrementaVida + this->Vida > VidaMaxima)
+		{
+			aRetornar.IncrementaVida = VidaMaxima - this->Vida;
+		}
+		else if (itemStats.IncrementaVida + this->Vida < VIDAMAX_MIN)
+		{
+			aRetornar.IncrementaVida = VIDAMAX_MIN - this->Vida;
+		}
+
+		if (itemStats.IncrementaEnergiaMax + this->EnergiaMax > ENERGIA_MAX)
+		{
+			aRetornar.IncrementaEnergiaMax = ENERGIA_MAX - this->EnergiaMax;
+		}
+		else if (itemStats.IncrementaEnergiaMax + this->EnergiaMax < ENERGIA_MIN)
+		{
+			aRetornar.IncrementaEnergiaMax = ENERGIA_MIN - this->EnergiaMax;
+		}
+
+		if (itemStats.IncrementaEnergia + this->Energia > EnergiaMax)
+		{
+			aRetornar.IncrementaEnergia = EnergiaMax - this->Energia;
+		}
+		else if (itemStats.IncrementaEnergia + this->Energia < ENERGIA_MIN)
+		{
+			aRetornar.IncrementaEnergia = ENERGIA_MIN - this->Energia;
+		}
+
+		return aRetornar;
+	}
+
 
 	FORCEINLINE void ChecarValores()
 	{
@@ -200,9 +288,11 @@ struct FJogadorStats
 		this->FireRate = stats.FireRate;
 		this->Precisao = stats.Precisao;
 		this->VelProjetil = stats.VelProjetil;
+
+		ChecarValores();
 	}
 
-	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 0.3f, float velProjetil = 1500.0f, int32 energia = 100)
+	FJogadorStats(float vidMax = 100.0f, float velMov = 600.0f, float fireRate = 0.05f, float dano = 5.0f, float precisao = 5.0f, float velProjetil = 1500.0f, float energia = 100)
 	{
 		VidaMaxima = vidMax;
 		VelocidadeMov = velMov;
@@ -213,6 +303,8 @@ struct FJogadorStats
 		Energia = energia;
 		EnergiaMax = Energia;
 		Vida = VidaMaxima;
+
+		ChecarValores();
 	}
 
 	FJogadorStats(const FJogadorStats& Outro)
@@ -226,6 +318,8 @@ struct FJogadorStats
 		Energia = Outro.Energia;
 		EnergiaMax = Outro.EnergiaMax;
 		Vida = Outro.Vida;
+
+		ChecarValores();
 	}
 
 };
@@ -240,9 +334,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Nome")
 		FString Nome;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
-		bool bDebug;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FJogadorStats Stats;
@@ -265,9 +356,6 @@ public:
 		bool bPossuiChave;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
-	class UItemAtivo* ItemAtivoAtual;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 		TArray<class UItemPassivo*> ItensPassivos;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
@@ -275,11 +363,14 @@ public:
 
 	//PROJETIL
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projetil")
 		int32 NumProjeteis;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Projetil")
 		TSubclassOf<class UItemProjetil> ProjetilInicial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		TSubclassOf<UItemProjetil> ProjetilEncontrado;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
 		UItemProjetil* ProjetilAtual;
@@ -303,7 +394,7 @@ public:
 		void AtualizarPropriedadesComStats();
 
 	UFUNCTION()
-		void InicializarProjetil();
+		void InicializarProjetil(bool bDesativar);
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		void GerarProjetilPool();
@@ -329,6 +420,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Jogo")
 		void NovoJogador();
 
+	UFUNCTION(BlueprintCallable, Category = "Item")
+		void UsarItem(bool bDesativar = false);
+
 	//INTERFACES
 
 	// Called every frame
@@ -340,7 +434,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
-	virtual void ReceberDano(const float& dano) override;
+		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;
@@ -352,7 +446,7 @@ public:
 		void JogadorMorreu();
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar DanoPopUp", Keywords = "Gerar Dano PopUp"), Category = "Jogador")
-		void GerarDanoPopUp(float dano, AInimigo* alvo);
+		void GerarDanoPopUp(float dano, AInimigo* alvo, AProjectil* projetil);
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar PickUp PopUp", Keywords = "Gerar PickUp PopUp"), Category = "Jogador")
 		void GerarPickUpPopUp(class APickUp* novoPicUp);

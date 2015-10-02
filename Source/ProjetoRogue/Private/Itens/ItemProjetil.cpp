@@ -7,34 +7,41 @@
 UItemProjetil::UItemProjetil()
 {
 	Tipo = ETipoItem::PROJETIL;
+	bAtivo = false;
+	bProjetilPadrao = false;
+	EnergiaUtilizada = 1.0f;
 }
 
 void UItemProjetil::AplicarItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast() && Jogador->ProjetilAtual != this)
+	if (Jogador->IsValidLowLevelFast() && this->bProjetilPadrao)
 	{
-		if (Jogador->ProjetilAtual->IsValidLowLevelFast() && this->Projetil->IsValidLowLevelFast())
-		{
-			Jogador->ProjetilAtual->RemoverItem();
-			Jogador->ProjetilAtual = this;
-
-		}
-		else if (Jogador->ProjetilAtual->IsValidLowLevelFast() && !this->Projetil->IsValidLowLevelFast())
-		{
-			this->Projetil = Jogador->ProjetilAtual->Projetil;
-			Jogador->ProjetilAtual = this;
-		}
-		else
-		{
-			Jogador->ProjetilAtual = this;
-		}
+		Jogador->ProjetilAtual = this;
 	}
-
-	Super::AplicarItem_Implementation();
+	else 
+	{
+		Jogador->ProjetilEncontrado = this->GetClass();
+	}
 }
 
 void UItemProjetil::RemoverItem_Implementation()
 {
-	Super::RemoverItem_Implementation();
+	this->ConditionalBeginDestroy();
+}
+
+void UItemProjetil::AtivarItem_Implementation()
+{
+	if (Jogador->Stats.Energia >= EnergiaUtilizada)
+	{
+		bAtivo = true;
+		Super::AplicarStats();
+	}
+
+}
+
+void UItemProjetil::DesativarItem_Implementation()
+{
+	bAtivo = false;
+	Super::RemoverStats();
 }
 

@@ -19,7 +19,7 @@ class IDanoInterface
 	GENERATED_IINTERFACE_BODY()
 
 		UFUNCTION(BlueprintCallable, meta = (DisplayName = "Receber Dano", Keywords = "Receber Dano"), Category = "DanoInterface")
-	virtual void ReceberDano(const float& dano);
+		virtual void ReceberDano(const float& dano, class AProjectil* projetil);
 
-	virtual void AplicarStatsProjetil(class AProjectil* projetil);
+	virtual void AplicarStatsProjetil(AProjectil* projetil);
 };

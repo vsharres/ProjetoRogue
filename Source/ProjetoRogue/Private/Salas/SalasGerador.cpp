@@ -37,14 +37,6 @@ ASalasGerador::ASalasGerador()
 
 }
 
-ASalasGerador::~ASalasGerador()
-{
-	Salas.Empty();
-	PosSalas.Empty();
-	UltimasSalasGeradas.Empty();
-	SalaInicial = NULL;
-}
-
 ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 {
 	if (WorldContextObject)
@@ -54,7 +46,7 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 		{
 			for (TActorIterator<ASalasGerador> ActorItr(World); ActorItr; ++ActorItr)
 			{
-				if ((*ActorItr)->IsValidLowLevel())
+				if ((*ActorItr))
 				{
 					return *ActorItr;
 				}
@@ -143,7 +135,7 @@ int32 ASalasGerador::UltimaSalaValida()
 
 	for (int32 i = 0; i < Salas.Num(); i++)
 	{
-		if (Salas[i]->IsValidLowLevel())
+		if (Salas[i])
 		{
 			index = i;
 		}
@@ -169,13 +161,13 @@ FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FR
 
 FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
-	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
+	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)Corredor->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
 
 	FVector dir = -(DirecaoPorta.Vector());
 
 	FRotator Rot = dir.Rotation();
 
-	return FTransform(Rot, Trans, ((ACorredor*)ACorredor::StaticClass()->GetDefaultObject(true))->GetEscala());
+	return FTransform(Rot, Trans, ((ACorredor*)Corredor->GetDefaultObject(true))->GetEscala());
 }
 
 TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
@@ -254,9 +246,9 @@ void ASalasGerador::SalvarSalas()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+	if (!gameMode || gameMode->bNaoSalvar)
 		return;
-	
+
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
@@ -288,8 +280,10 @@ void ASalasGerador::GerarSalaEspecial()
 	if (((ASala*)SalaGerada->GetDefaultObject())->GetNumPortas() == ENumeroPortas::UMA)
 	{
 
+		int32 prob = StreamGeracao.FRandRange(0, 100);
+
 		if (!bSalaItemGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(MinNumSalas, NumeroSalas) ||
+			(prob > 66 ||
 			GetNumPortasVazias() == 3 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaItem;
@@ -298,7 +292,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaChaveGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(7, 9) ||
+			(prob > 33 ||
 			GetNumPortasVazias() == 2 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaChave;
@@ -307,7 +301,7 @@ void ASalasGerador::GerarSalaEspecial()
 		}
 
 		if (!bSalaBossGerada &&
-			(UltimaSalaValida() >= StreamGeracao.FRandRange(2, 6) ||
+			(prob < 33 ||
 			GetNumPortasVazias() == 1 && Salas.Num() == NumeroSalas))
 		{
 			SalaGerada = SalaBoss;
@@ -329,7 +323,7 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 			return true;
 		}
 		else if (pos.X > SalaInicial->GetActorLocation().X + ComprimentoMax ||
-			pos.X < SalaInicial->GetActorLocation().X ||
+			pos.X < SalaInicial->GetActorLocation().X - SalaInicial->GetOffset() / 2 ||
 			pos.Y > SalaInicial->GetActorLocation().Y + LarguraMax / 2 ||
 			pos.Y < SalaInicial->GetActorLocation().Y - LarguraMax / 2)
 		{
@@ -468,7 +462,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 		NovaSala->bSalaTemInimigos = SalasCarregadas[Salas.Find(NovaSala)];
 	}
 
-	NovaSala->SpawnInimigos(Seed);
+	NovaSala->SpawnInimigos(StreamGeracao);
 
 	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *NovaSala->GetName(), Salas.Num());
 

@@ -15,20 +15,12 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
-	RootComponent = Colisor;
-
 	Stats = FInimigoStats();
 	NumPickUps = 1;
 	ChanceSpawnVida = 90.0f;
 	ChanceSpawnEnergia = 60.0f;
 	ChanceSpawnMoeda = 30.0f;
 
-}
-
-UCapsuleComponent* AInimigo::GetColisor()
-{
-	return Colisor;
 }
 
 // Called when the game starts or when spawned
@@ -54,22 +46,15 @@ void AInimigo::Tick(float DeltaTime)
 
 }
 
-void AInimigo::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
-	
-
-	Super::EndPlay(EndPlayReason);
-}
-
-void AInimigo::ReceberDano(const float& dano)
+void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	Stats.Vida -= dano;
 
 	AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	if (jogador)
+	if (jogador->IsValidLowLevelFast())
 	{
-		jogador->GerarDanoPopUp(dano, this);
+		jogador->GerarDanoPopUp(dano, this, projetil);
 	}
 }
 
@@ -103,7 +88,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 				FVector origem = FVector(stream.FRandRange(GetActorLocation().X - EXPLOSAO_DELTA, GetActorLocation().X + EXPLOSAO_DELTA),
 					stream.FRandRange(GetActorLocation().Y - EXPLOSAO_DELTA, GetActorLocation().Y + EXPLOSAO_DELTA),
@@ -119,7 +104,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 
 				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
@@ -136,7 +121,7 @@ void AInimigo::SpawnPickUp()
 		{
 			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
 
-			if (pickSpawn)
+			if (pickSpawn->IsValidLowLevelFast())
 			{
 				FVector origem = FVector(stream.FRandRange(pickSpawn->GetActorLocation().X - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().X + EXPLOSAO_DELTA),
 					stream.FRandRange(pickSpawn->GetActorLocation().Y - EXPLOSAO_DELTA, pickSpawn->GetActorLocation().Y + EXPLOSAO_DELTA),

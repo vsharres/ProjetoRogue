@@ -76,14 +76,11 @@ struct FInimigoStats
 
 //TODO
 UCLASS(ABSTRACT, Blueprintable)
-class PROJETOROGUE_API AInimigo : public APawn, public IDanoInterface
+class PROJETOROGUE_API AInimigo : public ACharacter, public IDanoInterface
 {
 	GENERATED_BODY()
 
 private:
-
-	UPROPERTY(VisibleDefaultsOnly, Category = "Colisor")
-		UCapsuleComponent* Colisor;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		int32 NumPickUps;
@@ -112,14 +109,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FInimigoStats Stats;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Sala")
-	class ASala* SalaPai;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
+		TWeakObjectPtr<class ASala> SalaPai;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador")
+		TArray<FVector> UltimasVelJogador;
 
 	// Sets default values for this pawn's properties
 	AInimigo(const FObjectInitializer& ObjectInitializer);
-
-	UFUNCTION(BlueprintPure, Category = "Colisor")
-		UCapsuleComponent* GetColisor();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -127,10 +124,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
-		virtual void ReceberDano(const float& dano) override;
+		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
 
 	UFUNCTION()
 		bool EstaVivo();

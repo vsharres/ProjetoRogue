@@ -5,6 +5,8 @@
 #include "GameFramework/Actor.h"
 #include "Corredor.generated.h"
 
+/*
+*/
 UCLASS()
 class PROJETOROGUE_API ACorredor : public AActor
 {

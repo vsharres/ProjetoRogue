@@ -17,7 +17,7 @@ void APickUpMoeda::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComp
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast())
+	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp)
 	{
 		jogador->AdicionarMoedas(IncMoedas);
 		jogador->GerarPickUpPopUp(this);
