@@ -104,6 +104,10 @@ struct FJogadorStats
 		{
 			aRetornar.IncrementaDano = DANO_MIN - this->Dano;
 		}
+		else
+		{
+			aRetornar.IncrementaDano = itemStats.IncrementaDano;
+		}
 
 		if (itemStats.IncrementaFireRate + this->FireRate > FIRERATE_MAX)
 		{
@@ -112,6 +116,10 @@ struct FJogadorStats
 		else if (itemStats.IncrementaFireRate + this->FireRate < FIRERATE_MIN)
 		{
 			aRetornar.IncrementaFireRate = FIRERATE_MIN - this->FireRate;
+		}
+		else
+		{
+			aRetornar.IncrementaFireRate = itemStats.IncrementaFireRate;
 		}
 
 		if (itemStats.IncrementaPrecisao + this->Precisao > PRECISAO_MAX)
@@ -122,6 +130,10 @@ struct FJogadorStats
 		{
 			aRetornar.IncrementaPrecisao = PRECISAO_MIN - this->Precisao;
 		}
+		else
+		{
+			aRetornar.IncrementaPrecisao = itemStats.IncrementaPrecisao;
+		}
 
 		if (itemStats.IncrementaVel + this->VelocidadeMov > VELOCIDADEMOV_MAX)
 		{
@@ -130,6 +142,10 @@ struct FJogadorStats
 		else if (itemStats.IncrementaVel + this->VelocidadeMov < VELOCIDADEMOV_MIN)
 		{
 			aRetornar.IncrementaVel = VELOCIDADEMOV_MIN - this->VelocidadeMov;
+		}
+		else
+		{
+			aRetornar.IncrementaVel = itemStats.IncrementaVel;
 		}
 
 		if (itemStats.IncrementaVelProjetil + this->VelProjetil > VELOCIDADEPROJ_MAX)
@@ -140,6 +156,10 @@ struct FJogadorStats
 		{
 			aRetornar.IncrementaVelProjetil = VELOCIDADEPROJ_MIN - this->VelProjetil;
 		}
+		else
+		{
+			aRetornar.IncrementaVelProjetil = itemStats.IncrementaVelProjetil;
+		}
 
 		if (itemStats.IncrementaVidaMax + this->VidaMaxima > VIDAMAX_MAX)
 		{
@@ -148,6 +168,10 @@ struct FJogadorStats
 		else if (itemStats.IncrementaVidaMax + this->VidaMaxima < VIDAMAX_MIN)
 		{
 			aRetornar.IncrementaVidaMax = VIDAMAX_MIN - this->VidaMaxima;
+		}
+		else
+		{
+			aRetornar.IncrementaVidaMax = itemStats.IncrementaVidaMax;
 		}
 
 		if (itemStats.IncrementaVida + this->Vida > VidaMaxima)
@@ -158,6 +182,10 @@ struct FJogadorStats
 		{
 			aRetornar.IncrementaVida = VIDAMAX_MIN - this->Vida;
 		}
+		else
+		{
+			aRetornar.IncrementaVida = itemStats.IncrementaVida;
+		}
 
 		if (itemStats.IncrementaEnergiaMax + this->EnergiaMax > ENERGIA_MAX)
 		{
@@ -167,6 +195,10 @@ struct FJogadorStats
 		{
 			aRetornar.IncrementaEnergiaMax = ENERGIA_MIN - this->EnergiaMax;
 		}
+		else
+		{
+			aRetornar.IncrementaEnergiaMax = itemStats.IncrementaEnergiaMax;
+		}
 
 		if (itemStats.IncrementaEnergia + this->Energia > EnergiaMax)
 		{
@@ -175,6 +207,10 @@ struct FJogadorStats
 		else if (itemStats.IncrementaEnergia + this->Energia < ENERGIA_MIN)
 		{
 			aRetornar.IncrementaEnergia = ENERGIA_MIN - this->Energia;
+		}
+		else
+		{
+			aRetornar.IncrementaEnergia = itemStats.IncrementaEnergia;
 		}
 
 		return aRetornar;
@@ -330,6 +366,7 @@ class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
 {
 	GENERATED_BODY()
 
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Nome")
@@ -340,6 +377,15 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Moedas")
 		int32 Moedas;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
+		TArray<UStaticMesh*> CanhaoDanoMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
+		TArray<UStaticMesh*> CanhaoPrecisaoMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
+		TArray<UStaticMesh*> CanhaoFireRateMeh;
 
 	//ITENS
 
@@ -456,6 +502,9 @@ public:
 
 	UFUNCTION()
 		void ItemCooldown(float DeltaTime);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Jogador")
+		void ResetTimer();
 
 
 

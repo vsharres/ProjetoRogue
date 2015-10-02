@@ -9,7 +9,12 @@ APickUpVida::APickUpVida(const FObjectInitializer& ObjectInitializer)
 {
 	IncVida = 25;
 	Tipo = ETipoPickUp::VIDA;
+	Colisor->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Colisor->SetCollisionObjectType(ECC_WorldDynamic);
+	Colisor->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Colisor->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpVida::ColisorOverlap);
+	
 }
 
 void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
@@ -24,4 +29,11 @@ void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCompo
 	}
 
 	
+}
+
+void APickUpVida::BeginPlay()
+{	
+	Colisor->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+
+	Super::BeginPlay();
 }

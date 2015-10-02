@@ -28,6 +28,12 @@ protected:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "PickUp")
+		float ExplosaoDelta;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "PickUp")
+		float ExplosaoForca;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		float IncVida;
 
@@ -45,6 +51,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Colisor")
 		UCapsuleComponent* GetColisor();
+
+	UFUNCTION(BlueprintPure, Category = "Mesh")
+		UStaticMeshComponent* GetMesh();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

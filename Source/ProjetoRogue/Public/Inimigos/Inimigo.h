@@ -82,7 +82,7 @@ class PROJETOROGUE_API AInimigo : public ACharacter, public IDanoInterface
 
 private:
 
-	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+	UPROPERTY(EditAnywhere, Category = "PickUp")
 		int32 NumPickUps;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
@@ -132,6 +132,9 @@ public:
 
 	UFUNCTION()
 		void SpawnPickUp();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Inimigo")
+		void FlashDano();
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;

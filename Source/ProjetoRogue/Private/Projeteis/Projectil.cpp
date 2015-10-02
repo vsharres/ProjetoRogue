@@ -104,7 +104,7 @@ void AProjectil::SpawnEfeitos(const FHitResult& Hit)
 
 	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180));
 
-	UGameplayStatics::SpawnEmitterAtLocation(this, ImapctoEfeitos.Efeito, Hit.ImpactPoint, FRotator::ZeroRotator, true);
+	UGameplayStatics::SpawnEmitterAtLocation(this, ImapctoEfeitos.Efeito, Hit.ImpactPoint, rotTemp, true);
 
 	//UGameplayStatics::PlaySoundAtLocation(this, SomImpacto, Hit.ImpactPoint);
 
