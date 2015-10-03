@@ -13,9 +13,12 @@ class PROJETOROGUE_API ASala2PDireita : public ASala
 {
 	GENERATED_BODY()
 
+#pragma region CONSTRUTOR
+
 public:
 	//Construtor
 	ASala2PDireita(const FObjectInitializer& ObjectInitializer);
+#pragma endregion CONSTRUTOR
 
 
 

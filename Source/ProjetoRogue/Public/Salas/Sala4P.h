@@ -12,10 +12,12 @@ UCLASS()
 class PROJETOROGUE_API ASala4P : public ASala
 {
 	GENERATED_BODY()
+#pragma region CONSTRUTOR
 
 public:
 	//Construtor
 	ASala4P(const FObjectInitializer& ObjectInitializer);
 
+#pragma endregion CONSTRUTOR
 
 };

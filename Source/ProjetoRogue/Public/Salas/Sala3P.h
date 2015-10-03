@@ -14,9 +14,10 @@ class PROJETOROGUE_API ASala3P : public ASala
 {
 	GENERATED_BODY()
 
-
+#pragma region CONSTRUTOR
 public:
 	//Construtor
 	ASala3P(const FObjectInitializer& ObjectInitializer);
+#pragma endregion CONSTRUTOR
 
 };

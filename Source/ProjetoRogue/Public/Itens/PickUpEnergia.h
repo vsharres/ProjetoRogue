@@ -5,19 +5,34 @@
 #include "PickUp.h"
 #include "PickUpEnergia.generated.h"
 
-/**
- * 
- */
+/*
+* Classe derivada da classe PickUp.
+* Classe que representa o pickup que regenera a energia do jogador.
+*/
 UCLASS()
 class PROJETOROGUE_API APickUpEnergia : public APickUp
 {
 	GENERATED_BODY()
 
-		APickUpEnergia(const FObjectInitializer& ObjectInitializer);
+#pragma region CONSTRUTOR
+
+	/*Construtor Padrão. */
+	APickUpEnergia(const FObjectInitializer& ObjectInitializer);
+
+#pragma endregion CONSTRUTOR
+
+#pragma region FUNÇÕES
 	
+	/*
+	* Função delegate a ser executada quando o colisor do pickup inicia um overlap com o jogador.
+	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	*/
 	UFUNCTION()
 		void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 
-	// Called when the game starts or when spawned
+	/* Override do evento de beginplay. */
 	virtual void BeginPlay() override;
+
+#pragma endregion FUNÇÕES
+
 };

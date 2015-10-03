@@ -13,9 +13,9 @@ UCLASS()
 class PROJETOROGUE_API UItemProjetil : public UItem
 {
 	GENERATED_BODY()
-public:
 
 #pragma region PROPRIEDADES
+public:
 
 	/* Propriedade indicando se o item está ativo. */
 	UPROPERTY(BlueprintReadWrite, Category = "Item")

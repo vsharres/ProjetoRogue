@@ -76,9 +76,10 @@ UCLASS()
 class PROJETOROGUE_API ASala : public AActor
 {
 	GENERATED_BODY()
-protected:
 
-	//Variáveis
+#pragma region PROPRIEDADES
+
+protected:
 	//SALA
 
 	/* Direção que a sala aponta. */
@@ -159,8 +160,21 @@ public:
 	/* Booleano usado durante a geração do level, indicando se a sala já foi visitada pelo algortimo de geração. */
 	UPROPERTY()
 		bool bVisitada;
+#pragma endregion PROPRIEDADES
 
-	//FUNÇÕES
+#pragma region CONSTRUTOR
+
+public:
+	/*
+	* Constructor da Classe.
+	*/
+	ASala(const FObjectInitializer& ObjectInitializer);
+
+#pragma endregion CONSTRUTOR
+
+#pragma region FUNÇÕES
+
+public:
 
 	/*
 	* Função Get da escala padrão da sala.
@@ -262,10 +276,7 @@ public:
 	UFUNCTION()
 		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	/*
-	* Constructor da Classe.
-	*/
-	ASala(const FObjectInitializer& ObjectInitializer);
+
 
 	/*
 	* Override do Tick da sala.
@@ -276,5 +287,7 @@ public:
 	* Override do evento BeginPlay.
 	*/
 	virtual void BeginPlay() override;
+
+#pragma endregion FUNÇÕES
 
 };

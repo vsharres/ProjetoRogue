@@ -5,19 +5,33 @@
 #include "PickUp.h"
 #include "PickUpVida.generated.h"
 
-/**
- * 
- */
+/*
+* Classe derivada da classe PickUp.
+* Classe que representa o pickup que regenera a vida do jogador.
+*/
 UCLASS()
 class PROJETOROGUE_API APickUpVida : public APickUp
 {
 	GENERATED_BODY()
 
-		APickUpVida(const FObjectInitializer& ObjectInitializer);
+#pragma region CONSTRUTOR
 	
-	UFUNCTION()
-		void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+	/*Construtor Padrão. */
+	APickUpVida(const FObjectInitializer& ObjectInitializer);
 
-	// Called when the game starts or when spawned
+#pragma endregion CONSTRUTOR
+
+#pragma region FUNÇÕES
+
+	/*
+	* Função delegate a ser executada quando o colisor do pickup inicia um overlap com o jogador.
+	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	*/
+	UFUNCTION()
+	void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	/* Override do evento de beginplay. */
 	virtual void BeginPlay() override;
+
+#pragma endregion FUNÇÕES
 };

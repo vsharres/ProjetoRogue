@@ -12,9 +12,9 @@ class PROJETOROGUE_API APorta : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+#pragma region PROPRIEDADES
 
-	//PROPRIEDADES
+public:	
 
 	/* Booleando que indica se a porta deve ser aberta. */
 	UPROPERTY(BlueprintReadWrite, Category = "Porta")
@@ -32,7 +32,11 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Sala")
 	class ASala* SalaPai;
 
-	//FUNÇÕES
+#pragma endregion PROPRIEDADES
+
+#pragma region FUNÇÕES
+
+public:
 
 	/*
 	* Evento disparado para trancar a porta.
@@ -55,7 +59,6 @@ public:
 	
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
-
-	
+#pragma endregion FUNÇÕES
 	
 };

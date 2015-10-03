@@ -110,9 +110,10 @@ class PROJETOROGUE_API UItem : public UObject
 {
 	GENERATED_BODY()
 
-public:
+
 
 #pragma region PROPRIEDADES
+public:
 
 	/* Stats do item. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
@@ -133,6 +134,7 @@ public:
 #pragma endregion PROPRIEDADES
 
 #pragma region CONSTRUTOR
+public:
 
 	/* Construtor padrão */
 	UItem();
@@ -140,6 +142,7 @@ public:
 #pragma endregion CONSTRUTOR
 
 #pragma region FUNÇÕES
+public:
 
 	/*
 	* Função Get que retorna um array com o nome dos efeitos, essa função é usada para mostrar os efeitos do item na UI do jogo.

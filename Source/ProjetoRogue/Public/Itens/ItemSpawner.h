@@ -13,9 +13,8 @@ class PROJETOROGUE_API AItemSpawner : public AActor
 {
 	GENERATED_BODY()
 
-protected:
-
 #pragma region PROPRIEDADES
+protected:
 
 	/* Ponteiro ao item gerado. */
 	UPROPERTY(BlueprintReadWrite, Category = Itens)

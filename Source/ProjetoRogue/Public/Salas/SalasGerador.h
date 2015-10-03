@@ -14,9 +14,8 @@ class PROJETOROGUE_API ASalasGerador : public AActor
 {
 	GENERATED_BODY()
 
+#pragma region PROPRIEDADES
 private:
-
-	//VARIÁVEIS
 
 	/* Numero de salas a serem geradas. */
 	UPROPERTY(VisibleAnywhere, Category = "Salas")
@@ -122,11 +121,15 @@ public:
 	/* Número máximo de salas que podem ser geradas. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<ASala*> Salas;
+#pragma endregion PROPRIEDADES
 
-	//Construtor
+#pragma region CONSTRUTOR
+	/*Construtor Padrão. */
 	ASalasGerador();
+#pragma endregion CONSTRUTOR
 
-	//FUNÇÕES
+#pragma region FUNÇÕES
+public:
 
 	/*
 	* Função estática que get do gerador de salas. Função utilizada por outras classes para acessar o gerador de salas.
@@ -279,4 +282,6 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		void SalvarSalas();
+#pragma endregion FUNÇÕES
+
 };

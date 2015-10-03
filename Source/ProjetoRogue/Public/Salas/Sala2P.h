@@ -15,10 +15,12 @@ class PROJETOROGUE_API ASala2P : public ASala
 {
 	GENERATED_BODY()
 
+#pragma region CONSTRUTOR
 public:
 
 	// Construtor
 	ASala2P(const FObjectInitializer& ObjectInitializer);
+#pragma endregion CONSTRUTOR
 
 
 };
