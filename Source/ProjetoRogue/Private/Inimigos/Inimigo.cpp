@@ -49,6 +49,11 @@ void AInimigo::Tick(float DeltaTime)
 
 }
 
+FVector AInimigo::GetPosicaoTiro()
+{
+	return Mesh->GetSocketLocation("Tiro_Bocal");
+}
+
 void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	Stats.Vida -= dano;

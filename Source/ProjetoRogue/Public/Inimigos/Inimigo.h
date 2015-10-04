@@ -124,6 +124,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	UFUNCTION(BlueprintPure, Category = "Mesh")
+		FVector GetPosicaoTiro();
+
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
 		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
 

@@ -271,10 +271,16 @@
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h">
       <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoSpawnerComponent.h">
+      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp">
       <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoSpawnerComponent.cpp">
+      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

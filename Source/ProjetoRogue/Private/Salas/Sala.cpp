@@ -7,6 +7,7 @@
 #include "Porta.h"
 #include "Jogador.h"
 #include "SalasGerador.h"
+#include "InimigoSpawnerComponent.h"
 
 
 // Sets default values
@@ -103,7 +104,7 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 	if (!bSalaTemInimigos)
 		return;
 
-	TInlineComponentArray<UBillboardComponent*> Componentes;
+	TInlineComponentArray<UInimigoSpawnerComponent*> Componentes;
 	this->GetComponents(Componentes);
 
 	TArray<TSubclassOf<AInimigo>> TipoInimigo;
@@ -120,6 +121,7 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 		TipoInimigo = InimigosDificil;
 		break;
 	default:
+		checkNoEntry();
 		break;
 	}
 
@@ -127,7 +129,24 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 	{
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
-		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		AInimigo* NovoInimigo;
+
+		if (Spawner->bGerarRandomicamente)
+		{
+			check(TipoInimigo.Num() > 0);
+
+			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		}
+		else
+		{
+			TArray<TSubclassOf<AInimigo>> InimigoNaoRandomico;
+			InimigoNaoRandomico.Add(Spawner->InimigoNaoRandomico);
+
+			check(InimigoNaoRandomico.Num() > 0);
+
+			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigoNaoRandomico, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		}
+
 		if (NovoInimigo->IsValidLowLevelFast())
 		{
 			NovoInimigo->SpawnDefaultController();
