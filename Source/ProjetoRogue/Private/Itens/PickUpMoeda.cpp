@@ -8,16 +8,21 @@
 APickUpMoeda::APickUpMoeda(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	IncMoedas = 1;
+	IncMoedas = 2;
 	Tipo = ETipoPickUp::MOEDA;
+	Colisor->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Colisor->SetCollisionObjectType(ECC_WorldDynamic);
+	Colisor->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Colisor->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpMoeda::ColisorOverlap);
+	
 }
 
 void APickUpMoeda::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast())
+	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp)
 	{
 		jogador->AdicionarMoedas(IncMoedas);
 		jogador->GerarPickUpPopUp(this);
@@ -25,4 +30,11 @@ void APickUpMoeda::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComp
 	}
 
 	
+}
+
+void APickUpMoeda::BeginPlay()
+{	
+	Colisor->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+
+	Super::BeginPlay();
 }

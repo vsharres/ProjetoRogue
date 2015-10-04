@@ -14,6 +14,16 @@ enum class ESlotTipo: uint8
 
 };
 
+UENUM(BlueprintType)
+enum class ETipoInteracao : uint8
+{
+	NENHUMA,
+	CHAVE,
+	ITEM,
+	LOJA,
+	ELEVADOR
+};
+
 USTRUCT()
 struct FLojaSlot{
 

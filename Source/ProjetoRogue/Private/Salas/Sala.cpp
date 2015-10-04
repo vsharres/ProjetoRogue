@@ -7,6 +7,7 @@
 #include "Porta.h"
 #include "Jogador.h"
 #include "SalasGerador.h"
+#include "InimigoSpawnerComponent.h"
 
 
 // Sets default values
@@ -33,7 +34,7 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	bVisitada = false;
 	bSalaTemInimigos = false;
 	Inimigos.Empty();
-	OffsetSala = 4640.0f;
+	OffsetSala = 6000.0f;
 	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
 
 
@@ -92,18 +93,18 @@ TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 
 void ASala::RemoverInimigo(AInimigo* inimigo)
 {
-	if (inimigo->IsValidLowLevelFast())
+	if (inimigo)
 	{
 		Inimigos.Remove(inimigo);
 	}
 }
 
-void ASala::SpawnInimigos_Implementation(int32 Seed)
+void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 {
 	if (!bSalaTemInimigos)
 		return;
 
-	TInlineComponentArray<UBillboardComponent*> Componentes;
+	TInlineComponentArray<UInimigoSpawnerComponent*> Componentes;
 	this->GetComponents(Componentes);
 
 	TArray<TSubclassOf<AInimigo>> TipoInimigo;
@@ -120,6 +121,7 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 		TipoInimigo = InimigosDificil;
 		break;
 	default:
+		checkNoEntry();
 		break;
 	}
 
@@ -127,7 +129,24 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 	{
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
-		AInimigo* NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Seed), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		AInimigo* NovoInimigo;
+
+		if (Spawner->bGerarRandomicamente)
+		{
+			check(TipoInimigo.Num() > 0);
+
+			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		}
+		else
+		{
+			TArray<TSubclassOf<AInimigo>> InimigoNaoRandomico;
+			InimigoNaoRandomico.Add(Spawner->InimigoNaoRandomico);
+
+			check(InimigoNaoRandomico.Num() > 0);
+
+			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigoNaoRandomico, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+		}
+
 		if (NovoInimigo->IsValidLowLevelFast())
 		{
 			NovoInimigo->SpawnDefaultController();
@@ -144,10 +163,8 @@ void ASala::SpawnInimigos_Implementation(int32 Seed)
 	}
 }
 
-TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, int32 Seed)
+TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, const FRandomStream& Stream)
 {
-	FRandomStream Stream = FRandomStream(Seed);
-
 	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)];
 
 	return tipoInimigo;
@@ -192,13 +209,13 @@ void ASala::TrancarPortas()
 
 void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && !bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && !bInimigosAtivos && bSalaTemInimigos)
 	{
 		for (auto const& Inimigo : Inimigos)
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
-			if (controlador)
+			if (controlador->IsValidLowLevelFast())
 			{
 				controlador->AtivarInimigo();
 			}
@@ -208,13 +225,13 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 
 void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (Cast<AJogador>(OtherActor)->IsValidLowLevelFast() && bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && bInimigosAtivos && bSalaTemInimigos)
 	{
 		for (auto const& Inimigo : Inimigos)
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
-			if (controlador)
+			if (controlador->IsValidLowLevelFast())
 			{
 				controlador->DesativarInimigo();
 			}

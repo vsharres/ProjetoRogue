@@ -9,19 +9,30 @@ APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 {
 	IncEnergia = 10;
 	Tipo = ETipoPickUp::ENERGIA;
+	Colisor->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Colisor->SetCollisionObjectType(ECC_WorldDynamic);
+	Colisor->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Colisor->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
+	
 }
 
 void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast())
+	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp)
 	{
 		jogador->AdicionarEnerngia(IncEnergia);
 		jogador->GerarPickUpPopUp(this);
 		Destroy();
 	}
-
 	
+}
+
+void APickUpEnergia::BeginPlay()
+{
+	
+	Colisor->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	Super::BeginPlay();
 }

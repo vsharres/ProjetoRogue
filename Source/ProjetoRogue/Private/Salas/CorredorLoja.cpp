@@ -44,7 +44,7 @@ void ACorredorLoja::InicializarLoja()
 
 			UItem* itemSlot = NewObject<UItem>(this, Itens[Stream.FRandRange(0, Itens.Num() - 1)]);
 
-			if (itemSlot->IsValidLowLevelFast())
+			if (itemSlot)
 			{
 				Slots[index].Item = itemSlot;
 				Slots[index].Custo = itemSlot->Stats.Custo;
@@ -86,8 +86,10 @@ void ACorredorLoja::ComprarSlot(int32 slot, AJogador* jogador)
 		break;
 	case ESlotTipo::ENERGIA:
 		jogador->AdicionarEnerngia(Slots[slot].Efeito);
+		break;
 	case ESlotTipo::ITEM:
 		Slots[slot].Item->InicializarItem(jogador);
+		break;
 	default:
 		break;
 	}
@@ -103,7 +105,7 @@ void ACorredorLoja::SalvarLoja()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		for (int32 index = 0; index < Slots.Num(); index++)
 		{
@@ -119,15 +121,11 @@ void ACorredorLoja::SalvarLoja()
 
 void ACorredorLoja::CarregarLoja()
 {
-	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
-
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
-		return;
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst)
+	if (SaveInst->IsValidLowLevelFast())
 	{
 		for (int32 index = 0; index < Slots.Num(); index++)
 		{

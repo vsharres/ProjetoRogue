@@ -9,11 +9,11 @@ ACorredor::ACorredor(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
 
-	OffsetCorredor = 2320.0f;
-	EscalaPadrao = FVector(12.0f, 12.0f, 12.0f);
+	OffsetCorredor = 3000.0f;
+	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
 
 }
 

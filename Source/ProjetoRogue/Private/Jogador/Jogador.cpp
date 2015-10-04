@@ -3,7 +3,6 @@
 #include "ProjetoRogue.h"
 #include "Jogador.h"
 #include "Projectil.h"
-#include "ItemAtivo.h"
 #include "ItemPassivo.h"
 #include "ItemProjetil.h"
 
@@ -13,11 +12,9 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	bDebug = false;
 
 	Stats = FJogadorStats();
 	bPossuiChave = false;
-	ItemAtivoAtual = NULL;
 	ItensPassivos.Empty();
 	CooldDownRate = 1.0f;
 	TempoCooldown = 2.0f;
@@ -25,7 +22,7 @@ AJogador::AJogador(const FObjectInitializer& ObjectInitializer)
 	CooldownAtual = TempoCooldown;
 	bItemEncontrado = false;
 
-	NumProjeteis = 10;
+	NumProjeteis = 20;
 
 	Nome = "Mark I";
 
@@ -44,7 +41,7 @@ void AJogador::InicializarJogador()
 		CarregarJogador();
 	}
 
-	InicializarProjetil();
+	InicializarProjetil(false);
 }
 
 void AJogador::GerarNome(int32 index)
@@ -225,14 +222,14 @@ void AJogador::SalvarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (!gameMode->IsValidLowLevelFast() || gameMode->bNaoSalvar)
+	if (!gameMode || gameMode->bNaoSalvar)
 		return;
 
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		SaveInst->bNovoJogo = false;
 		SaveInst->Stats.SetStats(this->Stats);
@@ -242,18 +239,12 @@ void AJogador::SalvarJogador()
 		SaveInst->JogadorLocation = this->GetActorLocation();
 		SaveInst->JogadorRotation = this->GetActorRotation();
 
-		if (ProjetilAtual->IsValidLowLevelFast())
+		if (ProjetilEncontrado)
 		{
-			SaveInst->ProjetilInicial_Referencia = FStringAssetReference(this->ProjetilAtual->GetClass()).ToString();
+			SaveInst->ProjetilEncontrado_Referencia = FStringAssetReference(this->ProjetilEncontrado).ToString();
 		}
 
 		SaveInst->bItemEncontrado = this->bItemEncontrado;
-
-		if (ItemAtivoAtual->IsValidLowLevelFast())
-		{
-
-			SaveInst->ItemAtivo_Referencia = FStringAssetReference(this->ItemAtivoAtual->GetClass()).ToString();
-		}
 
 		SaveInst->ItensPassivos_Referencias.Empty();
 		for (const auto& item : ItensPassivos)
@@ -271,7 +262,7 @@ void AJogador::CarregarJogador()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		GerarNome(SaveInst->NumJogos);
 		this->Stats.SetStats(SaveInst->Stats);
@@ -286,23 +277,13 @@ void AJogador::CarregarJogador()
 			this->AddActorLocalOffset(FVector(0, 0, 127.f));
 		}
 
-		if (!SaveInst->ProjetilInicial_Referencia.IsEmpty())
+		if (!SaveInst->ProjetilEncontrado_Referencia.IsEmpty())
 		{
-			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilInicial_Referencia));
+			UItemProjetil* itemProjetil = NewObject<UItemProjetil>(this, StaticLoadClass(UItemProjetil::StaticClass(), NULL, *SaveInst->ProjetilEncontrado_Referencia));
 
-			if (itemProjetil->IsValidLowLevelFast())
+			if (itemProjetil)
 			{
-				this->ProjetilInicial = itemProjetil->GetClass();
-			}
-		}
-
-		if (!SaveInst->ItemAtivo_Referencia.IsEmpty())
-		{
-			UItemAtivo* itemAtivo = NewObject<UItemAtivo>(this, StaticLoadClass(UItemAtivo::StaticClass(), NULL, *SaveInst->ItemAtivo_Referencia));
-
-			if (itemAtivo->IsValidLowLevelFast())
-			{
-				itemAtivo->InicializarItem(this);
+				this->ProjetilEncontrado = itemProjetil->GetClass();
 			}
 		}
 
@@ -314,7 +295,7 @@ void AJogador::CarregarJogador()
 			{
 				UItemPassivo* itemPassivo = NewObject<UItemPassivo>(this, StaticLoadClass(UItemPassivo::StaticClass(), NULL, *passivo));
 
-				if (itemPassivo->IsValidLowLevelFast())
+				if (itemPassivo)
 				{
 					itemPassivo->InicializarItem(this);
 				}
@@ -330,7 +311,7 @@ void AJogador::NovoJogador()
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst)
 	{
 		GerarNome(SaveInst->NumJogos);
 	}
@@ -338,18 +319,43 @@ void AJogador::NovoJogador()
 }
 
 
-void AJogador::InicializarProjetil()
+void AJogador::UsarItem(bool bDesativar)
 {
-	UObject* temp = NewObject<UObject>(this, ProjetilInicial);
-	ProjetilAtual = Cast<UItemProjetil>(temp);
-
-	if (ProjetilAtual)
+	if (ProjetilEncontrado->IsValidLowLevelFast())
 	{
-		ProjetilAtual->Jogador = this;
-		ProjetilAtual->AplicarItem();
+		InicializarProjetil(bDesativar);
+	}
+}
+
+void AJogador::InicializarProjetil(bool bDesativar)
+{
+	if (ProjetilAtual ==  NULL && !bDesativar)
+	{
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
+		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
+
+	}
+	else if (bDesativar)
+	{
+		ProjetilAtual->DesativarItem();
+		ProjetilAtual->RemoverItem();
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilInicial);
+		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
+	}
+	else
+	{
+		ProjetilAtual->DesativarItem();
+		ProjetilAtual->RemoverItem();
+		ProjetilAtual = NewObject<UItemProjetil>(this, ProjetilEncontrado);
+		ProjetilAtual->InicializarItem(this);
+		GerarProjetilPool();
+
+		ProjetilAtual->AtivarItem();
 	}
 
-	GerarProjetilPool();
+	
 }
 
 void AJogador::GerarProjetilPool()
@@ -365,7 +371,7 @@ void AJogador::GerarProjetilPool()
 
 		AProjectil* Tiro = GetWorld()->SpawnActor<AProjectil>(ProjetilAtual->Projetil, tiroPos, GetControlRotation());
 
-		if (Tiro->IsValidLowLevel())
+		if (Tiro->IsValidLowLevelFast())
 		{
 			Tiro->Instigator = this;
 			Tiro->SetActorHiddenInGame(true);
@@ -379,11 +385,9 @@ void AJogador::GerarProjetilPool()
 // Called every frame
 void AJogador::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
-
 	ItemCooldown(DeltaTime);
 
+	Super::Tick(DeltaTime);
 }
 
 void AJogador::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -396,18 +400,18 @@ void AJogador::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AJogador::ItemCooldown(float DeltaTime)
 {
-	if (CooldownAtual < TempoCooldown)
+	if (ProjetilAtual->bAtivo)
 	{
-		CooldownAtual += CooldDownRate * DeltaTime;
-	}
-	else
-	{
-		CooldownAtual = TempoCooldown;
-		if (ItemAtivoAtual->IsValidLowLevelFast() && ItemAtivoAtual->bAtivo)
+		Stats.Energia -= ProjetilAtual->EnergiaUtilizada * DeltaTime;
+
+		if (Stats.Energia <= 0.0f)
 		{
-			ItemAtivoAtual->DesativarItem();
+			Stats.Energia = 0.0f;
+			UsarItem(true);
 		}
+
 	}
+
 }
 
 // Called to bind functionality to input
@@ -417,7 +421,7 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 }
 
-void AJogador::ReceberDano(const float& dano)
+void AJogador::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	this->Stats.Vida -= dano;
 
@@ -429,7 +433,7 @@ void AJogador::ReceberDano(const float& dano)
 
 void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 {
-	if (projetil)
+	if (projetil->IsValidLowLevelFast())
 	{
 		projetil->Stats = this->Stats;
 	}

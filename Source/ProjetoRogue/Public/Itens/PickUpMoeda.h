@@ -5,16 +5,34 @@
 #include "PickUp.h"
 #include "PickUpMoeda.generated.h"
 
-/**
- *
- */
+/*
+* Classe derivada da classe PickUp.
+* Classe que representa o pickup que adiciona uma moeda ao jogador.
+*/
 UCLASS()
 class PROJETOROGUE_API APickUpMoeda : public APickUp
 {
 	GENERATED_BODY()
 
-		APickUpMoeda(const FObjectInitializer& ObjectInitializer);
+#pragma region CONSTRUTOR
 
+	/*Construtor Padrão. */
+	APickUpMoeda(const FObjectInitializer& ObjectInitializer);
+
+#pragma endregion CONSTRUTOR
+
+#pragma region FUNÇÕES
+
+	/*
+	* Função delegate a ser executada quando o colisor do pickup inicia um overlap com o jogador.
+	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	*/
 	UFUNCTION()
-		void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+	void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	/* Override do evento de beginplay. */
+	virtual void BeginPlay() override;
+
+#pragma endregion FUNÇÕES
+
 };

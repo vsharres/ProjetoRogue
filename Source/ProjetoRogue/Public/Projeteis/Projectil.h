@@ -19,11 +19,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
 		float Dano;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+		float TiroDesvio;
 
-	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f)
+
+	FProjetilStats(float velocidade = 200.0f, float dano = 1.0f, float desvio =1.0f)
 	{
 		Velocidade = velocidade;
 		Dano = dano;
+		TiroDesvio = desvio;
 	}
 
 	FORCEINLINE FProjetilStats& operator=(const FJogadorStats& statsJogador)
@@ -45,6 +49,64 @@ public:
 
 };
 
+USTRUCT()
+struct FProjetilImpactoEfeito
+{
+	GENERATED_USTRUCT_BODY()
+public:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UParticleSystem* Efeito;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		USoundCue* SomImpacto;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UMaterial* DecalMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Tamanho;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float DecalVida;
+
+	FProjetilImpactoEfeito()
+	{
+		Efeito = NULL;
+		SomImpacto = NULL;
+		DecalMaterial = NULL;
+		Tamanho = 2.0f;
+		DecalVida = 3.0f;
+	}
+};
+
+USTRUCT()
+struct FProjetilAtirarEfeitos
+{
+	GENERATED_USTRUCT_BODY()
+public:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UParticleSystem* TiroFlash;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		USoundCue* SomTiro;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Tamanho;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float DecalVida;
+
+	FProjetilAtirarEfeitos()
+	{
+		TiroFlash = NULL;
+		SomTiro = NULL;
+		Tamanho = 1.0f;
+		DecalVida = 2.0f;
+	}
+};
+
 //TODO
 UCLASS(ABSTRACT, Blueprintable)
 class PROJETOROGUE_API AProjectil : public AActor
@@ -58,33 +120,46 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjetilStats Stats;
 
-private:
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Efeitos")
+		TSubclassOf<UCameraShake> FireCameraShake;
+
+protected:
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UProjectileMovementComponent* CompMovimentacao;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		USphereComponent* CompCollisao;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = Projetil)
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
 		UStaticMeshComponent* Mesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Efeitos")
+		FProjetilImpactoEfeito ImapctoEfeitos;
+
 
 public:
 	// Sets default values for this actor's properties
 	AProjectil(const FObjectInitializer& ObjectInitializer);
 
+	UFUNCTION(BlueprintPure, Category = "Component")
+		UStaticMeshComponent* GetProjetilMesh();
 
-	UFUNCTION()
-	UProjectileMovementComponent* GetMovementComponent();
-	
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Proj", Keywords = "Get Mov Proj"), Category = "Particula")
+		UProjectileMovementComponent* GetMovProjetil();
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
 		void InicializarProjetil(AActor* Inicializador);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projetil", Keywords = "Ativar Projetil"), Category = "Projetil")
-		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, AActor* Inicializador);
+		void AtivarProjetil(const FVector& Location, const FRotator& Rotator, APawn* Inicializador);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
 		void DesativarProjetil();
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos", Keywords = "Spawn Efeitos"), Category = "Projetil")
+		void SpawnEfeitos(const FHitResult& Hit);
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -99,8 +174,6 @@ public:
 		void OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 		virtual void OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-		UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Proj", Keywords = "Get Mov Proj"), Category = "Particula")
-			UProjectileMovementComponent* GetMovProjetil();
 
 
 

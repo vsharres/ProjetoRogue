@@ -47,7 +47,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 		{
 			AInimigosControlador* inimgControlador = Cast<AInimigosControlador>(Actor);
 
-			if (inimgControlador)
+			if (inimgControlador->IsValidLowLevelFast())
 			{
 				inimgControlador->DesativarInimigo();
 			}
@@ -55,7 +55,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 
 		controlador = UGameplayStatics::GetPlayerController(this, 0);
 
-		if (controlador)
+		if (controlador->IsValidLowLevelFast())
 		{
 			controlador->SetCinematicMode(true, true, true);
 			controlador->bShowMouseCursor = true;

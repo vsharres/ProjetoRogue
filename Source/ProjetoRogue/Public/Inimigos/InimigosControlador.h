@@ -15,8 +15,8 @@ class PROJETOROGUE_API AInimigosControlador : public AAIController
 	
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
-	class ASala* SalaPai;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Sala")
+	TWeakObjectPtr<class ASala> SalaPai;
 
 
 	AInimigosControlador();

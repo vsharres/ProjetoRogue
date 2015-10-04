@@ -7,8 +7,8 @@
 #include "Public/Jogo/ProtuXGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
-#if UE_EDITOR 
+#if WITH_EDITOR 
 
-#define DO_CHECK
+#define DO_CHECK = 1
 
 #endif
