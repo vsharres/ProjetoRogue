@@ -385,7 +385,7 @@ void AJogador::GerarProjetilPool()
 // Called every frame
 void AJogador::Tick(float DeltaTime)
 {
-	ItemCooldown(DeltaTime);
+	//ItemCooldown(DeltaTime);
 
 	Super::Tick(DeltaTime);
 }

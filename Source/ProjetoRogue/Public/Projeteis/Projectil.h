@@ -120,8 +120,6 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjetilStats Stats;
 
-
-
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Efeitos")
 		TSubclassOf<UCameraShake> FireCameraShake;
 

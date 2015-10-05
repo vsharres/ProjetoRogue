@@ -15,6 +15,7 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	TipoInimigo = ETipoInimigo::DRONE;
 	Stats = FInimigoStats();
 	NumPickUps = 1;
 	ChanceSpawnVida = 90.0f;
@@ -36,7 +37,7 @@ void AInimigo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!EstaVivo())
+	if (!EstaVivo() && TipoInimigo != ETipoInimigo::BOSS)
 	{
 		SpawnPickUp();
 		if (SalaPai->IsValidLowLevelFast())
@@ -46,12 +47,11 @@ void AInimigo::Tick(float DeltaTime)
 		Destroy();
 	}
 
-
 }
 
 FVector AInimigo::GetPosicaoTiro()
 {
-	return Mesh->GetSocketLocation("Tiro_Bocal");
+	return GetMesh()->GetSocketLocation("Tiro_Bocal");
 }
 
 void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)

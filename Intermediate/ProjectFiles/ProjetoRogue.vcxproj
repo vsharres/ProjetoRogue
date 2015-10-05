@@ -1741,6 +1741,7 @@
     <None Include="..\..\Config\DefaultGame.ini" />
     <None Include="..\..\Config\DefaultInput.ini" />
     <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs" />
+    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Boss.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoSpawnerComponent.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp" />
@@ -1772,6 +1773,7 @@
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp" />
     <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp" />
+    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Boss.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoSpawnerComponent.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h" />
     <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h" />

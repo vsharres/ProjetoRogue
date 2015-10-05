@@ -10,8 +10,9 @@
 UENUM(BlueprintType)
 enum class ETipoInimigo :uint8
 {
-	BOT,
+	DRONE,
 	TORRE,
+	BOT,
 	BOSS
 };
 
@@ -53,12 +54,9 @@ struct FInimigoStats
 		int32 Energia;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
-		ETipoInimigo Tipo;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
 		ETipoAtaque TipoAtaque;
 
-	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float fireRate = 1.0f, float precisao = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoInimigo tipo = ETipoInimigo::BOT, ETipoAtaque ataque = ETipoAtaque::MELEE)
+	FInimigoStats(float vida = 100.0f, float dano = 1.0f, float velRot = 1.0f, float fireRate = 1.0f, float precisao = 1.0f, float velProjetil = 0.0f, int32 energia = 1, ETipoAtaque ataque = ETipoAtaque::MELEE)
 	{
 		Vida = vida;
 		VidaMax = vida;
@@ -68,7 +66,6 @@ struct FInimigoStats
 		Precisao = precisao;
 		VelProjetil = velProjetil;
 		Energia = energia;
-		Tipo = tipo;
 		TipoAtaque = ataque;
 	}
 
@@ -80,7 +77,10 @@ class PROJETOROGUE_API AInimigo : public ACharacter, public IDanoInterface
 {
 	GENERATED_BODY()
 
-private:
+protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+		ETipoInimigo TipoInimigo;
 
 	UPROPERTY(EditAnywhere, Category = "PickUp")
 		int32 NumPickUps;

@@ -25,7 +25,7 @@ class PROJETOROGUE_API AProtuXGameMode : public AGameMode
 
 private:
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, Category = "GameMode")
 		EJogoEstado Estado;
 
 public:

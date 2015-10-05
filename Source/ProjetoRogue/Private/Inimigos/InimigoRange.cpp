@@ -7,8 +7,8 @@
 AInimigoRange::AInimigoRange(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	Stats.Tipo = ETipoInimigo::TORRE;
 	Stats.TipoAtaque = ETipoAtaque::RANGE;
+	TipoInimigo = ETipoInimigo::TORRE;
 	NumProjeteis = 10;
 }
 
