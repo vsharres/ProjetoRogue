@@ -196,5 +196,5 @@ FakesAssemblies/
 *.opt
 
 *.pak
-Binaries/
-Saved/
+Binaries/**
+Saved/**
