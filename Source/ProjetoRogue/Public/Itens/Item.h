@@ -58,10 +58,7 @@ struct FItemStats
 	/* O quanto o item aumenta a energia máxima do jogador. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
 		float IncrementaEnergiaMax;
-
-	/* O quanto o item custa para ser comprado na loja. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item Struct")
-		int32 Custo;
+	
 
 	/*
 	* Overload do operador += para facilitar a adição de um item a outro.
@@ -85,7 +82,7 @@ struct FItemStats
 	}
 
 	//Construtor
-	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, float incEner = 0, float incEnerMax = 0, int32 custo = 0)
+	FItemStats(float incVidaMax = 0.0f, float incVida = 0.0f, float incVel = 0.0f, float incFire = 0.0f, float incDano = 0.0f, float incPrec = 0.0f, float incVelProj = 0.0f, float incEner = 0, float incEnerMax = 0)
 	{
 		IncrementaVidaMax = incVidaMax;
 		IncrementaVida = incVida;
@@ -96,7 +93,6 @@ struct FItemStats
 		IncrementaVelProjetil = incVelProj;
 		IncrementaEnergia = incEner;
 		IncrementaEnergiaMax = incEnerMax;
-		Custo = custo;
 	}
 
 
@@ -130,6 +126,9 @@ public:
 	/* O Nome do item. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FName NomeItem;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+		int32 Custo;
 
 #pragma endregion PROPRIEDADES
 

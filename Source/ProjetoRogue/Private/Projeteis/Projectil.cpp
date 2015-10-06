@@ -52,7 +52,7 @@ UProjectileMovementComponent* AProjectil::GetMovProjetil()
 	return CompMovimentacao;
 }
 
-void AProjectil::InicializarProjetil(AActor* Inicializador)
+void AProjectil::InicializarProjetil(ACharacter* Inicializador)
 {
 
 	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
@@ -63,11 +63,11 @@ void AProjectil::InicializarProjetil(AActor* Inicializador)
 		
 	}
 	
-	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
+	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade + Inicializador->GetCharacterMovement()->Velocity.ForwardVector.X);
 
 }
 
-void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, APawn* Inicializador)
+void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, ACharacter* Inicializador)
 {
 	bAtivo = true;
 
@@ -96,7 +96,7 @@ void AProjectil::DesativarProjetil()
 	
 }
 
-void AProjectil::SpawnEfeitos(const FHitResult& Hit)
+void AProjectil::GerarEfeitosImpacto(const FHitResult& Hit)
 {
 	FRandomStream Stream;
 
@@ -108,7 +108,7 @@ void AProjectil::SpawnEfeitos(const FHitResult& Hit)
 
 	//UGameplayStatics::PlaySoundAtLocation(this, SomImpacto, Hit.ImpactPoint);
 
-	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.Tamanho, ImapctoEfeitos.Tamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
+	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.DecalTamanho, ImapctoEfeitos.DecalTamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
 
 }
 
@@ -134,13 +134,13 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 	{
 		danoInterface->ReceberDano(this->Stats.Dano, this);
 		DesativarProjetil();
-		SpawnEfeitos(Hit);
+		GerarEfeitosImpacto(Hit);
 		Atingiu();		
 	}
 	else if (Hit.GetActor() != this->Instigator)
 	{
 		DesativarProjetil();
-		SpawnEfeitos(Hit);
+		GerarEfeitosImpacto(Hit);
 		Atingiu();
 	}
 }

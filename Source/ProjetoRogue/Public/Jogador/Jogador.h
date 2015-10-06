@@ -378,15 +378,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Moedas")
 		int32 Moedas;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
-		TArray<UStaticMesh*> CanhaoDanoMesh;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
-		TArray<UStaticMesh*> CanhaoPrecisaoMesh;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
-		TArray<UStaticMesh*> CanhaoFireRateMeh;
-
 	//ITENS
 
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
@@ -452,7 +443,7 @@ public:
 		void AdicionarVida(float vida);
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
-		void AdicionarEnerngia(int32 energia);
+		void AdicionarEnerngia(float energia);
 
 	UFUNCTION(BlueprintCallable, Category = "Jogador")
 		void AdicionarMoedas(int32 valor);
@@ -468,6 +459,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Item")
 		void UsarItem(bool bDesativar = false);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = Jogador)
+		void AtualizarMesh(bool bDesativar = false);
 
 	//INTERFACES
 

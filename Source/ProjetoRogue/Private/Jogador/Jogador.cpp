@@ -197,7 +197,7 @@ void AJogador::AdicionarVida(float vida)
 	}
 }
 
-void AJogador::AdicionarEnerngia(int32 energia)
+void AJogador::AdicionarEnerngia(float energia)
 {
 	Stats.Energia += energia;
 
@@ -324,6 +324,7 @@ void AJogador::UsarItem(bool bDesativar)
 	if (ProjetilEncontrado->IsValidLowLevelFast())
 	{
 		InicializarProjetil(bDesativar);
+		AtualizarMesh(bDesativar);
 	}
 }
 

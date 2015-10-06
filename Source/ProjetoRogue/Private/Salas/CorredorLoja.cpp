@@ -47,7 +47,7 @@ void ACorredorLoja::InicializarLoja()
 			if (itemSlot)
 			{
 				Slots[index].Item = itemSlot;
-				Slots[index].Custo = itemSlot->Stats.Custo;
+				Slots[index].Custo = itemSlot->Custo;
 				Itens.RemoveAt(Stream.FRandRange(0, Itens.Num() - 1));
 			}
 

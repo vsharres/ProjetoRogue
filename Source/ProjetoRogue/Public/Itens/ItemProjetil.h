@@ -33,6 +33,18 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Projetil")
 		TSubclassOf<class AProjectil> Projetil;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
+		UStaticMesh* DetalheDano;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
+		UStaticMesh* DetalhePrecisao;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
+		UStaticMesh* DetalheFireRate;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
+		UStaticMesh* DetalheVelocidadeProj;
+
 #pragma endregion PROPRIEDADES
 
 	
