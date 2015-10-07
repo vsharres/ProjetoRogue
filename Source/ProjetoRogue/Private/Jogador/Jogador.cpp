@@ -324,7 +324,7 @@ void AJogador::UsarItem(bool bDesativar)
 	if (ProjetilEncontrado->IsValidLowLevelFast())
 	{
 		InicializarProjetil(bDesativar);
-		AtualizarMesh(bDesativar);
+		AtualizarMesh();
 	}
 }
 
@@ -379,6 +379,14 @@ void AJogador::GerarProjetilPool()
 			Tiro->Instigator = this;
 			ProjetilPool.Add(Tiro);
 		}
+	}
+
+	UMaterialInstanceDynamic* MID;
+	MID = ProjetilPool[0]->GetProjetilMesh()->CreateDynamicMaterialInstance(0, ProjetilPool[0]->GetProjetilMesh()->GetMaterial(0));
+
+	if (MID)
+	{
+		MID->GetVectorParameterValue("Base_Cor", ProjetilCor);
 	}
 
 }

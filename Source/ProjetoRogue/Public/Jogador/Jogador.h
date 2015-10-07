@@ -418,6 +418,9 @@ public:
 	UPROPERTY()
 		FName ProjetilSocket;
 
+	UPROPERTY(BlueprintReadOnly, Category = Projetil)
+		FLinearColor ProjetilCor;
+
 	// Sets default values for this character's properties
 	AJogador(const FObjectInitializer& ObjectInitializer);
 
@@ -461,7 +464,7 @@ public:
 		void UsarItem(bool bDesativar = false);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = Jogador)
-		void AtualizarMesh(bool bDesativar = false);
+		void AtualizarMesh();
 
 	//INTERFACES
 
