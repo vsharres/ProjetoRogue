@@ -177,7 +177,7 @@ public:
 	* @return O transforma da sala a ser gerada.
 	*/
 	UFUNCTION()
-		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta);
+		FTransform GerarTransformSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	/*
 	* Função que gera o transforma do corredor a ser gerado.
@@ -186,7 +186,7 @@ public:
 	* @return O transforma do correodr a ser gerada.
 	*/
 	UFUNCTION()
-		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta);
+		FTransform GerarTransformCorredor(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	/*
 	* Função que seleciona a sala a ser gerada, esta função checa quais salas podem ser geradas e garante que salas especiais serão geradas.
@@ -194,7 +194,7 @@ public:
 	* @return Classe da sala a ser gerada.
 	*/
 	UFUNCTION()
-		TSubclassOf<ASala> SelecionarSala(const ASala* SalaAnterior);
+		TSubclassOf<ASala> SelecionarSala(ASala* SalaAnterior);
 
 	/*
 	* Função que utiliza o seed para o set do número de salas a serem geradas.

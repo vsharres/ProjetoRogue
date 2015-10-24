@@ -15,9 +15,5 @@ AItemSpawner::AItemSpawner(const FObjectInitializer& ObjectInitializer)
 	Colisor->SetCapsuleRadius(15.0f);
 	RootComponent = Colisor;
 
-	Sprite = ObjectInitializer.CreateDefaultSubobject<UBillboardComponent>(this, TEXT("Sprite"));
-	Sprite->SetVisibility(true);
-	Sprite->AttachTo(RootComponent);
-
 }
 

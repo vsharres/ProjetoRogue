@@ -188,7 +188,7 @@ public:
 	* @return int32 com o Offset da sala.
 	*/
 	UFUNCTION()
-		int32 GetOffset();
+		float GetOffset() const;
 
 	/*
 	* Função Get do número de portas.
@@ -217,6 +217,9 @@ public:
 	*/
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
+
+	UFUNCTION()
+		void SetOffset(float novoOffset);
 
 	/*
 	* Função que remove um inimigo do array de inimigos da sala.

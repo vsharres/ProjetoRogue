@@ -23,6 +23,9 @@ public:
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
 			int32 NumProjeteis;
 
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+			bool bEstaAtirando;
+
 		virtual void BeginPlay() override;
 
 		virtual void Destroyed() override;

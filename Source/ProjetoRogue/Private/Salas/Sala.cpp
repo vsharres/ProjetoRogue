@@ -35,7 +35,7 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	bSalaTemInimigos = false;
 	Inimigos.Empty();
 	OffsetSala = 6000.0f;
-	EscalaPadrao = FVector(5.0f, 5.0f, 5.0f);
+	EscalaPadrao = FVector(1.0f, 1.0f, 1.0f);
 
 
 }
@@ -66,7 +66,7 @@ FVector ASala::GetEscala()
 	return EscalaPadrao;
 }
 
-int32 ASala::GetOffset()
+float ASala::GetOffset() const
 {
 	return OffsetSala;
 }
@@ -89,6 +89,11 @@ ETipoSala ASala::GetTipo()
 TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 {
 	return DirecaoPortas;
+}
+
+void ASala::SetOffset(float novoOffset)
+{
+	this->OffsetSala = novoOffset;
 }
 
 void ASala::RemoverInimigo(AInimigo* inimigo)
@@ -220,6 +225,8 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 				controlador->AtivarInimigo();
 			}
 		}
+
+		TrancarPortas();
 	}
 }
 

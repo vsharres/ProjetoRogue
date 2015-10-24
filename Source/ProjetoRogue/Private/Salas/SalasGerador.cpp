@@ -148,9 +148,9 @@ int32 ASalasGerador::UltimaSalaValida()
 	return index;
 }
 
-FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta)
+FTransform ASalasGerador::GerarTransformSala(ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
-	FVector Trans = (DirecaoPorta.Vector() * ((ASala*)SalaGerada->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
+	FVector Trans = (DirecaoPorta.Vector() * (((ASala*)SalaGerada->GetDefaultObject(true))->GetOffset() + SalaAnterior->GetOffset() + 1840.0f )) + SalaAnterior->GetActorLocation();
 
 	FVector dir = -(DirecaoPorta.Vector());
 
@@ -159,9 +159,9 @@ FTransform ASalasGerador::GerarTransformSala(const ASala* SalaAnterior, const FR
 	return FTransform(Rot, Trans, ((ASala*)SalaGerada->GetDefaultObject(true))->GetEscala());
 }
 
-FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta)
+FTransform ASalasGerador::GerarTransformCorredor(ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
-	FVector Trans = (DirecaoPorta.Vector() * ((ACorredor*)Corredor->GetDefaultObject(true))->GetOffset()) + SalaAnterior->GetActorLocation();
+	FVector Trans = (DirecaoPorta.Vector() * (((ACorredor*)Corredor->GetDefaultObject(true))->GetOffset() + SalaAnterior->GetOffset())) + SalaAnterior->GetActorLocation();
 
 	FVector dir = -(DirecaoPorta.Vector());
 
@@ -170,7 +170,7 @@ FTransform ASalasGerador::GerarTransformCorredor(const ASala* SalaAnterior, cons
 	return FTransform(Rot, Trans, ((ACorredor*)Corredor->GetDefaultObject(true))->GetEscala());
 }
 
-TSubclassOf<ASala> ASalasGerador::SelecionarSala(const ASala* SalaAnterior)
+TSubclassOf<ASala> ASalasGerador::SelecionarSala(ASala* SalaAnterior)
 {
 	TSubclassOf<ASala> retornar;
 

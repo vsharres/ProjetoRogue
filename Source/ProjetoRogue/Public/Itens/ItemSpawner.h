@@ -32,9 +32,6 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = Collision)
 		UCapsuleComponent* Colisor;
 
-	//RETIRAR
-	UPROPERTY(VisibleDefaultsOnly, Category = Sprite)
-		UBillboardComponent* Sprite;
 
 public:
 

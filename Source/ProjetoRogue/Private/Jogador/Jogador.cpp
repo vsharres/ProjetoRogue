@@ -217,7 +217,6 @@ void AJogador::AdicionarMoedas(int32 valor)
 	}
 }
 
-
 void AJogador::SalvarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
@@ -318,7 +317,6 @@ void AJogador::NovoJogador()
 
 }
 
-
 void AJogador::UsarItem(bool bDesativar)
 {
 	if (ProjetilEncontrado->IsValidLowLevelFast())
@@ -356,7 +354,6 @@ void AJogador::InicializarProjetil(bool bDesativar)
 		ProjetilAtual->AtivarItem();
 	}
 
-	
 }
 
 void AJogador::GerarProjetilPool()
@@ -447,5 +444,4 @@ void AJogador::AplicarStatsProjetil(AProjectil* projetil)
 		projetil->Stats = this->Stats;
 	}
 }
-
 
