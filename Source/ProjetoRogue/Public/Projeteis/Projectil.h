@@ -154,7 +154,7 @@ protected:
 
 	/* Efeitos de tiro do projétil. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Efeitos")
-		FProjetilAtirarEfeitos AtirarEfeitos;
+		FProjetilAtirarEfeitos TiroEfeitos;
 
 #pragma endregion
 
@@ -209,8 +209,11 @@ public:
 	* Função para gerar os efeitos de impacto.
 	* @param Hit - Estrutura com as propriedades do ponto de colisão.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos", Keywords = "Spawn Efeitos"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Impacto", Keywords = "Spawn Efeitos Impacto"), Category = "Projetil")
 		void GerarEfeitosImpacto(const FHitResult& Hit);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Tiro", Keywords = "Spawn Efeitos Tiro"), Category = "Projetil")
+		void GerarEfeitosTiro(const FVector& Location, const FRotator& Rotator, USceneComponent* Componente, FName Nome);
 
 	/* Override da função de inicialização do ator. */
 	virtual void BeginPlay() override;

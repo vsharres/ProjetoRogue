@@ -127,6 +127,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		FName NomeItem;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Item)
+		FText DescricaoEfeitos;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		int32 Custo;
 

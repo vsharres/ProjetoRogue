@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\ParallelExecutor.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\ParallelExecutor.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{B2986508-C328-4450-BF79-705AD28EE86C}</UniqueIdentifier>
+			<UniqueIdentifier>{5CD89C2D-CB09-4C40-8CEF-4649FFAD6ACC}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\Private\BuildGraph.cpp">
 			<Filter>Private</Filter>

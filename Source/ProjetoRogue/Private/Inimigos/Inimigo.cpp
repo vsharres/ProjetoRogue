@@ -22,6 +22,8 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	ChanceSpawnEnergia = 60.0f;
 	ChanceSpawnMoeda = 30.0f;
 
+	bEstaAtacando = false;
+
 }
 
 // Called when the game starts or when spawned
@@ -54,6 +56,11 @@ FVector AInimigo::GetPosicaoTiro()
 	return GetMesh()->GetSocketLocation("Tiro_Bocal");
 }
 
+FRotator AInimigo::GetDirecaoTiro()
+{
+	return GetMesh()->GetComponentRotation();
+}
+
 void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
 {
 	Stats.Vida -= dano;
@@ -64,6 +71,7 @@ void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
 	{
 		jogador->GerarDanoPopUp(dano, this, projetil);
 	}
+
 }
 
 void AInimigo::AplicarStatsProjetil(AProjectil* projetil)

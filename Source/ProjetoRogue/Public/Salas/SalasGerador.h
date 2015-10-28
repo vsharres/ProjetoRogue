@@ -45,10 +45,6 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaBoss;
 
-	/* Classe dos corredores padrões. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
-		TSubclassOf<class ACorredor> Corredor;
-
 	/* Classe do corredor da loja. */
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ACorredor> CorredorLoja;
@@ -86,21 +82,25 @@ private:
 		TArray<bool> SalasCarregadas;
 
 	/* Distância X máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
 		float ComprimentoMax;
 
 	/* Distância Y máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
 		float LarguraMax;
 
+public:
+
 	/* Stream de geração randômica. */
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gerador)
 		FRandomStream StreamGeracao;
 
-public:
 	/* Array com os tipos de salas que podem ser gerados. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Corredor")
+		TArray<TSubclassOf<ACorredor>> TiposCorredores;
 
 	/* Número máximo de salas que podem ser geradas. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))

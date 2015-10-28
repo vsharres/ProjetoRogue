@@ -56,9 +56,9 @@ void AInimigoRange::Atirar_Implementation()
 		if (!proj->bAtivo)
 		{
 			FVector PosTiro = GetPosicaoTiro();
-			FVector direcao = FMath::VRandCone(PosTiro.ForwardVector, Stats.Precisao / 2.0f);
-			FVector tiroDirecao = direcao + PosTiro.ForwardVector;
-			proj->AtivarProjetil(PosTiro, tiroDirecao.Rotation(), this);
+			FRotator tiroDirecao = GetDirecaoTiro();
+			FVector direcao = FMath::VRandCone(tiroDirecao.Vector(), FMath::DegreesToRadians(Stats.Precisao / 2.0f));
+			proj->AtivarProjetil(PosTiro, direcao.Rotation(), this);
 			break;
 		}
 	}

@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\CrashReportClient.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\CrashReportClient.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{617CBBD0-0811-4B12-BC75-378A0564EB47}</UniqueIdentifier>
+			<UniqueIdentifier>{083B861A-C01B-43B0-BF1C-1F18727608A7}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\CrashDescription.cpp">
 			<Filter>Private</Filter>
@@ -77,7 +77,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{74535E14-A143-4D7D-AA08-66DAC7B08727}</UniqueIdentifier>
+			<UniqueIdentifier>{5C48F363-4C54-4664-A8F5-537170BA816A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Linux\CrashReportClientMainLinux.cpp">
 			<Filter>Private\Linux</Filter>
@@ -86,7 +86,7 @@
 			<Filter>Private\Linux</Filter>
 		</ClInclude >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{133049FC-F9D9-482A-B96D-01641AAD0A3D}</UniqueIdentifier>
+			<UniqueIdentifier>{A7AE40F5-09A2-4EC0-A48B-C77F1F2B3731}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Mac\CrashReportClientMainMac.cpp">
 			<Filter>Private\Mac</Filter>
@@ -98,7 +98,7 @@
 			<Filter>Private\Mac</Filter>
 		</ClInclude >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{21F8F0A9-8794-4C02-95F2-D3F095F5015D}</UniqueIdentifier>
+			<UniqueIdentifier>{3D942B0D-C56B-4D6C-952C-639315D8D1CD}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Private\Windows\CrashReportClientMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
@@ -110,16 +110,16 @@
 			<Filter>Private\Windows</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{11044B3E-9954-466E-A099-C5834414EE11}</UniqueIdentifier>
+			<UniqueIdentifier>{31225BFD-1446-4CF5-B665-3DF117A48590}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Public\CrashReportClientApp.h">
 			<Filter>Public</Filter>
 		</ClInclude >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{9616CB63-7743-4512-9281-58EFADFC5F8A}</UniqueIdentifier>
+			<UniqueIdentifier>{F2195DEB-AA37-46F7-A470-02A9EB373DB7}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Resources\Windows">
-			<UniqueIdentifier>{E5736CD2-259E-405C-BB12-6FB6FF14E509}</UniqueIdentifier>
+			<UniqueIdentifier>{DD239736-AAC2-407F-B1DD-26EB0BDDA08E}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\CrashReporter\CrashReportClient\Resources\Windows\CrashReportClient-Win32.manifest">
 			<Filter>Resources\Windows</Filter>

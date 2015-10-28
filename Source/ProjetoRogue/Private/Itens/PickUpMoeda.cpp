@@ -10,11 +10,7 @@ APickUpMoeda::APickUpMoeda(const FObjectInitializer& ObjectInitializer)
 {
 	IncMoedas = 2;
 	Tipo = ETipoPickUp::MOEDA;
-	Colisor->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	Colisor->SetCollisionObjectType(ECC_WorldDynamic);
-	Colisor->SetCollisionResponseToAllChannels(ECR_Ignore);
-	Colisor->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
-	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpMoeda::ColisorOverlap);
+	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpMoeda::ColisorOverlap);
 	
 }
 
@@ -34,7 +30,7 @@ void APickUpMoeda::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComp
 
 void APickUpMoeda::BeginPlay()
 {	
-	Colisor->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 
 	Super::BeginPlay();
 }

@@ -13,8 +13,24 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	Mesh->SetSimulatePhysics(true);
 	RootComponent = Mesh;
 
-	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
-	Colisor->AttachTo(Mesh);
+	TriggerCatch = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerCatch"));
+	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	TriggerCatch->SetCollisionObjectType(ECC_WorldDynamic);
+	TriggerCatch->SetCollisionResponseToAllChannels(ECR_Ignore);
+	TriggerCatch->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	TriggerCatch->SetSphereRadius(40.0f);
+	TriggerCatch->AttachTo(Mesh);
+
+	TriggerOutline = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerOutline"));
+	TriggerOutline->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	TriggerOutline->SetCollisionObjectType(ECC_WorldDynamic);
+	TriggerOutline->SetCollisionResponseToAllChannels(ECR_Ignore);
+	TriggerOutline->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	TriggerOutline->SetSphereRadius(100.0f);
+	TriggerOutline->AttachTo(Mesh);
+
+	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUp::OutlineOnOverlap);
+	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUp::OutlineEndOverlap);
 
 	IncVida = 0.0f;
 	IncEnergia = 0;
@@ -23,14 +39,34 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	ExplosaoForca = 500.0f;
 }
 
-UCapsuleComponent* APickUp::GetColisor()
+USphereComponent* APickUp::GetColisor()
 {
-	return Colisor;
+	return TriggerCatch;
 }
 
 UStaticMeshComponent* APickUp::GetMesh()
 {
 	return Mesh;
+}
+
+void APickUp::OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	AJogador* jogador = Cast<AJogador>(OtherActor);
+
+	if (jogador->IsValidLowLevelFast() && OtherComp)
+	{
+		Mesh->SetRenderCustomDepth(true);
+	}
+}
+
+void APickUp::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	AJogador* jogador = Cast<AJogador>(OtherActor);
+
+	if (jogador->IsValidLowLevelFast() && OtherComp)
+	{
+		Mesh->SetRenderCustomDepth(false);
+	}
 }
 
 // Called when the game starts or when spawned

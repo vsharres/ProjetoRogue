@@ -5,5 +5,5 @@
 
 UInimigoSpawnerComponent::UInimigoSpawnerComponent()
 {
-	bGerarRandomicamente = true;
+	bGerarRandomicamente = false;
 }

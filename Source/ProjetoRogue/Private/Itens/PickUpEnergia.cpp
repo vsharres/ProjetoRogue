@@ -9,11 +9,7 @@ APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 {
 	IncEnergia = 10;
 	Tipo = ETipoPickUp::ENERGIA;
-	Colisor->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	Colisor->SetCollisionObjectType(ECC_WorldDynamic);
-	Colisor->SetCollisionResponseToAllChannels(ECR_Ignore);
-	Colisor->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
-	Colisor->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
+	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
 	
 }
 
@@ -33,6 +29,6 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 void APickUpEnergia::BeginPlay()
 {
 	
-	Colisor->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	Super::BeginPlay();
 }

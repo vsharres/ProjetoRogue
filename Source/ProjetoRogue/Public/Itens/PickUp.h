@@ -26,7 +26,10 @@ protected:
 
 	/* Componente de colisão. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
-		UCapsuleComponent* Colisor;
+		USphereComponent* TriggerCatch;
+	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = PickUp)
+		USphereComponent* TriggerOutline;
 
 	/* Mesh do pickup. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
@@ -74,7 +77,7 @@ public:
 	* @return Ponteiro ao componente de colisão.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Colisor")
-		UCapsuleComponent* GetColisor();
+		USphereComponent* GetColisor();
 
 	/*
 	* Função Get para retornar o Mesh do Pickup.
@@ -82,6 +85,12 @@ public:
 	*/
 	UFUNCTION(BlueprintPure, Category = "Mesh")
 		UStaticMeshComponent* GetMesh();
+
+	UFUNCTION()
+		void OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	UFUNCTION()
+		void OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	/* Override do evento de beginplay. */
 	virtual void BeginPlay() override;

@@ -199,6 +199,11 @@ void ASala::InimigosForamDerrotados()
 			jogador->SalvarJogador();
 			gerador->SalvarSalas();
 		}
+
+		if (TipoSala == ETipoSala::BOSS)
+		{
+
+		}
 	}
 
 }

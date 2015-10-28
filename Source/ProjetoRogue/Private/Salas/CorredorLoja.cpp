@@ -55,13 +55,13 @@ void ACorredorLoja::InicializarLoja()
 		else if (tipo > 30)
 		{
 			Slots[index].Tipo = ESlotTipo::ENERGIA;
-			Slots[index].Efeito = 10;
+			Slots[index].Efeito = 100;
 			Slots[index].Custo = 5;
 		}
 		else
 		{
 			Slots[index].Tipo = ESlotTipo::VIDA;
-			Slots[index].Efeito = 25;
+			Slots[index].Efeito = 100;
 			Slots[index].Custo = 10;
 		}
 

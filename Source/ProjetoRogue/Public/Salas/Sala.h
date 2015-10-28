@@ -265,6 +265,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
 		void DestrancarPortas();
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Ativar Elevador", Keywords = "Ativar Elevador"), Category = "Sala")
+		void AtivarElevador();
+
 	/*
 	* Evento de overlap do trigger de ativação dos inimigos.
 	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentBeginOverlap.

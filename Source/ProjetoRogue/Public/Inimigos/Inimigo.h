@@ -115,6 +115,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador")
 		TArray<FVector> UltimasVelJogador;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+		bool bEstaAtacando;
+
 	// Sets default values for this pawn's properties
 	AInimigo(const FObjectInitializer& ObjectInitializer);
 
@@ -126,6 +129,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Mesh")
 		FVector GetPosicaoTiro();
+
+	UFUNCTION(BlueprintPure, Category = Mesh)
+		FRotator GetDirecaoTiro();
 
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
 		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;

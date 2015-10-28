@@ -51,12 +51,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UMaterialInstance* DetalheFireRate_Material;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
-		UStaticMesh* DetalheVelocidadeProj;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
-		UMaterialInstance* DetalheVelocidadeProj_Material;
-
 #pragma endregion PROPRIEDADES
 
 	

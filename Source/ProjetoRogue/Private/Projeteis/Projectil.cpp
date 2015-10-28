@@ -63,7 +63,7 @@ void AProjectil::InicializarProjetil(ACharacter* Inicializador)
 		
 	}
 	
-	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade + Inicializador->GetCharacterMovement()->Velocity.ForwardVector.X);
+	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade + Inicializador->GetCharacterMovement()->Velocity.ForwardVector);
 
 }
 
@@ -78,8 +78,7 @@ void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator
 
 	InicializarProjetil(Inicializador);
 	CompCollisao->Activate(true);
-	CompMovimentacao->Activate(true);
-	
+	CompMovimentacao->Activate(true);	
 
 }
 
@@ -110,6 +109,17 @@ void AProjectil::GerarEfeitosImpacto(const FHitResult& Hit)
 
 	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.DecalTamanho, ImapctoEfeitos.DecalTamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
 
+}
+
+void AProjectil::GerarEfeitosTiro(const FVector& Location, const FRotator& Rotator, USceneComponent* Componente, FName Nome)
+{
+	FRandomStream Stream;
+
+	FRotator rotTemp = Rotator;
+
+	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180));
+
+	UGameplayStatics::SpawnEmitterAttached(TiroEfeitos.TiroFlash, Componente, Nome);
 }
 
 // Called when the game starts or when spawned
