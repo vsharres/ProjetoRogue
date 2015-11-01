@@ -251,3 +251,25 @@ void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPri
 	}
 }
 
+void ASala::AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala)
+{
+	TArray<USceneComponent*> meshs;
+
+	Sala->GetChildrenComponents(true, meshs);
+
+	for (auto const& componente : meshs)
+	{
+		UInstancedStaticMeshComponent* instMesh = Cast<UInstancedStaticMeshComponent>(componente);
+
+		if (instMesh)
+		{
+			UMaterialInstanceDynamic* MID =  instMesh->CreateDynamicMaterialInstance(1);
+
+			if (MID)
+			{
+				MID->SetVectorParameterValue("Base_Color", novaCor);
+			}
+		}
+	}
+}
+

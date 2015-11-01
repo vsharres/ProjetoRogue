@@ -12,13 +12,13 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
 	Mesh->SetSimulatePhysics(true);
 	RootComponent = Mesh;
-
+	
 	TriggerCatch = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerCatch"));
 	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	TriggerCatch->SetCollisionObjectType(ECC_WorldDynamic);
 	TriggerCatch->SetCollisionResponseToAllChannels(ECR_Ignore);
 	TriggerCatch->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
-	TriggerCatch->SetSphereRadius(40.0f);
+	TriggerCatch->SetSphereRadius(50.0f);
 	TriggerCatch->AttachTo(Mesh);
 
 	TriggerOutline = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerOutline"));
@@ -28,9 +28,6 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	TriggerOutline->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	TriggerOutline->SetSphereRadius(100.0f);
 	TriggerOutline->AttachTo(Mesh);
-
-	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUp::OutlineOnOverlap);
-	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUp::OutlineEndOverlap);
 
 	IncVida = 0.0f;
 	IncEnergia = 0;
@@ -47,26 +44,6 @@ USphereComponent* APickUp::GetColisor()
 UStaticMeshComponent* APickUp::GetMesh()
 {
 	return Mesh;
-}
-
-void APickUp::OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
-{
-	AJogador* jogador = Cast<AJogador>(OtherActor);
-
-	if (jogador->IsValidLowLevelFast() && OtherComp)
-	{
-		Mesh->SetRenderCustomDepth(true);
-	}
-}
-
-void APickUp::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	AJogador* jogador = Cast<AJogador>(OtherActor);
-
-	if (jogador->IsValidLowLevelFast() && OtherComp)
-	{
-		Mesh->SetRenderCustomDepth(false);
-	}
 }
 
 // Called when the game starts or when spawned

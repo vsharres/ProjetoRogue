@@ -9,7 +9,7 @@ UDanoInterface::UDanoInterface(const class FObjectInitializer& PCIP)
 
 }
 
-void IDanoInterface::ReceberDano(const float& dano, AProjectil* projetil)
+void IDanoInterface::ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit)
 {
 
 }

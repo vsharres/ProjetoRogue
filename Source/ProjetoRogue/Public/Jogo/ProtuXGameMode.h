@@ -11,8 +11,6 @@ enum class EJogoEstado : uint8{
 	JOGO,
 	REINICIAR,
 	GAMEOVER
-
-
 };
 
 /**

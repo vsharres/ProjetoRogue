@@ -28,7 +28,7 @@ class IDanoInterface
 	*	@param projetil - O projétil responsável pelo dano causado.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Receber Dano", Keywords = "Receber Dano"), Category = "DanoInterface")
-	virtual void ReceberDano(const float& dano, class AProjectil* projetil);
+	virtual void ReceberDano(const float& dano, class AProjectil* projetil, const FHitResult& Hit);
 
 	/*
 	*	Função virtual para aplicar os stats ao projétil

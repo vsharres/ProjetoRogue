@@ -134,7 +134,7 @@ public:
 		FRotator GetDirecaoTiro();
 
 	UFUNCTION(BlueprintCallable, Category = "Inimigos")
-		virtual void ReceberDano(const float& dano, AProjectil* projetil) override;
+		virtual void ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit) override;
 
 	UFUNCTION()
 		bool EstaVivo();

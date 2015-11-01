@@ -282,6 +282,9 @@ public:
 	UFUNCTION()
 		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION(BlueprintCallable, Category = Glow)
+		void AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala);
+
 
 
 	/*

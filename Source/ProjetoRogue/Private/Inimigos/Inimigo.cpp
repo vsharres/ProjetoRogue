@@ -61,7 +61,7 @@ FRotator AInimigo::GetDirecaoTiro()
 	return GetMesh()->GetComponentRotation();
 }
 
-void AInimigo::ReceberDano(const float& dano, AProjectil* projetil)
+void AInimigo::ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit)
 {
 	Stats.Vida -= dano;
 	this->FlashDano();

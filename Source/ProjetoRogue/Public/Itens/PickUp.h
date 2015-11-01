@@ -86,12 +86,6 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Mesh")
 		UStaticMeshComponent* GetMesh();
 
-	UFUNCTION()
-		void OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
-
-	UFUNCTION()
-		void OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
 	/* Override do evento de beginplay. */
 	virtual void BeginPlay() override;
 

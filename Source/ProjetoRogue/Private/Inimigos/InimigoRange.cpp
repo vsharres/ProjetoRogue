@@ -59,6 +59,7 @@ void AInimigoRange::Atirar_Implementation()
 			FRotator tiroDirecao = GetDirecaoTiro();
 			FVector direcao = FMath::VRandCone(tiroDirecao.Vector(), FMath::DegreesToRadians(Stats.Precisao / 2.0f));
 			proj->AtivarProjetil(PosTiro, direcao.Rotation(), this);
+			proj->GerarEfeitosTiro(PosTiro, tiroDirecao, GetMesh(), TEXT("Tiro_Bocal"));
 			break;
 		}
 	}

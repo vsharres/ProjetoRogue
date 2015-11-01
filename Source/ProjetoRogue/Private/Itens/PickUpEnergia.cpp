@@ -10,6 +10,8 @@ APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 	IncEnergia = 10;
 	Tipo = ETipoPickUp::ENERGIA;
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
+	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::OutlineOnOverlap);
+	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUpEnergia::OutlineEndOverlap);
 	
 }
 
@@ -24,6 +26,26 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 		Destroy();
 	}
 	
+}
+
+void APickUpEnergia::OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	AJogador* jogador = Cast<AJogador>(OtherActor);
+
+	if (jogador->IsValidLowLevelFast() && OtherComp)
+	{
+		Mesh->SetRenderCustomDepth(true);
+	}
+}
+
+void APickUpEnergia::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	AJogador* jogador = Cast<AJogador>(OtherActor);
+
+	if (jogador->IsValidLowLevelFast() && OtherComp)
+	{
+		Mesh->SetRenderCustomDepth(false);
+	}
 }
 
 void APickUpEnergia::BeginPlay()

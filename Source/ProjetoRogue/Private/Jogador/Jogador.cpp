@@ -427,9 +427,10 @@ void AJogador::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 
 }
 
-void AJogador::ReceberDano(const float& dano, AProjectil* projetil)
+void AJogador::ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit)
 {
 	this->Stats.Vida -= dano;
+	GerarCirculoDano(Hit);
 
 	if (Stats.Vida <= 0)
 	{

@@ -73,6 +73,7 @@ void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator
 
 	SetActorLocation(Location);
 	SetActorRotation(Rotator);
+	Instigator = Inicializador;
 
 	SetActorHiddenInGame(false);
 
@@ -142,7 +143,7 @@ void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* O
 
 	if (danoInterface && Hit.GetActor() != this->Instigator)
 	{
-		danoInterface->ReceberDano(this->Stats.Dano, this);
+		danoInterface->ReceberDano(this->Stats.Dano, this, Hit);
 		DesativarProjetil();
 		GerarEfeitosImpacto(Hit);
 		Atingiu();		
