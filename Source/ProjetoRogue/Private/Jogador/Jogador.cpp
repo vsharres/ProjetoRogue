@@ -179,7 +179,7 @@ void AJogador::AtualizarPropriedadesComStats()
 
 bool AJogador::EstaVivo()
 {
-	if (Stats.Vida > 0)
+	if (Stats.Vida > 0.01)
 	{
 		return true;
 	}
