@@ -139,11 +139,14 @@ public:
 	UFUNCTION()
 		bool EstaVivo();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = PickUp)
 		void SpawnPickUp();
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Inimigo")
 		void FlashDano();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = Inimigo)
+		void InimigoMorreu();
 
 	UFUNCTION(BlueprintCallable, Category = "Projetil")
 		virtual void AplicarStatsProjetil(AProjectil* projetil) override;

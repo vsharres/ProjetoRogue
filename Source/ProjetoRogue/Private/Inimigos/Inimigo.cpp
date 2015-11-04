@@ -39,14 +39,14 @@ void AInimigo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!EstaVivo() && TipoInimigo != ETipoInimigo::BOSS)
+	if (!EstaVivo())
 	{
-		SpawnPickUp();
 		if (SalaPai->IsValidLowLevelFast())
 		{
 			SalaPai->RemoverInimigo(this);
 		}
-		Destroy();
+
+		InimigoMorreu();
 	}
 
 }

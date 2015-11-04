@@ -65,10 +65,10 @@ FIntPoint USalvarSettings::GetResolution()
 {
 	if (UserSettings)
 	{
-		return UserSettings->GetLastConfirmedScreenResolution();
+		return UserSettings->GetScreenResolution();
 	}
 
-	return FIntPoint();
+	return UserSettings->GetDefaultResolution();
 }
 
 void USalvarSettings::SetQualitySettings(int32 newSetting)
