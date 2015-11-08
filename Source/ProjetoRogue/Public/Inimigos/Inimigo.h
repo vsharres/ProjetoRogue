@@ -85,13 +85,13 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "PickUp")
 		int32 NumPickUps;
 
-	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float ChanceSpawnVida;
 
-	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float ChanceSpawnEnergia;
 
-	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float ChanceSpawnMoeda;
 
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
@@ -117,6 +117,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
 		bool bEstaAtacando;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+		bool bEstaMorrendo;
 
 	// Sets default values for this pawn's properties
 	AInimigo(const FObjectInitializer& ObjectInitializer);

@@ -234,8 +234,8 @@ public:
 	* @param Stream - Stream randômico de geração
 	*/
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
-		void SpawnInimigos(const FRandomStream& Stream);
-	virtual void SpawnInimigos_Implementation(const FRandomStream& Stream);
+		void SpawnInimigos(FRandomStream& Stream);
+	virtual void SpawnInimigos_Implementation(FRandomStream& Stream);
 
 	/*
 	* Função Get do tipo de inimigo a ser gerado para um determinado seed e para um tipo de dificuldade.
@@ -245,7 +245,7 @@ public:
 	* @return O tipo de inimigo a ser gerado.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
-		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, const FRandomStream& Stream);
+		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream);
 
 	/*
 	* Função a ser executada quando todos os inimigos da sala foram derrotados.
@@ -284,8 +284,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Glow)
 		void AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala);
-
-
 
 	/*
 	* Override do Tick da sala.

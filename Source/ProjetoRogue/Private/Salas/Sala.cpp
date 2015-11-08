@@ -104,7 +104,7 @@ void ASala::RemoverInimigo(AInimigo* inimigo)
 	}
 }
 
-void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
+void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 {
 	if (!bSalaTemInimigos)
 		return;
@@ -139,17 +139,21 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 		if (Spawner->bGerarRandomicamente)
 		{
 			check(TipoInimigo.Num() > 0);
-
-			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			if (Spawner->InimigosRandomicos.Num() > 0)
+			{
+				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			}
+			else
+			{
+				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo,Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			}
 		}
 		else
 		{
-			TArray<TSubclassOf<AInimigo>> InimigoNaoRandomico;
-			InimigoNaoRandomico.Add(Spawner->InimigoNaoRandomico);
+			TSubclassOf<AInimigo> InimigoNaoRandomico;
+			InimigoNaoRandomico = Spawner->InimigoNaoRandomico;
 
-			check(InimigoNaoRandomico.Num() > 0);
-
-			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(InimigoNaoRandomico, Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(InimigoNaoRandomico, Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 		}
 
 		if (NovoInimigo->IsValidLowLevelFast())
@@ -168,7 +172,7 @@ void ASala::SpawnInimigos_Implementation(const FRandomStream& Stream)
 	}
 }
 
-TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, const FRandomStream& Stream)
+TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream)
 {
 	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)];
 

@@ -360,6 +360,30 @@ struct FJogadorStats
 
 };
 
+/* Enumeração que os tipos de interação que o jogador pode fazer */
+UENUM(BlueprintType)
+enum class ETipoInteracao : uint8
+{
+	NENHUMA,
+	CHAVE,
+	ITEM,
+	LOJA,
+	ELEVADOR,
+	HOLOLOG,
+	TUTORIALPROMP
+};
+
+UENUM(BlueprintType)
+enum class ETutorialPromp :uint8
+{
+	PORTACHEFE,
+	CHAVE,
+	LOJA,
+	ITEMPASSIVO,
+	ITEMATIVO,
+	INVENTARIO
+};
+
 
 UCLASS()
 class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
@@ -424,7 +448,7 @@ public:
 	// Sets default values for this character's properties
 	AJogador(const FObjectInitializer& ObjectInitializer);
 
-	UFUNCTION(BlueprintCallable, Category ="Jogador")
+	UFUNCTION(BlueprintCallable, Category = "Jogador")
 		void InicializarJogador();
 
 	UFUNCTION(BlueprintCallable, Category = "Nome")

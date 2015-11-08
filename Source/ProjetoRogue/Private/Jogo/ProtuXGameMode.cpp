@@ -8,6 +8,7 @@
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 {
 	bNovoJogo = true;
+	bTutorialAtivado = true;
 	bNaoSalvar = false;
 	
 }
@@ -83,6 +84,9 @@ void AProtuXGameMode::Tick(float DeltaSeconds)
 
 void AProtuXGameMode::LoadProfile()
 {
+	if (bNaoSalvar)
+		return;
+
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
@@ -95,13 +99,18 @@ void AProtuXGameMode::LoadProfile()
 	if (SaveInst->IsValidLowLevelFast())
 	{
 		bNovoJogo = SaveInst->bNovoJogo;
-
+		
 		if (bNovoJogo)
 		{
 			SaveInst->NumJogos += 1;
 		}
 
 		NumJogos = SaveInst->NumJogos;
+
+		if (NumJogos > 1)
+		{
+			bTutorialAtivado = false;
+		}
 
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 		

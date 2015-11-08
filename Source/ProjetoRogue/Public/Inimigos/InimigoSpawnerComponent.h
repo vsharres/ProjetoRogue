@@ -19,7 +19,13 @@ public:
 		bool bGerarRandomicamente;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
-		TSubclassOf<class AInimigo> InimigoNaoRandomico;
+		TArray<TSubclassOf<class AInimigo>> InimigosRandomicos;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
+		TSubclassOf<AInimigo> InimigoNaoRandomico;
 	
 	UInimigoSpawnerComponent();
+
+	UFUNCTION(BlueprintCallable, Category = InimigoSpawner)
+		TSubclassOf<AInimigo> SelecionarInimigoRandomicamente(FRandomStream& Stream);
 };

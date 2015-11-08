@@ -37,7 +37,7 @@ void ACorredorLoja::InicializarLoja()
 	{
 		int32 tipo = Stream.FRandRange(1, 100);
 
-		if (tipo > 80)
+		if (tipo > 70)
 		{
 			Slots[index].Tipo = ESlotTipo::ITEM;
 			Slots[index].Efeito = 0;

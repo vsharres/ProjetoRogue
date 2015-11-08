@@ -15,17 +15,6 @@ enum class ESlotTipo : uint8
 
 };
 
-/* Enumeração que os tipos de interação que o jogador pode fazer */
-UENUM(BlueprintType)
-enum class ETipoInteracao : uint8
-{
-	NENHUMA,
-	CHAVE,
-	ITEM,
-	LOJA,
-	ELEVADOR
-};
-
 /* Estrutura que represent as propriedades de um dos slots da loja. */
 USTRUCT()
 struct FLojaSlot{
