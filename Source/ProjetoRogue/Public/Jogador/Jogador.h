@@ -384,6 +384,12 @@ enum class ETutorialPromp :uint8
 	INVENTARIO
 };
 
+UENUM(BlueprintType)
+enum class EInicializarEstado :uint8
+{
+	BOOTUP,
+	JOGAR,
+};
 
 UCLASS()
 class PROJETOROGUE_API AJogador : public ACharacter, public IDanoInterface
