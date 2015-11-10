@@ -19,8 +19,8 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	Stats = FInimigoStats();
 	NumPickUps = 1;
 	ChanceSpawnVida = 90.0f;
-	ChanceSpawnEnergia = 60.0f;
-	ChanceSpawnMoeda = 30.0f;
+	ChanceSpawnEnergia = 75.0f;
+	ChanceSpawnMoeda = 25.0f;
 
 	bEstaAtacando = false;
 

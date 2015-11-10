@@ -29,15 +29,13 @@ void ACorredorLoja::BeginPlay()
 
 void ACorredorLoja::InicializarLoja()
 {
-	int32 Seed = (ASalasGerador::GetGeradorSalas(this->GetWorld()))->Seed;
 
-	FRandomStream Stream = FRandomStream(Seed);
+	FRandomStream Stream = (ASalasGerador::GetGeradorSalas(this->GetWorld()))->StreamGeracao;
 
 	for (int32 index = 0; index < Slots.Num(); index++)
 	{
-		int32 tipo = Stream.FRandRange(1, 100);
 
-		if (tipo > 70)
+		if (index == 2)
 		{
 			Slots[index].Tipo = ESlotTipo::ITEM;
 			Slots[index].Efeito = 0;
@@ -52,7 +50,7 @@ void ACorredorLoja::InicializarLoja()
 			}
 
 		}
-		else if (tipo > 30)
+		else if (index == 1)
 		{
 			Slots[index].Tipo = ESlotTipo::ENERGIA;
 			Slots[index].Efeito = 100;
