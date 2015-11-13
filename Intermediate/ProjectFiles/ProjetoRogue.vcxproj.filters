@@ -1,309 +1,304 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <None Include="..\..\ProjetoRogue.uproject" />
-    <Filter Include="Source">
-      <UniqueIdentifier>{ED9EDDA8-56F2-43EB-A8B6-0D94D26FD864}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\ProjetoRogue.Target.cs">
-      <Filter>Source</Filter>
-    </None>
-    <None Include="..\..\Source\ProjetoRogueEditor.Target.cs">
-      <Filter>Source</Filter>
-    </None>
-    <Filter Include="Config">
-      <UniqueIdentifier>{35B7225E-FB64-4549-A614-F222D9AE86BF}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Config\DefaultEditor.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultEditorUserSettings.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultEngine.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultGame.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultGameUserSettings.ini">
-      <Filter>Config</Filter>
-    </None>
-    <None Include="..\..\Config\DefaultInput.ini">
-      <Filter>Config</Filter>
-    </None>
-    <Filter Include="Source\ProjetoRogue">
-      <UniqueIdentifier>{1A416F0E-2283-484F-AED3-B112507451D1}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs">
-      <Filter>Source\ProjetoRogue</Filter>
-    </None>
-    <Filter Include="Source\ProjetoRogue\Private">
-      <UniqueIdentifier>{78A315D1-8282-49C8-88E1-45FCB2038C3D}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp">
-      <Filter>Source\ProjetoRogue\Private</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Inimigos">
-      <UniqueIdentifier>{773B5EB0-7690-4FE3-BF48-EFDA061BEAE1}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Boss.cpp">
-      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Inimigo.cpp">
-      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoRange.cpp">
-      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigosControlador.cpp">
-      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoSpawnerComponent.cpp">
-      <Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Interfaces">
-      <UniqueIdentifier>{B8A5CD62-9577-4CDB-930A-7E602A288BA6}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DanoInterface.cpp">
-      <Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Itens">
-      <UniqueIdentifier>{ED2DA45B-606F-4F02-ABDA-05CAFD52F29A}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\Item.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemPassivo.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUp.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpEnergia.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpMoeda.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpVida.cpp">
-      <Filter>Source\ProjetoRogue\Private\Itens</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Jogador">
-      <UniqueIdentifier>{BCD6E18D-60C0-4DD8-99D2-E2B768927704}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogador\Jogador.cpp">
-      <Filter>Source\ProjetoRogue\Private\Jogador</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Jogo">
-      <UniqueIdentifier>{D2AD4E31-5F2D-49B2-BE82-3C022A28AE67}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\ProtuXGameMode.cpp">
-      <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarJogo.cpp">
-      <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp">
-      <Filter>Source\ProjetoRogue\Private\Jogo</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Projeteis">
-      <UniqueIdentifier>{670D9D04-8175-4508-B481-296684D157BE}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Projeteis\Projectil.cpp">
-      <Filter>Source\ProjetoRogue\Private\Projeteis</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Private\Salas">
-      <UniqueIdentifier>{143A7705-9FB9-456B-9BF6-5BCE53EB6544}</UniqueIdentifier>
-    </Filter>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Corredor.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\CorredorLoja.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Porta.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2P.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PDireita.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PEsquerda.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3P.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PDireita.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp">
-      <Filter>Source\ProjetoRogue\Private\Salas</Filter>
-    </ClCompile>
-    <Filter Include="Source\ProjetoRogue\Public">
-      <UniqueIdentifier>{6A560047-4831-4780-9F85-02B426E20051}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h">
-      <Filter>Source\ProjetoRogue\Public</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Inimigos">
-      <UniqueIdentifier>{3656AECC-90DE-4216-9B0A-CEE30B965DE1}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Boss.h">
-      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h">
-      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h">
-      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigosControlador.h">
-      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoSpawnerComponent.h">
-      <Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Interfaces">
-      <UniqueIdentifier>{FBC10144-2E66-40A5-BFFB-ACBD0B8B091E}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DanoInterface.h">
-      <Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Itens">
-      <UniqueIdentifier>{860358FB-1025-4193-BCAA-E95E744CEA06}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\Item.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemPassivo.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUp.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpEnergia.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpMoeda.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpVida.h">
-      <Filter>Source\ProjetoRogue\Public\Itens</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Jogador">
-      <UniqueIdentifier>{56A8F955-1BA2-4D0D-87E9-A1536F61269D}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogador\Jogador.h">
-      <Filter>Source\ProjetoRogue\Public\Jogador</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Jogo">
-      <UniqueIdentifier>{3AB42059-0494-4CEB-94A5-81230B7433CE}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\ProtuXGameMode.h">
-      <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarJogo.h">
-      <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h">
-      <Filter>Source\ProjetoRogue\Public\Jogo</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Projeteis">
-      <UniqueIdentifier>{C9C64625-C05E-4088-9578-6ED491E9B5FB}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Projeteis\Projectil.h">
-      <Filter>Source\ProjetoRogue\Public\Projeteis</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Public\Salas">
-      <UniqueIdentifier>{7C9F15F1-A6A1-4F12-B2E1-DFA1662622B4}</UniqueIdentifier>
-    </Filter>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Corredor.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\CorredorLoja.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Porta.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2P.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PDireita.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PEsquerda.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3P.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PDireita.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PEsquerda.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala4P.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\SalasGerador.h">
-      <Filter>Source\ProjetoRogue\Public\Salas</Filter>
-    </ClInclude>
-    <Filter Include="Source\ProjetoRogue\Resources">
-      <UniqueIdentifier>{40B5C9B1-75B0-4484-8656-A181778C72A2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\ProjetoRogue\Resources\Windows">
-      <UniqueIdentifier>{F5525651-BEA6-4E0C-8FB8-9A766A146BFF}</UniqueIdentifier>
-    </Filter>
-    <ResourceCompile Include="..\..\Source\ProjetoRogue\Resources\Windows\ProjetoRogue.rc">
-      <Filter>Source\ProjetoRogue\Resources\Windows</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source\ProjetoRogue\Public\HoloLog">
-      <UniqueIdentifier>{fe05b32e-bc5e-4e60-af46-9b519d8ab169}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\ProjetoRogue\Private\HoloLog">
-      <UniqueIdentifier>{4f7261c8-71a8-44b4-8c45-6d0b58bb4291}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\ProjetoRogue\Public\HoloLog\HoloLog.h">
-      <Filter>Source\ProjetoRogue\Public\HoloLog</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\ProjetoRogue\Private\HoloLog\HoloLog.cpp">
-      <Filter>Source\ProjetoRogue\Private\HoloLog</Filter>
-    </ClCompile>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\ProjetoRogue.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{8365E062-68DD-4858-A617-AE1216CB3F98}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ProjetoRogue.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\ProjetoRogueEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{4D9B5D40-D3EA-4287-A062-DF1E92BFC5CA}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEditorUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGameUserSettings.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\ProjetoRogue">
+			<UniqueIdentifier>{747BC15E-27FF-4187-935A-6C07292B3D72}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\ProjetoRogue\ProjetoRogue.Build.cs">
+			<Filter>Source\ProjetoRogue</Filter>
+		</None >
+		<Filter Include="Source\ProjetoRogue\Private">
+			<UniqueIdentifier>{E867DC50-5168-401E-8283-F1C50FA46148}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\ProjetoRogue.cpp">
+			<Filter>Source\ProjetoRogue\Private</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\HoloLog">
+			<UniqueIdentifier>{3DADB224-2D7B-4873-8020-CE6DE7B3EFF5}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\HoloLog\HoloLog.cpp">
+			<Filter>Source\ProjetoRogue\Private\HoloLog</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Inimigos">
+			<UniqueIdentifier>{372B658F-0C1F-4CDF-A920-225C73673C13}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Boss.cpp">
+			<Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\Inimigo.cpp">
+			<Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoRange.cpp">
+			<Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigosControlador.cpp">
+			<Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Inimigos\InimigoSpawnerComponent.cpp">
+			<Filter>Source\ProjetoRogue\Private\Inimigos</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Interfaces">
+			<UniqueIdentifier>{624BB0EE-897C-4C6D-9FD2-139310DFF960}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Interfaces\DanoInterface.cpp">
+			<Filter>Source\ProjetoRogue\Private\Interfaces</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Itens">
+			<UniqueIdentifier>{A70EC991-013B-403C-A670-9B2ED4740A7C}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\Item.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemPassivo.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemProjetil.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\ItemSpawner.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUp.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpEnergia.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpMoeda.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Itens\PickUpVida.cpp">
+			<Filter>Source\ProjetoRogue\Private\Itens</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Jogador">
+			<UniqueIdentifier>{4408F706-BD21-425F-A58A-2E39450FB9DA}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogador\Jogador.cpp">
+			<Filter>Source\ProjetoRogue\Private\Jogador</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Jogo">
+			<UniqueIdentifier>{A8B9EEA6-4EB6-4075-9683-D64E96BF0E5C}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\ProtuXGameMode.cpp">
+			<Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarJogo.cpp">
+			<Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Jogo\SalvarSettings.cpp">
+			<Filter>Source\ProjetoRogue\Private\Jogo</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Projeteis">
+			<UniqueIdentifier>{1F58B14A-8A8A-4D7D-962C-9B91FC53F014}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Projeteis\Projectil.cpp">
+			<Filter>Source\ProjetoRogue\Private\Projeteis</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Private\Salas">
+			<UniqueIdentifier>{09F2A4B5-3E98-46EE-81AB-3FD657D5E022}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Corredor.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\CorredorLoja.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Porta.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2P.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PDireita.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala2PEsquerda.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3P.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PDireita.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala3PEsquerda.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\Sala4P.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<ClCompile Include="..\..\Source\ProjetoRogue\Private\Salas\SalasGerador.cpp">
+			<Filter>Source\ProjetoRogue\Private\Salas</Filter>
+		</ClCompile >
+		<Filter Include="Source\ProjetoRogue\Public">
+			<UniqueIdentifier>{2D672007-0C7C-4B80-9254-09F49857A84A}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\ProjetoRogue.h">
+			<Filter>Source\ProjetoRogue\Public</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\HoloLog">
+			<UniqueIdentifier>{FCB55E04-A7FD-484C-8A81-FAA0155CBC57}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\HoloLog\HoloLog.h">
+			<Filter>Source\ProjetoRogue\Public\HoloLog</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Inimigos">
+			<UniqueIdentifier>{C3F06DB0-FF4E-4C6A-B5B1-510576130E8B}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Boss.h">
+			<Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\Inimigo.h">
+			<Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoRange.h">
+			<Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigosControlador.h">
+			<Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Inimigos\InimigoSpawnerComponent.h">
+			<Filter>Source\ProjetoRogue\Public\Inimigos</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Interfaces">
+			<UniqueIdentifier>{C94B8591-A189-400D-AFF1-3B4554E70190}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Interfaces\DanoInterface.h">
+			<Filter>Source\ProjetoRogue\Public\Interfaces</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Itens">
+			<UniqueIdentifier>{51D02E18-3CD7-412A-A977-DC98DAE9B4A8}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\Item.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemPassivo.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemProjetil.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\ItemSpawner.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUp.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpEnergia.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpMoeda.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Itens\PickUpVida.h">
+			<Filter>Source\ProjetoRogue\Public\Itens</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Jogador">
+			<UniqueIdentifier>{B99F896F-CB9D-41BA-81FD-53DC931486D7}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogador\Jogador.h">
+			<Filter>Source\ProjetoRogue\Public\Jogador</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Jogo">
+			<UniqueIdentifier>{8D2D7918-3458-4CF4-8308-6CFC2D8DD171}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\ProtuXGameMode.h">
+			<Filter>Source\ProjetoRogue\Public\Jogo</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarJogo.h">
+			<Filter>Source\ProjetoRogue\Public\Jogo</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Jogo\SalvarSettings.h">
+			<Filter>Source\ProjetoRogue\Public\Jogo</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Projeteis">
+			<UniqueIdentifier>{979B36D1-1BB2-41AD-AB94-CA154FB31F25}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Projeteis\Projectil.h">
+			<Filter>Source\ProjetoRogue\Public\Projeteis</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Public\Salas">
+			<UniqueIdentifier>{6BFA665F-A356-4515-BFA9-EA5F978058BA}</UniqueIdentifier>
+		</Filter>
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Corredor.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\CorredorLoja.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Porta.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2P.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PDireita.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala2PEsquerda.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3P.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PDireita.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala3PEsquerda.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\Sala4P.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<ClInclude Include="..\..\Source\ProjetoRogue\Public\Salas\SalasGerador.h">
+			<Filter>Source\ProjetoRogue\Public\Salas</Filter>
+		</ClInclude >
+		<Filter Include="Source\ProjetoRogue\Resources">
+			<UniqueIdentifier>{DBE3E6BA-8CE1-4F65-99A3-3F0DABB9E9FE}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="Source\ProjetoRogue\Resources\Windows">
+			<UniqueIdentifier>{17B56E53-3D9A-4C28-A15C-85C8C5AAFB51}</UniqueIdentifier>
+		</Filter>
+		<ResourceCompile Include="..\..\Source\ProjetoRogue\Resources\Windows\ProjetoRogue.rc">
+			<Filter>Source\ProjetoRogue\Resources\Windows</Filter>
+		</ResourceCompile >
+	</ItemGroup>
 </Project>

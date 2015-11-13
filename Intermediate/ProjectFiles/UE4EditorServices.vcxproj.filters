@@ -5,16 +5,16 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\UE4EditorServices.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\UE4EditorServices.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{38C2CA89-8AF6-4288-B051-06E3D0C17A42}</UniqueIdentifier>
+			<UniqueIdentifier>{60EA97F2-D9AF-4953-A9C8-371D66205DD1}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{B8CAE17F-8B3E-4C35-B433-01AF3F4EBDE4}</UniqueIdentifier>
+			<UniqueIdentifier>{FACA4CDE-B801-44DC-BB1B-BF5BED47E590}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Linux\UE4EditorServicesMain.cpp">
 			<Filter>Private\Linux</Filter>
 		</ClCompile >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{FD0F2573-454D-4F95-AAA1-2DBC15EF1E18}</UniqueIdentifier>
+			<UniqueIdentifier>{78002B39-9DA2-4E6A-A1B9-175C7B611842}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Mac\UE4EditorServicesAppDelegate.cpp">
 			<Filter>Private\Mac</Filter>
@@ -26,7 +26,7 @@
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{7AA980A3-0A3C-4E50-9BF4-B46AA65DF678}</UniqueIdentifier>
+			<UniqueIdentifier>{4DDA71D6-DAB6-4EC3-865E-07D6085D9E21}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\UE4EditorServices\Private\Windows\UE4EditorServicesMain.cpp">
 			<Filter>Private\Windows</Filter>

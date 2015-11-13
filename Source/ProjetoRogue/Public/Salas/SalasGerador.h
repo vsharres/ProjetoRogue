@@ -103,11 +103,11 @@ public:
 		TArray<TSubclassOf<ACorredor>> TiposCorredores;
 
 	/* Número máximo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
 		int32 MaxNumSalas;
 
 	/* Número mínimo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
 		int32 MinNumSalas;
 
 	/* Seed de geração randômica. */

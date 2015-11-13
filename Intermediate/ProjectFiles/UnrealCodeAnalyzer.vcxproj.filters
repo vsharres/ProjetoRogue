@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\UnrealCodeAnalyzer.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\UnrealCodeAnalyzer.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{91EEFC16-C655-44A3-85E8-4CD10CF3D7CB}</UniqueIdentifier>
+			<UniqueIdentifier>{81737A97-EC62-4E47-8564-32A9A92F37DD}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\Private\Action.cpp">
 			<Filter>Private</Filter>
@@ -35,7 +35,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{8D5639C5-5FC0-41D8-A0BC-0154E83B0A33}</UniqueIdentifier>
+			<UniqueIdentifier>{ED5DE43D-B438-4F5C-A862-7806CDBAA87A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\Public\UnrealCodeAnalyzerPCH.cpp">
 			<Filter>Public</Filter>

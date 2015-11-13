@@ -5,19 +5,19 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\DsymExporter\DsymExporter.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\DsymExporter\DsymExporter.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{EC7DF3F6-1861-47DA-9592-D4984F446799}</UniqueIdentifier>
+			<UniqueIdentifier>{1F80CC2E-A02E-44F4-AE31-884AB7AFC59A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\DsymExporter\Private\DsymExporterApp.cpp">
 			<Filter>Private</Filter>
 		</ClCompile >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{FA9BB4DB-D18F-4EE6-87AD-C67B3994FE2E}</UniqueIdentifier>
+			<UniqueIdentifier>{B234A670-76BD-4DA1-945C-ECD6F1EC78E6}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\DsymExporter\Private\Mac\DsymExporterMainMac.cpp">
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Public">
-			<UniqueIdentifier>{4EA5692F-311A-4BAF-BB5D-0F1ED3C31E81}</UniqueIdentifier>
+			<UniqueIdentifier>{781E5FC7-ED58-453A-9CBF-8DDA4295553D}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\Mac\DsymExporter\Public\DsymExporterApp.h">
 			<Filter>Public</Filter>

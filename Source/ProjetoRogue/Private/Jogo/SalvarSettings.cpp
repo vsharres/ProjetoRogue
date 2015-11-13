@@ -63,7 +63,7 @@ bool USalvarSettings::GetVSync()
 
 FIntPoint USalvarSettings::GetResolution()
 {
-	if (UserSettings)
+	if (UserSettings->IsScreenResolutionDirty())
 	{
 		return UserSettings->GetScreenResolution();
 	}

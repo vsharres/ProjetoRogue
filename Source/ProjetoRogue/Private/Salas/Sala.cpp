@@ -138,7 +138,7 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 
 		if (Spawner->bGerarRandomicamente)
 		{
-			check(TipoInimigo.Num() > 0);
+			//check(TipoInimigo.Num() > 0);
 			if (Spawner->InimigosRandomicos.Num() > 0)
 			{
 				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
