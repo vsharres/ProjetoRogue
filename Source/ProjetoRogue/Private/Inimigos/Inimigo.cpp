@@ -20,7 +20,7 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	NumPickUps = 1;
 	ChanceSpawnVida = 90.0f;
 	ChanceSpawnEnergia = 75.0f;
-	ChanceSpawnMoeda = 25.0f;
+	ChanceSpawnScrap = 25.0f;
 
 	bEstaAtacando = false;
 
@@ -115,9 +115,9 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= ChanceSpawnMoeda)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnScrap)
 		{
-			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpMoedaClass, GetActorLocation(), GetActorRotation());
+			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpScrapClass, GetActorLocation(), GetActorRotation());
 
 			continue;
 		}

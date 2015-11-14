@@ -240,12 +240,12 @@ public:
 	/*
 	* Função Get do tipo de inimigo a ser gerado para um determinado seed e para um tipo de dificuldade.
 	* O tipo resultante é gerado aleatoriamente de acordo com o seed de geração.
-	* @param InimigosDificuldade - Array com inimigos possiveis a serem gerados.
+	* @param InimigosDificuldade - Array com a classe dos inimigos que podem ser gerados.
 	* @param Stream - Stream randômico de geração
 	* @return O tipo de inimigo a ser gerado.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
-		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream);
+		TSubclassOf<AInimigo> GetTipoInimigo(const TArray <TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream);
 
 	/*
 	* Função a ser executada quando todos os inimigos da sala foram derrotados.
@@ -264,7 +264,9 @@ public:
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
 		void DestrancarPortas();
-
+	/*
+	* Evento para ativar o elevador da sala do boss.
+	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Ativar Elevador", Keywords = "Ativar Elevador"), Category = "Sala")
 		void AtivarElevador();
 
@@ -282,6 +284,11 @@ public:
 	UFUNCTION()
 		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	/*
+	* Função para alterar a cor dos detalhes da sala, indicando quando uma sala teve seus inimigos derrotados.
+	* @param novaCor - Nova cor da sala.
+	* @param sala - Componente do ator que contem os mesh da sala que teram os seus materiais alterados.
+	*/
 	UFUNCTION(BlueprintCallable, Category = Glow)
 		void AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala);
 

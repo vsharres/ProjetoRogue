@@ -536,8 +536,4 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Jogador")
 		void ResetTimer();
 
-
-
-
-
 };

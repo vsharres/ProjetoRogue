@@ -17,7 +17,6 @@
 // Sets default values
 ASalasGerador::ASalasGerador()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	IndexSala2P = 1;
 	IndexSala3P = 2;

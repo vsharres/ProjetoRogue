@@ -212,6 +212,13 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Impacto", Keywords = "Spawn Efeitos Impacto"), Category = "Projetil")
 		void GerarEfeitosImpacto(const FHitResult& Hit);
 
+	/*
+	* Função para gerar os efeitos de tiro do canhão.
+	* @param Location - Local para gerar o efeito.
+	* @param Rotator - Rotação do efeito.
+	* @param Componente - Componente do ator para acoplar o efeito.
+	* @param Nome -  Nome do bone do mesh a qual o efeito sera acoplado.
+	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Tiro", Keywords = "Spawn Efeitos Tiro"), Category = "Projetil")
 		void GerarEfeitosTiro(const FVector& Location, const FRotator& Rotator, USceneComponent* Componente, FName Nome);
 
@@ -227,6 +234,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Particula")
 		void Atingiu();
 
+	/*
+	* Delegate de hit do projetil.
+	*/
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "On Hit", Keywords = "On Hit"), Category = "Particula")
 		void OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	virtual void OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);

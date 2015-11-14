@@ -27,7 +27,8 @@ protected:
 	/* Componente de colisão. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		USphereComponent* TriggerCatch;
-	
+
+	/* Trigger para ativar o efeito de outline.*/
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = PickUp)
 		USphereComponent* TriggerOutline;
 

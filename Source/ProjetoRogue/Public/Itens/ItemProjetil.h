@@ -33,21 +33,27 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
 		TSubclassOf<class AProjectil> Projetil;
 
+	/* Mesh do detalhe do dano. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UStaticMesh* DetalheDano;
 
+	/* Instancia do material do detalhe do dano. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UMaterialInstance* DetalheDano_Material;
 
+	/* Mesh do detalhe de precisão. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UStaticMesh* DetalhePrecisao;
 
+	/*Instancia do material do detalhe de precisão.*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UMaterialInstance* DetalhePrecisao_Material;
 
+	/* Mesh do detalhe de firerate. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UStaticMesh* DetalheFireRate;
 
+	/*Instancia do material do detalhe de firerate */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
 		UMaterialInstance* DetalheFireRate_Material;
 

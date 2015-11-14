@@ -232,7 +232,7 @@ void AJogador::SalvarJogador()
 	{
 		SaveInst->bNovoJogo = false;
 		SaveInst->Stats.SetStats(this->Stats);
-		SaveInst->Moedas = this->Moedas;
+		SaveInst->Scrap = this->Moedas;
 		SaveInst->bPossuiChave = this->bPossuiChave;
 
 		SaveInst->JogadorLocation = this->GetActorLocation();
@@ -265,7 +265,7 @@ void AJogador::CarregarJogador()
 	{
 		GerarNome(SaveInst->NumJogos);
 		this->Stats.SetStats(SaveInst->Stats);
-		this->Moedas = SaveInst->Moedas;
+		this->Moedas = SaveInst->Scrap;
 		this->bPossuiChave = SaveInst->bPossuiChave;
 
 		this->SetActorLocation(SaveInst->JogadorLocation);

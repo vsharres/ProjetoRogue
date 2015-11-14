@@ -21,11 +21,11 @@ struct FLojaSlot{
 
 	GENERATED_USTRUCT_BODY()
 
-		/* Custo do item no slot. */
+	/* Custo do item no slot. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
 		int32 Custo;
 
-	/* Efeito do item no slot. */ //CORRIGIR PARA FLOAT
+	/* Efeito do item no slot. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
 		float Efeito;
 
