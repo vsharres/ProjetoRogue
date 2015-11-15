@@ -31,7 +31,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 
 	IncVida = 0.0f;
 	IncEnergia = 0;
-	IncMoedas = 0;
+	IncScraps = 0;
 	ExplosaoDelta = 50.0f;
 	ExplosaoForca = 500.0f;
 }

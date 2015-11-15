@@ -14,6 +14,12 @@ class PROJETOROGUE_API ABoss : public AInimigo
 	GENERATED_BODY()
 public:
 
+	UPROPERTY(EditDefaultsOnly, Category = Boss)
+		float Armadura;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Colisor)
+		USphereComponent* PontoFraco;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Boss)
 		bool bBossDerrotado;
 
@@ -22,6 +28,8 @@ public:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaSeconds) override;
+
+	virtual void ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit) override;
 	
 	
 };

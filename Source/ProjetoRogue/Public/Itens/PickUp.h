@@ -8,9 +8,10 @@
 /* Enumeração que representa o tipo de pickup. O tipo é o stats que será modificado quando o jogador obtêm o pickup. */
 UENUM(BlueprintType)
 enum class ETipoPickUp : uint8 {
-	MOEDA,
+	SCRAP,
 	ENERGIA,
-	VIDA
+	VIDA,
+	ITEM
 };
 
 /*
@@ -56,7 +57,7 @@ public:
 
 	/* Quanto o item potencialmente incrementa a quantidade de moedas do jogador. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
-		int32 IncMoedas;
+		int32 IncScraps;
 
 	/* O tipo do pickup. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp")

@@ -7,6 +7,7 @@
 #include "PickUpEnergia.h"
 #include "PickUpMoeda.h"
 #include "PickUpVida.h"
+#include "PickUpItem.h"
 
 // Sets default values
 AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
@@ -31,7 +32,7 @@ void AInimigo::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+
 }
 
 // Called every frame
@@ -99,6 +100,14 @@ void AInimigo::SpawnPickUp()
 
 	for (int32 index = 0; index < NumPickUps; index++)
 	{
+		if (index == 0 && TipoInimigo == ETipoInimigo::BOSS)
+		{
+			APickUpItem* pickItem = GetWorld()->SpawnActor<APickUpItem>(PickUpItemClass, GetActorLocation(), GetActorRotation());
+			pickItem->EscolherItem(stream);
+
+			continue;
+		}
+
 		if (stream.FRandRange(0, 100) >= ChanceSpawnVida)
 		{
 

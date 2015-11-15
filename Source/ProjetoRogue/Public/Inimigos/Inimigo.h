@@ -116,6 +116,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class APickUpMoeda> PickUpScrapClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
+		TSubclassOf<class APickUpItem> PickUpItemClass;
+
 
 public:
 
