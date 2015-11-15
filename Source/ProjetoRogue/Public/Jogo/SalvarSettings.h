@@ -27,6 +27,18 @@ public:
 		UGameUserSettings* GetUserGameSettings();
 
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
+		bool GetIsMuted();
+
+	UFUNCTION(BlueprintPure, Category = "UserSettings")
+		float GetMasterVol();
+
+	UFUNCTION(BlueprintPure, Category = "UserSettings")
+		float GetMusicVol();
+
+	UFUNCTION(BlueprintPure, Category = "UserSettings")
+		float GetEffectVol();
+
+	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		int32 GetQualitySettings();
 
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
@@ -37,6 +49,18 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		FIntPoint GetResolution();
+
+	UFUNCTION(BlueprintCallable, Category = "UserSettings")
+		void SetIsMuted(bool newMute);
+
+	UFUNCTION(BlueprintCallable, Category = "UserSettings")
+		void SetMasterVol(float newVol);
+
+	UFUNCTION(BlueprintCallable, Category = "UserSettings")
+		void SetMusicVol(float newVol);
+
+	UFUNCTION(BlueprintCallable, Category = "UserSettings")
+		void SetEffectsVol(float newVol);
 
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetQualitySettings(int32 newSetting);

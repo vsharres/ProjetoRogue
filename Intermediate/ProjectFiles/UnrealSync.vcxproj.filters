@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{DB3CBFE1-478E-4F39-95D0-6B888298B718}</UniqueIdentifier>
+			<UniqueIdentifier>{F855F114-E02C-4882-AB34-DFFDBCF04C0F}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.cpp">
 			<Filter>Private</Filter>
@@ -53,22 +53,22 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{9C7A1636-C98F-4DDB-9AD9-F4A3F0276096}</UniqueIdentifier>
+			<UniqueIdentifier>{A23426AA-BA74-4EB6-9ABA-9C51CBB56955}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Mac\UnrealSyncMainMac.cpp">
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{2420B673-084D-4F76-812C-692DEB61D77F}</UniqueIdentifier>
+			<UniqueIdentifier>{15A59B80-B196-4575-B583-2439A0A8A7A9}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\UnrealSyncMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{090A6315-DC6C-4A38-AFDE-E80B830FC5BE}</UniqueIdentifier>
+			<UniqueIdentifier>{E297123A-6AB2-4C5C-A954-B1AC97DAA4CC}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Resources\Windows">
-			<UniqueIdentifier>{42C6D376-9F12-404E-80DE-0E06FF17605A}</UniqueIdentifier>
+			<UniqueIdentifier>{EA3E14A2-B893-4B69-B16A-240538E28259}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Resources\Windows\UnrealSync.ico">
 			<Filter>Resources\Windows</Filter>

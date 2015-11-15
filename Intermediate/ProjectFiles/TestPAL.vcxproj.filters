@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\TestPAL\TestPAL.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\TestPAL\TestPAL.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{9604B661-32A1-4F4B-8FE1-CABD67195CFD}</UniqueIdentifier>
+			<UniqueIdentifier>{72A3416E-5D70-41A8-8CC3-2F44FDC6767C}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\TestPAL\Private\Main.cpp">
 			<Filter>Private</Filter>

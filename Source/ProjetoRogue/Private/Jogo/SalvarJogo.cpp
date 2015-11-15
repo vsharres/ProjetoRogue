@@ -16,4 +16,9 @@ USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 	MinNumSalas = 5;
 
 	ItensComprados.AddDefaulted(3);
+
+	bMute = false;
+	MasterVol = 1.0f;
+	MusicVol = 1.0f;
+	EffectsVol = 1.0f;
 }

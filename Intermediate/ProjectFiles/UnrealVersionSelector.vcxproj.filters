@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\UnrealVersionSelector.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\UnrealVersionSelector.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{10FF71EE-45B7-477B-A14B-903140655769}</UniqueIdentifier>
+			<UniqueIdentifier>{19BACC07-7CB3-4C76-A6FA-642D6F2C8EEE}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\Private\PlatformInstallation.cpp">
 			<Filter>Private</Filter>
@@ -20,7 +20,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\GenericPlatform">
-			<UniqueIdentifier>{51A6F2DF-207C-42C4-8162-BC386619FF99}</UniqueIdentifier>
+			<UniqueIdentifier>{884379B6-ADD1-442F-9FF6-3F602BFBC9FA}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\Private\GenericPlatform\GenericPlatformInstallation.cpp">
 			<Filter>Private\GenericPlatform</Filter>
@@ -29,7 +29,7 @@
 			<Filter>Private\GenericPlatform</Filter>
 		</ClInclude >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{2985837C-6AAD-4EC3-B177-39EE0A46809F}</UniqueIdentifier>
+			<UniqueIdentifier>{711DF77C-7892-486C-B36C-73EDD96A29B4}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\Private\Windows\WindowsPlatformInstallation.cpp">
 			<Filter>Private\Windows</Filter>
@@ -38,7 +38,7 @@
 			<Filter>Private\Windows</Filter>
 		</ClInclude >
 		<Filter Include="Private\Windows\Resources">
-			<UniqueIdentifier>{B1ECFBAD-4CCB-4364-ADF9-A28D62FCD6F6}</UniqueIdentifier>
+			<UniqueIdentifier>{2FDED161-F53F-46F6-A011-70161A4F0E1C}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealVersionSelector\Private\Windows\Resources\Icon.ico">
 			<Filter>Private\Windows\Resources</Filter>

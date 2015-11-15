@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\BlankProgram.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\BlankProgram.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{B62D1831-F6D2-47F6-AB9F-1793EA6973F4}</UniqueIdentifier>
+			<UniqueIdentifier>{776E21E8-320E-4F51-8803-EE18F3B4AFEE}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BlankProgram\Private\BlankProgram.cpp">
 			<Filter>Private</Filter>

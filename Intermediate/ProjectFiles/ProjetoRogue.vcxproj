@@ -792,9 +792,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win32\ProjetoRogue-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Editor|Win32'" Label="PropertySheets">
@@ -809,9 +809,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Game|x64'" Label="PropertySheets">
@@ -826,9 +826,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\ProjetoRogue-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Editor|x64'" Label="PropertySheets">
@@ -843,9 +843,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Game|Win32'" Label="PropertySheets">
@@ -860,9 +860,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT\ProjetoRogue-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Editor|Win32'" Label="PropertySheets">
@@ -877,9 +877,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\ProjetoRogueEditor-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Game|Win32'" Label="PropertySheets">
@@ -894,9 +894,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT_ARM\ProjetoRogue-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Editor|Win32'" Label="PropertySheets">
@@ -911,9 +911,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\ProjetoRogueEditor-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Game|Win32'" Label="PropertySheets">
@@ -928,9 +928,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Mac\ProjetoRogue-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Editor|Win32'" Label="PropertySheets">
@@ -945,9 +945,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Game|Win32'" Label="PropertySheets">
@@ -962,9 +962,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\IOS\ProjetoRogue-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Editor|Win32'" Label="PropertySheets">
@@ -979,9 +979,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\ProjetoRogueEditor-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Game|Win32'" Label="PropertySheets">
@@ -996,9 +996,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\HTML5\ProjetoRogue-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Editor|Win32'" Label="PropertySheets">
@@ -1013,9 +1013,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 Debug "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\ProjetoRogueEditor-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1030,9 +1030,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win32\ProjetoRogue-Win32-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1047,9 +1047,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Game|x64'" Label="PropertySheets">
@@ -1064,9 +1064,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\ProjetoRogue-Win64-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Editor|x64'" Label="PropertySheets">
@@ -1081,9 +1081,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1098,9 +1098,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT\ProjetoRogue-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1115,9 +1115,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\ProjetoRogueEditor-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1132,9 +1132,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT_ARM\ProjetoRogue-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1149,9 +1149,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\ProjetoRogueEditor-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1166,9 +1166,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Mac\ProjetoRogue-Mac-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1183,9 +1183,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1200,9 +1200,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\IOS\ProjetoRogue-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1217,9 +1217,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\ProjetoRogueEditor-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -1234,9 +1234,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\HTML5\ProjetoRogue-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -1251,9 +1251,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 DebugGame "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\ProjetoRogueEditor-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|Win32'" Label="PropertySheets">
@@ -1268,9 +1268,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win32\ProjetoRogue.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|Win32'" Label="PropertySheets">
@@ -1285,9 +1285,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win32 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|x64'" Label="PropertySheets">
@@ -1302,9 +1302,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\ProjetoRogue.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'" Label="PropertySheets">
@@ -1319,9 +1319,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Win64 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Game|Win32'" Label="PropertySheets">
@@ -1336,9 +1336,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT\ProjetoRogue.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Editor|Win32'" Label="PropertySheets">
@@ -1353,9 +1353,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\ProjetoRogueEditor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Game|Win32'" Label="PropertySheets">
@@ -1370,9 +1370,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT_ARM\ProjetoRogue.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Editor|Win32'" Label="PropertySheets">
@@ -1387,9 +1387,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor WinRT_ARM Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\ProjetoRogueEditor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Game|Win32'" Label="PropertySheets">
@@ -1404,9 +1404,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Mac\ProjetoRogue</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Editor|Win32'" Label="PropertySheets">
@@ -1421,9 +1421,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor Mac Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|Win32'" Label="PropertySheets">
@@ -1438,9 +1438,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\IOS\ProjetoRogue</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|Win32'" Label="PropertySheets">
@@ -1455,9 +1455,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor IOS Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\ProjetoRogueEditor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|Win32'" Label="PropertySheets">
@@ -1472,9 +1472,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\HTML5\ProjetoRogue.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|Win32'" Label="PropertySheets">
@@ -1489,9 +1489,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogueEditor HTML5 Development "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\ProjetoRogueEditor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|Win32'" Label="PropertySheets">
@@ -1506,9 +1506,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win32\ProjetoRogue-Win32-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|x64'" Label="PropertySheets">
@@ -1523,9 +1523,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\ProjetoRogue-Win64-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Shipping_Game|Win32'" Label="PropertySheets">
@@ -1540,9 +1540,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT\ProjetoRogue-WinRT-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Shipping_Game|Win32'" Label="PropertySheets">
@@ -1557,9 +1557,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT_ARM\ProjetoRogue-WinRT_ARM-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Shipping_Game|Win32'" Label="PropertySheets">
@@ -1574,9 +1574,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Mac\ProjetoRogue-Mac-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|Win32'" Label="PropertySheets">
@@ -1591,9 +1591,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\IOS\ProjetoRogue-IOS-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|Win32'" Label="PropertySheets">
@@ -1608,9 +1608,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Shipping "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\HTML5\ProjetoRogue-HTML5-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Game|Win32'" Label="PropertySheets">
@@ -1625,9 +1625,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win32 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win32\ProjetoRogue-Win32-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Game|x64'" Label="PropertySheets">
@@ -1642,9 +1642,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Win64 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Win64\ProjetoRogue-Win64-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Test_Game|Win32'" Label="PropertySheets">
@@ -1659,9 +1659,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT\ProjetoRogue-WinRT-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Test_Game|Win32'" Label="PropertySheets">
@@ -1676,9 +1676,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue WinRT_ARM Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\WinRT_ARM\ProjetoRogue-WinRT_ARM-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Test_Game|Win32'" Label="PropertySheets">
@@ -1693,9 +1693,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue Mac Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\Mac\ProjetoRogue-Mac-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Test_Game|Win32'" Label="PropertySheets">
@@ -1710,9 +1710,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue IOS Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\IOS\ProjetoRogue-IOS-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Test_Game|Win32'" Label="PropertySheets">
@@ -1727,9 +1727,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat ProjetoRogue HTML5 Test "$(SolutionDir)$(ProjectName).uproject" -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>..\..\Binaries\HTML5\ProjetoRogue-HTML5-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ItemGroup>

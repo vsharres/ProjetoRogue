@@ -216,9 +216,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win32 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win32 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win32 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win32 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win32 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win32 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UnrealLaunchDaemon-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Program|x64'" Label="PropertySheets">
@@ -233,9 +233,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win64 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win64 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win64 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win64 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win64 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win64 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UnrealLaunchDaemon-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Program|Win32'" Label="PropertySheets">
@@ -250,9 +250,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UnrealLaunchDaemon-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Program|Win32'" Label="PropertySheets">
@@ -267,9 +267,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT_ARM Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UnrealLaunchDaemon-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Program|Win32'" Label="PropertySheets">
@@ -284,9 +284,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Mac Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Mac Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Mac Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Mac Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Mac Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Mac Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UnrealLaunchDaemon-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Program|Win32'" Label="PropertySheets">
@@ -301,9 +301,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon IOS Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon IOS Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon IOS Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon IOS Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon IOS Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon IOS Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UnrealLaunchDaemon-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Program|Win32'" Label="PropertySheets">
@@ -318,9 +318,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon HTML5 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon HTML5 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon HTML5 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon HTML5 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon HTML5 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon HTML5 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UnrealLaunchDaemon-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Program|Win32'" Label="PropertySheets">
@@ -335,9 +335,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win32 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win32 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win32 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win32 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win32 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win32 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UnrealLaunchDaemon.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Program|x64'" Label="PropertySheets">
@@ -352,9 +352,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win64 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win64 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win64 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Win64 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Win64 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Win64 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UnrealLaunchDaemon.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Program|Win32'" Label="PropertySheets">
@@ -369,9 +369,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UnrealLaunchDaemon.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Program|Win32'" Label="PropertySheets">
@@ -386,9 +386,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon WinRT_ARM Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UnrealLaunchDaemon.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Program|Win32'" Label="PropertySheets">
@@ -403,9 +403,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Mac Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Mac Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Mac Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon Mac Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon Mac Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon Mac Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UnrealLaunchDaemon</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Program|Win32'" Label="PropertySheets">
@@ -420,9 +420,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon IOS Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon IOS Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon IOS Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon IOS Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon IOS Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon IOS Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UnrealLaunchDaemon</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Program|Win32'" Label="PropertySheets">
@@ -437,9 +437,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon HTML5 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon HTML5 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon HTML5 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UnrealLaunchDaemon HTML5 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UnrealLaunchDaemon HTML5 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UnrealLaunchDaemon HTML5 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UnrealLaunchDaemon.exe</NMakeOutput>
 	</PropertyGroup>
 	<ItemGroup>

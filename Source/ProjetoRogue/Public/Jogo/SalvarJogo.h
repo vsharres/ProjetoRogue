@@ -94,6 +94,20 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Itens")
 		TArray<bool> ItensComprados;
 
+	//SONS
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
+		bool bMute;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
+		float MasterVol;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
+		float MusicVol;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
+		float EffectsVol;
+
 #pragma endregion Propriedades
 
 #pragma region Construtor

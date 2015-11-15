@@ -4,17 +4,17 @@
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\UnrealLightmass.Target.cs" />
 		<Filter Include="Config">
-			<UniqueIdentifier>{9B8B4ABC-FDBC-49B9-AE69-D8C55BEA771D}</UniqueIdentifier>
+			<UniqueIdentifier>{35622ADF-5394-417F-BD4D-6A4C7D61DFB4}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Programs\UnrealLightmass\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\UnrealLightmass.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{303B3081-6B7A-4DF3-BD10-CEB0404B849D}</UniqueIdentifier>
+			<UniqueIdentifier>{59B6198C-5756-4F79-9A57-A11F7DD9184B}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Private\CPUSolver">
-			<UniqueIdentifier>{854CB11A-1CAB-4AF8-B7F9-49908B441509}</UniqueIdentifier>
+			<UniqueIdentifier>{E558A235-2DD6-436E-9DCD-998C557BEA73}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\CPUSolver\CPUSolver.cpp">
 			<Filter>Private\CPUSolver</Filter>
@@ -23,7 +23,7 @@
 			<Filter>Private\CPUSolver</Filter>
 		</ClInclude >
 		<Filter Include="Private\ImportExport">
-			<UniqueIdentifier>{3A566513-5C3F-44BF-8EEE-2BDDEE3BB89C}</UniqueIdentifier>
+			<UniqueIdentifier>{50A9D22A-1A0C-4A0A-A81B-DB44D3D80F69}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\ImportExport\3DVisualizer.cpp">
 			<Filter>Private\ImportExport</Filter>
@@ -68,7 +68,7 @@
 			<Filter>Private\ImportExport</Filter>
 		</ClInclude >
 		<Filter Include="Private\Launch">
-			<UniqueIdentifier>{EB4201A8-7111-481A-85A4-3C6AC01F7E4F}</UniqueIdentifier>
+			<UniqueIdentifier>{40FE98B7-7F3A-4E70-B58D-155B3E5358D5}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\Launch\stdafx.cpp">
 			<Filter>Private\Launch</Filter>
@@ -86,7 +86,7 @@
 			<Filter>Private\Launch</Filter>
 		</ClCompile >
 		<Filter Include="Private\Lighting">
-			<UniqueIdentifier>{1D2D5DA8-2359-4898-9B06-DEE9F6AFCE1B}</UniqueIdentifier>
+			<UniqueIdentifier>{E2A16EF4-98B6-435B-A434-BA2CA4B20DBB}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\Lighting\BSP.cpp">
 			<Filter>Private\Lighting</Filter>
@@ -185,7 +185,7 @@
 			<Filter>Private\Lighting</Filter>
 		</ClCompile >
 		<Filter Include="Private\LightmassCore">
-			<UniqueIdentifier>{C422892F-D721-42CC-94EC-9B65EB57D6E1}</UniqueIdentifier>
+			<UniqueIdentifier>{BF501DEB-0350-4648-9596-FC9C2C2526BC}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\LightmassCore\LMCore.cpp">
 			<Filter>Private\LightmassCore</Filter>
@@ -194,7 +194,7 @@
 			<Filter>Private\LightmassCore</Filter>
 		</ClInclude >
 		<Filter Include="Private\LightmassCore\Math">
-			<UniqueIdentifier>{E99E4214-A8E9-4BCE-B829-A906F7DE09A6}</UniqueIdentifier>
+			<UniqueIdentifier>{1F271DFD-6D17-444C-84B7-C5EE88E3F54E}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\LightmassCore\Math\LMCollision.h">
 			<Filter>Private\LightmassCore\Math</Filter>
@@ -221,7 +221,7 @@
 			<Filter>Private\LightmassCore\Math</Filter>
 		</ClCompile >
 		<Filter Include="Private\LightmassCore\Misc">
-			<UniqueIdentifier>{3107E3B8-2E04-4A84-B114-3177F681B683}</UniqueIdentifier>
+			<UniqueIdentifier>{C7948D7E-C651-4B93-AA48-A64FA07C2D92}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\LightmassCore\Misc\LMDebug.cpp">
 			<Filter>Private\LightmassCore\Misc</Filter>
@@ -242,13 +242,13 @@
 			<Filter>Private\LightmassCore\Misc</Filter>
 		</ClInclude >
 		<Filter Include="Private\LightmassCore\Templates">
-			<UniqueIdentifier>{7A316F85-8744-4962-85A7-AE66628F8E0F}</UniqueIdentifier>
+			<UniqueIdentifier>{37AC3F1C-D236-4942-961B-75612F9ED4F2}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Private\LightmassCore\Templates\LMQueue.h">
 			<Filter>Private\LightmassCore\Templates</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{D85CAEA2-7D2D-4B66-8EF3-6CAABBADC89E}</UniqueIdentifier>
+			<UniqueIdentifier>{9C473680-6779-46F2-BBE7-98B3CCAAD252}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Public\FluidExport.h">
 			<Filter>Public</Filter>
@@ -269,7 +269,7 @@
 			<Filter>Public</Filter>
 		</ClInclude >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{B9A0406C-3152-46C1-8E11-91A0391A76DB}</UniqueIdentifier>
+			<UniqueIdentifier>{5DC6ED00-6EE1-4EC0-BBCB-55F585ED1EDE}</UniqueIdentifier>
 		</Filter>
 		<Manifest Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealLightmass\Resources\Debug-Win32.manifest">
 			<Filter>Resources</Filter>

@@ -1752,9 +1752,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Client-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Editor|Win32'" Label="PropertySheets">
@@ -1769,9 +1769,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Game|Win32'" Label="PropertySheets">
@@ -1786,9 +1786,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Game-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Server|Win32'" Label="PropertySheets">
@@ -1803,9 +1803,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Server-Win32-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Client|x64'" Label="PropertySheets">
@@ -1820,9 +1820,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Client-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Editor|x64'" Label="PropertySheets">
@@ -1837,9 +1837,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Game|x64'" Label="PropertySheets">
@@ -1854,9 +1854,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Game-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Server|x64'" Label="PropertySheets">
@@ -1871,9 +1871,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Server-Win64-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Client|Win32'" Label="PropertySheets">
@@ -1888,9 +1888,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Client-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Editor|Win32'" Label="PropertySheets">
@@ -1905,9 +1905,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Editor-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Game|Win32'" Label="PropertySheets">
@@ -1922,9 +1922,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Game-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Debug_Server|Win32'" Label="PropertySheets">
@@ -1939,9 +1939,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Server-WinRT-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Client|Win32'" Label="PropertySheets">
@@ -1956,9 +1956,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Client-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Editor|Win32'" Label="PropertySheets">
@@ -1973,9 +1973,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Editor-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Game|Win32'" Label="PropertySheets">
@@ -1990,9 +1990,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Game-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Debug_Server|Win32'" Label="PropertySheets">
@@ -2007,9 +2007,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Server-WinRT_ARM-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Client|Win32'" Label="PropertySheets">
@@ -2024,9 +2024,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Client-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Editor|Win32'" Label="PropertySheets">
@@ -2041,9 +2041,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Game|Win32'" Label="PropertySheets">
@@ -2058,9 +2058,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Game-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Debug_Server|Win32'" Label="PropertySheets">
@@ -2075,9 +2075,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Server-Mac-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Client|Win32'" Label="PropertySheets">
@@ -2092,9 +2092,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Client-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Editor|Win32'" Label="PropertySheets">
@@ -2109,9 +2109,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Editor-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Game|Win32'" Label="PropertySheets">
@@ -2126,9 +2126,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Game-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Debug_Server|Win32'" Label="PropertySheets">
@@ -2143,9 +2143,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Server-IOS-Debug</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Client|Win32'" Label="PropertySheets">
@@ -2160,9 +2160,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Client-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Editor|Win32'" Label="PropertySheets">
@@ -2177,9 +2177,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Editor-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Game|Win32'" Label="PropertySheets">
@@ -2194,9 +2194,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Game-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Debug_Server|Win32'" Label="PropertySheets">
@@ -2211,9 +2211,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Debug -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Debug -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Debug -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Debug -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Debug -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Debug -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Server-HTML5-Debug.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2228,9 +2228,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Client-Win32-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2245,9 +2245,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2262,9 +2262,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Game-Win32-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2279,9 +2279,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Server-Win32-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Client|x64'" Label="PropertySheets">
@@ -2296,9 +2296,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Client-Win64-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Editor|x64'" Label="PropertySheets">
@@ -2313,9 +2313,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Game|x64'" Label="PropertySheets">
@@ -2330,9 +2330,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Game-Win64-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame_Server|x64'" Label="PropertySheets">
@@ -2347,9 +2347,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Server-Win64-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2364,9 +2364,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Client-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2381,9 +2381,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Editor-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2398,9 +2398,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Game-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2415,9 +2415,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Server-WinRT-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2432,9 +2432,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Client-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2449,9 +2449,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Editor-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2466,9 +2466,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Game-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2483,9 +2483,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Server-WinRT_ARM-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2500,9 +2500,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Client-Mac-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2517,9 +2517,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2534,9 +2534,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Game-Mac-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2551,9 +2551,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Server-Mac-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2568,9 +2568,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Client-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2585,9 +2585,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Editor-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2602,9 +2602,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Game-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2619,9 +2619,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Server-IOS-DebugGame</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Client|Win32'" Label="PropertySheets">
@@ -2636,9 +2636,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Client-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Editor|Win32'" Label="PropertySheets">
@@ -2653,9 +2653,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Editor-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Game|Win32'" Label="PropertySheets">
@@ -2670,9 +2670,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Game-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_DebugGame_Server|Win32'" Label="PropertySheets">
@@ -2687,9 +2687,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 DebugGame -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 DebugGame -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 DebugGame -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 DebugGame -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 DebugGame -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 DebugGame -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Server-HTML5-DebugGame.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Client|Win32'" Label="PropertySheets">
@@ -2704,9 +2704,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Client.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|Win32'" Label="PropertySheets">
@@ -2721,9 +2721,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win32 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win32 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win32 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|Win32'" Label="PropertySheets">
@@ -2738,9 +2738,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Game.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Server|Win32'" Label="PropertySheets">
@@ -2755,9 +2755,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Server.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Client|x64'" Label="PropertySheets">
@@ -2772,9 +2772,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Client.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Editor|x64'" Label="PropertySheets">
@@ -2789,9 +2789,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Win64 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Win64 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Win64 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Game|x64'" Label="PropertySheets">
@@ -2806,9 +2806,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Game.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Development_Server|x64'" Label="PropertySheets">
@@ -2823,9 +2823,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Server.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Client|Win32'" Label="PropertySheets">
@@ -2840,9 +2840,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Client.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Editor|Win32'" Label="PropertySheets">
@@ -2857,9 +2857,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Game|Win32'" Label="PropertySheets">
@@ -2874,9 +2874,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Game.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Development_Server|Win32'" Label="PropertySheets">
@@ -2891,9 +2891,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Server.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Client|Win32'" Label="PropertySheets">
@@ -2908,9 +2908,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Client.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Editor|Win32'" Label="PropertySheets">
@@ -2925,9 +2925,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor WinRT_ARM Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor WinRT_ARM Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor WinRT_ARM Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Game|Win32'" Label="PropertySheets">
@@ -2942,9 +2942,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Game.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Development_Server|Win32'" Label="PropertySheets">
@@ -2959,9 +2959,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Server.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Client|Win32'" Label="PropertySheets">
@@ -2976,9 +2976,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Client</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Editor|Win32'" Label="PropertySheets">
@@ -2993,9 +2993,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor Mac Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor Mac Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor Mac Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Editor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Game|Win32'" Label="PropertySheets">
@@ -3010,9 +3010,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Game</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Development_Server|Win32'" Label="PropertySheets">
@@ -3027,9 +3027,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Server</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Client|Win32'" Label="PropertySheets">
@@ -3044,9 +3044,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Client</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Editor|Win32'" Label="PropertySheets">
@@ -3061,9 +3061,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor IOS Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor IOS Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor IOS Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Editor</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Game|Win32'" Label="PropertySheets">
@@ -3078,9 +3078,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Game</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Development_Server|Win32'" Label="PropertySheets">
@@ -3095,9 +3095,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Server</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Client|Win32'" Label="PropertySheets">
@@ -3112,9 +3112,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Client.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Editor|Win32'" Label="PropertySheets">
@@ -3129,9 +3129,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Editor HTML5 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Editor HTML5 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Editor HTML5 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Editor.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Game|Win32'" Label="PropertySheets">
@@ -3146,9 +3146,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Game.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Development_Server|Win32'" Label="PropertySheets">
@@ -3163,9 +3163,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Development -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Development -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Development -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Development -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Development -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Development -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Server.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Client|Win32'" Label="PropertySheets">
@@ -3180,9 +3180,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Client-Win32-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|Win32'" Label="PropertySheets">
@@ -3197,9 +3197,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Game-Win32-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Server|Win32'" Label="PropertySheets">
@@ -3214,9 +3214,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Server-Win32-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Client|x64'" Label="PropertySheets">
@@ -3231,9 +3231,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Client-Win64-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Game|x64'" Label="PropertySheets">
@@ -3248,9 +3248,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Game-Win64-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping_Server|x64'" Label="PropertySheets">
@@ -3265,9 +3265,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Server-Win64-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Shipping_Client|Win32'" Label="PropertySheets">
@@ -3282,9 +3282,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Client-WinRT-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Shipping_Game|Win32'" Label="PropertySheets">
@@ -3299,9 +3299,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Game-WinRT-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Shipping_Server|Win32'" Label="PropertySheets">
@@ -3316,9 +3316,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Server-WinRT-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Shipping_Client|Win32'" Label="PropertySheets">
@@ -3333,9 +3333,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Client-WinRT_ARM-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Shipping_Game|Win32'" Label="PropertySheets">
@@ -3350,9 +3350,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Game-WinRT_ARM-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Shipping_Server|Win32'" Label="PropertySheets">
@@ -3367,9 +3367,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Server-WinRT_ARM-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Shipping_Client|Win32'" Label="PropertySheets">
@@ -3384,9 +3384,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Client-Mac-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Shipping_Game|Win32'" Label="PropertySheets">
@@ -3401,9 +3401,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Game-Mac-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Shipping_Server|Win32'" Label="PropertySheets">
@@ -3418,9 +3418,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Server-Mac-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Client|Win32'" Label="PropertySheets">
@@ -3435,9 +3435,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Client-IOS-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Game|Win32'" Label="PropertySheets">
@@ -3452,9 +3452,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Game-IOS-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Shipping_Server|Win32'" Label="PropertySheets">
@@ -3469,9 +3469,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Server-IOS-Shipping</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Client|Win32'" Label="PropertySheets">
@@ -3486,9 +3486,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Client-HTML5-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Game|Win32'" Label="PropertySheets">
@@ -3503,9 +3503,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Game-HTML5-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Shipping_Server|Win32'" Label="PropertySheets">
@@ -3520,9 +3520,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Shipping -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Shipping -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Shipping -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Shipping -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Shipping -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Shipping -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Server-HTML5-Shipping.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Client|Win32'" Label="PropertySheets">
@@ -3537,9 +3537,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win32 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win32 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win32 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Client-Win32-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Game|Win32'" Label="PropertySheets">
@@ -3554,9 +3554,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win32 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win32 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win32 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Game-Win32-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Server|Win32'" Label="PropertySheets">
@@ -3571,9 +3571,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win32 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win32 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win32 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win32\UE4Server-Win32-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Client|x64'" Label="PropertySheets">
@@ -3588,9 +3588,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Win64 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Win64 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Win64 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Client-Win64-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Game|x64'" Label="PropertySheets">
@@ -3605,9 +3605,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Win64 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Win64 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Win64 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Game-Win64-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Test_Server|x64'" Label="PropertySheets">
@@ -3622,9 +3622,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Win64 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Win64 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Win64 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Win64\UE4Server-Win64-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Test_Client|Win32'" Label="PropertySheets">
@@ -3639,9 +3639,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Client-WinRT-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Test_Game|Win32'" Label="PropertySheets">
@@ -3656,9 +3656,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Game-WinRT-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_Test_Server|Win32'" Label="PropertySheets">
@@ -3673,9 +3673,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT\UE4Server-WinRT-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Test_Client|Win32'" Label="PropertySheets">
@@ -3690,9 +3690,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client WinRT_ARM Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client WinRT_ARM Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client WinRT_ARM Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Client-WinRT_ARM-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Test_Game|Win32'" Label="PropertySheets">
@@ -3707,9 +3707,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game WinRT_ARM Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game WinRT_ARM Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game WinRT_ARM Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Game-WinRT_ARM-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='WinRT_ARM_Test_Server|Win32'" Label="PropertySheets">
@@ -3724,9 +3724,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server WinRT_ARM Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server WinRT_ARM Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server WinRT_ARM Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\WinRT_ARM\UE4Server-WinRT_ARM-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Test_Client|Win32'" Label="PropertySheets">
@@ -3741,9 +3741,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client Mac Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client Mac Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client Mac Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Client-Mac-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Test_Game|Win32'" Label="PropertySheets">
@@ -3758,9 +3758,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game Mac Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game Mac Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game Mac Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Game-Mac-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Mac_Test_Server|Win32'" Label="PropertySheets">
@@ -3775,9 +3775,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server Mac Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server Mac Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server Mac Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\Mac\UE4Server-Mac-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Test_Client|Win32'" Label="PropertySheets">
@@ -3792,9 +3792,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client IOS Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client IOS Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client IOS Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Client-IOS-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Test_Game|Win32'" Label="PropertySheets">
@@ -3809,9 +3809,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game IOS Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game IOS Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game IOS Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Game-IOS-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='IOS_Test_Server|Win32'" Label="PropertySheets">
@@ -3826,9 +3826,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server IOS Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server IOS Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server IOS Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\IOS\UE4Server-IOS-Test</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Test_Client|Win32'" Label="PropertySheets">
@@ -3843,9 +3843,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Client HTML5 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Client HTML5 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Client HTML5 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Client-HTML5-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Test_Game|Win32'" Label="PropertySheets">
@@ -3860,9 +3860,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Game HTML5 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Game HTML5 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Game HTML5 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Game-HTML5-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='HTML5_Test_Server|Win32'" Label="PropertySheets">
@@ -3877,9 +3877,9 @@
 		<ExcludePath />
 		<OutDir>$(ProjectDir)..\Build\Unused\</OutDir>
 		<IntDir>$(ProjectDir)..\Build\Unused\</IntDir>
-		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Test -waitmutex -2015</NMakeBuildCommandLine>
-		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Test -waitmutex -2015</NMakeReBuildCommandLine>
-		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Test -waitmutex -2015</NMakeCleanCommandLine>
+		<NMakeBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Build.bat UE4Server HTML5 Test -waitmutex</NMakeBuildCommandLine>
+		<NMakeReBuildCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Rebuild.bat UE4Server HTML5 Test -waitmutex</NMakeReBuildCommandLine>
+		<NMakeCleanCommandLine>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Build\BatchFiles\Clean.bat UE4Server HTML5 Test -waitmutex</NMakeCleanCommandLine>
 		<NMakeOutput>C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Binaries\HTML5\UE4Server-HTML5-Test.exe</NMakeOutput>
 	</PropertyGroup>
 	<ItemGroup>

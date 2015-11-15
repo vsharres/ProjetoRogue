@@ -6,7 +6,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BuildPatchTool\BuildPatchTool.Automation.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BuildPatchTool\BuildPatchTool.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{A772128B-342A-41CD-B07C-5A2DF6079EFD}</UniqueIdentifier>
+			<UniqueIdentifier>{583A9B24-C2FA-47C6-9983-514E3E6A588A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\BuildPatchTool\Private\BuildPatchToolMain.cpp">
 			<Filter>Private</Filter>

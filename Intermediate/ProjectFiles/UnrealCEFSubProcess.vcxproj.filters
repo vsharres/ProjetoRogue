@@ -5,7 +5,7 @@
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\UnrealCEFSubProcess.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\UnrealCEFSubProcess.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{C61761DB-C2E6-4E95-9562-139B56011AE7}</UniqueIdentifier>
+			<UniqueIdentifier>{D144888B-8BE0-416D-A8FA-0E212290F354}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\Private\UnrealCEFSubProcess.cpp">
 			<Filter>Private</Filter>
@@ -38,19 +38,19 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Linux">
-			<UniqueIdentifier>{6B08FF9F-211B-4728-B4EF-B1F2607B14E6}</UniqueIdentifier>
+			<UniqueIdentifier>{D5D9D16E-7AD4-4236-9E36-49B7E1E9209A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\Private\Linux\UnrealCEFSubProcessLinux.cpp">
 			<Filter>Private\Linux</Filter>
 		</ClCompile >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{2945B211-3F63-4EB4-AECC-EEA8781418DF}</UniqueIdentifier>
+			<UniqueIdentifier>{89AB1921-5033-4E82-A1EB-B1B74B362671}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\Private\Mac\UnrealCEFSubProcessMac.cpp">
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{47AB7E9E-0688-4AAF-8429-31ED367A5603}</UniqueIdentifier>
+			<UniqueIdentifier>{3368C588-AE50-4E45-B9E7-306C97BD1877}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCEFSubProcess\Private\Windows\UnrealCEFSubProcessWindows.cpp">
 			<Filter>Private\Windows</Filter>

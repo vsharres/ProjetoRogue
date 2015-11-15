@@ -4,14 +4,14 @@
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\UnrealHeaderTool.Target.cs" />
 		<Filter Include="Config">
-			<UniqueIdentifier>{BBD71EB2-3C9A-4ACF-8633-00656B1EE6FD}</UniqueIdentifier>
+			<UniqueIdentifier>{9834E6A8-758D-4799-BE7E-1C713F01BF37}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Programs\UnrealHeaderTool\Config\DefaultEngine.ini">
 			<Filter>Config</Filter>
 		</None >
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\UnrealHeaderTool.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{760F8EA9-B6D3-4C75-9261-0325E2751333}</UniqueIdentifier>
+			<UniqueIdentifier>{36A9AE7A-22ED-42AA-9D16-F08869646A9A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\Private\BaseParser.cpp">
 			<Filter>Private</Filter>
@@ -104,7 +104,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Specifiers">
-			<UniqueIdentifier>{14579888-D25E-4495-B428-14D5517CF253}</UniqueIdentifier>
+			<UniqueIdentifier>{0EA277D6-93CF-4976-AD1A-11164BF8B0CB}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\Private\Specifiers\CheckedMetadataSpecifiers.def">
 			<Filter>Private\Specifiers</Filter>
@@ -140,7 +140,7 @@
 			<Filter>Private\Specifiers</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{C8B6408B-8AE9-442D-9DE2-9831981B4840}</UniqueIdentifier>
+			<UniqueIdentifier>{9D9D7BF8-2288-4ECC-AAF4-21A1F36F8CFF}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\Public\IScriptGeneratorPluginInterface.h">
 			<Filter>Public</Filter>
@@ -149,7 +149,7 @@
 			<Filter>Public</Filter>
 		</ClInclude >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{F491C270-055C-4C36-985A-15A93F4FB98A}</UniqueIdentifier>
+			<UniqueIdentifier>{49F3A162-C27A-455D-8D87-361577469225}</UniqueIdentifier>
 		</Filter>
 		<ResourceCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\Resources\PCLaunch.rc">
 			<Filter>Resources</Filter>
@@ -158,7 +158,7 @@
 			<Filter>Resources</Filter>
 		</Manifest >
 		<Filter Include="Resources\UHTDebugging">
-			<UniqueIdentifier>{E812C1C6-86F0-4D28-A6EB-E0E0EAE0BAA4}</UniqueIdentifier>
+			<UniqueIdentifier>{4B60E414-6E5C-4F57-AE06-D5A6F71563AC}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealHeaderTool\Resources\UHTDebugging\EnumOnlyHeader.h">
 			<Filter>Resources\UHTDebugging</Filter>
