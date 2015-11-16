@@ -11,7 +11,6 @@
 UENUM(BlueprintType)
 enum class EDificuldadeSala : uint8
 {
-	FACIL,
 	NORMAL,
 	DIFICIL
 
@@ -129,10 +128,6 @@ protected:
 	/* Array de inimigos que estão na sala. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
 		TArray<class AInimigo*> Inimigos;
-
-	/* Array contendo as classes de inimigos fáceis que podem ser gerados pela sala. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
-		TArray<TSubclassOf<AInimigo>> InimigosFacil;
 
 	/* Array contendo as classes de inimigos normais que podem ser gerados pela sala. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")

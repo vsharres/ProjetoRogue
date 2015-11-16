@@ -89,7 +89,7 @@ void AProjectil::DesativarProjetil()
 
 	SetActorHiddenInGame(true);
 
-	SetActorLocation(FVector(0, 0, 1000));
+	SetActorLocation(FVector(0, 0, 3000));
 
 	CompCollisao->Deactivate();
 	CompMovimentacao->Deactivate();

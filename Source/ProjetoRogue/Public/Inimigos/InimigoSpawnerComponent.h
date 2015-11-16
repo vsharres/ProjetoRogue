@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/BillboardComponent.h"
+#include "Sala.h"
 #include "InimigoSpawnerComponent.generated.h"
 
 /*
@@ -24,11 +25,19 @@ public:
 
 	/* Array com as classes dos inimigos que podem ser gerados randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
-		TArray<TSubclassOf<class AInimigo>> InimigosRandomicos;
+		TArray<TSubclassOf<class AInimigo>> InimigosRandomicosNormal;
+
+	/* Array com as classes dos inimigos que podem ser gerados randomicamente. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
+		TArray<TSubclassOf<class AInimigo>> InimigosRandomicosDificil;
 
 	/* Classe do inimigo a ser gerado não randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
-		TSubclassOf<AInimigo> InimigoNaoRandomico;
+		TSubclassOf<AInimigo> InimigoNaoRandomicoNormal;
+
+	/* Classe do inimigo a ser gerado não randomicamente. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = InimigoSpawner)
+		TSubclassOf<AInimigo> InimigoNaoRandomicoDificil;
 
 #pragma endregion Propriedades
 	
@@ -41,12 +50,15 @@ public:
 
 #pragma region Funções
 
+	UFUNCTION()
+		int32 GetNumInimigos(EDificuldadeSala Dificuldade);
+
 	/*
 	* Função para selecionar o inimigo que vai ser gerado randomicamente a partir do array de inimigos.
 	* @param Stream - Stream randomico de geração.
 	*/
 	UFUNCTION(BlueprintCallable, Category = InimigoSpawner)
-	TSubclassOf<AInimigo> SelecionarInimigoRandomicamente(FRandomStream& Stream);
+	TSubclassOf<AInimigo> SelecionarInimigoRandomicamente(FRandomStream& Stream, EDificuldadeSala Dificuldade);
 
 #pragma endregion Funções
 

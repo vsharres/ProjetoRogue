@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ProjetoRogue.h"
-#include "Public/Inimigos/InimigosControlador.h"
-#include "Public/Jogo/ProtuXGameMode.h"
+#include "InimigosControlador.h"
+#include "ProtuXGameMode.h"
 
 
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
@@ -10,7 +10,8 @@ AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 	bNovoJogo = true;
 	bTutorialAtivado = true;
 	bNaoSalvar = false;
-	
+	LevelAtual = 0;
+
 }
 
 
@@ -37,8 +38,13 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 	case EJogoEstado::MENUPRINCIPAL:
 		UGameplayStatics::OpenLevel(this, TEXT("MenuPrincipal"), true);
 		break;
-	case EJogoEstado::JOGO:
-		LoadProfile();
+	case EJogoEstado::NOVOJOGO:
+		LoadNovoJogo();
+		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), true);
+		break;
+	case EJogoEstado::PROXIMAFASE:
+		LoadProximaFase();
+		UGameplayStatics::OpenLevel(this, TEXT("ProximoLevel"), true);
 		break;
 	case EJogoEstado::GAMEOVER:
 
@@ -63,7 +69,8 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 		}
 		break;
 	case  EJogoEstado::REINICIAR:
-		UGameplayStatics::OpenLevel(this, TEXT("Prototipo") , true);
+		LoadNovoJogo();
+		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), true);
 		break;
 	default:
 		break;
@@ -77,12 +84,7 @@ void AProtuXGameMode::BeginPlay()
 	Estado = EJogoEstado::MENUPRINCIPAL;
 }
 
-void AProtuXGameMode::Tick(float DeltaSeconds)
-{
-
-}
-
-void AProtuXGameMode::LoadProfile()
+void AProtuXGameMode::LoadNovoJogo()
 {
 	if (bNaoSalvar)
 		return;
@@ -98,8 +100,10 @@ void AProtuXGameMode::LoadProfile()
 
 	if (SaveInst->IsValidLowLevelFast())
 	{
+
+		SaveInst->bNovoJogo = true;
 		bNovoJogo = SaveInst->bNovoJogo;
-		
+
 		if (bNovoJogo)
 		{
 			SaveInst->NumJogos += 1;
@@ -112,14 +116,16 @@ void AProtuXGameMode::LoadProfile()
 			bTutorialAtivado = false;
 		}
 
+		SaveInst->LevelAtual = 1;
+		LevelAtual = SaveInst->LevelAtual;
+
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-		
+
 	}
 }
 
-void AProtuXGameMode::ContinuarJogo()
+void AProtuXGameMode::LoadContinuarJogo()
 {
-
 	if (bNaoSalvar)
 		return;
 
@@ -129,7 +135,36 @@ void AProtuXGameMode::ContinuarJogo()
 
 	if (SaveInst->IsValidLowLevelFast())
 	{
+		bTutorialAtivado = false;
 		SaveInst->bNovoJogo = false;
+		bNovoJogo = SaveInst->bNovoJogo;
+
+		NumJogos = SaveInst->NumJogos;
+		LevelAtual = SaveInst->LevelAtual;
+
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+}
+
+void AProtuXGameMode::LoadProximaFase()
+{
+	if (bNaoSalvar)
+		return;
+
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		bTutorialAtivado = false;
+
+		SaveInst->bNovoJogo = false;
+		bNovoJogo = SaveInst->bNovoJogo;
+
+		SaveInst->LevelAtual++;
+		LevelAtual = SaveInst->LevelAtual;
+
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }

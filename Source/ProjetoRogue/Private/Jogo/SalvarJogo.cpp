@@ -10,6 +10,7 @@ USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 	Userindex = 0;
 
 	NumJogos = 0;
+	LevelAtual = 0;
 	bNovoJogo = true;
 
 	MaxNumSalas = 5;

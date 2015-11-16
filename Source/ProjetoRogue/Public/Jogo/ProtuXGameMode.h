@@ -8,7 +8,9 @@
 UENUM()
 enum class EJogoEstado : uint8{
 	MENUPRINCIPAL,
-	JOGO,
+	NOVOJOGO,
+	CONTINUARJOGO,
+	PROXIMAFASE,
 	REINICIAR,
 	GAMEOVER
 };
@@ -38,6 +40,9 @@ public:
 		int32 NumJogos;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+		int32 LevelAtual;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		bool bTutorialAtivado;
 
 	AProtuXGameMode(const FObjectInitializer& ObjectInitializer);
@@ -53,13 +58,13 @@ public:
 
 	virtual void BeginPlay() override;
 
-	virtual void Tick(float DeltaSeconds) override;
-
+	UFUNCTION(BlueprintCallable, Category = "GameMode")
+		void LoadNovoJogo();
 
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
-		void LoadProfile();
+		void LoadContinuarJogo();
 
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
-		void ContinuarJogo();
+		void LoadProximaFase();
 	
 };

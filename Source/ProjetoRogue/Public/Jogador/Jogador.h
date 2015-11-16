@@ -388,6 +388,7 @@ UENUM(BlueprintType)
 enum class EInicializarEstado :uint8
 {
 	BOOTUP,
+	NOVOLEVEL,
 	JOGAR,
 };
 

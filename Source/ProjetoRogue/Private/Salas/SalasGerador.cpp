@@ -56,12 +56,12 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 	return nullptr;
 }
 
-void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed)
+void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed, int32 levelAtual)
 {
 	this->Seed = NovoSeed;
 	StreamGeracao = FRandomStream(NovoSeed);
 
-	SetNumSalas();
+	SetNumSalas(levelAtual);
 
 	Salas.Add(Inicial);
 	Salas.Add(NULL);
@@ -333,14 +333,14 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 	return false;
 }
 
-void ASalasGerador::SetNumSalas()
+void ASalasGerador::SetNumSalas(int32 levelAtual)
 {
 	if (MinNumSalas > MaxNumSalas)
 	{
 		MinNumSalas = MaxNumSalas;
 	}
 
-	NumeroSalas = StreamGeracao.FRandRange(MinNumSalas, MaxNumSalas);
+	NumeroSalas = StreamGeracao.FRandRange(MinNumSalas, MaxNumSalas) + (levelAtual * 2);
 
 }
 

@@ -145,7 +145,7 @@ public:
 	* @param Seed - Novo seed do gerador.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void Inicializar(ASala* Inicial, int32 NovoSeed);
+		void Inicializar(ASala* Inicial, int32 NovoSeed, int32 levelAtual);
 
 	/*
 	* Função de get da rotação relativa de uma determinada porta com relação a sala e a direção da porta.
@@ -200,7 +200,7 @@ public:
 	* Função que utiliza o seed para o set do número de salas a serem geradas.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void SetNumSalas();
+		void SetNumSalas(int32 levelAtual);
 
 	/*
 	* Função que adiciona uma nova sala ao array de salas.

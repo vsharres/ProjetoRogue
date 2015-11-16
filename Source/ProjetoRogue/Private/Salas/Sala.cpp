@@ -27,7 +27,7 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	NumeroPortas = ENumeroPortas::UMA;
 	DirecaoSala = EFormatoSala::PADRAO;
 	TipoSala = ETipoSala::NORMAL;
-	Dificuldade = EDificuldadeSala::FACIL;
+	Dificuldade = EDificuldadeSala::NORMAL;
 	SalasConectadas.Empty();
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
 	Portas.Empty();
@@ -116,9 +116,6 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 
 	switch (Dificuldade)
 	{
-	case EDificuldadeSala::FACIL:
-		TipoInimigo = InimigosFacil;
-		break;
 	case EDificuldadeSala::NORMAL:
 		TipoInimigo = InimigosNormal;
 		break;
@@ -134,14 +131,14 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 	{
 		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
 
-		AInimigo* NovoInimigo;
+		AInimigo* NovoInimigo =  NULL;
 
 		if (Spawner->bGerarRandomicamente)
 		{
 			//check(TipoInimigo.Num() > 0);
-			if (Spawner->InimigosRandomicos.Num() > 0)
+			if (Spawner->GetNumInimigos(Dificuldade) > 0)
 			{
-				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream,Dificuldade), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 			}
 			else
 			{
@@ -151,9 +148,25 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 		else
 		{
 			TSubclassOf<AInimigo> InimigoNaoRandomico;
-			InimigoNaoRandomico = Spawner->InimigoNaoRandomico;
+			
 
-			NovoInimigo = GetWorld()->SpawnActor<AInimigo>(InimigoNaoRandomico, Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			switch (Dificuldade)
+			{
+			case EDificuldadeSala::NORMAL:
+				InimigoNaoRandomico = Spawner->InimigoNaoRandomicoNormal;
+				break;
+			case EDificuldadeSala::DIFICIL:
+				InimigoNaoRandomico = Spawner->InimigoNaoRandomicoDificil;
+				break;
+			default:
+				checkNoEntry();
+				break;
+			}
+
+			if (InimigoNaoRandomico->IsValidLowLevelFast())
+			{
+				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(InimigoNaoRandomico, Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+			}
 		}
 
 		if (NovoInimigo->IsValidLowLevelFast())
@@ -204,10 +217,6 @@ void ASala::InimigosForamDerrotados()
 			gerador->SalvarSalas();
 		}
 
-		if (TipoSala == ETipoSala::BOSS)
-		{
-
-		}
 	}
 
 }

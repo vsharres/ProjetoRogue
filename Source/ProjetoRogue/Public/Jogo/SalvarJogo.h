@@ -36,6 +36,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
 		int32 NumJogos;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
+		int32 LevelAtual;
+
 	//Salas
 
 	/* Array com as salas que tem inimigos. */
