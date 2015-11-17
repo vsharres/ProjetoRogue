@@ -118,12 +118,7 @@ bool USalvarSettings::GetVSync()
 
 FIntPoint USalvarSettings::GetResolution()
 {
-	if (UserSettings->IsScreenResolutionDirty())
-	{
-		return UserSettings->GetScreenResolution();
-	}
-
-	return UserSettings->GetDefaultResolution();
+	return (GEngine->GameViewport->Viewport->GetSizeXY());
 }
 
 void USalvarSettings::SetIsMuted(bool newMute)
