@@ -7,6 +7,7 @@
 ASala3P::ASala3P(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicizalizando as propriedades.
 	NumeroPortas = ENumeroPortas::TRES;
 	DirecaoSala = EFormatoSala::PADRAO;
 	SalasConectadas.Empty();

@@ -10,19 +10,25 @@
 #include "InimigoSpawnerComponent.h"
 
 
-// Sets default values
+// Construtor
 ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
 	//Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	
+	//Inicializando o trigger de ativação dos inimigos
 	TriggerAtivarInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerAtivarInimigos"));
 	TriggerAtivarInimigos->SetBoxExtent(FVector(300.0f, 300.0f, 32.0f));
+
+	//Criando os delegates de overlap
 	TriggerAtivarInimigos->OnComponentBeginOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerOnOverlap);
 	TriggerAtivarInimigos->OnComponentEndOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerEndOverlap);
+	
+	//Trigger é o componente raiz do ator.
 	RootComponent = TriggerAtivarInimigos;
-
+	
+	//Inicializando propriedades.
 	bCanBeDamaged = false;
 	NumeroPortas = ENumeroPortas::UMA;
 	DirecaoSala = EFormatoSala::PADRAO;
@@ -37,24 +43,22 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	OffsetSala = 6000.0f;
 	EscalaPadrao = FVector(1.0f, 1.0f, 1.0f);
 
-
 }
-
 
 
 void ASala::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+	Super::Tick(DeltaTime); //Interface do Tick
 
-	InimigosForamDerrotados();
+	InimigosForamDerrotados(); //Checando se os inimigos foram derrotados
 
 }
 
 void ASala::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay(); //Interface do BeginPlay
 
-	if (!bSalaTemInimigos)
+	if (!bSalaTemInimigos) //Se a sala não tem inimigos, remover os delegados de overlap.
 	{
 		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
 		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
@@ -106,15 +110,15 @@ void ASala::RemoverInimigo(AInimigo* inimigo)
 
 void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 {
-	if (!bSalaTemInimigos)
+	if (!bSalaTemInimigos)//Se a sala não tem inimigos, nao fazer o spawn.
 		return;
 
-	TInlineComponentArray<UInimigoSpawnerComponent*> Componentes;
-	this->GetComponents(Componentes);
+	TInlineComponentArray<UInimigoSpawnerComponent*> Componentes; 
+	this->GetComponents(Componentes); //Encontrar todos os componentes de spawn no ator.
 
-	TArray<TSubclassOf<AInimigo>> TipoInimigo;
+	TArray<TSubclassOf<AInimigo>> TipoInimigo; // Tipo do inimigo a ser feito spawn
 
-	switch (Dificuldade)
+	switch (Dificuldade) //Escolher o inimigos baseado na dificuldade da sala.
 	{
 	case EDificuldadeSala::NORMAL:
 		TipoInimigo = InimigosNormal;
@@ -127,20 +131,21 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 		break;
 	}
 
-	for (const auto& Spawner : Componentes)
+	for (const auto& Spawner : Componentes) //Para cada ponto de spawn, escolher um inimigo e fazer o spawn
 	{
-		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation());
+		FTransform SpawnTrans = FTransform(FRotator::ZeroRotator, Spawner->GetComponentLocation()); //transform de spawn.
 
 		AInimigo* NovoInimigo =  NULL;
 
-		if (Spawner->bGerarRandomicamente)
+		if (Spawner->bGerarRandomicamente) 
 		{
 			//check(TipoInimigo.Num() > 0);
-			if (Spawner->GetNumInimigos(Dificuldade) > 0)
+			if (Spawner->GetNumInimigos(Dificuldade) > 0) //Garantir que nenhuma classe nula vai ser usada e que o ponto de spawn tem um tipo de inimigo especifico a ser usado.
 			{
-				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream,Dificuldade), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
+				//Spawn do inimigo randomicamente
+				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(Spawner->SelecionarInimigoRandomicamente(Stream,Dificuldade), Spawner->GetComponentLocation(), FRotator::ZeroRotator); 
 			}
-			else
+			else //usando os inimigos da sala.
 			{
 				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(GetTipoInimigo(TipoInimigo,Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 			}
@@ -150,7 +155,7 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 			TSubclassOf<AInimigo> InimigoNaoRandomico;
 			
 
-			switch (Dificuldade)
+			switch (Dificuldade) //Escolher o inimigos baseado na dificuldade da sala.
 			{
 			case EDificuldadeSala::NORMAL:
 				InimigoNaoRandomico = Spawner->InimigoNaoRandomicoNormal;
@@ -163,22 +168,23 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 				break;
 			}
 
-			if (InimigoNaoRandomico->IsValidLowLevelFast())
+			if (InimigoNaoRandomico->IsValidLowLevelFast()) //Checando que a classe é não nula.
 			{
+				//Spawn do inimigo não randomicamente
 				NovoInimigo = GetWorld()->SpawnActor<AInimigo>(InimigoNaoRandomico, Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 			}
 		}
 
-		if (NovoInimigo->IsValidLowLevelFast())
+		if (NovoInimigo->IsValidLowLevelFast()) //Checando se o inimigo gerado é valido.
 		{
-			NovoInimigo->SpawnDefaultController();
-			Inimigos.Add(NovoInimigo);
-			NovoInimigo->SalaPai = this;
+			NovoInimigo->SpawnDefaultController(); //Spawn do controlador do inimigo
+			Inimigos.Add(NovoInimigo); //Adicionar o inimigo ao array de inimigos da sala.
+			NovoInimigo->SalaPai = this; //Sala pai do inimigo é a sala atual.
 		}
 
 		AInimigosControlador* Controlador = Cast<AInimigosControlador>(NovoInimigo->GetController());
 
-		if (Controlador->IsValidLowLevelFast())
+		if (Controlador->IsValidLowLevelFast()) //Checando a validade do controlador e fazendo com que a sala pai do controlador seja a sala atual.
 		{
 			Controlador->SalaPai = this;
 		}
@@ -187,7 +193,7 @@ void ASala::SpawnInimigos_Implementation(FRandomStream& Stream)
 
 TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream)
 {
-	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)];
+	TSubclassOf<AInimigo> tipoInimigo = InimigoDificuldade[Stream.FRandRange(0, InimigoDificuldade.Num() - 1)]; //Usando um stream randomico para retornar o um inimigo dentro do array de inimigos de uma determinada dificuldade.
 
 	return tipoInimigo;
 
@@ -195,23 +201,24 @@ TSubclassOf<AInimigo> ASala::GetTipoInimigo(const TArray < TSubclassOf<AInimigo>
 
 void ASala::InimigosForamDerrotados()
 {
-	if (Inimigos.Num() == 0 && bSalaTemInimigos)
+	if (Inimigos.Num() == 0 && bSalaTemInimigos) //Apenas checar se a sala tem inimigos
 	{
-		for (const auto& Porta : Portas)
+		for (const auto& Porta : Portas) //Destrancar todas as portas da sala.
 		{
 			Porta->DestrancarPorta();
 		}
-
+		
+		//Desativando o delegate de overlap do trigger.
 		bSalaTemInimigos = false;
 		bInimigosAtivos = false;
 		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
 		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
-		DestrancarPortas();
+		DestrancarPortas(); //Evento para o blueprint das portas
 
 		AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 		ASalasGerador* gerador = ASalasGerador::GetGeradorSalas(GetWorld());
 
-		if (jogador->IsValidLowLevelFast() && gerador->IsValidLowLevelFast())
+		if (jogador->IsValidLowLevelFast() && gerador->IsValidLowLevelFast()) //Salvar o jogador e as salas.
 		{
 			jogador->SalvarJogador();
 			gerador->SalvarSalas();
@@ -223,7 +230,7 @@ void ASala::InimigosForamDerrotados()
 
 void ASala::TrancarPortas()
 {
-	for (const auto& Porta : Portas)
+	for (const auto& Porta : Portas) //Trancar todas as portas
 	{
 		Porta->TrancarPorta();
 	}
@@ -232,9 +239,9 @@ void ASala::TrancarPortas()
 
 void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	if (Cast<AJogador>(OtherActor) && !bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && !bInimigosAtivos && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
 	{
-		for (auto const& Inimigo : Inimigos)
+		for (auto const& Inimigo : Inimigos) //Ativando o controlador de cada inimigo na sala.
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
@@ -244,15 +251,15 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 			}
 		}
 
-		TrancarPortas();
+		TrancarPortas(); //Trancando as portas
 	}
 }
 
 void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (Cast<AJogador>(OtherActor) && bInimigosAtivos && bSalaTemInimigos)
+	if (Cast<AJogador>(OtherActor) && bInimigosAtivos && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
 	{
-		for (auto const& Inimigo : Inimigos)
+		for (auto const& Inimigo : Inimigos) //Desativando os controladores
 		{
 			AInimigosControlador* controlador = Cast<AInimigosControlador>(Inimigo->GetController());
 
@@ -268,19 +275,19 @@ void ASala::AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala)
 {
 	TArray<USceneComponent*> meshs;
 
-	Sala->GetChildrenComponents(true, meshs);
+	Sala->GetChildrenComponents(true, meshs); //Pegando as meshs que terão o seus materiais alterados.
 
 	for (auto const& componente : meshs)
 	{
-		UInstancedStaticMeshComponent* instMesh = Cast<UInstancedStaticMeshComponent>(componente);
+		UInstancedStaticMeshComponent* instMesh = Cast<UInstancedStaticMeshComponent>(componente); 
 
 		if (instMesh)
 		{
-			UMaterialInstanceDynamic* MID =  instMesh->CreateDynamicMaterialInstance(1);
+			UMaterialInstanceDynamic* MID =  instMesh->CreateDynamicMaterialInstance(1); //Criando o material dinamico que tera a cor alterada.
 
 			if (MID)
 			{
-				MID->SetVectorParameterValue("Base_Color", novaCor);
+				MID->SetVectorParameterValue("Base_Color", novaCor); //Alterando a cor do material.
 			}
 		}
 	}

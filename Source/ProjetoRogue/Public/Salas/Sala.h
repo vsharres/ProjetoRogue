@@ -153,7 +153,7 @@ public:
 		TArray<ASala*> SalasConectadas;
 
 	/* Booleano usado durante a geração do level, indicando se a sala já foi visitada pelo algortimo de geração. */
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite, Category = Sala)
 		bool bVisitada;
 #pragma endregion PROPRIEDADES
 

@@ -73,10 +73,6 @@ private:
 	UPROPERTY()
 		TArray<TSubclassOf<ASala>> UltimasSalasGeradas;
 
-	/* Array com a posição das salas geradas. */
-	UPROPERTY()
-		TArray<FVector> PosSalas;
-
 	/* Array para verificar se todas as salas foram carregadas de um save game. */
 	UPROPERTY()
 		TArray<bool> SalasCarregadas;
@@ -90,6 +86,10 @@ private:
 		float LarguraMax;
 
 public:
+
+	/* Array com a posição das salas geradas. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gerador Salas")
+		TArray<FVector> PosSalas;
 
 	/* Stream de geração randômica. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gerador)
@@ -214,7 +214,7 @@ public:
 	* Esta função é utilizada recursivamente.
 	* @param SalaAtual - Ponteiro a sala atual da geração.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Gerador Salas")
 		void GerarLevel(ASala* SalaAtual);
 
 	/*
@@ -223,7 +223,7 @@ public:
 	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
 	* @return Ponteiro a sala gerada.
 	*/
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		ASala* GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
 
 	/*

@@ -98,16 +98,20 @@ public:
 		TArray<bool> ItensComprados;
 
 	//SONS
-
+	
+	/* Booleano para desativar todos os sons. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
 		bool bMute;
 
+	/* Volume total dos sons. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
 		float MasterVol;
 
+	/* Volume da música. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
 		float MusicVol;
 
+	/*Volume dos efeitos. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Som")
 		float EffectsVol;
 
