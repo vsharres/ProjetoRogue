@@ -7,7 +7,10 @@
 APickUpItem::APickUpItem(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicializando as propriedades
 	Tipo = ETipoPickUp::ITEM;
+
+	//Criando os delegates de overlap
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpItem::ColisorOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUpItem::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUpItem::OutlineEndOverlap);
@@ -15,19 +18,22 @@ APickUpItem::APickUpItem(const FObjectInitializer& ObjectInitializer)
 
 void APickUpItem::EscolherItem(FRandomStream& Stream)
 {
-	ItemAgerar = PossiveisItems[Stream.FRandRange(0, PossiveisItems.Num() - 1)];
+	//Escolher randomicamente o item a ser gerado.
+	ItemAgerar = PossiveisItems[Stream.FRandRange(0, PossiveisItems.Num() - 1)]; 
 }
 
 void APickUpItem::ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
-	{			
+	if (jogador->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
+	{	
+		//Spawn do novo item.
 		ItemGerado = NewObject<UItem>(this, ItemAgerar);
 
 		if (ItemGerado)
 		{
+			//Inicializar o item e gerar o popup
 			ItemGerado->InicializarItem(jogador);
 			jogador->GerarItemPopUp(this);
 			Destroy();
@@ -40,9 +46,9 @@ void APickUpItem::OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveCom
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(true);
+		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
 	}
 }
 
@@ -50,15 +56,8 @@ void APickUpItem::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveCo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(false);
+		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
 	}
-}
-
-void APickUpItem::BeginPlay()
-{
-	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-
-	Super::BeginPlay();
 }

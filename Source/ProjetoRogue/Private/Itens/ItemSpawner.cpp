@@ -3,11 +3,9 @@
 #include "ProjetoRogue.h"
 #include "ItemSpawner.h"
 
-
-// Sets default values
 AItemSpawner::AItemSpawner(const FObjectInitializer& ObjectInitializer)
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	//Inicilizando as propriedades
 	PrimaryActorTick.bCanEverTick = true;
 
 	Colisor = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));

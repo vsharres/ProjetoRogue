@@ -6,6 +6,7 @@
 
 UInimigoSpawnerComponent::UInimigoSpawnerComponent()
 {
+	//Inicializando propriedades
 	bGerarRandomicamente = false;
 }
 
@@ -13,7 +14,7 @@ int32 UInimigoSpawnerComponent::GetNumInimigos(EDificuldadeSala Dificuldade)
 {
 	int32 num;
 
-	switch (Dificuldade)
+	switch (Dificuldade) //retornar o número de inimigos de acordo com a dificuldade
 	{
 	case EDificuldadeSala::NORMAL:
 		num = InimigosRandomicosNormal.Num();
@@ -33,10 +34,11 @@ TSubclassOf<AInimigo> UInimigoSpawnerComponent::SelecionarInimigoRandomicamente(
 {
 	TSubclassOf<AInimigo> classe;
 
+	//selecionar randomicamente um inimigo de acordo com a dificuldade
 	switch (Dificuldade)
 	{
 	case EDificuldadeSala::NORMAL:
-		classe = InimigosRandomicosNormal[Stream.FRandRange(0, InimigosRandomicosNormal.Num() - 1)];
+		classe = InimigosRandomicosNormal[Stream.FRandRange(0, InimigosRandomicosNormal.Num() - 1)]; 
 		break;
 	case EDificuldadeSala::DIFICIL:
 		classe = InimigosRandomicosDificil[Stream.FRandRange(0, InimigosRandomicosDificil.Num() - 1)];

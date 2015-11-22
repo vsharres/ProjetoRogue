@@ -7,6 +7,7 @@
 ABoss::ABoss(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicializando as propriedades
 	TipoInimigo = ETipoInimigo::BOSS;
 	Armadura = 0.5f;
 
@@ -15,27 +16,17 @@ ABoss::ABoss(const FObjectInitializer& ObjectInitializer)
 
 }
 
-void ABoss::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
-void ABoss::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
-}
-
 void ABoss::ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit)
 {
-	this->FlashDano();
+	this->FlashDano(); //fazer o flash do mesh do boss
 	AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
-	if (Hit.GetComponent() == PontoFraco)
+	if (Hit.GetComponent() == PontoFraco) //se o ponto fraco do boss foi atingido, causar o dano normal, se não causar um dano reduzido
 	{
 		Stats.Vida -= dano;
 		if (jogador->IsValidLowLevelFast())
 		{
-			jogador->GerarDanoPopUp(dano, this, projetil);
+			jogador->GerarDanoPopUp(dano, this, projetil); //gerar o popup com o dano causado
 		}
 	}
 	else
@@ -43,7 +34,7 @@ void ABoss::ReceberDano(const float& dano, AProjectil* projetil, const FHitResul
 		Stats.Vida -= dano * Armadura;
 		if (jogador->IsValidLowLevelFast())
 		{
-			jogador->GerarDanoPopUp(dano* Armadura, this, projetil);
+			jogador->GerarDanoPopUp(dano* Armadura, this, projetil); //gerar o popup com o dano causado
 		}
 	}
 	

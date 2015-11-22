@@ -3,10 +3,9 @@
 #include "ProjetoRogue.h"
 #include "PickUp.h"
 
-// Sets default values
 APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	//Inicializando as propriedades e criando os componenetes
 	PrimaryActorTick.bCanEverTick = false;
 
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
@@ -51,14 +50,17 @@ void APickUp::BeginPlay()
 {
 	Super::BeginPlay();
 
+	
 	FRandomStream random;
 
 	random.GenerateNewSeed();
 
+	//Direcao da força de spawn do pickup usando um vetor randomico
 	FVector direcao = FVector(random.FRandRange(GetActorLocation().X - ExplosaoDelta, GetActorLocation().X + ExplosaoDelta),
 		random.FRandRange(GetActorLocation().Y - ExplosaoDelta, GetActorLocation().Y + ExplosaoDelta),
 		GetActorLocation().Z + ExplosaoDelta * 2.0f);
 
+	//Impulsionar o pick up
 	Mesh->AddImpulse(direcao.GetSafeNormal() * ExplosaoForca);
 	
 }

@@ -7,8 +7,11 @@
 APickUpEnergia::APickUpEnergia(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicializando as propriedades
 	IncEnergia = 10;
 	Tipo = ETipoPickUp::ENERGIA;
+
+	//Criando os delegates de overlap
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::ColisorOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUpEnergia::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUpEnergia::OutlineEndOverlap);
@@ -19,8 +22,9 @@ void APickUpEnergia::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
+		//Adicionar energia ao jogador
 		jogador->AdicionarEnerngia(IncEnergia);
 		jogador->GerarPickUpPopUp(this);
 		Destroy();
@@ -32,9 +36,9 @@ void APickUpEnergia::OutlineOnOverlap(class AActor* OtherActor, class UPrimitive
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(true);
+		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
 	}
 }
 
@@ -42,15 +46,9 @@ void APickUpEnergia::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiv
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(false);
+		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
 	}
 }
 
-void APickUpEnergia::BeginPlay()
-{
-	
-	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	Super::BeginPlay();
-}

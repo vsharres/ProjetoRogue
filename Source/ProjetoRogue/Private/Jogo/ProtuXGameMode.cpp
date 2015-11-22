@@ -49,7 +49,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 		break;
 	case EJogoEstado::GAMEOVER: 
 
-		UGameplayStatics::GetAllActorsOfClass(this, AInimigosControlador::StaticClass(), InimigosControladores);
+		UGameplayStatics::GetAllActorsOfClass(this, AAIController::StaticClass(), InimigosControladores);
 
 		for (auto Actor : InimigosControladores) //Desativar todos os inimigos
 		{

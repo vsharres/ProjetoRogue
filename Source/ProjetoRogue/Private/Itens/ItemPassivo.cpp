@@ -6,26 +6,27 @@
 
 UItemPassivo::UItemPassivo()
 {
+	//Inicializando propriedades
 	Tipo = ETipoItem::PASSIVO;
 }
 
 void UItemPassivo::AplicarItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast())
+	if (Jogador->IsValidLowLevelFast()) //checando se o jogador é valido
 	{
-		Jogador->ItensPassivos.Add(this);
+		Jogador->ItensPassivos.Add(this); //adicionando o item ao array de itens passivos do jogador
 
-		Super::AplicarItem_Implementation();
+		Super::AplicarItem_Implementation(); //aplicar o item
 	}
 }
 
 void UItemPassivo::RemoverItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast())
+	if (Jogador->IsValidLowLevelFast()) //checar se o jogador é valido
 	{
-		Jogador->ItensPassivos.Remove(this);
+		Jogador->ItensPassivos.Remove(this); //remover o item do array de itens passivos do jogador.
 
-		Super::RemoverItem_Implementation();
+		Super::RemoverItem_Implementation(); //remover o items
 	}
 	
 }

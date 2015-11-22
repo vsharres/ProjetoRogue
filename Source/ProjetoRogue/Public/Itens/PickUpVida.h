@@ -44,8 +44,5 @@ class PROJETOROGUE_API APickUpVida : public APickUp
 	UFUNCTION()
 		void OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
-	/* Override do evento de beginplay. */
-	virtual void BeginPlay() override;
-
 #pragma endregion FUNÇÕES
 };

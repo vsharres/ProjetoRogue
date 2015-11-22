@@ -7,8 +7,11 @@
 APickUpVida::APickUpVida(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicializando as propriedades
 	IncVida = 25;
 	Tipo = ETipoPickUp::VIDA;
+
+	//Criando os delegates de overlap
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &APickUpVida::ColisorOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &APickUpVida::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &APickUpVida::OutlineEndOverlap);
@@ -19,8 +22,9 @@ void APickUpVida::ColisorOverlap(class AActor* OtherActor, class UPrimitiveCompo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherActor != this && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
+		//Adicionar vida ao jogador.
 		jogador->AdicionarVida(IncVida);
 		jogador->GerarPickUpPopUp(this);
 		Destroy();
@@ -32,9 +36,9 @@ void APickUpVida::OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveCom
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(true);
+		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
 	}
 }
 
@@ -42,15 +46,8 @@ void APickUpVida::OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveCo
 {
 	AJogador* jogador = Cast<AJogador>(OtherActor);
 
-	if (jogador->IsValidLowLevelFast() && OtherComp)
+	if (jogador->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
 	{
-		Mesh->SetRenderCustomDepth(false);
+		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
 	}
-}
-
-void APickUpVida::BeginPlay()
-{	
-	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-
-	Super::BeginPlay();
 }

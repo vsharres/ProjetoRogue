@@ -9,11 +9,10 @@
 #include "PickUpVida.h"
 #include "PickUpItem.h"
 
-// Sets default values
 AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Inicializando as propriedades
 	PrimaryActorTick.bCanEverTick = true;
 
 	TipoInimigo = ETipoInimigo::DRONE;
@@ -27,27 +26,19 @@ AInimigo::AInimigo(const FObjectInitializer& ObjectInitializer)
 
 }
 
-// Called when the game starts or when spawned
-void AInimigo::BeginPlay()
-{
-	Super::BeginPlay();
-
-
-}
-
 // Called every frame
 void AInimigo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!EstaVivo())
+	if (!EstaVivo()) //checando se o inimigo está vivo, e se não estiver, remover o inimigo do array de inimigos da salapai
 	{
 		if (SalaPai->IsValidLowLevelFast())
 		{
 			SalaPai->RemoverInimigo(this);
 		}
 
-		InimigoMorreu();
+		InimigoMorreu(); //disparar o evento para destruir o inimigo.
 	}
 
 }
@@ -65,19 +56,19 @@ FRotator AInimigo::GetDirecaoTiro()
 void AInimigo::ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit)
 {
 	Stats.Vida -= dano;
-	this->FlashDano();
+	this->FlashDano(); //evento para gerar o efeito de flash do mesh do inimigo
 	AJogador* jogador = Cast<AJogador>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
 	if (jogador->IsValidLowLevelFast())
 	{
-		jogador->GerarDanoPopUp(dano, this, projetil);
+		jogador->GerarDanoPopUp(dano, this, projetil); //gerar o popup de dano para o jogador
 	}
 
 }
 
 void AInimigo::AplicarStatsProjetil(AProjectil* projetil)
 {
-	if (projetil->IsValidLowLevelFast())
+	if (projetil->IsValidLowLevelFast()) //aplicar os stats do inimigo ao projetil
 	{
 		projetil->Stats = this->Stats;
 	}
@@ -96,11 +87,11 @@ bool AInimigo::EstaVivo()
 void AInimigo::SpawnPickUp()
 {
 	FRandomStream stream = FRandomStream();
-	stream.GenerateNewSeed();
+	stream.GenerateNewSeed(); //criar novo seed de geração do pickup
 
 	for (int32 index = 0; index < NumPickUps; index++)
 	{
-		if (index == 0 && TipoInimigo == ETipoInimigo::BOSS)
+		if (index == 0 && TipoInimigo == ETipoInimigo::BOSS) //se o inimigo for um boss, o primeiro pickup é sempre um item
 		{
 			APickUpItem* pickItem = GetWorld()->SpawnActor<APickUpItem>(PickUpItemClass, GetActorLocation(), GetActorRotation());
 			pickItem->EscolherItem(stream);
@@ -108,7 +99,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= ChanceSpawnVida)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnVida) //tentar fazer o spawn de um pickup de vida
 		{
 
 			APickUpVida* pickSpawn = GetWorld()->SpawnActor<APickUpVida>(PickUpVidaClass, GetActorLocation(), GetActorRotation());
@@ -116,7 +107,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= ChanceSpawnEnergia)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnEnergia) //tentar fazer o spawn de um pickup de energia
 		{
 
 			APickUpEnergia* pickSpawn = GetWorld()->SpawnActor<APickUpEnergia>(PickUpEnergiaClass, GetActorLocation(), GetActorRotation());
@@ -124,7 +115,7 @@ void AInimigo::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= ChanceSpawnScrap)
+		if (stream.FRandRange(0, 100) >= ChanceSpawnScrap) //tentar fazer o spawn de um pickup de scrap
 		{
 			APickUpMoeda* pickSpawn = GetWorld()->SpawnActor<APickUpMoeda>(PickUpScrapClass, GetActorLocation(), GetActorRotation());
 

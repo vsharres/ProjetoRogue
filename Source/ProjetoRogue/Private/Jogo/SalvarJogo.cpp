@@ -6,6 +6,7 @@
 
 USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 {
+	//Inicializando as propriedades de um save game.
 	SaveSlot = "ProtuX_Save";
 	Userindex = 0;
 
