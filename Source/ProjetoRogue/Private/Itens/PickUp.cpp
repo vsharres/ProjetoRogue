@@ -13,7 +13,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	RootComponent = Mesh;
 	
 	TriggerCatch = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerCatch"));
-	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	TriggerCatch->SetCollisionObjectType(ECC_WorldDynamic);
 	TriggerCatch->SetCollisionResponseToAllChannels(ECR_Ignore);
 	TriggerCatch->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
@@ -21,7 +21,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	TriggerCatch->AttachTo(Mesh);
 
 	TriggerOutline = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerOutline"));
-	TriggerOutline->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	TriggerOutline->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	TriggerOutline->SetCollisionObjectType(ECC_WorldDynamic);
 	TriggerOutline->SetCollisionResponseToAllChannels(ECR_Ignore);
 	TriggerOutline->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);

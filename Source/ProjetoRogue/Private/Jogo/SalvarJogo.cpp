@@ -13,9 +13,12 @@ USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 	NumJogos = 0;
 	LevelAtual = 0;
 	bNovoJogo = true;
+	bContinuarJogo = false;
 
 	MaxNumSalas = 5;
 	MinNumSalas = 5;
+
+	bBossDerrotado = false;
 
 	ItensComprados.AddDefaulted(3);
 

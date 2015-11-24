@@ -321,7 +321,7 @@ struct FJogadorStats
 	* Função para adicionar energia aos stats.
 	* @param energidaAdicionada - float com a energia a ser adicionada
 	*/
-	FORCEINLINE void AdicionarEnergia(int32 energidaAdicionada)
+	FORCEINLINE void AdicionarEnergia(float energidaAdicionada)
 	{
 		Energia += energidaAdicionada;
 

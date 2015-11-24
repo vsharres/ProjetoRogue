@@ -31,11 +31,16 @@ public:
 	ABoss(const FObjectInitializer& ObjectInitializer);
 
 	/*
-	* Função de interface para receber dano.
-	* @param dano - float de dano.
-	* @param prjetil - ponteiro do projetil que causou dano.
-	* @param Hit - Resultados do hit do projétil.
+	 Função de interface para receber dano.
+	 @param dano - float de dano.
+	 @param prjetil - ponteiro do projetil que causou dano.
+	 @param Hit - Resultados do hit do projétil.
 	*/
 	virtual void ReceberDano(const float& dano, AProjectil* projetil, const FHitResult& Hit) override;
+
+	virtual void CalcularStats(int32 levelAtual) override;
+
+	UFUNCTION(BlueprintCallable, Category = Boss)
+		void BossDerrotado();
 	
 };

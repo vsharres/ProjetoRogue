@@ -32,6 +32,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
 		bool bNovoJogo;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
+		bool bContinuarJogo;
+
 	/* Número de jogos no save. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game")
 		int32 NumJogos;
@@ -78,6 +81,9 @@ public:
 	/* Rotação do jogador no save. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
 		FRotator JogadorRotation;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Boss)
+		bool bBossDerrotado;
 
 	//Itens
 

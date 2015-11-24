@@ -54,17 +54,6 @@ void ASala::Tick(float DeltaTime)
 
 }
 
-void ASala::BeginPlay()
-{
-	Super::BeginPlay(); //Interface do BeginPlay
-
-	if (!bSalaTemInimigos) //Se a sala não tem inimigos, remover os delegados de overlap.
-	{
-		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
-		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
-	}
-}
-
 FVector ASala::GetEscala()
 {
 	return EscalaPadrao;
@@ -98,6 +87,12 @@ TArray<TEnumAsByte<EDirecaoPorta>> ASala::GetArrayPortas()
 void ASala::SetOffset(float novoOffset)
 {
 	this->OffsetSala = novoOffset;
+}
+
+void ASala::DesativarTrigger()
+{
+	TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
+	TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
 }
 
 void ASala::RemoverInimigo(AInimigo* inimigo)

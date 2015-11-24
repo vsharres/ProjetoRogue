@@ -216,6 +216,9 @@ public:
 	UFUNCTION()
 		void SetOffset(float novoOffset);
 
+	UFUNCTION()
+		void DesativarTrigger();
+
 	/*
 	* Função que remove um inimigo do array de inimigos da sala.
 	* @param inimigo -  Ponteiro AInimigo ao inimigo a ser retirado.
@@ -291,11 +294,6 @@ public:
 	* Override do Tick da sala.
 	*/
 	virtual void Tick(float DeltaTime) override;
-
-	/*
-	* Override do evento BeginPlay.
-	*/
-	virtual void BeginPlay() override;
 
 #pragma endregion FUNÇÕES
 

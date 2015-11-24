@@ -31,7 +31,13 @@ void AJogador::InicializarJogador()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
-	if (gameMode->bNovoJogo || gameMode->bNaoSalvar) //caso nao seja um novo novo, carregar o jogador
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex) == false ? UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex) : NULL;
+
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->bNovoJogo || gameMode->bNaoSalvar) //caso nao seja um novo novo, carregar o jogador
 	{
 		NovoJogador();
 	}
@@ -188,14 +194,13 @@ bool AJogador::EstaVivo()
 
 void AJogador::AdicionarVida(float vida)
 {
-	this->Stats.Vida += vida;
+	this->Stats.AdicionarVida(vida);
 
 }
 
 void AJogador::AdicionarEnerngia(float energia)
 {
-	Stats.Energia += energia; //checar energia
-
+	Stats.AdicionarEnergia(energia);
 }
 
 void AJogador::AdicionarMoedas(int32 valor)
@@ -263,15 +268,13 @@ void AJogador::CarregarJogador()
 		GerarNome(SaveInst->NumJogos);
 		this->Stats.SetStats(SaveInst->Stats);
 		this->Moedas = SaveInst->Scrap;
-		this->bPossuiChave = SaveInst->bPossuiChave;
-
-		//Carregando transform do jogador
-		this->SetActorLocation(SaveInst->JogadorLocation);
-		this->SetActorRotation(SaveInst->JogadorRotation);
-
-		if (this->GetActorLocation().Z < 100.f) //corrigindo altura
+		
+		if (SaveInst->bContinuarJogo)
 		{
-			this->AddActorLocalOffset(FVector(0, 0, 127.f));
+			//Carregando transform do jogador
+			this->SetActorLocation(SaveInst->JogadorLocation);
+			this->SetActorRotation(SaveInst->JogadorRotation);
+			this->bPossuiChave = SaveInst->bPossuiChave;
 		}
 
 		if (!SaveInst->ProjetilEncontrado_Referencia.IsEmpty()) //criando o projetil encontrando

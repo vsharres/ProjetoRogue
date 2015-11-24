@@ -43,6 +43,8 @@ public:
 		// Called every frame
 		virtual void Destroyed() override;
 
+		virtual void CalcularStats(int32 levelAtual) override;
+
 		/* Função para gerar o pool de projéteis a serem disparados. */
 		UFUNCTION()
 			void GerarProjetilPool();

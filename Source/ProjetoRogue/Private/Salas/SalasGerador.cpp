@@ -57,23 +57,34 @@ ASalasGerador* ASalasGerador::GetGeradorSalas(UObject* WorldContextObject)
 
 void ASalasGerador::Inicializar(ASala* Inicial, int32 NovoSeed, int32 levelAtual)
 {
-	this->Seed = NovoSeed; 
-	StreamGeracao = FRandomStream(NovoSeed); //Inicializando o stream randomico com o novo seed.
+	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	SetNumSalas(levelAtual); //Set do num de salas a ser gerado.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex) == false ? UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex) : NULL;
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	int32 Level;
+
+	if (!SaveInst->bNovoJogo && SaveInst->bContinuarJogo && !game->bNaoSalvar) //Se não for um novo jogo, fazer o load das salas.
+	{
+		CarregarSalas();
+		Level = SaveInst->LevelAtual;
+	}
+	else
+	{
+		this->Seed = NovoSeed;
+		Level = levelAtual;
+	}
+
+	StreamGeracao = FRandomStream(Seed); //Inicializando o stream randomico com o novo seed.
+
+	SetNumSalas(Level); //Set do num de salas a ser gerado.
 
 	//Adicionando a sala inicial ao array de salas.
-	Salas.Add(Inicial); 
+	Salas.Add(Inicial);
 	Salas.Add(NULL);
 
 	AdicionarAoArrayPortas(Inicial);
-
-	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
-
-	if (!game->bNovoJogo && !game->bNaoSalvar) //Se não for um novo jogo, fazer o load das salas.
-	{
-		CarregarSalas();
-	}
 
 	GerarLevel(Inicial); //Gerar o level em si
 
@@ -115,9 +126,9 @@ FRotator ASalasGerador::GetDirecaoPorta(const FRotator DirecaoSala, const EDirec
 int32 ASalasGerador::GetNumPortasVazias()
 {
 	int32 vazias = 0;
-	
+
 	//Contar o número de salas nulas dentro do array de salas, sabendo assim quantas salas ainda podem ser geradas.
-	for (const auto& Sala : Salas) 
+	for (const auto& Sala : Salas)
 	{
 		if (!(*Sala).IsValidLowLevel())
 		{
@@ -151,8 +162,8 @@ int32 ASalasGerador::UltimaSalaValida()
 FTransform ASalasGerador::GerarTransformSala(ASala* SalaAnterior, const FRotator DirecaoPorta)
 {
 	//Para determinar o transform da proxima sala, usamos a direção da porta que vai estar conecatada a sala, o offset da sala a ser gerada, o offset da sala anterior e o offset do corredor.
-	FVector Trans = (DirecaoPorta.Vector() * (((ASala*)SalaGerada->GetDefaultObject(true))->GetOffset() + SalaAnterior->GetOffset() + (1150.0f * 2) )) + SalaAnterior->GetActorLocation();
-	
+	FVector Trans = (DirecaoPorta.Vector() * (((ASala*)SalaGerada->GetDefaultObject(true))->GetOffset() + SalaAnterior->GetOffset() + (1150.0f * 2))) + SalaAnterior->GetActorLocation();
+
 	//Rodar a sala para ficar virada a porta.
 	FVector dir = -(DirecaoPorta.Vector());
 	FRotator Rot = dir.Rotation();
@@ -217,6 +228,7 @@ TSubclassOf<ASala> ASalasGerador::SelecionarSala(ASala* SalaAnterior)
 
 bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Trans)
 {
+
 	ASala* sala = (ASala*)SalaGerada->GetDefaultObject();
 	FVector Pos = (GetDirecaoPorta(Trans.Rotator(), Direcao).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + Trans.GetLocation(); //Get o transformo da sala que vai ser gerada para testar colisao.
 
@@ -228,11 +240,9 @@ bool ASalasGerador::ColideNaDirecao(EDirecaoPorta Direcao, const FTransform& Tra
 
 void ASalasGerador::CarregarSalas()
 {
-	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
-	
 	//Criar o objeto de save.
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
-	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex)); 
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bNovoJogo) //Checar validade de ponteiro.
 	{
@@ -275,7 +285,7 @@ void ASalasGerador::SalvarSalas()
 		{
 			SaveInst->SalasComInimigos.Add(Sala->bSalaTemInimigos);
 		}
-		
+
 		//Salvar
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
@@ -325,7 +335,7 @@ bool ASalasGerador::EstaNoArrayDePosicoes(const FVector& pos)
 			return true;
 		}
 		else if (pos.X > SalaInicial->GetActorLocation().X + ComprimentoMax ||
-			pos.X < SalaInicial->GetActorLocation().X - ComprimentoMax ||
+			pos.X < SalaInicial->GetActorLocation().X - ComprimentoMax||
 			pos.Y > SalaInicial->GetActorLocation().Y + LarguraMax / 2 ||
 			pos.Y < SalaInicial->GetActorLocation().Y - LarguraMax / 2)
 		{
@@ -354,22 +364,22 @@ void ASalasGerador::AdicionarAoArrayPortas(ASala* sala)
 	switch (numPortas) //Para cada número de portas o padro de portas é diferente.
 	{
 	case ENumeroPortas::UMA:
-		//PosSalas.Add(sala->GetActorLocation());
+		PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 		break;
 	case ENumeroPortas::DUAS:
 
 		switch (sala->GetDirecao()) //Cada tipo de sala de um determinado número de portas tem um padrão diferente de direção das portas.
 		{
 		case EFormatoSala::PADRAO:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::LESTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
 		case  EFormatoSala::ESQUERDA:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::NORTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
 		case EFormatoSala::DIREITA:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::SUL).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
 		}
@@ -379,17 +389,17 @@ void ASalasGerador::AdicionarAoArrayPortas(ASala* sala)
 		switch (sala->GetDirecao())
 		{
 		case EFormatoSala::PADRAO:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::SUL).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::NORTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
 		case  EFormatoSala::ESQUERDA:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::NORTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::LESTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
 		case EFormatoSala::DIREITA:
-			PosSalas.Add(sala->GetActorLocation());
+			PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::SUL).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::LESTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 			break;
@@ -397,7 +407,7 @@ void ASalasGerador::AdicionarAoArrayPortas(ASala* sala)
 		break;
 
 	case ENumeroPortas::QUATRO:
-		PosSalas.Add(sala->GetActorLocation());
+		PosSalas.Contains<FVector>(sala->GetActorLocation()) == false ? PosSalas.Add(sala->GetActorLocation()) : NULL;
 		PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::NORTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 		PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::LESTE).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
 		PosSalas.Add((GetDirecaoPorta(sala->GetActorRotation(), EDirecaoPorta::SUL).Vector() * (sala->GetOffset() + (1150.0f * 2) + 1748.0f)) + sala->GetActorLocation());
@@ -436,7 +446,7 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 	FTransform transSala = GerarTransformSala(SalaAnterior, DirecaoPorta); //Gerar o transform da nova sala.
 
 	ImpedirColisao(transSala, DirecaoPorta); //Mudar o tipo da sala se a sala a ser gerada colide com alguma sala já existente.
-	
+
 	//Spawn da nova sala.
 	ASala* NovaSala = GetWorld()->SpawnActor<ASala>(SalaGerada, transSala.GetLocation(), transSala.GetRotation().Rotator());
 
@@ -463,6 +473,12 @@ ASala* ASalasGerador::GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPort
 	if (SalasCarregadas.Num() >= Salas.Num()) //Checar se o level foi carregado ou se é um novo level.
 	{
 		NovaSala->bSalaTemInimigos = SalasCarregadas[Salas.Find(NovaSala)]; //Atulizar o estado dos inimigos.
+
+		if (NovaSala->bSalaTemInimigos)
+		{
+			NovaSala->DesativarTrigger();
+		}
+		
 	}
 
 	NovaSala->SpawnInimigos(StreamGeracao); //Fazer o spawn dos inimigos na sala.
@@ -478,7 +494,7 @@ void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPo
 	FTransform transCorredor = GerarTransformCorredor(SalaAnterior, DirecaoPorta); //Gerar o transform do corredor.
 
 	int32 Valor = StreamGeracao.FRandRange(0, 100); //Probablidade de gerar o corredor com a loja
-	
+
 	//Se a probablidade for alta, e a loja ainda nao foi gerada, ou se a última sala gerada foi a do boss, fazer o spawn da loja
 	if ((Valor >= 70 && !bCorredorLojaGerado) ||
 		(!bCorredorLojaGerado && ((ASala*)SalaGerada->GetDefaultObject(true))->GetTipo() == ETipoSala::BOSS))
@@ -490,7 +506,7 @@ void ASalasGerador::GerarCorredor(ASala* SalaAnterior, const FRotator& DirecaoPo
 	else
 	{
 		//Spawn do corredor normal.
-		ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(TiposCorredores[StreamGeracao.FRandRange(0,TiposCorredores.Num()-1)], transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
+		ACorredor* NovoCorredor = GetWorld()->SpawnActor<ACorredor>(TiposCorredores[StreamGeracao.FRandRange(0, TiposCorredores.Num() - 1)], transCorredor.GetLocation(), transCorredor.GetRotation().Rotator());
 		NovoCorredor->SetActorScale3D(NovoCorredor->GetEscala());
 	}
 
@@ -553,10 +569,10 @@ void ASalasGerador::ImpedirColisao(const FTransform& Trans, const FRotator Direc
 						SalaGerada = TiposSalas[3];
 						break;
 					case EFormatoSala::ESQUERDA:
-						SalaGerada = TiposSalas[4];
+						SalaGerada = TiposSalas[5];
 						break;
 					case EFormatoSala::DIREITA:
-						SalaGerada = TiposSalas[5];
+						SalaGerada = TiposSalas[4];
 						break;
 					}
 

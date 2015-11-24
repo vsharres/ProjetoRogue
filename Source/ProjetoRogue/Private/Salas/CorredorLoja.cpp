@@ -73,7 +73,11 @@ void ACorredorLoja::InicializarLoja()
 
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
-	if (!gameMode->bNovoJogo && !gameMode->bNaoSalvar) //para o caso de o jogo estar sendo carregado de um save.
+	//Criar o objeto de save
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (!SaveInst->bNovoJogo && !gameMode->bNaoSalvar && SaveInst->bContinuarJogo) //para o caso de o jogo estar sendo carregado de um save.
 	{
 		CarregarLoja();
 	}
@@ -105,6 +109,11 @@ void ACorredorLoja::ComprarSlot(int32 slot, AJogador* jogador)
 
 void ACorredorLoja::SalvarLoja()
 {
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	if (!gameMode || gameMode->bNaoSalvar)
+		return;
+
 	//Criar o objeto de save
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));

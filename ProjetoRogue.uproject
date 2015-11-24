@@ -20,5 +20,11 @@
 			"Name": "CodeView",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"HTML5",
+		"LinuxNoEditor",
+		"MacNoEditor",
+		"WindowsNoEditor"
 	]
 }

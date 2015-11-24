@@ -27,6 +27,15 @@ void AInimigoRange::Destroyed()
 	Super::Destroyed();
 }
 
+void AInimigoRange::CalcularStats(int32 levelAtual)
+{
+	Super::CalcularStats(levelAtual);
+
+	Stats.FireRate += (levelAtual - 1)* 1.0f;
+	Stats.Precisao += (levelAtual - 1) * 0.5f;
+	Stats.VelProjetil += (levelAtual - 1) * 400.0f;
+}
+
 void AInimigoRange::GerarProjetilPool()
 {
 	if (ProjetilPool.Num() > 0) //se o pool já possui projéteis, esvaziar o pool

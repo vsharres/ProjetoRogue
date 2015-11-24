@@ -153,6 +153,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	virtual void BeginPlay() override;
+
 	/*
 	* Função de Get da posição de tiro do inimigo.
 	* @return FVector da posição de tiro.
@@ -182,6 +184,9 @@ public:
 	*/
 	UFUNCTION()
 		bool EstaVivo();
+
+	UFUNCTION()
+		virtual void CalcularStats(int32 levelAtual = 1);
 
 	/*
 	* Função para fazer o spawn do pickup quando o inimigo morre.

@@ -43,6 +43,25 @@ void AInimigo::Tick(float DeltaTime)
 
 }
 
+void AInimigo::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//Criar objeto de save
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	int32 level = 1;
+
+	if (SaveInst)
+	{
+		level = SaveInst->LevelAtual;
+	}
+
+	CalcularStats(level);
+
+}
+
 FVector AInimigo::GetPosicaoTiro()
 {
 	return GetMesh()->GetSocketLocation("Tiro_Bocal");
@@ -82,6 +101,13 @@ bool AInimigo::EstaVivo()
 	}
 
 	return false;
+}
+
+void AInimigo::CalcularStats(int32 levelAtual)
+{
+	Stats.Dano += (levelAtual - 1) * 2.5f;
+	Stats.Vida += (levelAtual - 1) * 15.0f;
+	Stats.VidaMax += (levelAtual - 1) * 15.0f;
 }
 
 void AInimigo::SpawnPickUp()

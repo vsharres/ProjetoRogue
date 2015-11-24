@@ -42,9 +42,7 @@ public:
 	/* Número do level atual. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		int32 LevelAtual;
-	/* Booleano indicando se o tutorlal deve ser mostrado pelo jogador. */ 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
-		bool bTutorialAtivado;
+
 
 	AProtuXGameMode(const FObjectInitializer& ObjectInitializer);
 	
@@ -68,9 +66,6 @@ public:
 	*/
 	UFUNCTION()
 		void AtualizarEstado(EJogoEstado NovoEstado);
-
-	/* Interface para inicialização. */
-	virtual void BeginPlay() override;
 
 	/*
 	* Função para fazer o load do profile de um novo jogo.

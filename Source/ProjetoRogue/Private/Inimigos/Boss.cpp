@@ -39,3 +39,29 @@ void ABoss::ReceberDano(const float& dano, AProjectil* projetil, const FHitResul
 	}
 	
 }
+
+void ABoss::CalcularStats(int32 levelAtual)
+{
+	Stats.Vida += 100 * (levelAtual - 1);
+	Stats.Dano += 10 * (levelAtual - 1);
+	Stats.VidaMax += 100 * (levelAtual - 1);
+	Armadura += 0.2f * (levelAtual - 1);
+}
+
+void ABoss::BossDerrotado()
+{
+	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
+
+	//Criar o objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		SaveInst->bBossDerrotado = true;
+
+	}
+
+	//Salvar
+	UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+}
