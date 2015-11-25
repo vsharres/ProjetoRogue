@@ -101,20 +101,6 @@ public:
 		void SetMasterVol(float newVol);
 	
 	/*
-	* Função de Set do volume da música do jogo.
-	* @param newVol - float com o novo volume.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "UserSettings")
-		void SetMusicVol(float newVol);
-	
-	/*
-	* Função de Set do volume dos efeitos do jogo.
-	* @param newVol - float com o novo volume.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "UserSettings")
-		void SetEffectsVol(float newVol);
-	
-	/*
 	* Função de Set da qualidade gráfica.
 	* @param newSetting - int32 com o novo setting gráfico.
 	*/

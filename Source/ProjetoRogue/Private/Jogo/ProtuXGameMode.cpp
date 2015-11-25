@@ -107,6 +107,11 @@ void AProtuXGameMode::LoadNovoJogo()
 	{
 		SaveInst->bNovoJogo = true; //Por ser um novo jogo, o save game está como jogo novo.
 		SaveInst->bContinuarJogo = false;
+		SaveInst->bPossuiChave = false;
+		SaveInst->bBossDerrotado = false;
+		SaveInst->bItemEncontrado = false;
+		SaveInst->ItensComprados.Empty();
+		SaveInst->Scrap = 0;
 		SaveInst->NumJogos += 1;	
 		SaveInst->LevelAtual = 1; //Level atual
 		

@@ -108,6 +108,7 @@ void AInimigo::CalcularStats(int32 levelAtual)
 	Stats.Dano += (levelAtual - 1) * 2.5f;
 	Stats.Vida += (levelAtual - 1) * 15.0f;
 	Stats.VidaMax += (levelAtual - 1) * 15.0f;
+
 }
 
 void AInimigo::SpawnPickUp()

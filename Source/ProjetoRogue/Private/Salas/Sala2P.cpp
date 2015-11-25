@@ -14,6 +14,6 @@ ASala2P::ASala2P(const FObjectInitializer& ObjectInitializer)
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
 	DirecaoPortas.Add(EDirecaoPorta::LESTE);
 	bVisitada = false;
-}
 
+}
 

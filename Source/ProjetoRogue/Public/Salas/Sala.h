@@ -118,12 +118,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Portas")
 		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
-
 	//INIMIGOS
-
-	/* Booleano indicando se a sala tem inimigos ativados. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
-		bool bInimigosAtivos;
 
 	/* Array de inimigos que estão na sala. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
@@ -269,18 +264,24 @@ public:
 		void AtivarElevador();
 
 	/*
+		Evento para atualizar a barra de vida dos inimigos.
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = Sala)
+		void AtualizarVidaInimigos(AJogador* jogador);
+
+	/*
 	* Evento de overlap do trigger de ativação dos inimigos.
 	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentBeginOverlap.
 	*/
-	UFUNCTION()
-		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+	UFUNCTION(BlueprintCallable, Category = Sala)
+		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor);
 
 	/*
 	* Evento de overlap do trigger de desativação dos inimigos.
 	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentEndOverlap.
 	*/
-	UFUNCTION()
-		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	UFUNCTION(BlueprintCallable, Category = Sala)
+		 void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor);
 
 	/*
 	* Função para alterar a cor dos detalhes da sala, indicando quando uma sala teve seus inimigos derrotados.

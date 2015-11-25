@@ -20,10 +20,6 @@ ASala::ASala(const FObjectInitializer& ObjectInitializer)
 	//Inicializando o trigger de ativação dos inimigos
 	TriggerAtivarInimigos = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerAtivarInimigos"));
 	TriggerAtivarInimigos->SetBoxExtent(FVector(300.0f, 300.0f, 32.0f));
-
-	//Criando os delegates de overlap
-	TriggerAtivarInimigos->OnComponentBeginOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerOnOverlap);
-	TriggerAtivarInimigos->OnComponentEndOverlap.AddDynamic(this, &ASala::AtivarInimigosTriggerEndOverlap);
 	
 	//Trigger é o componente raiz do ator.
 	RootComponent = TriggerAtivarInimigos;
@@ -205,7 +201,6 @@ void ASala::InimigosForamDerrotados()
 		
 		//Desativando o delegate de overlap do trigger.
 		bSalaTemInimigos = false;
-		bInimigosAtivos = false;
 		TriggerAtivarInimigos->OnComponentBeginOverlap.RemoveAll(this);
 		TriggerAtivarInimigos->OnComponentEndOverlap.RemoveAll(this);
 		DestrancarPortas(); //Evento para o blueprint das portas
@@ -232,9 +227,11 @@ void ASala::TrancarPortas()
 
 }
 
-void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor)
 {
-	if (Cast<AJogador>(OtherActor) && !bInimigosAtivos && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
+	AJogador* jogador = Cast<AJogador>(OtherActor);
+
+	if (jogador->IsValidLowLevelFast() && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
 	{
 		for (auto const& Inimigo : Inimigos) //Ativando o controlador de cada inimigo na sala.
 		{
@@ -246,13 +243,14 @@ void ASala::AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrim
 			}
 		}
 
+		AtualizarVidaInimigos(jogador);
 		TrancarPortas(); //Trancando as portas
 	}
 }
 
-void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void ASala::AtivarInimigosTriggerEndOverlap(class AActor* OtherActor)
 {
-	if (Cast<AJogador>(OtherActor) && bInimigosAtivos && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
+	if (Cast<AJogador>(OtherActor) && bSalaTemInimigos) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
 	{
 		for (auto const& Inimigo : Inimigos) //Desativando os controladores
 		{

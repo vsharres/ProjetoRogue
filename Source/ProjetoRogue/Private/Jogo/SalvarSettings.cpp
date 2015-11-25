@@ -163,37 +163,6 @@ void USalvarSettings::SetMasterVol(float newVol)
 	}
 }
 
-void USalvarSettings::SetMusicVol(float newVol)
-{
-	//criando objeto de save.
-	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
-
-	//carregando propriedades.
-	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
-
-	if (SaveInst)
-	{
-		SaveInst->MusicVol = newVol;
-		//Salvando nova propriedade
-		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-	}
-}
-
-void USalvarSettings::SetEffectsVol(float newVol)
-{
-	//criando objeto de save.
-	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
-
-	//carregando propriedades.
-	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
-
-	if (SaveInst)
-	{
-		SaveInst->EffectsVol = newVol;
-		//Salvando nova propriedade
-		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
-	}
-}
 
 void USalvarSettings::SetQualitySettings(int32 newSetting)
 {

@@ -37,7 +37,7 @@ void AJogador::InicializarJogador()
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->bNovoJogo || gameMode->bNaoSalvar) //caso nao seja um novo novo, carregar o jogador
+	if (SaveInst->bNovoJogo && !SaveInst->bContinuarJogo || gameMode->bNaoSalvar) //caso nao seja um novo novo, carregar o jogador
 	{
 		NovoJogador();
 	}
@@ -55,7 +55,7 @@ void AJogador::GerarNome(int32 index)
 
 	int32 temp = index;
 
-	while (temp != 0 && temp <= 999) //gerar o nome da versão em numeral romanos
+	while (temp != 0 && temp <= 999) //gerar o nome da versão do prototipo em numeral romanos
 	{
 		if (temp >= 100)
 		{

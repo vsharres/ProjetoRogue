@@ -20,4 +20,6 @@ public:
 	ASala3P(const FObjectInitializer& ObjectInitializer);
 #pragma endregion CONSTRUTOR
 
+
+
 };

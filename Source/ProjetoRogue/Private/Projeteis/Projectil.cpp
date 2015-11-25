@@ -112,8 +112,6 @@ void AProjectil::GerarEfeitosImpacto(const FHitResult& Hit)
 	//Spawn do efeito de impacto
 	UGameplayStatics::SpawnEmitterAtLocation(this, ImapctoEfeitos.Efeito, Hit.ImpactPoint, rotTemp, true);
 
-	//UGameplayStatics::PlaySoundAtLocation(this, SomImpacto, Hit.ImpactPoint);
-
 	//Spawn do decal na posicao de impacto doo tiro.
 	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.DecalTamanho, ImapctoEfeitos.DecalTamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
 
