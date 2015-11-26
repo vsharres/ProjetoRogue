@@ -6,6 +6,7 @@
 ASala2P::ASala2P(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicizalizando as propriedades.
 	NumeroPortas = ENumeroPortas::DUAS;
 	DirecaoSala = EFormatoSala::PADRAO;
 	SalasConectadas.Empty();
@@ -13,6 +14,6 @@ ASala2P::ASala2P(const FObjectInitializer& ObjectInitializer)
 	DirecaoPortas.Add(EDirecaoPorta::OESTE);
 	DirecaoPortas.Add(EDirecaoPorta::LESTE);
 	bVisitada = false;
-}
 
+}
 

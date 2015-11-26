@@ -26,12 +26,36 @@ public:
 		bool bProjetilPadrao;
 
 	/* Propriedade que indica a quantidade de energia utilizado pelo item por deltatime. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Energia")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 		float EnergiaUtilizada;
 
 	/* Classe do projetil a ser gerado quando o item é ativado. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Projetil")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projetil)
 		TSubclassOf<class AProjectil> Projetil;
+
+	/* Mesh do detalhe do dano. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UStaticMesh* DetalheDano;
+
+	/* Instancia do material do detalhe do dano. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UMaterialInstance* DetalheDano_Material;
+
+	/* Mesh do detalhe de precisão. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UStaticMesh* DetalhePrecisao;
+
+	/*Instancia do material do detalhe de precisão.*/
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UMaterialInstance* DetalhePrecisao_Material;
+
+	/* Mesh do detalhe de firerate. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UStaticMesh* DetalheFireRate;
+
+	/*Instancia do material do detalhe de firerate */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+		UMaterialInstance* DetalheFireRate_Material;
 
 #pragma endregion PROPRIEDADES
 

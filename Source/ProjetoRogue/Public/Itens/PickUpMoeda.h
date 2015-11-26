@@ -30,8 +30,19 @@ class PROJETOROGUE_API APickUpMoeda : public APickUp
 	UFUNCTION()
 	void ColisorOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 
-	/* Override do evento de beginplay. */
-	virtual void BeginPlay() override;
+	/*
+	* Função delegate a ser executada quando o trigger de outline inicia um overlap do jogador.
+	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	*/
+	UFUNCTION()
+		void OutlineOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	/*
+	* Função delegate a ser executada quando o trigger de outline termina um overlap do jogador.
+	* Assinatura da função determinada pelo Delegate OnEndOverlap.
+	*/
+	UFUNCTION()
+		void OutlineEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 #pragma endregion FUNÇÕES
 

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\UnrealSync.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{865F43A3-20B2-435D-BA5D-5C97F96457E5}</UniqueIdentifier>
+			<UniqueIdentifier>{F855F114-E02C-4882-AB34-DFFDBCF04C0F}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\GUI.cpp">
 			<Filter>Private</Filter>
@@ -53,22 +53,22 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Private\Mac">
-			<UniqueIdentifier>{C2C2553C-6D92-405A-911F-DDD17FA06EEC}</UniqueIdentifier>
+			<UniqueIdentifier>{A23426AA-BA74-4EB6-9ABA-9C51CBB56955}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Mac\UnrealSyncMainMac.cpp">
 			<Filter>Private\Mac</Filter>
 		</ClCompile >
 		<Filter Include="Private\Windows">
-			<UniqueIdentifier>{701374A5-285C-4024-A3DB-F753A9F46D2D}</UniqueIdentifier>
+			<UniqueIdentifier>{15A59B80-B196-4575-B583-2439A0A8A7A9}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Private\Windows\UnrealSyncMainWindows.cpp">
 			<Filter>Private\Windows</Filter>
 		</ClCompile >
 		<Filter Include="Resources">
-			<UniqueIdentifier>{F8AD0DF8-0DA1-4EBE-AD6B-745E29419082}</UniqueIdentifier>
+			<UniqueIdentifier>{E297123A-6AB2-4C5C-A954-B1AC97DAA4CC}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Resources\Windows">
-			<UniqueIdentifier>{8D78F562-66AD-42C0-854C-6D9761A9D5D7}</UniqueIdentifier>
+			<UniqueIdentifier>{EA3E14A2-B893-4B69-B16A-240538E28259}</UniqueIdentifier>
 		</Filter>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealSync\Resources\Windows\UnrealSync.ico">
 			<Filter>Resources\Windows</Filter>

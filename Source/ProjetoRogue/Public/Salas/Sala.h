@@ -11,7 +11,6 @@
 UENUM(BlueprintType)
 enum class EDificuldadeSala : uint8
 {
-	FACIL,
 	NORMAL,
 	DIFICIL
 
@@ -119,20 +118,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Portas")
 		TArray < TEnumAsByte<EDirecaoPorta> > DirecaoPortas;
 
-
 	//INIMIGOS
-
-	/* Booleano indicando se a sala tem inimigos ativados. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
-		bool bInimigosAtivos;
 
 	/* Array de inimigos que estão na sala. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
 		TArray<class AInimigo*> Inimigos;
-
-	/* Array contendo as classes de inimigos fáceis que podem ser gerados pela sala. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
-		TArray<TSubclassOf<AInimigo>> InimigosFacil;
 
 	/* Array contendo as classes de inimigos normais que podem ser gerados pela sala. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
@@ -158,7 +148,7 @@ public:
 		TArray<ASala*> SalasConectadas;
 
 	/* Booleano usado durante a geração do level, indicando se a sala já foi visitada pelo algortimo de geração. */
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite, Category = Sala)
 		bool bVisitada;
 #pragma endregion PROPRIEDADES
 
@@ -188,7 +178,7 @@ public:
 	* @return int32 com o Offset da sala.
 	*/
 	UFUNCTION()
-		int32 GetOffset();
+		float GetOffset() const;
 
 	/*
 	* Função Get do número de portas.
@@ -218,6 +208,12 @@ public:
 	UFUNCTION()
 		TArray<TEnumAsByte<EDirecaoPorta>> GetArrayPortas();
 
+	UFUNCTION()
+		void SetOffset(float novoOffset);
+
+	UFUNCTION()
+		void DesativarTrigger();
+
 	/*
 	* Função que remove um inimigo do array de inimigos da sala.
 	* @param inimigo -  Ponteiro AInimigo ao inimigo a ser retirado.
@@ -231,18 +227,18 @@ public:
 	* @param Stream - Stream randômico de geração
 	*/
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
-		void SpawnInimigos(const FRandomStream& Stream);
-	virtual void SpawnInimigos_Implementation(const FRandomStream& Stream);
+		void SpawnInimigos(FRandomStream& Stream);
+	virtual void SpawnInimigos_Implementation(FRandomStream& Stream);
 
 	/*
 	* Função Get do tipo de inimigo a ser gerado para um determinado seed e para um tipo de dificuldade.
 	* O tipo resultante é gerado aleatoriamente de acordo com o seed de geração.
-	* @param InimigosDificuldade - Array com inimigos possiveis a serem gerados.
+	* @param InimigosDificuldade - Array com a classe dos inimigos que podem ser gerados.
 	* @param Stream - Stream randômico de geração
 	* @return O tipo de inimigo a ser gerado.
 	*/
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
-		TSubclassOf<AInimigo> GetTipoInimigo(const TArray < TSubclassOf<AInimigo>>& InimigoDificuldade, const FRandomStream& Stream);
+		TSubclassOf<AInimigo> GetTipoInimigo(const TArray <TSubclassOf<AInimigo>>& InimigoDificuldade,FRandomStream& Stream);
 
 	/*
 	* Função a ser executada quando todos os inimigos da sala foram derrotados.
@@ -261,32 +257,44 @@ public:
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Sala")
 		void DestrancarPortas();
+	/*
+	* Evento para ativar o elevador da sala do boss.
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Ativar Elevador", Keywords = "Ativar Elevador"), Category = "Sala")
+		void AtivarElevador();
+
+	/*
+		Evento para atualizar a barra de vida dos inimigos.
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = Sala)
+		void AtualizarVidaInimigos(AJogador* jogador);
 
 	/*
 	* Evento de overlap do trigger de ativação dos inimigos.
 	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentBeginOverlap.
 	*/
-	UFUNCTION()
-		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+	UFUNCTION(BlueprintCallable, Category = Sala)
+		void AtivarInimigosTriggerOnOverlap(class AActor* OtherActor);
 
 	/*
 	* Evento de overlap do trigger de desativação dos inimigos.
 	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentEndOverlap.
 	*/
-	UFUNCTION()
-		void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	UFUNCTION(BlueprintCallable, Category = Sala)
+		 void AtivarInimigosTriggerEndOverlap(class AActor* OtherActor);
 
-
+	/*
+	* Função para alterar a cor dos detalhes da sala, indicando quando uma sala teve seus inimigos derrotados.
+	* @param novaCor - Nova cor da sala.
+	* @param sala - Componente do ator que contem os mesh da sala que teram os seus materiais alterados.
+	*/
+	UFUNCTION(BlueprintCallable, Category = Glow)
+		void AlterarCorSala(FLinearColor novaCor, USceneComponent* Sala);
 
 	/*
 	* Override do Tick da sala.
 	*/
 	virtual void Tick(float DeltaTime) override;
-
-	/*
-	* Override do evento BeginPlay.
-	*/
-	virtual void BeginPlay() override;
 
 #pragma endregion FUNÇÕES
 

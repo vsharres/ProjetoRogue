@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\UnrealCodeAnalyzer.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\UnrealCodeAnalyzer.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{E8DF2628-61A5-4455-AE0F-718F85255F44}</UniqueIdentifier>
+			<UniqueIdentifier>{59C151D3-D6E1-4877-8D2F-B42637D01F46}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\Private\Action.cpp">
 			<Filter>Private</Filter>
@@ -35,7 +35,7 @@
 			<Filter>Private</Filter>
 		</ClInclude >
 		<Filter Include="Public">
-			<UniqueIdentifier>{55E6AA51-4848-4DA0-A12C-BBDD9D855369}</UniqueIdentifier>
+			<UniqueIdentifier>{0ADB1D49-8C70-4435-87D0-C76A027D1D74}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\UnrealCodeAnalyzer\Public\UnrealCodeAnalyzerPCH.cpp">
 			<Filter>Public</Filter>

@@ -6,14 +6,24 @@
 
 USalvarJogo::USalvarJogo(const FObjectInitializer& ObjectInitializer)
 {
+	//Inicializando as propriedades de um save game.
 	SaveSlot = "ProtuX_Save";
 	Userindex = 0;
 
 	NumJogos = 0;
+	LevelAtual = 0;
 	bNovoJogo = true;
+	bContinuarJogo = false;
 
 	MaxNumSalas = 5;
 	MinNumSalas = 5;
 
+	bBossDerrotado = false;
+
 	ItensComprados.AddDefaulted(3);
+
+	bMute = false;
+	MasterVol = 1.0f;
+	MusicVol = 1.0f;
+	EffectsVol = 1.0f;
 }

@@ -8,9 +8,10 @@
 /* Enumeração que representa o tipo de pickup. O tipo é o stats que será modificado quando o jogador obtêm o pickup. */
 UENUM(BlueprintType)
 enum class ETipoPickUp : uint8 {
-	MOEDA,
+	SCRAP,
 	ENERGIA,
-	VIDA
+	VIDA,
+	ITEM
 };
 
 /*
@@ -26,7 +27,11 @@ protected:
 
 	/* Componente de colisão. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
-		UCapsuleComponent* Colisor;
+		USphereComponent* TriggerCatch;
+
+	/* Trigger para ativar o efeito de outline.*/
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = PickUp)
+		USphereComponent* TriggerOutline;
 
 	/* Mesh do pickup. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
@@ -52,7 +57,7 @@ public:
 
 	/* Quanto o item potencialmente incrementa a quantidade de moedas do jogador. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
-		int32 IncMoedas;
+		int32 IncScraps;
 
 	/* O tipo do pickup. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp")
@@ -74,7 +79,7 @@ public:
 	* @return Ponteiro ao componente de colisão.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Colisor")
-		UCapsuleComponent* GetColisor();
+		USphereComponent* GetColisor();
 
 	/*
 	* Função Get para retornar o Mesh do Pickup.

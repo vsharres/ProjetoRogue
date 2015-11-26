@@ -6,6 +6,7 @@
 
 UItemProjetil::UItemProjetil()
 {
+	//Inicializando as propriedades
 	Tipo = ETipoItem::PROJETIL;
 	bAtivo = false;
 	bProjetilPadrao = false;
@@ -14,7 +15,7 @@ UItemProjetil::UItemProjetil()
 
 void UItemProjetil::AplicarItem_Implementation()
 {
-	if (Jogador->IsValidLowLevelFast() && this->bProjetilPadrao)
+	if (Jogador->IsValidLowLevelFast() && this->bProjetilPadrao) //checar que o jogador é valido
 	{
 		Jogador->ProjetilAtual = this;
 	}
@@ -26,12 +27,12 @@ void UItemProjetil::AplicarItem_Implementation()
 
 void UItemProjetil::RemoverItem_Implementation()
 {
-	this->ConditionalBeginDestroy();
+	this->ConditionalBeginDestroy(); //Destruir o item
 }
 
 void UItemProjetil::AtivarItem_Implementation()
 {
-	if (Jogador->Stats.Energia >= EnergiaUtilizada)
+	if (Jogador->Stats.Energia >= EnergiaUtilizada) //se a energia do jogador é maior do que a energia utilizado pelo item, o item pode ser ativado
 	{
 		bAtivo = true;
 		Super::AplicarStats();

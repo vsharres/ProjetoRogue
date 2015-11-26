@@ -7,5 +7,6 @@
 
 AInimigosControlador::AInimigosControlador()
 {
+	//Inicializando propriedades
 	SalaPai = nullptr;
 }

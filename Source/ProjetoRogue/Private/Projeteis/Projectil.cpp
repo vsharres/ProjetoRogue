@@ -3,15 +3,14 @@
 #include "ProjetoRogue.h"
 #include "Projectil.h"
 
-
-// Sets default values
 AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Inicializando as propriedades.
 	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
 	bAtivo = false;
-
+	
+	//Criando o componente de colisao e inicializando suas propriedades.
 	CompCollisao = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("ColisaoEsfera"));
 	CompCollisao->InitSphereRadius(10.0f);
 	CompCollisao->bTraceComplexOnMove = true;
@@ -26,8 +25,9 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	RootComponent = CompCollisao;
 
 	Mesh = ObjectInitializer.CreateAbstractDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
-	Mesh->AttachTo(RootComponent);
-
+	Mesh->AttachTo(RootComponent); //Mesh do projétil é o root do ator.
+	
+	//Criando o componente de movimentação, que é responsável pela comportamento de movimentação do ator.
 	CompMovimentacao = ObjectInitializer.CreateAbstractDefaultSubobject<UProjectileMovementComponent>(this, TEXT("CompMovimentacao"));
 	CompMovimentacao->UpdatedComponent = CompCollisao;
 	CompMovimentacao->InitialSpeed = 0.0f;
@@ -36,8 +36,10 @@ AProjectil::AProjectil(const FObjectInitializer& ObjectInitializer)
 	CompMovimentacao->ProjectileGravityScale = 0.f;
 	CompMovimentacao->bAutoActivate = false;
 
+	//Inicializando os stats.
 	Stats = FProjetilStats();
-
+	
+	//Inicializando os efeitos.
 	ImapctoEfeitos = FProjetilImpactoEfeito();
 
 }
@@ -52,95 +54,111 @@ UProjectileMovementComponent* AProjectil::GetMovProjetil()
 	return CompMovimentacao;
 }
 
-void AProjectil::InicializarProjetil(AActor* Inicializador)
+void AProjectil::InicializarProjetil(ACharacter* Inicializador)
 {
 
-	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this);
+	(Cast<IDanoInterface>(Inicializador))->AplicarStatsProjetil(this); //Inicializando o projetil com o ator que vai ser responsável por "atirar" o projétil.
 	
-	if (!CompMovimentacao->UpdatedComponent)
+	if (!CompMovimentacao->UpdatedComponent) //Set do componente a ser atualizado com o componente de movimentação.
 	{
 		CompMovimentacao->SetUpdatedComponent(this->RootComponent);
 		
 	}
 	
-	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade);
+	//Velocidade do projetil é somado a velocidade do personagem
+	CompMovimentacao->SetVelocityInLocalSpace(FVector(1, 0, 0) * Stats.Velocidade + Inicializador->GetCharacterMovement()->Velocity.ForwardVector);
 
 }
 
-void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, APawn* Inicializador)
+void AProjectil::AtivarProjetil(const FVector& Location, const FRotator& Rotator, ACharacter* Inicializador)
 {
-	bAtivo = true;
-
+	bAtivo = true; //Projetil está ativado
+	
+	//Colocar o projétil na posição inicial, e rotacionado na direção que foi mirado. 
 	SetActorLocation(Location);
 	SetActorRotation(Rotator);
+	Instigator = Inicializador;
 
-	SetActorHiddenInGame(false);
+	SetActorHiddenInGame(false); //Mostrar o projetil
 
-	InicializarProjetil(Inicializador);
+	InicializarProjetil(Inicializador); //Inicializar o projétil e começar a se mover.
 	CompCollisao->Activate(true);
-	CompMovimentacao->Activate(true);
-	
+	CompMovimentacao->Activate(true);	
 
 }
 
 void AProjectil::DesativarProjetil()
-{
-	bAtivo = false;
+{ 
+	bAtivo = false; //Projétil está desativado.
 
-	SetActorHiddenInGame(true);
+	SetActorHiddenInGame(true); //Esconder projétil
 
-	SetActorLocation(FVector(0, 0, 1000));
-
+	SetActorLocation(FVector(0, 1000, 3000)); //Colocar numa posição fora do jogo
+	
+	//Desativar colisao e a movimentação
 	CompCollisao->Deactivate();
 	CompMovimentacao->Deactivate();
 	
 }
 
-void AProjectil::SpawnEfeitos(const FHitResult& Hit)
+void AProjectil::GerarEfeitosImpacto(const FHitResult& Hit)
 {
-	FRandomStream Stream;
+	FRandomStream Stream; //Stream randomico para determinar a rotacao do efeito de impacto
 
 	FRotator rotTemp = Hit.ImpactNormal.Rotation();
 
-	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180));
+	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180)); //Rotacao do efeito
 
+	//Spawn do efeito de impacto
 	UGameplayStatics::SpawnEmitterAtLocation(this, ImapctoEfeitos.Efeito, Hit.ImpactPoint, rotTemp, true);
 
-	//UGameplayStatics::PlaySoundAtLocation(this, SomImpacto, Hit.ImpactPoint);
+	//Spawn do decal na posicao de impacto doo tiro.
+	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.DecalTamanho, ImapctoEfeitos.DecalTamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
 
-	UGameplayStatics::SpawnDecalAttached(ImapctoEfeitos.DecalMaterial, FVector(ImapctoEfeitos.Tamanho, ImapctoEfeitos.Tamanho, 1.0F), Hit.GetComponent(), Hit.BoneName, Hit.ImpactPoint, rotTemp, EAttachLocation::KeepWorldPosition, ImapctoEfeitos.DecalVida);
+}
 
+void AProjectil::GerarEfeitosTiro(const FVector& Location, const FRotator& Rotator, USceneComponent* Componente, FName Nome)
+{
+	FRandomStream Stream; //Stream randomico para a rotacao do efeito de tiro
+
+	FRotator rotTemp = Rotator;
+
+	rotTemp = FRotator(rotTemp.Pitch, rotTemp.Yaw, Stream.FRandRange(-180, 180)); //Rotacao do efeito
+
+	UGameplayStatics::SpawnSoundAttached(TiroEfeitos.SomTiro, Componente, Nome);
+	//Spawn do efeito de tiro.
+	UGameplayStatics::SpawnEmitterAttached(TiroEfeitos.TiroFlash, Componente, Nome);
 }
 
 // Called when the game starts or when spawned
 void AProjectil::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay(); //Interface de inicialização.
 
 }
 
 // Called every frame
 void AProjectil::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+	Super::Tick(DeltaTime); //Interface de Tick
 
 }
 
 void AProjectil::OnHit_Implementation(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	IDanoInterface* danoInterface = Cast<IDanoInterface>(Hit.GetActor());
+	IDanoInterface* danoInterface = Cast<IDanoInterface>(Hit.GetActor()); //Checar que o ator que foi atingido com o projétil pode receber dano.
 
-	if (danoInterface && Hit.GetActor() != this->Instigator)
+	if (danoInterface && Hit.GetActor() != this->Instigator) //Checar validade dos ponteiros e que o ator atingido nao foi o ator que atirou o projetil
 	{
-		danoInterface->ReceberDano(this->Stats.Dano, this);
+		danoInterface->ReceberDano(this->Stats.Dano, this, Hit); //Receber o dano do projetil
 		DesativarProjetil();
-		SpawnEfeitos(Hit);
-		Atingiu();		
+		GerarEfeitosImpacto(Hit);
+		Atingiu();	//Evento para o blueprint
 	}
-	else if (Hit.GetActor() != this->Instigator)
+	else if (Hit.GetActor() != this->Instigator) //Caso o ator nao seja um ator que receba dano, apenas desativar o projetil.
 	{
 		DesativarProjetil();
-		SpawnEfeitos(Hit);
+		GerarEfeitosImpacto(Hit);
 		Atingiu();
 	}
 }

@@ -1,15 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ProjetoRogue.h"
-#include "Public/Inimigos/InimigosControlador.h"
-#include "Public/Jogo/ProtuXGameMode.h"
+#include "InimigosControlador.h"
+#include "ProtuXGameMode.h"
 
 
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 {
+	//Inicializando as propriedades.
 	bNovoJogo = true;
 	bNaoSalvar = false;
-	
+	LevelAtual = 0;
+
 }
 
 
@@ -20,30 +22,46 @@ EJogoEstado AProtuXGameMode::GetEstadoJogo() const
 
 void AProtuXGameMode::SetEstadoJogo(EJogoEstado NovoEstado)
 {
-	Estado = NovoEstado;
+	Estado = NovoEstado; //Set novo estado
 
-	AtualizarEstado(NovoEstado);
+	AtualizarEstado(NovoEstado); //Atualizar state machine
 }
 
 void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 {
-	APlayerController* controlador;
-	TArray<AActor*> InimigosControladores;
+	APlayerController* controlador; //Controlador do jogador
+	TArray<AActor*> InimigosControladores; //Controladores dos inimigos
 
 	switch (NovoEstado)
 	{
 
-	case EJogoEstado::MENUPRINCIPAL:
+	case EJogoEstado::MENUPRINCIPAL: //Abrir o menu principal
 		UGameplayStatics::OpenLevel(this, TEXT("MenuPrincipal"), true);
 		break;
-	case EJogoEstado::JOGO:
-		LoadProfile();
+	case EJogoEstado::NOVOJOGO: //Fazer o load do profile de novo jogo e abrir o level inicial
+		LoadNovoJogo();
+		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), false);
 		break;
-	case EJogoEstado::GAMEOVER:
+	case EJogoEstado::PROXIMAFASE: //Fazer o load do profile de nova fase e abrir o level.
+		LoadProximaFase();
+		UGameplayStatics::OpenLevel(this, TEXT("ProximoLevel"), false);
+		break;
+	case EJogoEstado::CONTINUARJOGO:
+		LoadContinuarJogo();
+		if (LevelAtual > 1)
+		{
+			UGameplayStatics::OpenLevel(this, TEXT("ProximoLevel"), false);
+		}
+		else
+		{
+			UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), false);
+		}
+		break;
+	case EJogoEstado::GAMEOVER: 
 
-		UGameplayStatics::GetAllActorsOfClass(this, AInimigosControlador::StaticClass(), InimigosControladores);
+		UGameplayStatics::GetAllActorsOfClass(this, AAIController::StaticClass(), InimigosControladores);
 
-		for (auto Actor : InimigosControladores)
+		for (auto Actor : InimigosControladores) //Desativar todos os inimigos
 		{
 			AInimigosControlador* inimgControlador = Cast<AInimigosControlador>(Actor);
 
@@ -53,7 +71,7 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 			}
 		}
 
-		controlador = UGameplayStatics::GetPlayerController(this, 0);
+		controlador = UGameplayStatics::GetPlayerController(this, 0); //Desativar o controle do jogador.
 
 		if (controlador->IsValidLowLevelFast())
 		{
@@ -61,59 +79,54 @@ void AProtuXGameMode::AtualizarEstado(EJogoEstado NovoEstado)
 			controlador->bShowMouseCursor = true;
 		}
 		break;
-	case  EJogoEstado::REINICIAR:
-		UGameplayStatics::OpenLevel(this, TEXT("Prototipo") , true);
+	case  EJogoEstado::REINICIAR: //Fazer o load do profile de novo jogo e o level inicial.
+		LoadNovoJogo();
+		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), true);
 		break;
 	default:
 		break;
 	}
 }
 
-void AProtuXGameMode::BeginPlay()
+void AProtuXGameMode::LoadNovoJogo()
 {
-	Super::BeginPlay();
+	if (bNaoSalvar)
+		return;
 
-	Estado = EJogoEstado::MENUPRINCIPAL;
-}
-
-void AProtuXGameMode::Tick(float DeltaSeconds)
-{
-
-}
-
-void AProtuXGameMode::LoadProfile()
-{
+	//Criando o objeto de save.
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
-	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex))
+	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex)) //Case o save não exista, criar um novo.
 	{
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast())
+	if (SaveInst->IsValidLowLevelFast()) 
 	{
-		bNovoJogo = SaveInst->bNovoJogo;
-
-		if (bNovoJogo)
-		{
-			SaveInst->NumJogos += 1;
-		}
-
-		NumJogos = SaveInst->NumJogos;
-
-		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+		SaveInst->bNovoJogo = true; //Por ser um novo jogo, o save game está como jogo novo.
+		SaveInst->bContinuarJogo = false;
+		SaveInst->bPossuiChave = false;
+		SaveInst->bBossDerrotado = false;
+		SaveInst->bItemEncontrado = false;
+		SaveInst->ItensComprados.Empty();
+		SaveInst->Scrap = 0;
+		SaveInst->NumJogos += 1;	
+		SaveInst->LevelAtual = 1; //Level atual
 		
+		//Salvar
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+
 	}
 }
 
-void AProtuXGameMode::ContinuarJogo()
+void AProtuXGameMode::LoadContinuarJogo()
 {
-
 	if (bNaoSalvar)
 		return;
 
+	//Criando o objeto de save.
 	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
 
 	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
@@ -121,6 +134,34 @@ void AProtuXGameMode::ContinuarJogo()
 	if (SaveInst->IsValidLowLevelFast())
 	{
 		SaveInst->bNovoJogo = false;
+		SaveInst->bContinuarJogo = true;
+		NumJogos = SaveInst->NumJogos; //Nao incrementar o número de jogos.
+		//Salvar
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+}
+
+void AProtuXGameMode::LoadProximaFase()
+{
+	if (bNaoSalvar)
+		return;
+	
+	//Criando o objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst->IsValidLowLevelFast())
+	{
+		SaveInst->bNovoJogo = false; //por ser uma transição para a proxima fase, não incrementar o número de jogos.
+		SaveInst->bContinuarJogo = false;
+		SaveInst->LevelAtual++; //Incrementar o level atual.
+		SaveInst->bItemEncontrado = false;
+		SaveInst->bPossuiChave = false;
+		SaveInst->ItensComprados.Empty();
+		SaveInst->bBossDerrotado = false;
+
+		//Salvar
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }

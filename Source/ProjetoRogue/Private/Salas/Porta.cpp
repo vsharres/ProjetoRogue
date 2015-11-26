@@ -3,11 +3,9 @@
 #include "ProjetoRogue.h"
 #include "Porta.h"
 
-
-// Sets default values
 APorta::APorta()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	//Inicializando as propriedades.
 	PrimaryActorTick.bCanEverTick = true;
 	bAbrirPorta = false;
 	bFecharPorta = false;
@@ -18,14 +16,14 @@ APorta::APorta()
 // Called when the game starts or when spawned
 void APorta::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay(); //Interface de inicialização
 	
 }
 
 // Called every frame
 void APorta::Tick( float DeltaTime )
 {
-	Super::Tick( DeltaTime );
+	Super::Tick( DeltaTime ); //Interface de tick
 
 }
 

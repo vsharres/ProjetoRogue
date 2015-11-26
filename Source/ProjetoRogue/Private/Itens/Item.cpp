@@ -6,6 +6,7 @@
 
 UItem::UItem()
 {
+	//Inicializando os stats do item
 	Stats = FItemStats();
 }
 
@@ -13,6 +14,7 @@ TArray<FString> UItem::GetNomeEfeitos()
 {
 	TArray<FString> ARetornar;
 
+	//Criar o array com o nome dos stats que são modificados pelo item
 	if (Stats.IncrementaDano != 0.0f)
 	{
 		ARetornar.Add("Damage");
@@ -66,6 +68,7 @@ TArray<float> UItem::GetEfeitos()
 {
 	TArray<float> ARetornar;
 
+	//Criar o array com o valor das propriedades que são alteradas pelo item
 	if (Stats.IncrementaDano != 0.0f)
 	{
 		ARetornar.Add(Stats.IncrementaDano);
@@ -119,21 +122,21 @@ void UItem::InicializarItem(AJogador* inicializador)
 	if (inicializador->IsValidLowLevelFast())
 	{
 		this->Jogador = inicializador;
-		Stats = Jogador->Stats.ClampAdicionarStats(Stats);
+		Stats = Jogador->Stats.ClampAdicionarStats(Stats); //aplicar os stats do item ao jogador, levando em consideração os limites dos stats.
 		AplicarItem();
 	}
 }
 
 void UItem::AplicarStats()
 {
-	Jogador->Stats += Stats;
-	Jogador->AtualizarPropriedadesComStats();
+	Jogador->Stats += Stats; //aplicar os stats
+	Jogador->AtualizarPropriedadesComStats(); //checar os limites 
 }
 
 void UItem::RemoverStats()
 {
-	Jogador->Stats -= Stats;
-	Jogador->AtualizarPropriedadesComStats();
+	Jogador->Stats -= Stats; //remover os stats
+	Jogador->AtualizarPropriedadesComStats(); //checar os limites 
 }
 
 void UItem::AplicarItem_Implementation()
@@ -145,14 +148,15 @@ void UItem::RemoverItem_Implementation()
 {
 	RemoverStats();
 
-	this->ConditionalBeginDestroy();
+	this->ConditionalBeginDestroy(); //destuir o item
 }
 
 UObject* UItem::InstanciarItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe)
 {
-	if (GEngine)
+	if (GEngine) //checar o ponteiro da instancia do jogo
 	{
 		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
+		//spawn do item
 		UObject* temp = NewObject<UObject>(World,Classe);
 
 		return temp;

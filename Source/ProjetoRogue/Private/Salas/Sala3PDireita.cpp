@@ -6,6 +6,7 @@
 ASala3PDireita::ASala3PDireita(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
+	//Inicizalizando as propriedades.
 	NumeroPortas = ENumeroPortas::TRES;
 	DirecaoSala = EFormatoSala::DIREITA;
 	DirecaoPortas.Empty();

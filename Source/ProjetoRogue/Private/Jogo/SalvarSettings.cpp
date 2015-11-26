@@ -6,23 +6,87 @@
 
 USalvarSettings::USalvarSettings()
 {
+	//Inicializando as propriedades, pegando os settings atuais do jogador.
 	UserSettings = GetUserGameSettings();
 }
 
 UGameUserSettings* USalvarSettings::GetUserGameSettings()
 {
-	if (GEngine != nullptr)
+	if (GEngine != nullptr) //Checando validade do ponteiro da instancia do jogo.
 	{
 		return GEngine->GameUserSettings;
 	}
 	return nullptr;
 }
 
+bool USalvarSettings::GetIsMuted()
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+	if (SaveInst)
+	{
+		return SaveInst->bMute;
+	}
+
+	return false;
+}
+
+float USalvarSettings::GetMasterVol()
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		return SaveInst->MasterVol;
+	}
+
+	return 1.0f;
+}
+
+float USalvarSettings::GetMusicVol()
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		return SaveInst->MusicVol;
+	}
+
+	return 1.0f;
+}
+
+float USalvarSettings::GetEffectVol()
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+	
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		return SaveInst->EffectsVol;
+	}
+
+	return 1.0f;
+}
+
 int32 USalvarSettings::GetQualitySettings()
 {
 	if (UserSettings)
 	{
-		 return UserSettings->ScalabilityQuality.EffectsQuality;
+		return UserSettings->ScalabilityQuality.EffectsQuality; //Qualidade dos gráficos.
 	}
 
 	return 0;
@@ -34,7 +98,7 @@ bool USalvarSettings::IsFullScreen()
 
 	if (UserSettings)
 	{
-		switch (UserSettings->GetLastConfirmedFullscreenMode())
+		switch (UserSettings->GetLastConfirmedFullscreenMode()) //usando o último modo de tela escolhido pelo jogador
 		{
 		case EWindowMode::Type::Fullscreen:
 			inFullscreen = true;
@@ -63,13 +127,42 @@ bool USalvarSettings::GetVSync()
 
 FIntPoint USalvarSettings::GetResolution()
 {
-	if (UserSettings)
+	return (GEngine->GameViewport->Viewport->GetSizeXY()); //Resolução atual da tela
+}
+
+void USalvarSettings::SetIsMuted(bool newMute)
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
 	{
-		return UserSettings->GetLastConfirmedScreenResolution();
+		SaveInst->bMute = newMute;
+		//Salvando nova propriedade
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 
-	return FIntPoint();
 }
+
+void USalvarSettings::SetMasterVol(float newVol)
+{
+	//criando objeto de save.
+	USalvarJogo* SaveInst = Cast<USalvarJogo>(UGameplayStatics::CreateSaveGameObject(USalvarJogo::StaticClass()));
+
+	//carregando propriedades.
+	SaveInst = Cast<USalvarJogo>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+
+	if (SaveInst)
+	{
+		SaveInst->MasterVol = newVol;
+		//Salvando nova propriedade
+		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
+	}
+}
+
 
 void USalvarSettings::SetQualitySettings(int32 newSetting)
 {
@@ -94,7 +187,7 @@ void USalvarSettings::SetFullScreenMode(bool bFullscreen)
 		if (bFullscreen)
 		{
 			UserSettings->SetFullscreenMode(EWindowMode::Type::Fullscreen);
-			
+
 		}
 		else
 		{
@@ -116,18 +209,18 @@ void USalvarSettings::ApplySettings(bool bApply)
 {
 	if (UserSettings)
 	{
-		if (bApply)
+		if (bApply) //Aplicando os novos settings.
 		{
-			UserSettings->ConfirmVideoMode();
+			UserSettings->ConfirmVideoMode(); //confirmando as opções visuais
 
 			UserSettings->SetScreenResolution(UserSettings->GetLastConfirmedScreenResolution());
 			UserSettings->SetFullscreenMode(UserSettings->GetLastConfirmedFullscreenMode());
 			UserSettings->ApplySettings(false);
-			UserSettings->SaveSettings();
+			UserSettings->SaveSettings(); //Salvando novos settings
 		}
 		else
 		{
-			UserSettings->RevertVideoMode();
+			UserSettings->RevertVideoMode(); //revertendo para o modo de vídeo anterior.
 		}
 	}
 }

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\ParallelExecutor.Target.cs" />
 		<None Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\ParallelExecutor.Build.cs" />
 		<Filter Include="Private">
-			<UniqueIdentifier>{B2986508-C328-4450-BF79-705AD28EE86C}</UniqueIdentifier>
+			<UniqueIdentifier>{76A64661-9449-44E1-BAD6-EEE66F4D62EA}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="C:\Users\Vinicius\Documents\GitHub\UnrealEngine\Engine\Source\Programs\ParallelExecutor\Private\BuildGraph.cpp">
 			<Filter>Private</Filter>

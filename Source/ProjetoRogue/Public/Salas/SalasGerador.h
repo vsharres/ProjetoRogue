@@ -45,10 +45,6 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ASala> SalaBoss;
 
-	/* Classe dos corredores padrões. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
-		TSubclassOf<class ACorredor> Corredor;
-
 	/* Classe do corredor da loja. */
 	UPROPERTY(EditDefaultsOnly, Category = "Salas")
 		TSubclassOf<ACorredor> CorredorLoja;
@@ -77,37 +73,41 @@ private:
 	UPROPERTY()
 		TArray<TSubclassOf<ASala>> UltimasSalasGeradas;
 
-	/* Array com a posição das salas geradas. */
-	UPROPERTY()
-		TArray<FVector> PosSalas;
-
 	/* Array para verificar se todas as salas foram carregadas de um save game. */
 	UPROPERTY()
 		TArray<bool> SalasCarregadas;
 
 	/* Distância X máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
 		float ComprimentoMax;
 
 	/* Distância Y máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
 		float LarguraMax;
 
+public:
+
+	/* Array com a posição das salas geradas. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gerador Salas")
+		TArray<FVector> PosSalas;
+
 	/* Stream de geração randômica. */
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gerador)
 		FRandomStream StreamGeracao;
 
-public:
 	/* Array com os tipos de salas que podem ser gerados. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
 		TArray<TSubclassOf<ASala>> TiposSalas;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Corredor")
+		TArray<TSubclassOf<ACorredor>> TiposCorredores;
+
 	/* Número máximo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
 		int32 MaxNumSalas;
 
 	/* Número mínimo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "10"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
 		int32 MinNumSalas;
 
 	/* Seed de geração randômica. */
@@ -145,7 +145,7 @@ public:
 	* @param Seed - Novo seed do gerador.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void Inicializar(ASala* Inicial, int32 NovoSeed);
+		void Inicializar(ASala* Inicial, int32 NovoSeed, int32 levelAtual);
 
 	/*
 	* Função de get da rotação relativa de uma determinada porta com relação a sala e a direção da porta.
@@ -177,7 +177,7 @@ public:
 	* @return O transforma da sala a ser gerada.
 	*/
 	UFUNCTION()
-		FTransform GerarTransformSala(const ASala* SalaAnterior, const FRotator DirecaoPorta);
+		FTransform GerarTransformSala(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	/*
 	* Função que gera o transforma do corredor a ser gerado.
@@ -186,7 +186,7 @@ public:
 	* @return O transforma do correodr a ser gerada.
 	*/
 	UFUNCTION()
-		FTransform GerarTransformCorredor(const ASala* SalaAnterior, const FRotator DirecaoPorta);
+		FTransform GerarTransformCorredor(ASala* SalaAnterior, const FRotator DirecaoPorta);
 
 	/*
 	* Função que seleciona a sala a ser gerada, esta função checa quais salas podem ser geradas e garante que salas especiais serão geradas.
@@ -194,13 +194,13 @@ public:
 	* @return Classe da sala a ser gerada.
 	*/
 	UFUNCTION()
-		TSubclassOf<ASala> SelecionarSala(const ASala* SalaAnterior);
+		TSubclassOf<ASala> SelecionarSala(ASala* SalaAnterior);
 
 	/*
 	* Função que utiliza o seed para o set do número de salas a serem geradas.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
-		void SetNumSalas();
+		void SetNumSalas(int32 levelAtual);
 
 	/*
 	* Função que adiciona uma nova sala ao array de salas.
@@ -214,7 +214,7 @@ public:
 	* Esta função é utilizada recursivamente.
 	* @param SalaAtual - Ponteiro a sala atual da geração.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Gerador Salas")
 		void GerarLevel(ASala* SalaAtual);
 
 	/*
@@ -223,7 +223,7 @@ public:
 	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
 	* @return Ponteiro a sala gerada.
 	*/
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
 		ASala* GerarSala(ASala* SalaAnterior, const FRotator& DirecaoPorta);
 
 	/*
