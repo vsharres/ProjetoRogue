@@ -198,6 +198,12 @@ FakesAssemblies/
 *.pak
 Binaries/
 Saved/
+Debug/
+DerivedDataCache/
+Intermediate/
+Saved/
+Resources/
+
 
 
 # Compiled Object files
