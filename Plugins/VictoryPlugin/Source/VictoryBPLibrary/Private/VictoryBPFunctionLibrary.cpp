@@ -1,20 +1,43 @@
 /*
 	By Rama
 */
+    
 #include "VictoryBPLibraryPrivatePCH.h"
-
+ 
+#include "VictoryBPFunctionLibrary.h"
+ 
 #include "StaticMeshResources.h"
 
-#include "Developer/ImageWrapper/Public/Interfaces/IImageWrapper.h"
-#include "Developer/ImageWrapper/Public/Interfaces/IImageWrapperModule.h"
+#include "HeadMountedDisplay.h"
+
+#include "GenericTeamAgentInterface.h"
+
+//For PIE error messages
+#include "MessageLog.h"
+#define LOCTEXT_NAMESPACE "Fun BP Lib"
+
+
+#include "Runtime/ImageWrapper/Public/Interfaces/IImageWrapper.h"
+#include "Runtime/ImageWrapper/Public/Interfaces/IImageWrapperModule.h"
 
 //Body Setup
 #include "PhysicsEngine/BodySetup.h"
 
 
+//Apex issues, can add iOS here  <3 Rama
+#if PLATFORM_ANDROID || PLATFORM_HTML5_BROWSER || PLATFORM_IOS
+#ifdef WITH_APEX
+#undef WITH_APEX
+#endif
+#define WITH_APEX 0
+#endif //APEX EXCLUSIONS
+
 //~~~ PhysX ~~~
 #include "PhysXIncludes.h"
 #include "PhysXPublic.h"		//For the ptou conversions
+
+//For Scene Locking using Epic's awesome helper macros like SCOPED_SCENE_READ_LOCK
+#include "Runtime/Engine/Private/PhysicsEngine/PhysXSupport.h"
 //~~~~~~~~~~~
  
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,9 +49,8 @@
 #include <chrono>
 #include <random>
  
-
-
-
+#include <string>
+   
 /*
 	~~~ Rama File Operations CopyRight ~~~ 
 	
@@ -357,6 +379,10 @@ EPathFollowingRequestResult::Type UVictoryBPFunctionLibrary::Victory_AI_MoveToWi
 }
 	
 //~~~~~~
+//Core
+//~~~~~~ 
+ 
+//~~~~~~
 //Physics
 //~~~~~~ 
 float UVictoryBPFunctionLibrary::GetDistanceToCollision(UPrimitiveComponent* CollisionComponent, const FVector& Point, FVector& ClosestPointOnCollision)
@@ -397,6 +423,47 @@ bool UVictoryBPFunctionLibrary::VictoryPhysics_UpdateAngularDamping(UPrimitiveCo
 	return true;
 }
 	 
+bool UVictoryBPFunctionLibrary::VictoryDestructible_DestroyChunk(UDestructibleComponent* DestructibleComp, int32 HitItem)
+{   
+	#if WITH_APEX
+	if(!DestructibleComp) 
+	{
+		return false;
+	}
+	  
+	//Visibility
+	DestructibleComp->SetChunkVisible( HitItem, false );
+	 
+	//Collision
+	physx::PxShape** PShapes;
+	const physx::PxU32 PShapeCount = DestructibleComp->ApexDestructibleActor->getChunkPhysXShapes(PShapes, HitItem);
+	if (PShapeCount > 0)
+	{    
+		PxFilterData PQueryFilterData,PSimFilterData; //null data
+		  
+		for(uint32 ShapeIndex = 0; ShapeIndex < PShapeCount; ++ShapeIndex)
+		{ 
+			PxShape* Shape = PShapes[ShapeIndex];
+			if(!Shape) continue;
+			
+			{ 
+				SCOPED_SCENE_WRITE_LOCK(Shape->getActor()->getScene());
+				
+				Shape->setQueryFilterData(PQueryFilterData); //null data
+				Shape->setSimulationFilterData(PSimFilterData); //null data
+				Shape->setFlag(PxShapeFlag::eSCENE_QUERY_SHAPE, false);
+				Shape->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false);
+				Shape->setFlag(PxShapeFlag::eVISUALIZATION, false);	
+			}
+		}
+	}
+	return true;
+	#endif //WITH_APEX
+	 
+	UE_LOG(LogTemp,Error,TEXT("UVictoryBPFunctionLibrary::VictoryDestructible_DestroyChunk ~ Current Platform does not support APEX"));
+	return false;
+}
+
 static int32 GetChildBones(const FReferenceSkeleton& ReferenceSkeleton, int32 ParentBoneIndex, TArray<int32> & Children)
 { 
 	Children.Empty();
@@ -503,7 +570,7 @@ bool UVictoryBPFunctionLibrary::JoyFileIO_GetFilesInRootAndAllSubFolders(TArray<
 	return true;
 }
 
-bool UVictoryBPFunctionLibrary::ScreenShots_Rename_Move_Most_Recent(
+bool UVictoryBPFunctionLibrary::ScreenShoots_Rename_Move_Most_Recent(
 	FString& OriginalFileName,
 	FString NewName, 
 	FString NewAbsoluteFolderPath, 
@@ -521,11 +588,11 @@ bool UVictoryBPFunctionLibrary::ScreenShots_Rename_Move_Most_Recent(
 	//		_or can be created!_ <3 Rama
 	if(!VCreateDirectory(NewAbsoluteFolderPath)) return false;
 	
-	FString ScreenShotsDir = VictoryPaths__ScreenShotsDir();
+	FString ScreenShootsDir = VictoryPaths__ScreenShotsDir();
 	
-	//Find all screenshots
+	//Find all screenshoots
 	TArray<FString> Files;									//false = not recursive, not expecting subdirectories
-	bool Success = GetFiles(ScreenShotsDir, Files, false);
+	bool Success = GetFiles(ScreenShootsDir, Files, false);
 	
 	if(!Success)
 	{
@@ -592,7 +659,7 @@ bool UVictoryBPFunctionLibrary::ScreenShots_Rename_Move_Most_Recent(
 	FString NewFullFilePath = NewAbsoluteFolderPath + "/" + NewName + ".png";
 	 
 	//Move File!
-	return RenameFile(NewFullFilePath, ScreenShotsDir + "/" + OriginalFileName);
+	return RenameFile(NewFullFilePath, ScreenShootsDir + "/" + OriginalFileName);
 }
 
 void UVictoryBPFunctionLibrary::VictoryISM_GetAllVictoryISMActors(UObject* WorldContextObject, TArray<AVictoryISM*>& Out)
@@ -818,6 +885,38 @@ void UVictoryBPFunctionLibrary::VictoryGetAllAxisKeyBindings(TArray<FVictoryInpu
 		Bindings.Add(FVictoryInputAxis(Each));
 	}
 }
+void UVictoryBPFunctionLibrary::VictoryRemoveAxisKeyBind(FVictoryInputAxis ToRemove)
+{  
+	//GetMutableDefault
+	UInputSettings* Settings = GetMutableDefault<UInputSettings>();
+	if(!Settings) return;
+	
+	TArray<FInputAxisKeyMapping>& Axi = Settings->AxisMappings;
+	  
+	bool Found = false;
+	for(int32 v = 0; v < Axi.Num(); v++)
+	{
+		if(Axi[v].Key == ToRemove.Key)
+		{
+			Found = true;
+			Axi.RemoveAt(v);
+			v = 0;
+			continue;
+		}
+	}
+	 
+	if(Found)
+	{
+		//SAVES TO DISK
+		Settings->SaveKeyMappings();
+		   
+		//REBUILDS INPUT, creates modified config in Saved/Config/Windows/Input.ini
+		for (TObjectIterator<UPlayerInput> It; It; ++It)
+		{
+			It->ForceRebuildingKeyMaps(true);
+		}
+	}
+}
 
 void UVictoryBPFunctionLibrary::VictoryGetAllActionKeyBindings(TArray<FVictoryInput>& Bindings)
 {
@@ -834,6 +933,67 @@ void UVictoryBPFunctionLibrary::VictoryGetAllActionKeyBindings(TArray<FVictoryIn
 	}
 }
 
+void UVictoryBPFunctionLibrary::VictoryRemoveActionKeyBind(FVictoryInput ToRemove)
+{
+	//GetMutableDefault
+	UInputSettings* Settings = GetMutableDefault<UInputSettings>();
+	if(!Settings) return;
+	
+	TArray<FInputActionKeyMapping>& Actions = Settings->ActionMappings;
+	  
+	bool Found = false;
+	for(int32 v = 0; v < Actions.Num(); v++)
+	{
+		if(Actions[v].Key == ToRemove.Key)
+		{
+			Found = true;
+			Actions.RemoveAt(v);
+			v = 0;
+			continue;
+		}
+	}
+	
+	if(Found)
+	{
+		//SAVES TO DISK
+		Settings->SaveKeyMappings();
+		   
+		//REBUILDS INPUT, creates modified config in Saved/Config/Windows/Input.ini
+		for (TObjectIterator<UPlayerInput> It; It; ++It)
+		{
+			It->ForceRebuildingKeyMaps(true);
+		}
+	}
+}
+
+void UVictoryBPFunctionLibrary::VictoryGetAllAxisAndActionMappingsForKey(FKey Key, TArray<FVictoryInput>& ActionBindings, TArray<FVictoryInputAxis>& AxisBindings)
+{ 
+	ActionBindings.Empty();
+	AxisBindings.Empty();
+	
+		const UInputSettings* Settings = GetDefault<UInputSettings>();
+	if(!Settings) return;
+	
+	const TArray<FInputActionKeyMapping>& Actions = Settings->ActionMappings;
+	
+	for(const FInputActionKeyMapping& Each : Actions)
+	{
+		if(Each.Key == Key)
+		{
+			ActionBindings.Add(FVictoryInput(Each));
+		}
+	}
+
+	const TArray<FInputAxisKeyMapping>& Axi = Settings->AxisMappings;
+	
+	for(const FInputAxisKeyMapping& Each : Axi)
+	{  
+		if(Each.Key == Key)
+		{
+			AxisBindings.Add(FVictoryInputAxis(Each));
+		}
+	}
+}
 bool UVictoryBPFunctionLibrary::VictoryReBindAxisKey(FVictoryInputAxis Original, FVictoryInputAxis NewBinding)
 {
 	UInputSettings* Settings = const_cast<UInputSettings*>(GetDefault<UInputSettings>());
@@ -1056,7 +1216,13 @@ bool UVictoryBPFunctionLibrary::VictorySoundVolumeChange(USoundClass* SoundClass
 	*/
  }
 float UVictoryBPFunctionLibrary::VictoryGetSoundVolume(USoundClass* SoundClassObject)
-{
+{ 
+	if (!SoundClassObject)
+	{
+		return -1;
+	}
+	return SoundClassObject->Properties.Volume;
+	/*
 	FAudioDevice* Device = GEngine->GetMainAudioDevice();
 	if (!Device || !SoundClassObject)
 	{
@@ -1066,9 +1232,9 @@ float UVictoryBPFunctionLibrary::VictoryGetSoundVolume(USoundClass* SoundClassOb
 	FSoundClassProperties* Props = Device->GetSoundClassCurrentProperties(SoundClassObject);
 	if(!Props) return -1;
 	return Props->Volume;
+	*/
 }
-
-
+ 
 void UVictoryBPFunctionLibrary::VictoryIntPlusEquals(UPARAM(ref) int32& Int, int32 Add, int32& IntOut)
 {  
 	Int += Add;
@@ -1078,6 +1244,17 @@ void UVictoryBPFunctionLibrary::VictoryIntMinusEquals(UPARAM(ref) int32& Int, in
 { 
 	Int -= Sub;
 	IntOut = Int; 
+}
+
+void UVictoryBPFunctionLibrary::VictoryFloatPlusEquals(UPARAM(ref) float& Float, float Add, float& FloatOut)
+{
+	Float += Add;
+	FloatOut = Float;
+}
+void UVictoryBPFunctionLibrary::VictoryFloatMinusEquals(UPARAM(ref) float& Float, float Sub, float& FloatOut)
+{
+	Float -= Sub;
+	FloatOut = Float; 
 }
 
 void UVictoryBPFunctionLibrary::VictorySortIntArray(UPARAM(ref) TArray<int32>& IntArray, TArray<int32>& IntArrayRef)
@@ -1090,35 +1267,63 @@ void UVictoryBPFunctionLibrary::VictorySortFloatArray(UPARAM(ref) TArray<float>&
 	FloatArray.Sort();
 	FloatArrayRef = FloatArray;
 }
-  
+   
+//String Back To Type
+void UVictoryBPFunctionLibrary::Conversions__StringToVector(const FString& String, FVector& ConvertedVector, bool& IsValid)
+{   
+	IsValid = ConvertedVector.InitFromString( String );
+}
+void UVictoryBPFunctionLibrary::Conversions__StringToRotator(const FString& String, FRotator& ConvertedRotator, bool& IsValid)
+{
+	IsValid = ConvertedRotator.InitFromString( String );
+} 
+void UVictoryBPFunctionLibrary::Conversions__StringToColor(const FString& String, FLinearColor& ConvertedColor, bool& IsValid)
+{ 
+	IsValid = ConvertedColor.InitFromString( String );
+}
+void UVictoryBPFunctionLibrary::Conversions__ColorToString(const FLinearColor& Color, FString& ColorAsString)
+{
+	ColorAsString = Color.ToString();
+}
+ 
+//String Back To Type
 
 
+//! not working yet, always getting 255
+/*
+uint8 UVictoryBPFunctionLibrary::Victory_ConvertStringToByte(UEnum* Enum, FString String)
+{  
+	if( !Enum ) return 255;
+	  
+	return Enum->GetIndexByName(*String);
+}
+*/
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-bool UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Bool(FString SectionName,FString VariableName)
+bool UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Bool(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return false;
 	//~~~~~~~~~~~
  
 	bool Value;
-	GConfig->GetBool(
+	IsValid = GConfig->GetBool(
 		*SectionName,
 		*VariableName,
 		Value,
 		GGameIni
 	);
 	return Value;
-}
-int32 UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Int(FString SectionName,FString VariableName)
+} 
+int32 UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Int(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return 0;
 	//~~~~~~~~~~~
  
 	int32 Value;
-	GConfig->GetInt(
+	IsValid = GConfig->GetInt(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1126,13 +1331,13 @@ int32 UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Int(FString SectionNa
 	);
 	return Value;
 }
-float UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Float(FString SectionName,FString VariableName)
+float UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Float(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return 0;
 	//~~~~~~~~~~~
  
 	float Value;
-	GConfig->GetFloat(
+	IsValid = GConfig->GetFloat(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1140,13 +1345,13 @@ float UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Float(FString Section
 	);
 	return Value;
 }
-FVector UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Vector(FString SectionName,FString VariableName)
+FVector UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Vector(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return FVector::ZeroVector;
 	//~~~~~~~~~~~
  
 	FVector Value;
-	GConfig->GetVector(
+	IsValid = GConfig->GetVector(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1154,13 +1359,13 @@ FVector UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Vector(FString Sect
 	);
 	return Value;
 }
-FRotator UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Rotator(FString SectionName,FString VariableName)
+FRotator UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Rotator(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return FRotator::ZeroRotator;
 	//~~~~~~~~~~~
  
 	FRotator Value;
-	GConfig->GetRotator(
+	IsValid = GConfig->GetRotator(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1168,13 +1373,13 @@ FRotator UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Rotator(FString Se
 	);
 	return Value;
 }
-FLinearColor UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Color(FString SectionName,FString VariableName)
+FLinearColor UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Color(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return FColor::Black;
 	//~~~~~~~~~~~
   
 	FColor Value;
-	GConfig->GetColor(
+	IsValid = GConfig->GetColor(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1182,13 +1387,13 @@ FLinearColor UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Color(FString 
 	);
 	return FLinearColor(Value);
 }
-FString UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_String(FString SectionName,FString VariableName)
+FString UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_String(FString SectionName,FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return "";
 	//~~~~~~~~~~~
  
 	FString Value;
-	GConfig->GetString(
+	IsValid = GConfig->GetString(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1197,13 +1402,13 @@ FString UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_String(FString Sect
 	return Value;
 }
 
-FVector2D UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Vector2D(FString SectionName, FString VariableName)
+FVector2D UVictoryBPFunctionLibrary::VictoryGetCustomConfigVar_Vector2D(FString SectionName, FString VariableName, bool& IsValid)
 {
 	if(!GConfig) return FVector2D::ZeroVector;
 	//~~~~~~~~~~~
  
 	FVector Value;
-	GConfig->GetVector(
+	IsValid = GConfig->GetVector(
 		*SectionName,
 		*VariableName,
 		Value,
@@ -1321,11 +1526,30 @@ void UVictoryBPFunctionLibrary::VictorySetCustomConfigVar_String(FString Section
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
-
-
+EVictoryHMDDevice UVictoryBPFunctionLibrary::GetHeadMountedDisplayDeviceType()
+{
+	if(!GEngine) return EVictoryHMDDevice::None;
+	 
+	if (GEngine->HMDDevice.IsValid())
+	{  
+		//Actively connected?
+		if(!GEngine->HMDDevice->IsHMDConnected()) 
+		{  
+			return EVictoryHMDDevice::None;
+		} 
+		
+		switch (GEngine->HMDDevice->GetHMDDeviceType()) 
+		{       
+			case EHMDDeviceType::DT_OculusRift 				: return EVictoryHMDDevice::OculusRift;
+			case EHMDDeviceType::DT_Morpheus 				: return EVictoryHMDDevice::Morpheus;
+			case EHMDDeviceType::DT_SteamVR 				: return EVictoryHMDDevice::SteamVR;
+			case EHMDDeviceType::DT_ES2GenericStereoMesh 	: return EVictoryHMDDevice::ES2GenericStereoMesh;
+			case EHMDDeviceType::DT_GearVR 					: return EVictoryHMDDevice::GearVR;
+		}
+	}
+	  
+	return EVictoryHMDDevice::None;
+}
 
 
 
@@ -1713,12 +1937,12 @@ bool UVictoryBPFunctionLibrary::LoadStringArrayFromFile(TArray<FString>& StringA
 	StringArray.Empty();
 	
 	TArray<FString> FileArray;
-	
+	 
 	if( ! FFileHelper::LoadANSITextFileToStrings(*FullFilePath, NULL, FileArray))
 	{
 		return false;
 	}
-	
+
 	if(ExcludeEmptyLines)
 	{
 		for(const FString& Each : FileArray )
@@ -1936,8 +2160,12 @@ FString UVictoryBPFunctionLibrary::RealWorldTime__GetCurrentOSTime(
 	Day = 					Now.GetDay( );
 	Month = 				Now.GetMonth( );
 	Year = 				Now.GetYear( );
-	
-	return Now.ToString();
+	 
+	//MS are not included in FDateTime::ToString(), so adding it
+	//The Parse function accepts if MS are present.
+	FString NowWithMS = Now.ToString();
+	NowWithMS += "." + FString::FromInt(MilliSeconds);
+	return NowWithMS;
 }
 
 void UVictoryBPFunctionLibrary::RealWorldTime__GetTimePassedSincePreviousTime(
@@ -2018,12 +2246,12 @@ bool UVictoryBPFunctionLibrary::CharacterMovement__SetMaxMoveSpeed(ACharacter* T
 	{
 		return false;
 	}
-	if(!TheCharacter->CharacterMovement)
+	if(!TheCharacter->GetCharacterMovement())
 	{
 		return false;
 	}
 	
-	TheCharacter->CharacterMovement->MaxWalkSpeed = NewMaxMoveSpeed;
+	TheCharacter->GetCharacterMovement()->MaxWalkSpeed = NewMaxMoveSpeed;
 	
 	return true;
 }
@@ -2035,6 +2263,31 @@ int32 UVictoryBPFunctionLibrary::Conversion__FloatToRoundedInteger(float IN_Floa
 	return FGenericPlatformMath::RoundToInt(IN_Float);
 }
 
+
+bool UVictoryBPFunctionLibrary::IsAlphaNumeric(const FString& String)
+{
+	std::string str = (TCHAR_TO_UTF8(*String));
+	    
+	for ( std::string::iterator it=str.begin(); it!=str.end(); ++it)
+	{
+		if(!isalnum(*it))
+		{   
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+void UVictoryBPFunctionLibrary::Victory_GetStringFromOSClipboard(FString& FromClipboard)
+{  
+	FPlatformMisc::ClipboardPaste(FromClipboard);
+} 
+void UVictoryBPFunctionLibrary::Victory_SaveStringToOSClipboard(const FString& ToClipboard)
+{
+	FPlatformMisc::ClipboardCopy(*ToClipboard);
+}
+	
 
 bool UVictoryBPFunctionLibrary::HasSubstring(const FString& SearchIn, const FString& Substring, ESearchCase::Type SearchCase, ESearchDir::Type SearchDir)
 {
@@ -2096,6 +2349,19 @@ bool UVictoryBPFunctionLibrary::OptionsMenu__GetDisplayAdapterScreenResolutions(
 	return false;
 }
 
+void UVictoryBPFunctionLibrary::GetUserDisplayAdapterBrand(bool& IsAMD, bool& IsNvidia, bool& IsIntel, bool& IsUnknown, int32& UnknownId)
+{   
+	IsAMD 		= IsRHIDeviceAMD();
+	IsNvidia 	= IsRHIDeviceNVIDIA();
+	IsIntel 	= IsRHIDeviceIntel();
+	
+	IsUnknown = !IsAMD && !IsNvidia && !IsIntel;
+	 
+	if(IsUnknown)
+	{
+		UnknownId = GRHIVendorId;
+	}
+} 
 
 //Make .h's for these two!
 FRotator UVictoryBPFunctionLibrary::TransformVectorToActorSpaceAngle(AActor* Actor, const FVector& InVector)
@@ -2140,29 +2406,29 @@ AStaticMeshActor* UVictoryBPFunctionLibrary::Clone__StaticMeshActor(UObject* Wor
 	NewSMA->SetActorTransform(ToClone->GetTransform());
 	
 	//Mobility
-	NewSMA->StaticMeshComponent->SetMobility(EComponentMobility::Movable	);
+	NewSMA->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable	);
 	
 	//copy static mesh
-	NewSMA->StaticMeshComponent->SetStaticMesh(ToClone->StaticMeshComponent->StaticMesh);
+	NewSMA->GetStaticMeshComponent()->SetStaticMesh(ToClone->GetStaticMeshComponent()->StaticMesh);
 	
 	//~~~
 	
 	//copy materials
 	TArray<UMaterialInterface*> Mats;
-	ToClone->StaticMeshComponent->GetUsedMaterials(Mats);
+	ToClone->GetStaticMeshComponent()->GetUsedMaterials(Mats);
 	
 	const int32 Total = Mats.Num();
 	for(int32 v = 0; v < Total; v++ )
 	{
-		NewSMA->StaticMeshComponent->SetMaterial(v,Mats[v]);
+		NewSMA->GetStaticMeshComponent()->SetMaterial(v,Mats[v]);
 	}
 	
 	//~~~
 	
 	//copy physics state
-	if(ToClone->StaticMeshComponent->IsSimulatingPhysics())
+	if(ToClone->GetStaticMeshComponent()->IsSimulatingPhysics())
 	{
-		NewSMA->StaticMeshComponent->SetSimulatePhysics(true);
+		NewSMA->GetStaticMeshComponent()->SetSimulatePhysics(true);
 	}
 	
 	//~~~
@@ -2234,6 +2500,46 @@ bool UVictoryBPFunctionLibrary::WorldType__InGameInstanceWorld(UObject* WorldCon
     return (World->WorldType == EWorldType::Game );
 }
 	
+
+
+bool UVictoryBPFunctionLibrary::DoesMaterialHaveParameter(UMaterialInterface* Mat, FName Parameter)
+{    
+	if(!Mat || Parameter == NAME_None) 
+	{
+		return false;
+	}
+	
+	//Lesson, always use the parent of a Material Instance Dynamic, 
+	//	for some reason the dynamic version finds parameters that aren't actually valid.
+	//		-Rama
+	UMaterialInterface* Parent = Mat;
+	UMaterialInstance* MatInst = Cast<UMaterialInstance>(Mat);
+	if(MatInst)
+	{
+		Parent = MatInst->Parent;
+	}
+	
+	if(!Parent) 
+	{
+		return false;
+	} 
+	
+	float ScalarValue;
+	if(Parent->GetScalarParameterValue(Parameter,ScalarValue))
+	{
+		return true;
+	}
+  
+	FLinearColor VectValue;
+	if(Parent->GetVectorParameterValue(Parameter,VectValue))
+	{
+		return true;
+	}
+ 
+	UTexture* T2DValue; 
+	return Parent->GetTextureParameterValue(Parameter,T2DValue);
+}
+
 FString UVictoryBPFunctionLibrary::Accessor__GetNameAsString(const UObject* TheObject)
 {
 	if (!TheObject) return "";
@@ -2262,7 +2568,7 @@ void UVictoryBPFunctionLibrary::Draw__Thick3DLineFromCharacterSocket(AActor* The
 {
 	ACharacter * AsCharacter = Cast<ACharacter>(TheCharacter);
 	if (!AsCharacter) return;
-	if (!AsCharacter->Mesh) return;
+	if (!AsCharacter->GetMesh()) return;
 	//~~~~~~~~~~~~~~~~~~~~
 	
 	//Get World
@@ -2270,7 +2576,7 @@ void UVictoryBPFunctionLibrary::Draw__Thick3DLineFromCharacterSocket(AActor* The
 	if (!TheWorld) return;
 	//~~~~~~~~~~~~~~~~~
 	
-	const FVector SocketLocation = AsCharacter->Mesh->GetSocketLocation(Socket);
+	const FVector SocketLocation = AsCharacter->GetMesh()->GetSocketLocation(Socket);
 	DrawDebugLine(
 		TheWorld, 
 		SocketLocation, 
@@ -2439,7 +2745,9 @@ void UVictoryBPFunctionLibrary::Rendering__UnFreezeGameRendering()
 }
 	
 bool UVictoryBPFunctionLibrary::ClientWindow__GameWindowIsForeGroundInOS()
-{
+{   
+	return FPlatformProcess::IsThisApplicationForeground();
+	/*
 	//Iterate Over Actors
 	UWorld* TheWorld = NULL;
 	for ( TObjectIterator<AActor> Itr; Itr; ++Itr )
@@ -2468,6 +2776,7 @@ bool UVictoryBPFunctionLibrary::ClientWindow__GameWindowIsForeGroundInOS()
 	//~~~~~~~~~~~~~~~~~~~~
 	
     return VictoryViewport->IsForegroundWindow();
+	*/
 }
 bool UVictoryBPFunctionLibrary::FileIO__SaveStringTextToFile(
 	FString SaveDirectory, 
@@ -2545,7 +2854,11 @@ bool UVictoryBPFunctionLibrary::FileIO__SaveStringArrayToFile(FString SaveDirect
 		FinalStr += Each;
 		FinalStr += LINE_TERMINATOR;
 	}
+	
+
+
 	return FFileHelper::SaveStringToFile(FinalStr, * SaveDirectory);
+	
 }
 float UVictoryBPFunctionLibrary::Calcs__ClosestPointToSourcePoint(const FVector & Source, const TArray<FVector>& OtherPoints, FVector& ClosestPoint)
 {
@@ -2583,7 +2896,7 @@ bool UVictoryBPFunctionLibrary::Data__GetCharacterBoneLocations(AActor * TheChar
 	ACharacter * Source = Cast<ACharacter>(TheCharacter);
 	if (!Source) return false;
 	
-	if (!Source-> Mesh) return false;
+	if (!Source->GetMesh()) return false;
 	//~~~~~~~~~~~~~~~~~~~~~~~~~
 	TArray<FName> BoneNames;
 	
@@ -2591,12 +2904,12 @@ bool UVictoryBPFunctionLibrary::Data__GetCharacterBoneLocations(AActor * TheChar
 	
 	
 	//Get Bone Names
-	Source-> Mesh->GetBoneNames(BoneNames);
+	Source->GetMesh()->GetBoneNames(BoneNames);
 	
 	//Get Bone Locations
 	for (int32 Itr = 0; Itr < BoneNames.Num(); Itr++ )
 	{
-		BoneLocations.Add(Source->Mesh->GetBoneLocation(BoneNames[Itr]));
+		BoneLocations.Add(Source->GetMesh()->GetBoneLocation(BoneNames[Itr]));
 	}
 	
 	return true;
@@ -2609,13 +2922,13 @@ USkeletalMeshComponent* UVictoryBPFunctionLibrary::Accessor__GetCharacterSkeleta
 	ACharacter * AsCharacter = Cast<ACharacter>(TheCharacter);
 	if (!AsCharacter) return NULL;
 	//~~~~~~~~~~~~~~~~~
-	
+	 
 	//Is Valid?
-	if (AsCharacter->Mesh)
-		if (AsCharacter->Mesh->IsValidLowLevel() ) 
+	if (AsCharacter->GetMesh())
+		if (AsCharacter->GetMesh()->IsValidLowLevel() ) 
 			IsValid = true;
 			
-	return AsCharacter->Mesh;
+	return AsCharacter->GetMesh();
 }
 
 bool UVictoryBPFunctionLibrary::TraceData__GetTraceDataFromCharacterSocket(
@@ -2633,13 +2946,13 @@ bool UVictoryBPFunctionLibrary::TraceData__GetTraceDataFromCharacterSocket(
 	if (!AsCharacter) return false;
 	
 	//Mesh Exists?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
 	//Socket Exists?
-	if (!AsCharacter->Mesh->DoesSocketExist(Socket)) return false;
+	if (!AsCharacter->GetMesh()->DoesSocketExist(Socket)) return false;
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	TraceStart = AsCharacter->Mesh->GetSocketLocation(Socket);
+	TraceStart = AsCharacter->GetMesh()->GetSocketLocation(Socket);
 	TraceEnd = TraceStart + TraceRotation.Vector() * TraceLength;
 	
 	if (DrawTraceData) 
@@ -2766,10 +3079,10 @@ AActor*  UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestBone(
 	if (!AsCharacter) return HitActor;
 	
 	//Mesh
-	if (!AsCharacter->Mesh) return HitActor;
+	if (!AsCharacter->GetMesh()) return HitActor;
 	
 	//Component Trace
-	IsValid = AsCharacter->Mesh->K2_LineTraceComponent(
+	IsValid = AsCharacter->GetMesh()->K2_LineTraceComponent(
 		TraceStart, 
 		TraceEnd, 
 		true, 
@@ -2780,12 +3093,13 @@ AActor*  UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestBone(
 	); 
 	
 	//Location
-	ClosestBoneLocation = AsCharacter->Mesh->GetBoneLocation(ClosestBoneName);
+	ClosestBoneLocation = AsCharacter->GetMesh()->GetBoneLocation(ClosestBoneName);
 	
 	return HitActor;
 }
 
 AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
+	UObject* WorldContextObject,
 	const AActor * TraceOwner, 
 	const FVector & TraceStart, 
 	const FVector & TraceEnd, 
@@ -2799,21 +3113,13 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 	IsValid = false;
 	AActor * HitActor = NULL;
 	//~~~~~~~~~~~~~~~~~~~~~~
+	
+	if(!WorldContextObject) return nullptr;
 	 
-	//There may not be a trace owner so dont rely on it
-	
-	//Get a PC to GetWorld() from
-	TObjectIterator<APlayerController> Itr;
-	if (!Itr) return NULL;
-	
-	//~~~~~~~~~~~~
-	
-	//Get World
-	UWorld* TheWorld = Itr->GetWorld();
-	if (TheWorld == nullptr) return NULL;
-	//~~~~~~~~~~~~~~~~~
-	
-	
+	UWorld* const TheWorld = GEngine->GetWorldFromContextObject(WorldContextObject);
+	if(!TheWorld) return nullptr;
+	//~~~~~~~~~~~
+	 
 	//Simple Trace First
 	FCollisionQueryParams TraceParams(FName(TEXT("VictoryBPTrace::CharacterMeshSocketTrace")), true, HitActor);
 	TraceParams.bTraceComplex = true;
@@ -2842,11 +3148,11 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 	if (!AsCharacter) return HitActor;
 	
 	//Mesh
-	if (!AsCharacter->Mesh) return HitActor;
+	if (!AsCharacter->GetMesh()) return HitActor;
 	
 	//Component Trace
 	FName BoneName;
-	if (! AsCharacter->Mesh->K2_LineTraceComponent(
+	if (! AsCharacter->GetMesh()->K2_LineTraceComponent(
 		TraceStart, 
 		TraceEnd, 
 		true, 
@@ -2861,7 +3167,7 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 	TArray<FComponentSocketDescription> SocketNames;
 	
 	//Get Bone Names
-	AsCharacter->Mesh->QuerySupportedSockets(SocketNames);
+	AsCharacter->GetMesh()->QuerySupportedSockets(SocketNames);
 	
 	//						Min
 	FVector CurLoc;
@@ -2877,7 +3183,7 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 		if(SocketNames[Itr].Type == EComponentSocketType::Bone) continue;
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		
-		CurLoc = AsCharacter->Mesh->GetSocketLocation(SocketNames[Itr].Name);
+		CurLoc = AsCharacter->GetMesh()->GetSocketLocation(SocketNames[Itr].Name);
 		
 		//Dist
 		CurDist = FVector::Dist(OutImpactPoint, CurLoc);
@@ -2894,7 +3200,7 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 	ClosestSocketName = SocketNames[ClosestVibe].Name;
 	
 	//Location
-	SocketLocation = AsCharacter->Mesh->GetSocketLocation(ClosestSocketName);
+	SocketLocation = AsCharacter->GetMesh()->GetSocketLocation(ClosestSocketName);
 	
 	//Valid
 	IsValid = true;
@@ -2903,87 +3209,94 @@ AActor* UVictoryBPFunctionLibrary::Traces__CharacterMeshTrace___ClosestSocket(
 	return HitActor;
 }
 	
+void UVictoryBPFunctionLibrary::VictorySimulateMouseWheel(const float& Delta)
+{
+	FSlateApplication::Get().OnMouseWheel(int32(Delta));
+}
 void UVictoryBPFunctionLibrary::VictorySimulateKeyPress(APlayerController* ThePC, FKey Key, EInputEvent EventType)
 {
 	if (!ThePC) return;
-	//~~~~~~~~~~~~
-	 
-	//Player Input / Key Bindings
 	ThePC->InputKey(Key, EventType, 1, false); //amount depressed, bGamepad
-	   
-	//! THIS ENDS UP FIRING TWICE SOME REASON
-	/*
-	//Viewport Client
-	if (ULocalPlayer* LocalPlayer = Cast<ULocalPlayer>(ThePC->Player))
+	//! This will fire twice if the event is not handled, for umg widgets place an invisible button in background.
+    
+	if (Key == EKeys::LeftMouseButton || Key == EKeys::MiddleMouseButton || Key == EKeys::RightMouseButton || Key == EKeys::ThumbMouseButton || Key == EKeys::ThumbMouseButton2)
 	{
-		LocalPlayer->ViewportClient->InputKey(
-			LocalPlayer->ViewportClient->Viewport,
-			LocalPlayer->GetControllerId(),
-			Key,
-			EventType,
-			1,//float AmountDepressed = 1.f,
-			false//bool bGamepad=false
-		);
-	}
-	*/
-	//! 
-	
-	//~~~ Slate ~~~
-	
-	FVector2D MousePos;
-	ThePC->GetMousePosition(MousePos.X,MousePos.Y);
-	
-	TSet<FKey> MouseKeySet;
-	MouseKeySet.Add(Key);
-	
-	/*
-		Not working
-	*/
-	FPointerEvent PointerEvent(
-		0,//uint32 InPointerIndex,
-		MousePos,
-		MousePos,
-		FVector2D::ZeroVector, //Delta
-		MouseKeySet,
-		FModifierKeysState()//const FModifierKeysState& InModifierKeys
-	);
-	
-	FKeyEvent KeyEvent(	
-		Key,	//FKey
-		FModifierKeysState(), //const FModifierKeysState& InModifierKeys, 
-		0,//const uint32 InUserIndex,
-		false, //const bool bInIsRepeat,
-		0, //const uint32 InCharacterCode,
-		0 //const uint32 InKeyCode
-	);
-	//not setting other vars properly 
-	 
-	/*
-			private:
-		// Name of the key that was pressed.
-		FKey Key;
+		EMouseButtons::Type Button = EMouseButtons::Invalid;
+		if (Key == EKeys::LeftMouseButton)
+		{
+			Button = EMouseButtons::Left;
+		}
+		else if (Key == EKeys::MiddleMouseButton)
+		{
+			Button = EMouseButtons::Middle;
+		}
+		else if (Key == EKeys::RightMouseButton)
+		{
+			Button = EMouseButtons::Right;
+		}
+		else if (Key == EKeys::ThumbMouseButton)
+		{
+			Button = EMouseButtons::Thumb01;
+		}
+		else if (Key == EKeys::ThumbMouseButton2)
+		{
+			Button = EMouseButtons::Thumb02;
+		}
 
-		// The character code of the key that was pressed.  Only applicable to typed character keys, 0 otherwise.
-		uint32 CharacterCode;
 
-		// Original key code received from hardware before any conversion/mapping
-		uint32 KeyCode;
-	*/
- 		
-	if(EventType == IE_Pressed)
-	{
-		//FSlateApplication::Get().ProcessMouseButtonDownEvent(nullptr,PointerEvent);
-		FSlateApplication::Get().ProcessKeyDownEvent(KeyEvent);
+		if (EventType == IE_Pressed)
+		{
+			FSlateApplication::Get().OnMouseDown(nullptr, Button);
+		}
+		else if (EventType == IE_Released)
+		{
+			FSlateApplication::Get().OnMouseUp(Button);
+		}
+		else if (EventType == IE_DoubleClick)
+		{
+			FSlateApplication::Get().OnMouseDoubleClick(nullptr, Button);
+		}
 	}
-	else if(EventType == IE_Released)
+	else
 	{
-		//FSlateApplication::Get().ProcessMouseButtonUpEvent(PointerEvent);
-		FSlateApplication::Get().ProcessKeyUpEvent(KeyEvent);
+		const uint32 *KeyCode = 0;
+		const uint32 *CharacterCode = 0;
+		FInputKeyManager::Get().GetCodesFromKey(Key, KeyCode, CharacterCode);
+		uint32 KeyCodeVal = (KeyCode != NULL) ? *KeyCode : -1;
+		uint32 CharacterCodeVal = (CharacterCode != NULL) ? *CharacterCode : -1;
+
+		if (EventType == IE_Pressed)
+		{
+			FSlateApplication::Get().OnKeyDown(KeyCodeVal, CharacterCodeVal, false);
+		}
+		else if (EventType == IE_Released)
+		{
+			FSlateApplication::Get().OnKeyUp(KeyCodeVal, CharacterCodeVal, false);
+		}
 	}
-	else if(EventType == IE_DoubleClick)
-	{
-		//FSlateApplication::Get().ProcessMouseButtonDoubleClickEvent(nullptr,PointerEvent);
-	} 
+}
+
+bool UVictoryBPFunctionLibrary::Viewport__EnableWorldRendering(const APlayerController* ThePC, bool RenderTheWorld)
+{ 
+	if (!ThePC) return false;
+	//~~~~~~~~~~~~~
+	
+	//Get Player
+	ULocalPlayer * VictoryPlayer = Cast<ULocalPlayer>(ThePC->Player); 
+											//PlayerController::Player is UPlayer
+           
+	if (!VictoryPlayer) return false;
+	//~~~~~~~~~~~~~~~~~~~~
+	
+	//get view port ptr
+	UGameViewportClient * VictoryViewportClient = 
+		Cast < UGameViewportClient > (VictoryPlayer->ViewportClient);
+		
+	if (!VictoryViewportClient) return false;
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    
+	VictoryViewportClient->bDisableWorldRendering = !RenderTheWorld;
+	return true;
 }
 
 //Most HUD stuff is in floats so I do the conversion internally
@@ -3111,21 +3424,21 @@ bool UVictoryBPFunctionLibrary::Physics__EnterRagDoll(AActor * TheCharacter)
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
 	//Physics Asset?
-	if(!AsCharacter->Mesh->GetPhysicsAsset()) return false;
+	if(!AsCharacter->GetMesh()->GetPhysicsAsset()) return false;
 	
 	//Victory Ragdoll
-	AsCharacter->Mesh->SetPhysicsBlendWeight(1);
-	AsCharacter->Mesh->bBlendPhysics = true;
-	
+	AsCharacter->GetMesh()->SetSimulatePhysics(true);
+
 	return true;
 }
 
 
 bool UVictoryBPFunctionLibrary::Physics__LeaveRagDoll(
 	AActor* TheCharacter,
+	bool SetToFallingMovementMode,
 	float HeightAboveRBMesh,
 	const FVector& InitLocation, 
 	const FRotator& InitRotation
@@ -3134,26 +3447,30 @@ bool UVictoryBPFunctionLibrary::Physics__LeaveRagDoll(
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
-	
+	if (!AsCharacter->GetMesh()) return false;
+	 
 	//Set Actor Location to Be Near Ragdolled Mesh
 	//Calc Ref Bone Relative Pos for use with IsRagdoll
 	TArray<FName> BoneNames;
-	AsCharacter->Mesh->GetBoneNames(BoneNames);
+	AsCharacter->GetMesh()->GetBoneNames(BoneNames);
 	if(BoneNames.Num() > 0)
 	{
-		AsCharacter->SetActorLocation(FVector(0,0,HeightAboveRBMesh) + AsCharacter->Mesh->GetBoneLocation(BoneNames[0]));
+		AsCharacter->SetActorLocation(FVector(0,0,HeightAboveRBMesh) + AsCharacter->GetMesh()->GetBoneLocation(BoneNames[0]));
 	}
 	
 	//Exit Ragdoll
-	AsCharacter->Mesh->SetPhysicsBlendWeight(0); //1 for full physics
-
+	AsCharacter->GetMesh()->SetSimulatePhysics(false);
+	AsCharacter->GetMesh()->AttachToComponent(AsCharacter->GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+            
 	//Restore Defaults
-	AsCharacter->Mesh->SetRelativeRotation(InitRotation);
-	AsCharacter->Mesh->SetRelativeLocation(InitLocation);
+	AsCharacter->GetMesh()->SetRelativeRotation(InitRotation);
+	AsCharacter->GetMesh()->SetRelativeLocation(InitLocation);
 	
 	//Set Falling After Final Capsule Relocation
-	if(AsCharacter->CharacterMovement) AsCharacter->CharacterMovement->SetMovementMode(MOVE_Falling);	
+	if(SetToFallingMovementMode)
+	{ 
+		if(AsCharacter->GetCharacterMovement()) AsCharacter->GetCharacterMovement()->SetMovementMode(MOVE_Falling);	
+	}
 	
 	return true;
 }	
@@ -3164,9 +3481,9 @@ bool UVictoryBPFunctionLibrary::Physics__IsRagDoll(AActor* TheCharacter)
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
-	return AsCharacter->Mesh->IsAnySimulatingPhysics();
+	return AsCharacter->GetMesh()->IsAnySimulatingPhysics();
 }	
 
 bool UVictoryBPFunctionLibrary::Physics__GetLocationofRagDoll(AActor* TheCharacter, FVector& RagdollLocation)
@@ -3175,13 +3492,13 @@ bool UVictoryBPFunctionLibrary::Physics__GetLocationofRagDoll(AActor* TheCharact
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
 	TArray<FName> BoneNames;
-	AsCharacter->Mesh->GetBoneNames(BoneNames);
+	AsCharacter->GetMesh()->GetBoneNames(BoneNames);
 	if(BoneNames.Num() > 0)
 	{
-		RagdollLocation = AsCharacter->Mesh->GetBoneLocation(BoneNames[0]);
+		RagdollLocation = AsCharacter->GetMesh()->GetBoneLocation(BoneNames[0]);
 	}
 	else return false;
 	
@@ -3197,10 +3514,10 @@ bool UVictoryBPFunctionLibrary::Physics__InitializeVictoryRagDoll(
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
-	InitLocation = AsCharacter->Mesh->GetRelativeTransform().GetLocation();
-	InitRotation = AsCharacter->Mesh->GetRelativeTransform().Rotator();
+	InitLocation = AsCharacter->GetMesh()->GetRelativeTransform().GetLocation();
+	InitRotation = AsCharacter->GetMesh()->GetRelativeTransform().Rotator();
 	
 	return true;
 }
@@ -3214,17 +3531,17 @@ bool UVictoryBPFunctionLibrary::Physics__UpdateCharacterCameraToRagdollLocation(
 	if (!AsCharacter) return false;
 	
 	//Mesh?
-	if (!AsCharacter->Mesh) return false;
+	if (!AsCharacter->GetMesh()) return false;
 	
 	//Ragdoll?
-	if(!AsCharacter->Mesh->IsAnySimulatingPhysics()) return false;
+	if(!AsCharacter->GetMesh()->IsAnySimulatingPhysics()) return false;
 	
 	FVector RagdollLocation = FVector(0,0,0);
 	TArray<FName> BoneNames;
-	AsCharacter->Mesh->GetBoneNames(BoneNames);
+	AsCharacter->GetMesh()->GetBoneNames(BoneNames);
 	if(BoneNames.Num() > 0)
 	{
-		RagdollLocation = AsCharacter->Mesh->GetBoneLocation(BoneNames[0]);
+		RagdollLocation = AsCharacter->GetMesh()->GetBoneLocation(BoneNames[0]);
 	}
 	
 	//Interp
@@ -3444,7 +3761,7 @@ bool UVictoryBPFunctionLibrary::AnimatedVertex__GetCharacterAnimatedVertexLocati
 	ACharacter * AsCharacter = Cast<ACharacter>(TheCharacter);
 	if (!AsCharacter) return false;
 	
-	USkeletalMeshComponent* Mesh = AsCharacter->Mesh;
+	USkeletalMeshComponent* Mesh = AsCharacter->GetMesh();
 	if (!Mesh) return false;
 	//~~~~~~~~~~~~~~~~~~~~
 	
@@ -3462,7 +3779,7 @@ bool UVictoryBPFunctionLibrary::AnimatedVertex__GetCharacterAnimatedVertexLocati
 	ACharacter * AsCharacter = Cast<ACharacter>(TheCharacter);
 	if (!AsCharacter) return false;
 	
-	USkeletalMeshComponent* Mesh = AsCharacter->Mesh;
+	USkeletalMeshComponent* Mesh = AsCharacter->GetMesh();
 	if (!Mesh) return false;
 	//~~~~~~~~~~~~~~~~~~~~
 	
@@ -3480,7 +3797,7 @@ bool UVictoryBPFunctionLibrary::AnimatedVertex__DrawCharacterAnimatedVertexLocat
 	ACharacter * AsCharacter = Cast<ACharacter>(TheCharacter);
 	if (!AsCharacter) return false;
 	
-	USkeletalMeshComponent* Mesh = AsCharacter->Mesh;
+	USkeletalMeshComponent* Mesh = AsCharacter->GetMesh();
 	if (!Mesh) return false;
 	//~~~~~~~~~~~~~~~~~~~~
 	
@@ -3494,11 +3811,11 @@ bool UVictoryBPFunctionLibrary::AnimatedVertex__DrawCharacterAnimatedVertexLocat
 float UVictoryBPFunctionLibrary::DistanceToSurface__DistaceOfPointToMeshSurface(AStaticMeshActor* TheSMA, const FVector& TestPoint, FVector& ClosestSurfacePoint)
 {
 	if(!TheSMA) return -1;
-	if(!TheSMA->StaticMeshComponent) return -1;
+	if(!TheSMA->GetStaticMeshComponent()) return -1;
 	//~~~~~~~~~~
 	
 	//Dist of pt to Surface, retrieve closest Surface Point to Actor
-	return TheSMA->StaticMeshComponent->GetDistanceToCollision(TestPoint, ClosestSurfacePoint);
+	return TheSMA->GetStaticMeshComponent()->GetDistanceToCollision(TestPoint, ClosestSurfacePoint);
 }
 
 bool UVictoryBPFunctionLibrary::Mobility__SetSceneCompMobility(
@@ -4030,8 +4347,14 @@ bool UVictoryBPFunctionLibrary::Victory_Get_Pixel(const TArray<FLinearColor>& Pi
 }
 
 
-bool UVictoryBPFunctionLibrary::Victory_SavePixels(const FString& FullFilePath,int32 Width, int32 Height, const TArray<FLinearColor>& ImagePixels, FString& ErrorString)
-{
+bool UVictoryBPFunctionLibrary::Victory_SavePixels(
+	const FString& FullFilePath
+	, int32 Width, int32 Height 
+	, const TArray<FLinearColor>& ImagePixels
+	, bool SaveAsBMP
+	, bool sRGB
+	, FString& ErrorString
+){
 	if(FullFilePath.Len() < 1) 
 	{
 		ErrorString = "No file path";
@@ -4052,10 +4375,10 @@ bool UVictoryBPFunctionLibrary::Victory_SavePixels(const FString& FullFilePath,i
 	//Create FColor version
 	TArray<FColor> ColorArray;
 	for(const FLinearColor& Each : ImagePixels)
-	{
-		ColorArray.Add(Each.ToFColor(true));
+	{  
+		ColorArray.Add(Each.ToFColor(sRGB));  
 	} 
-	 
+	  
 	if(ColorArray.Num() != Width * Height) 
 	{
 		ErrorString = "Error ~ height x width is not equal to the total pixel array length!";
@@ -4063,20 +4386,38 @@ bool UVictoryBPFunctionLibrary::Victory_SavePixels(const FString& FullFilePath,i
 	}
 	  
 	//Remove any supplied file extension and/or add accurate one
-	FString FinalFilename = FPaths::GetBaseFilename(FullFilePath, false) + ".png";  //false = dont remove path
-
+	FString FinalFilename = FPaths::GetBaseFilename(FullFilePath, false); //false = dont remove path
+	FinalFilename += (SaveAsBMP) ? ".bmp" : ".png";  
+   
 	//~~~
 	
-	TArray<uint8> CompressedPNG;
-	FImageUtils::CompressImageArray( 
-		Width, 
-		Height, 
-		ColorArray, 
-		CompressedPNG
-	);
-	    
-	ErrorString = "Success! or if returning false, the saving of file to disk did not succeed for File IO reasons";
-	return FFileHelper::SaveArrayToFile(CompressedPNG, *FinalFilename);
+	if(SaveAsBMP)
+	{ 
+		ErrorString = "Success! or if returning false, the saving of file to disk did not succeed for File IO reasons";
+		return FFileHelper::CreateBitmap( 
+			*FinalFilename, 
+			Width, 
+			Height,  
+			ColorArray.GetData(), //const struct FColor* Data, 
+			nullptr,//struct FIntRect* SubRectangle = NULL, 
+			&IFileManager::Get(), 
+			nullptr, //out filename info only 
+			true //bool bInWriteAlpha 
+		);
+	}
+	else
+	{
+		TArray<uint8> CompressedPNG;
+		FImageUtils::CompressImageArray( 
+			Width, 
+			Height, 
+			ColorArray, 
+			CompressedPNG
+		);
+			
+		ErrorString = "Success! or if returning false, the saving of file to disk did not succeed for File IO reasons";
+		return FFileHelper::SaveArrayToFile(CompressedPNG, *FinalFilename);
+	} 
 	 
 	/*
 	//Crashed for JPG, worked great for PNG
@@ -4225,6 +4566,10 @@ void UVictoryBPFunctionLibrary::PlaySoundAtLocationFromFile(UObject* WorldContex
 
 class USoundWave* UVictoryBPFunctionLibrary::GetSoundWaveFromFile(const FString& FilePath)
 {
+	#if PLATFORM_PS4
+	UE_LOG(LogTemp, Error, TEXT("UVictoryBPFunctionLibrary::GetSoundWaveFromFile ~ vorbis-method not supported on PS4. See UVictoryBPFunctionLibrary::fillSoundWaveInfo"));
+	return nullptr;
+	#else
 	USoundWave* sw = NewObject<USoundWave>(USoundWave::StaticClass());
 
 	if (!sw)
@@ -4253,12 +4598,14 @@ class USoundWave* UVictoryBPFunctionLibrary::GetSoundWaveFromFile(const FString&
 		return NULL;
 
 	return sw;
+	#endif 
 }
 
+#if !PLATFORM_PS4
 int32 UVictoryBPFunctionLibrary::fillSoundWaveInfo(class USoundWave* sw, TArray<uint8>* rawFile)
 {
-    FSoundQualityInfo info;
-    FVorbisAudioInfo vorbis_obj = FVorbisAudioInfo();
+    FSoundQualityInfo info; 
+    FVorbisAudioInfo vorbis_obj;
     if (!vorbis_obj.ReadCompressedInfo(rawFile->GetData(), rawFile->Num(), &info))
     {
         //Debug("Can't load header");
@@ -4315,8 +4662,8 @@ int32 UVictoryBPFunctionLibrary::findSource(class USoundWave* sw, class FSoundSo
 	out_audioSource = audioSource;
 	return -2;
 }
-
-
+#endif //PLATFORM_PS4
+ 
 //~~~ Kris ~~~
  
 bool UVictoryBPFunctionLibrary::Array_IsValidIndex(const TArray<int32>& TargetArray, int32 Index)
@@ -4420,20 +4767,6 @@ bool UVictoryBPFunctionLibrary::Capture2D_Project(class ASceneCapture2D* Target,
     return (Target) ? CaptureComponent2D_Project(Target->GetCaptureComponent2D(), Location, OutPixelLocation) : false;
 }
  
-UTextureRenderTarget2D* UVictoryBPFunctionLibrary::CreateTextureRenderTarget2D(int32 InSizeX, int32 InSizeY, FLinearColor ClearColor)
-{ 
-    UTextureRenderTarget2D* RenderTarget = NewObject<UTextureRenderTarget2D>();
-    
-    if (RenderTarget)
-    {
-        RenderTarget->AddToRoot();
-        RenderTarget->ClearColor = ClearColor;
-        RenderTarget->InitAutoFormat((InSizeX == 0) ? 256 : InSizeX, (InSizeY == 0) ? 256 : InSizeY);
-    }
-    
-    return RenderTarget;
-}
-
 static IImageWrapperPtr GetImageWrapperByExtention(const FString InImagePath)
 {
     IImageWrapperModule& ImageWrapperModule = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper"));
@@ -4572,6 +4905,188 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromFileByExtension(const F
 	return Texture;
 }
 
+UUserWidget* UVictoryBPFunctionLibrary::GetFirstWidgetOfClass(UObject* WorldContextObject, TSubclassOf<UUserWidget> WidgetClass, bool TopLevelOnly)
+{
+	if (!WidgetClass || !WorldContextObject)
+	{
+		return nullptr;
+	}
+
+	const UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
+	if (!World)
+	{
+		return nullptr;
+	}
+
+	UUserWidget* ResultWidget = nullptr;
+	for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr)
+	{
+		UUserWidget* LiveWidget = *Itr;
+
+		// Skip any widget that's not in the current world context.
+		if (LiveWidget->GetWorld() != World)
+		{
+			continue;
+		}
+
+		// Skip any widget that is not a child of the class specified.
+		if (!LiveWidget->GetClass()->IsChildOf(WidgetClass))
+		{
+			continue;
+		}
+
+		if (!TopLevelOnly || LiveWidget->IsInViewport())
+		{
+			ResultWidget = LiveWidget;
+			break;
+		}
+	}
+
+	return ResultWidget;
+}
+
+bool UVictoryBPFunctionLibrary::WidgetIsChildOf(UWidget* ChildWidget, UWidget* PossibleParent)
+{
+	return (ChildWidget && PossibleParent) ? ChildWidget->IsChildOf(PossibleParent) : false;
+}
+
+UUserWidget* UVictoryBPFunctionLibrary::WidgetGetParentOfClass(UWidget* ChildWidget, TSubclassOf<UUserWidget> WidgetClass)
+{
+	UUserWidget* ResultParent = nullptr;
+
+	if (ChildWidget && WidgetClass)
+	{
+		UWidget* PossibleParent = ChildWidget->GetParent();
+		UWidget* NextPossibleParent = nullptr;
+		int32 count = 0;
+
+		while (PossibleParent != nullptr)
+		{
+			// Return once we find a parent of the desired class.
+			if (PossibleParent->GetClass()->IsChildOf(WidgetClass))
+			{
+				ResultParent = Cast<UUserWidget>(PossibleParent);
+				break;
+			}
+			
+			NextPossibleParent = PossibleParent->GetParent();
+
+			// If we don't have a parent, follow the outer chain until we find another widget, if at all.
+			if (NextPossibleParent == nullptr)
+			{
+				UWidgetTree* WidgetTree = Cast<UWidgetTree>(PossibleParent->GetOuter());
+				if (WidgetTree)
+				{
+					NextPossibleParent = Cast<UWidget>(WidgetTree->GetOuter());
+				}
+			}
+
+			PossibleParent = NextPossibleParent;
+		}
+	}
+
+	return ResultParent;
+}
+ 
+void UVictoryBPFunctionLibrary::WidgetGetChildrenOfClass(UWidget* ParentWidget, TArray<UUserWidget*>& ChildWidgets, TSubclassOf<UUserWidget> WidgetClass)
+{
+	ChildWidgets.Empty();
+
+	if (ParentWidget && WidgetClass)
+	{
+		// Current set of widgets to check
+		TInlineComponentArray<UWidget*> WidgetsToCheck;
+
+		// Set of all widgets we have checked
+		TInlineComponentArray<UWidget*> CheckedWidgets;
+
+		WidgetsToCheck.Push(ParentWidget);
+
+		// While still work left to do
+		while (WidgetsToCheck.Num() > 0)
+		{
+			// Get the next widgets off the queue
+			const bool bAllowShrinking = false;
+			UWidget* PossibleParent = WidgetsToCheck.Pop(bAllowShrinking);
+
+			// Add it to the 'checked' set, should not already be there!
+			if (!CheckedWidgets.Contains(PossibleParent))
+			{
+				CheckedWidgets.Add(PossibleParent);
+
+				// Add any widget that is a child of the class specified.
+				if (PossibleParent->GetClass()->IsChildOf(WidgetClass))
+				{
+					ChildWidgets.Add(Cast<UUserWidget>(PossibleParent));
+				}
+
+				UUserWidget* PossibleParentUserWidget = Cast<UUserWidget>(PossibleParent);
+
+				// If this is a UUserWidget, add its root widget to the check next.
+				if (PossibleParentUserWidget)
+				{
+					WidgetsToCheck.Push(PossibleParentUserWidget->GetRootWidget());
+				}
+				else
+				{
+					TArray<UWidget*> Widgets;
+
+					UWidgetTree::GetChildWidgets(PossibleParent, Widgets);
+
+					for (UWidget* Widget : Widgets)
+					{
+						if (!CheckedWidgets.Contains(Widget))
+						{
+							// Add the widget to the check next.
+							WidgetsToCheck.Push(Widget);
+
+							// Add any widget that is a child of the class specified.
+							if (Widget->GetClass()->IsChildOf(WidgetClass))
+							{
+								ChildWidgets.Add(Cast<UUserWidget>(Widget));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+UWidget* UVictoryBPFunctionLibrary::GetWidgetFromName(UUserWidget* ParentUserWidget, const FName& Name)
+{
+	UWidget* ResultWidget = nullptr;
+
+	if (ParentUserWidget && (Name != NAME_None))
+	{
+		ResultWidget = ParentUserWidget->GetWidgetFromName(Name);
+	}
+
+	return ResultWidget;
+}
+
+uint8 UVictoryBPFunctionLibrary::GetGenericTeamId(AActor* Target)
+{
+	IGenericTeamAgentInterface* TeamAgentInterface = nullptr;
+	if (Target)
+	{
+		TeamAgentInterface = Cast<IGenericTeamAgentInterface>(Target);
+	}
+	return (TeamAgentInterface != nullptr) ? TeamAgentInterface->GetGenericTeamId() : FGenericTeamId::NoTeam;
+}
+
+void UVictoryBPFunctionLibrary::SetGenericTeamId(AActor* Target, uint8 NewTeamId)
+{
+	if (Target)
+	{
+		IGenericTeamAgentInterface* TeamAgentInterface = Cast<IGenericTeamAgentInterface>(Target);
+		if (TeamAgentInterface != nullptr)
+		{
+			TeamAgentInterface->SetGenericTeamId(NewTeamId);
+		}
+	}
+}
+
 //~~~~~~~~~ END OF CONTRIBUTED BY KRIS ~~~~~~~~~~~
  
 
@@ -4618,3 +5133,7 @@ static void TESTINGInternalDrawDebugCircle(const UWorld* InWorld, const FMatrix&
 	//this is how you can make cpp only internal functions!
 	
 }
+
+
+
+#undef LOCTEXT_NAMESPACE
