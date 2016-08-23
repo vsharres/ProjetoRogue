@@ -138,153 +138,155 @@ public:
 public:
 
 	/*
-	* Função estática que get do Generator de Rooms. Função utilizada por outras classes para acessar o Generator de Rooms.
-	* @param WordlContextObject - Contexto de geração da sala.
-	* @return Ponteiro ao Generator de Rooms.
+	* Static function to get the room generator. Function used by other classes to access the room generator.
+	* @param level - Pointer to the level.
+	* @return Pointer to the Room Generator.
 	*/
-	UFUNCTION(BlueprintPure, Category = "Generator Rooms", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
-		static ARoomGenerator* GetRoomGenerator(UObject* WorldContextObject);
+	UFUNCTION(BlueprintPure, Category = "Generator Rooms", meta = (WorldContext = "level", UnsafeDuringActorConstruction = "true"))
+		static ARoomGenerator* GetRoomGenerator(UObject* level);
 
 	/*
-	* Função de inicialização do Generator de Rooms, iniciando o processo de geração do level.
-	* @param Inicial - Ponteiro a sala inicial.
-	* @param Seed - Novo seed do Generator.
+	* Initialization function for the generator, starting the level generating.
+	* @param startRoom - Pointer to the starting room.
+	* @param newSeed - Seed to generate.
+	* @param curLevel - Current level to be generated.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void InitializeGenerator(ARoom* startRoom, int32 newSeed, int32 curLevel);
 
 	/*
-	* Função de get da rotação relativa de uma determinada porta com relação a sala e a direção da porta.
-	* @param DirecaoSala - Rotação da sala.
-	* @param Porta - Direção padrão da sala.
-	* @return Rotação da porta com relação a sala.
+	* Get function of the relative direction between the direction of the door and its rooms.
+	* @param roomDirection - Room rotation(forward vector).
+	* @param door - Door direction.
+	* @return Resulting rotation of the door.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		FRotator GetRelativeDoorDirection(const FRotator roomDirection, const EDoorDirection& door);
 
 	/*
-	* Função de get do número total de portas vazias dentro do array de Rooms.
-	* @return O número de Rooms vazias.
+	* Get function of the total number of empty (not connected) doors inside the array of rooms.
+	* @return Total number of empty doors
 	*/
 	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		int32 GetNumVoidDoors();
 
 	/*
-	* Função que retorna o índice da última sala válida dentro do array de Rooms.
-	* @return O número do índice.
+	* Function that returns the index of the last valid room in the Rooms array.
+	* @return index of the last valid room.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		int32 LastValidRoom();
 
 	/*
-	* Função que gera o transforma da sala a ser gerada.
-	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @param DirecaoPorta - Rotação da porta que está gerando a sala.
-	* @return O transforma da sala a ser gerada.
+	* Function that generates the spawn transform for a given room.
+	* @param previousRoom - Pointer to the previous room.
+	* @param doorDirection - Door rotation.
+	* @return FTransform of the room spawn transform.
 	*/
 	UFUNCTION()
 		FTransform GenerateRoomTrans(ARoom* previousRoom, const FRotator doorDirection);
 
 	/*
-	* Função que gera o transforma do Corridor a ser gerado.
-	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @param DirecaoPorta - Rotação da porta que está gerando a sala.
-	* @return O transforma do correodr a ser gerada.
+	* Function that generates the spawn transform for a given corridor.
+	* @param previousRoom - Pointer to the previous room.
+	* @param doorDirection - Door rotation.
+	* @return FTransform of the corridor spawn transform.
 	*/
 	UFUNCTION()
 		FTransform GenerateCorridorTrans(ARoom* previousRoom, const FRotator doorDirection);
 
 	/*
-	* Função que seleciona a sala a ser gerada, esta função checa quais Rooms podem ser geradas e garante que Rooms especiais serão geradas.
-	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @return Classe da sala a ser gerada.
+	* Function that selects a room to be spawned, its checks for which rooms can be spawned and guarantees that special rooms will be spawned.
+	* @param previousRoom - Pointer to the previous room.
+	* @return class of the room to be spawned.
 	*/
 	UFUNCTION()
 		TSubclassOf<ARoom> SelectRoom(ARoom* previousRoom);
 
 	/*
-	* Função que utiliza o seed para o set do número de Rooms a serem geradas.
+	* Set function for the generating seed.
+	* @param currentLevel - Level to calculate the new seed.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void SetNumRooms(int32 currentLevel);
 
 	/*
-	* Função que adiciona uma nova sala ao array de Rooms.
-	* @param sala - Ponteiro a sala a ser adicionada
+	* Function to add a new room to the array of rooms.
+	* @param room - Pointer to the room to be added.
 	*/
 	UFUNCTION()
 		void AddToDoorArray(ARoom* room);
 
 	/*
-	* Função que gera o level com todas as Rooms, Corridores e faz o spawn dos inimigos.
-	* Esta função é utilizada recursivamente.
-	* @param SalaAtual - Ponteiro a sala atual da geração.
+	* Function that generates a new level with all rooms, corridors and spawns the enemies.
+	* This function is used recursively during generation.
+	* @param currentRoom - Pointer to the current Room.
 	*/
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Generator Rooms")
 		void GenerateLevel(ARoom* currentRoom);
 
 	/*
-	* Função que gera uma sala.
-	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
-	* @return Ponteiro a sala gerada.
+	* Function that generates a Room.
+	* @param previousRoom - Pointer to the previous room.
+	* @param doorDirection - Rotation of the door to which the new room will be connected.
+	* @return Pointer to the generated Room.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		ARoom* GenerateRoom (ARoom* previousRoom, const FRotator& doorDirection);
 
 	/*
-	* Função que gera um Corridor.
-	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @param DirecaoPorta - Rotação da porta que vai gerar o Corridor.
+	* Function that generates a new Corridor.
+	* @param previousRoom - Pointer to the previous room.
+	* @param DirecaoPorta -  Rotation of the door to which the new corridor will be connected.
 	*/
 	UFUNCTION()
 		void GenerateCorridor(ARoom* previousRoom, const FRotator& doorDirection);
 
 	/*
-	* Função que impede a colisão de uma nova sala com Rooms que já foram geradas e com os limites de geração.
-	* @param Trans - transform da sala a ser gerada para checar a colisão.
-	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
+	* Function that checks for collisions with the new room with previous rooms that were already generated.
+	* @param trans - transform of the new room.
+	* @param doorDirection - rotation of the door to which the new room will be connected.
 	*/
 	UFUNCTION()
-		void CheckColision(const FTransform& trans, const FRotator doorDirection);
+		void CheckColision(const FTransform& trans, const FRotator& doorDirection);
 
 	/*
-	* Função que gera uma sala especial.
+	* Function to generates a special room.
 	*/
 	UFUNCTION()
 		void GenerateSpecialRoom();
 
 	/*
-	* Função que checa se uma posição está dentro do array de posições, esta função é usada para impedir colisões.
-	* @param pos - Vetor da posição a ser testada.
-	* @return true quando o vetor está no array de posições
+	* Function that checks if a new Room has the same position than a previous room inside the Rooms array.
+	* @param pos - Vector of the new position to be checked.
+	* @return Boolean value of true when the new Room position is already in the array.
 	*/
 	UFUNCTION()
 		bool InPositionArray(const FVector& pos);
 
 	/*
-	* Função que checa se um transform colide com uma sala numa determinada direção
-	* @param Trans - Transform a ser testado.
-	* @param Direcao -	Direcao da porta que gerou o transform.
-	* @return true quando o transform colide.
+	* Function that checks if a transform is colliding in a giving direction.
+	* @param trans - Transform to be tested.
+	* @param direction - rotation of the door to which the new room will be connected.
+	* @return Boolean value of true when is colliding.
 	*/
 	UFUNCTION()
 		bool IsCollidingToDirection(EDoorDirection direction, const FTransform& trans);
 
 	/*
-	* Evento que é disparado quando a geração foi terminada.
+	* Event that is triggered on level generated.
 	*/
 	UFUNCTION(BlueprintImplementableEvent, Category = "Room")
 		void OnLevelGenerated();
 
 	/*
-	* Função que carregar de um save game as Rooms.
+	* Function to load rooms from a save game.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void LoadRooms();
 
 	/*
-	* Função que salva as Rooms em um save game.
+	* Function to save rooms in a save game.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void SaveRooms();

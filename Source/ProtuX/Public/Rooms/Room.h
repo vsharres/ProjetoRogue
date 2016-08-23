@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "Door.h"
 #include "Room.generated.h"
 
 /*

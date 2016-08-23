@@ -35,11 +35,11 @@ ARoomGenerator::ARoomGenerator()
 
 }
 
-ARoomGenerator* ARoomGenerator::GetRoomGenerator(UObject* WorldContextObject)
+ARoomGenerator* ARoomGenerator::GetRoomGenerator(UObject* level)
 {
-	if (WorldContextObject)
+	if (level)
 	{
-		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject); //Ponteiro ao UWorld atual, para encontrar o gerador de salas.
+		UWorld* World = GEngine->GetWorldFromContextObject(level); //Ponteiro ao UWorld atual, para encontrar o gerador de salas.
 		if (World != nullptr)
 		{
 			for (TActorIterator<ARoomGenerator> ActorItr(World); ActorItr; ++ActorItr) //Iterando sobre todos os atores até encontrar o gerador de salas.
@@ -515,7 +515,7 @@ void ARoomGenerator::GenerateCorridor(ARoom* previousRoom, const FRotator& doorD
 
 }
 
-void ARoomGenerator::CheckColision(const FTransform& trans, const FRotator doorDirection)
+void ARoomGenerator::CheckColision(const FTransform& trans, const FRotator& doorDirection)
 {
 	bool isColliding = false;
 
