@@ -6,35 +6,35 @@
 #include "EnemyController.generated.h"
 
 /**
- * Classe derivada da classe AAIController.
- * Controlador dos inimigos, responsável pela AI dos inimigos.
+ * Class inherited from AAIController.
+ * Enemy controller, class responsible for enemy's AI.
  */
 UCLASS()
 class PROTUX_API AEnemyController : public AAIController
 {
 	GENERATED_BODY()
 	
-#pragma region Propriedades
+#pragma region Properties
 public:
-	/* Ponteiro a sala pai do controlador. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Sala")
+	/* Weak pointer to the room in which the enemy is located. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Room")
 	TWeakObjectPtr<class ARoom> ParentRoom;
-#pragma endregion Propriedades
+#pragma endregion Properties
 
 #pragma region Construtor
-	/* Construtor Padrão. */
+	/* Standard Constructor. */
 	AEnemyController();
 #pragma endregion Construtor
 
-#pragma region Funções
+#pragma region Functions
 
-	/* Evento disparado para desativar o inimigo controlado. */
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Desativar Inimigo", Keywords = "Desativar Inimigo"), Category = "Inimigos Controlador")
+	/* Event triggered to deactivate the enemy. */
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Deactivate Enemy", Keywords = "Deactivate Enemy"), Category = "Enemy Controller")
 		void DeactivateEnemy();
 
-	/* Evento disparado para ativar o inimigo controlador. */
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Ativar Inimigo", Keywords = "Ativar Inimigo"), Category = "Inimigos Controlador")
+	/* Event triggered to activate the enemy.  */
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Activate Enemy", Keywords = "Activate Enemy"), Category = "Enemy Controller")
 		void ActivateEnemy();
-#pragma endregion Funções
+#pragma endregion Functions
 	
 };

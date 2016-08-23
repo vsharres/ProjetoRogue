@@ -60,26 +60,26 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
 		int32 MinNumRooms;
 
-	//Jogador
+	//Player
 
 	/* Stats do jogador no save. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 		FPlayerStats Stats;
 
 	/* Scrap do jogador no save. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 		int32 Scrap;
 
 	/* Booleano indicando se o jogador tem a chave no save. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 		bool bHasKey;
 
 	/* Posição do jogador no save. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 		FVector PlayerLocation;
 
 	/* Rotação do jogador no save. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Jogador")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 		FRotator PlayerRotation;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Boss)

@@ -6,7 +6,7 @@
 #include "DamageInterface.h"
 #include "Enemy.generated.h"
 
-/* Enumeração do tipo de inimigo. */
+/* Enemy type enum */
 UENUM(BlueprintType)
 enum class EEnemyType :uint8
 {
@@ -16,7 +16,7 @@ enum class EEnemyType :uint8
 	BOSS
 };
 
-/* Enumeração do tipo de ataque do inimigo. */
+/* Enemy attack type enum */
 UENUM(BlueprintType)
 enum class EAttackType :uint8
 {
@@ -25,46 +25,52 @@ enum class EAttackType :uint8
 	AOE
 };
 
-/* Estrutura dos stats do inimigo. */
+/* Enemy stats struct */
 USTRUCT()
 struct FEnemyStats
 {
 	GENERATED_USTRUCT_BODY()
 
-	/* Vida atual do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+		/* Enemy Current health. */
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float Health;
 
-	/* Vida máxima do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy max health.*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float MaxHealth;
 
-	/* Dano causado pelo inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy damage */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float Damage;
 
-	/* Velocidade de rotação do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy rotation speed. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float RotationSpeed;
 
-	/* Fire rate do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy fire rate. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float FireRate;
 
-	/* Precisão do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy accuracy. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float Accuracy;
 
-	/* Velocidade do projétil do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy muzzle speed. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		float MuzzleSpeed;
 
-	/* Tipo de ataque do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inimigo Struct")
+	/* Enemy attack type. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy Struct")
 		EAttackType AttackType;
 
-	/* Construtor padrão. */
-	FEnemyStats(float heatlh = 100.0f, float damage = 1.0f, float rotSpeed = 1.0f, float fireRate = 1.0f, float accurary = 1.0f, float muzzleSpeed = 0.0f, EAttackType attackType = EAttackType::MELEE)
+	/* Standard constructor. */
+	FEnemyStats(float heatlh = 100.0f,
+		float damage = 1.0f,
+		float rotSpeed = 1.0f,
+		float fireRate = 1.0f,
+		float accurary = 1.0f,
+		float muzzleSpeed = 0.0f,
+		EAttackType attackType = EAttackType::MELEE)
 	{
 		Health = heatlh;
 		MaxHealth = heatlh;
@@ -78,143 +84,149 @@ struct FEnemyStats
 
 };
 
-/* Classe que representa os inimigos controlados pela AI. */
+/* Class that represents an enemy in the game, which is controller by an AI */
 UCLASS(ABSTRACT, Blueprintable)
 class PROTUX_API AEnemy : public ACharacter, public IDamageInterface
 {
 	GENERATED_BODY()
 
-#pragma region Propriedades
+#pragma region Properties
 protected:
 
-	/* Tipo do inimigos. */
-	UPROPERTY(EditDefaultsOnly, Category = "Inimigo")
+	/* Enemy Type. */
+	UPROPERTY(EditDefaultsOnly, Category = "Enemy")
 		EEnemyType EnemyType;
 
-	/* Número de pickups gerado pelo inimigo em morte. */
+	/* Number of pickups spawned by enemy on death. */
 	UPROPERTY(EditAnywhere, Category = "PickUp")
 		int32 PickUpNumber;
 
-	/* Chance de spawn pickups de vida. */
+	/* Chance that a health pickup will be spawned. */
 	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float HealthPickUpSpawnChance;
 
-	/* Chance de spawn pickups de energia. */
+	/* Chance that a energy pickup will be spawned. */
 	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float EnergyPickUpSpawnChance;
 
-	/* Chance de spawn pickups de Scrap. */
+	/* Chance that a scrap pickup will be spawned.*/
 	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "0.0", UIMax = "100.0"), Category = "PickUp")
 		float ScrapPickUpSpawnChance;
 
-	/* Clase do objeto de pickup de energia. */
+	/* Class of the energy pickup. */
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class AEnergyPickUp> EnergyPickUpClass;
 
-	/* Clase do objeto de pickup de vida. */
+	/* Class of the health pickup. */
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class AHealthPickUp> HealthPickUpClass;
 
-	/* Clase do objeto de pickup de Scrap. */
+	/* Class of the scrap pickup. */
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class AScrapPickUP> ScrapPickUpClass;
 
+	/*Class of the item pickup.*/
 	UPROPERTY(EditDefaultsOnly, Category = "PickUp")
 		TSubclassOf<class AItemPickUp> ItemPickUpClass;
 
 
 public:
 
-	/* Stats do inimigo. */
+	/* Enemy Stats. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		FEnemyStats Stats;
 
-	/* Ponteiro a sala pai do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sala")
+	/* Pointer to the room in which the enemy is located. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Room")
 		TWeakObjectPtr<class ARoom> ParentRoom;
 
-	/* Array com as últimas velocidades do jogador, usado para a mira do inimigo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Jogador")
+	/* Array with the last player positions, to be use in following the player. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 		TArray<FVector> LastPlayerVelocity;
 
-	/* Booleano indicando quando o inimigo está atacando. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+	/* Boolean that is true when the enemy is attacking. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy")
 		bool bIsAttacking;
 
-	/* Booleano indicando quando o inimigo está Morrendo. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+	/* Boolean that is true when the enemy is dying. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy")
 		bool bIsDying;
-#pragma endregion Propriedades
+#pragma endregion Properties
 
 #pragma region Construtor
-/* Construtor Padrão */
+	/* Standard constructor. */
 	AEnemy(const FObjectInitializer& ObjectInitializer);
 #pragma endregion Construtor
 
-#pragma region Funções
+#pragma region Functions
 
 	// Called every frame
 	virtual void Tick(float DeltaSeconds) override;
 
+	// Called on begin play
 	virtual void BeginPlay() override;
 
 	/*
-	* Função de Get da posição de tiro do inimigo.
-	* @return FVector da posição de tiro.
+	* Get function for the enemy firing position.
+	* @return FVector firing position.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Mesh")
 		FVector GetFiringPos();
 
 	/*
-	* Função de Get da rotação de tiro do inimigo.
-	* @return FRotator da rotaçãos de tiro.
+	* Get function for the enemy firing direction.
+	* @return FRotator firing rotation.
 	*/
-	UFUNCTION(BlueprintPure, Category = Mesh)
+	UFUNCTION(BlueprintPure, Category = "Mesh")
 		FRotator GetFiringDir();
 
 	/*
-	* Função ed interface para receber dano.
-	* @param dano - float de dano.
-	* @param prjetil - ponteiro do projetil que causou dano.
-	* @param Hit - Resultados do hit do projétil.
+	* Interface function to receive damage.
+	* @param damage - float damage value.
+	* @param projectile - pointer to the projectile that caused damage.
+	* @param Hit - Hit struct.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Inimigos")
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
 		virtual void ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit) override;
 
 	/*
-	* Função para checar a vida do inimigo
-	* @return booleano indicando se o inimigo está vivo.
+	* Function to check if the enemy is alive.
+	* @return Boolean that is true if the enemy is alive.
 	*/
 	UFUNCTION()
 		bool IsAlive();
 
+	/*
+		Function to calculate the enemy stats based on the current level.
+		@param currentLevel - Integer value of the current level.
+	*/
 	UFUNCTION()
 		virtual void CalculateStats(int32 currentLevel);
 
 	/*
-	* Função para fazer o spawn do pickup quando o inimigo morre.
+	* Function to spawn a pickup when the enemy dies.
 	*/
-	UFUNCTION(BlueprintCallable, Category = PickUp)
+	UFUNCTION(BlueprintCallable, Category = "PickUp")
 		void SpawnPickUp();
 
 	/*
-	* Evento disparado para fazer um flash no material do inimigo.
+	* Event to trigger a flash on the enemy material when it gets hit.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, Category = "Inimigo")
+	UFUNCTION(BlueprintImplementableEvent, Category = "Enemy")
 		void FlashDamage();
 
 	/*
-	* Evento disparado quando o inimigo morreu
+	* Event triggered when the enemy dies.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, Category = Inimigo)
+	UFUNCTION(BlueprintImplementableEvent, Category = "Enemy")
 		void OnEnemyDeath();
 	/*
-	* Função de interface para aplicar os stats do inimigo no projétil
-	* @param projetil - Projetil que tem stats aplicados.
+	* Function to apply projectile stats to the base stats of the enemy.
+	* @param projectile - Pointer to projectile to apply stats to.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Projetil")
+	UFUNCTION(BlueprintCallable, Category = "Projectile")
 		virtual void ApplyProjectileStats(AProjectile* projectile) override;
 
-#pragma endregion Funções
+#pragma endregion Functions
 
 };

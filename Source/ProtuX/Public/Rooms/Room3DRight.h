@@ -6,8 +6,9 @@
 #include "Room3DRight.generated.h"
 
 /*
-*	Classe que representa uma sala com três portas. Sala orientada com a orientação para direita (portas na direção Oeste/Sul/Leste)
-*/
+*	Class inherited from ARoom.
+*	Class that represents a room with three doors. A room with Right orientation ( doors in the West/South/East direction).
+*/ /
 UCLASS()
 class PROTUX_API ARoom3DRight : public ARoom
 {

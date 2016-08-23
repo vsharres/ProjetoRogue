@@ -22,7 +22,7 @@ FVector ACorridor::GetScale()
 	return StandardScale;
 }
 
-int32 ACorridor::GetOffset()
+float ACorridor::GetOffset()
 {
 	return OffsetCorridor;
 }

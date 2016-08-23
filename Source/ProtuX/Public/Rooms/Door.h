@@ -5,8 +5,24 @@
 #include "GameFramework/Actor.h"
 #include "Door.generated.h"
 
+/*
+* Enum with the door direction
+*/
+UENUM(BlueprintType)
+enum class EDoorDirection : uint8
+{
+	WEST,
+	NORTH,
+	EAST,
+	SOUTH,
 
-/* Classe que representa uma das portas das salas. */
+};
+
+
+/* 
+* Class inherited from AActor.
+* Class that represents a rooms door.
+*/
 UCLASS()
 class PROTUX_API ADoor : public AActor
 {
@@ -16,43 +32,46 @@ class PROTUX_API ADoor : public AActor
 
 public:	
 
-	/* Booleando que indica se a porta deve ser aberta. */
-	UPROPERTY(BlueprintReadWrite, Category = "Porta")
+	/* Boolean indicating if the door is open. */
+	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bOpenDoor;
 
-	/* Booleando que indica se a porta deve ser aberta. */
-	UPROPERTY(BlueprintReadWrite, Category = "Porta")
+	/* Boolean indicating if the door is closed. */
+	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bCloseDoor;
 
-	/* Booleando que indica se a porta deve ser trancada. */
-	UPROPERTY(BlueprintReadWrite, Category = "Porta")
+	/* Boolean indicating if the door is locked. */
+	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bIsDoorLocked;
 
-	/* Ponteiro a sala que a porta pertence. */
-	UPROPERTY(BlueprintReadWrite, Category = "Sala")
+	/* Pointer to the parent room of the door. */
+	UPROPERTY(BlueprintReadWrite, Category = "Room")
 	class ARoom* ParentRoom;
 
 #pragma endregion Properties
+
+#pragma  region Constructor
+
+	/* Standard Constructor */
+	ADoor();
+
+#pragma endregion Constructor
 
 #pragma region Functions
 
 public:
 
 	/*
-	* Evento disparado para trancar a porta.
+	* Event triggered to lock the door.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Trancar Porta", Keywords = "Trancar Porta"), Category = "Porta")
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Lock Door", Keywords = "Lock Door"), Category = "Door")
 		void LockDoor();
 
 	/*
-	* Evento disparado para destrancar a porta.
+	* Event triggered to unlock the door.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Porta", Keywords = "Destrancar Porta"), Category = "Porta")
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Unlock Door", Keywords = "Unlock Door"), Category = "Door")
 		void UnlockDoor();
-
-
-	// Constructor
-	ADoor();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

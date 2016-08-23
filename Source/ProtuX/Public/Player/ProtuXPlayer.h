@@ -476,23 +476,23 @@ public:
 	//PROJETIL
 
 	/* Número de projéteis dentro do pool de projéteis. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projetil")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile")
 		int32 NumProjectiles;
 
 	/* Classe do tipo de projétil inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Projetil")
+	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 		TSubclassOf<class UProjectileItem> StartingProjectil;
 
 	/* Classe do projétil encontrado. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		TSubclassOf<UProjectileItem> FoundProjectil;
 
 	/* Prójétil sendo utilizado no momento. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		UProjectileItem* CurrentProjectil;
 
 	/* Array com todos os projéteis que podem ser disparado. Esse pool é estático, isto é, todos os projéteis são alocados inicialmente.*/
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		TArray<AProjectile*> ProjectilePool;
 
 	/* Nome do socket no canhao da onde os projéteis são atirados. */
@@ -500,7 +500,7 @@ public:
 		FName ProjectileSocket;
 
 	/* Cor atual dos projéteis. */
-	UPROPERTY(BlueprintReadOnly, Category = Projetil)
+	UPROPERTY(BlueprintReadOnly, Category = Projectile)
 		FLinearColor ProjectileColor;
 
 	/* Constructor Padrão. */
@@ -535,7 +535,7 @@ public:
 	/*
 	* Função para gerar o pool de projéteis.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Projetil")
+	UFUNCTION(BlueprintCallable, Category = "Projectile")
 		void GenerateProjectilePool();
 
 	/*
@@ -617,7 +617,7 @@ public:
 	* Interface para aplicar os stats do jogador ao projétil atirado.
 	* @param projetil - Ponteiro ao projétil atirado.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Projetil")
+	UFUNCTION(BlueprintCallable, Category = "Projectile")
 		virtual void ApplyProjectileStats(AProjectile* projectile) override;
 
 	/* Evento de blueprint para o jogador atirar. */
@@ -631,7 +631,7 @@ public:
 	/*
 	* Evento de blueprint para gerar o pop up de dano.
 	* @param dano - dano causado.
-	* @param alvo - Inimigo que foi atingido.
+	* @param alvo - Enemy que foi atingido.
 	* @param projetil - projetil que causou o dano
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Gerar DanoPopUp", Keywords = "Gerar Dano PopUp"), Category = "Player")

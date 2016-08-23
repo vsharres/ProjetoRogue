@@ -26,7 +26,7 @@ void AProtuXGameMode::SetGameState(EGameState newState)
 
 void AProtuXGameMode::UpdateState(EGameState newState)
 {
-	APlayerController* controller; //Controlador do jogador
+	APlayerController* controller; //Controller do jogador
 	TArray<AActor*> enemyController; //Controladores dos inimigos
 
 	switch (newState)

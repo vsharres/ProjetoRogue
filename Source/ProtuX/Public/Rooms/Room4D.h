@@ -6,7 +6,8 @@
 #include "Room4D.generated.h"
 
 /*
-*	Classe que representa uma sala com quatro portas. Sala orientada com a orientação padrão (portas na direção Oeste/Norte/Leste/Sul)
+*	Class inherited from ARoom.
+*	Class that represents a room with four doors. A room with standard orientation ( doors in the West/North/East/South direction).
 */
 UCLASS()
 class PROTUX_API ARoom4D : public ARoom

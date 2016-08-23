@@ -6,7 +6,7 @@
 #include "Room.generated.h"
 
 /*
-* Enumeração que representa a dificuldade de uma determinada sala.
+* Enum that represents the difficulty of the room.
 */
 UENUM(BlueprintType)
 enum class ERoomDifficulty : uint8
@@ -16,7 +16,7 @@ enum class ERoomDifficulty : uint8
 
 };
 /*
-* Enumeração que representa o número de portas que uma sala possuí.
+* Enum with the number of doors that the rooms has.
 */
 UENUM(BlueprintType)
 enum class ENumberDoors : uint8
@@ -29,20 +29,7 @@ enum class ENumberDoors : uint8
 };
 
 /*
-* Enumeração que representa a direção que as portas da sala podem ter.
-*/
-UENUM(BlueprintType)
-enum class EDoorDirection : uint8
-{
-	WEST,
-	NORTH,
-	EAST,
-	SOUTH,
-
-};
-
-/*
-* Enumeração que representa o formato da sala, necessário para poder deduzir a direção e o número de portas
+* Enum for each room shape, necessary to calculate the position of the doors.
 */
 UENUM(BlueprintType)
 enum class ERoomShape : uint8
@@ -54,7 +41,7 @@ enum class ERoomShape : uint8
 };
 
 /*
-* Enumeração que representa o tipo da sala, que é a funcionalidade básica da sala.
+* Enum representing the type of room.
 */
 UENUM(BlueprintType)
 enum class ERoomType : uint8
@@ -68,8 +55,9 @@ enum class ERoomType : uint8
 };
 
 /*
-*	Classe que representa uma das salas do jogo. As salas são presets que serão escolhidos durante a geração do level.
-*	A sala padrão é uma sala com apenas uma porta na direção Oeste.
+*	Class inherited from AActor.
+*	Class that represents a room in the game. A room can be also special rooms, such as the Key, start and boos rooms.
+*	A standard room is one with only one door in the WEST configuration.
 */
 UCLASS()
 class PROTUX_API ARoom : public AActor
@@ -79,86 +67,79 @@ class PROTUX_API ARoom : public AActor
 #pragma region Properties
 
 protected:
-	//SALA
 
-	/* Direção que a sala aponta. */
+	/* Room direction,which is the direction of its first door. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Room")
 		ERoomShape RoomDirection;
 
-	/* Tipo da sala. */
+	/* Room type. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Room")
 		ERoomType RoomType;
 
-	/* Dificuldade da sala.*/
+	/* Room difficulty. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Room")
 		ERoomDifficulty Difficulty;
 
-	/* Escala padrão da sala que vai ser gerada, utilizado durante a geração da sala. */
+	/* Room Scale. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Room")
 		FVector RoomScale;
 
-	/* Offset padrão da sala, que é utilizado para gerar o transform da sala durante a geração.*/
+	/* Room Offset. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Room")
 		float RoomOffset;
 
-	/* Componente de colisão para detectar quando o jogador se aproxima de uma sala para ativar os inimigos dentro da sala. */
+	/* Collision component, which is triggered when the player enters the room, and its enemies are activated. */
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
 		UBoxComponent* TriggerEnemiesActivate;
 
-	//PORTAS
-
-	/* Número de portas da sala. */
+	/* Number of doors in the room. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Door")
 		ENumberDoors NumberDoors;
 
-	/* Array de portas da sala. */
-	UPROPERTY(BlueprintReadWrite, Category = "Portas")
+	/* Doors array. */
+	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		TArray<class ADoor*> Doors;
 
-	/* Array de direções das portas, o índice da direção da porta é o mesmo indice da porta no TArray Portas. */
+	/* Doors direction array, the index of this array is always the same as in the Doors arrays. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Door")
 		TArray < TEnumAsByte<EDoorDirection> > DoorsDirArray;
 
-	//INIMIGOS
-
-	/* Array de inimigos que estão na sala. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inimigos")
+	/* Array of enemies in the room. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Enemy")
 		TArray<class AEnemy*> Enemies;
 
-	/* Array contendo as classes de inimigos normais que podem ser gerados pela sala. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
+	/* Array of classes of normal enemies in the room. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enemy")
 		TArray<TSubclassOf<AEnemy>> ListEnemiesNormal;
 
-	/* Array contendo as classes de inimigos difíceis que podem ser gerados pela sala. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inimigos")
+	/* Array of classes of hard enemies in the room. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enemy")
 		TArray<TSubclassOf<AEnemy>> ListEnemiesHard;
 
-	//ITENS
-	/* Array contendo as classes de itens que podem ser gerados pela sala. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Itens")
+	/* Array of items classes that can be spawned in the room. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		TArray<TSubclassOf<class UItem>> PossibleItems;
 
 public:
 
-	/* Booleano indicando se a sala tem inimigos. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inimigos")
+	/* Boolean indicating if the room stil has enemies. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enemy")
 		bool bRoomHasEnemies;
 
-	/* Array de salas que estão conectadas a esta sala. */
+	/* Array of connected rooms to this room. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Room")
 		TArray<ARoom*> ConectedRooms;
 
-	/* Booleano usado durante a geração do level, indicando se a sala já foi visitada pelo algortimo de geração. */
-	UPROPERTY(BlueprintReadWrite, Category = Sala)
+	/* Boolen indicating if the room was visited during generation, used only during generation. */
+	UPROPERTY(BlueprintReadWrite, Category = "Room")
 		bool bVisited;
+
 #pragma endregion Properties
 
 #pragma region Constructor
 
 public:
-	/*
-	* Constructor da Classe.
-	*/
+	/* Standard Constructor. */
 	ARoom(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion Constructor
@@ -168,132 +149,137 @@ public:
 public:
 
 	/*
-	* Função Get da escala padrão da sala.
-	* @return FVector com a escala da sala.
+	* Get Function of room scale.
+	* @return FVector value of the room scale.
 	*/
 	UFUNCTION()
-		FVector GetRoomScale();
+		FVector GetRoomScale() const;
 
 	/*
-	* Função Get do Offset padrão da sala.
-	* @return int32 com o Offset da sala.
+	* Get function with the room offset.
+	* @return float offset value
 	*/
 	UFUNCTION()
 		float GetRoomOffset() const;
 
 	/*
-	* Função Get do número de portas.
-	* @return Enumerador ENumeroPortas com o número de portas da sala.
+	* Get function for the number of doors.
+	* @return Enum value of the number of doors.
 	*/
 	UFUNCTION()
-		ENumberDoors GetNumDoors();
+		ENumberDoors GetNumDoors() const;
 
 	/*
-	* Função Get da direção da sala.
-	* @return Enumerador EFormatoSala com o formato da sala.
+	* Get function for the room shape.
+	* @return Enum value with the room shape.
 	*/
 	UFUNCTION()
-		ERoomShape GetRoomShape();
+		ERoomShape GetRoomShape() const;
 
 	/*
 	* Função Get do tipo da sala.
 	* @return Enumerador ETipoSala com o tipo da sala.
 	*/
 	UFUNCTION()
-		ERoomType GetRoomType();
+		ERoomType GetRoomType() const;
 
 	/*
-	* Função Get do Array de portas
-	* @return TArray<TEnumAsByte<EDirecaoPorta>> com o array de portas da sala.
+	* Get function for the array of doors.
+	* @return TArray<TEnumAsByte<EDirecaoPorta>> value with the array of doors.
 	*/
 	UFUNCTION()
 		TArray<TEnumAsByte<EDoorDirection>> GetArrayDoors();
 
+	/*
+	* Set function for the offset.
+	* @param newOffset - float value of the new offset.
+	*/
 	UFUNCTION()
 		void SetOffset(float newOffset);
 
+	/*
+	* Event to deactivate the trigger, used when all of the enemies in the room are defeated.
+	*/
 	UFUNCTION()
 		void DeactivateTrigger();
 
 	/*
-	* Função que remove um inimigo do array de inimigos da sala.
-	* @param inimigo -  Ponteiro AInimigo ao inimigo a ser retirado.
+	* Function that is used to remove a single enemy from the enemy array.
+	* @param enemy - Pointer to the enemy to be removed.
 	*/
 	UFUNCTION()
 		void RemoveEnemy(AEnemy* enemy);
 
 	/*
-	* Evento que é disparado para fazer o spawn dos inimigos.
-	* Este evento pode ser redefinido por blueprint para criar gerações espécíficas para salas específicas
-	* @param Stream - Stream randômico de geração
+	* Event triggered to spawn enemies in the room.
+	* This event is implemented by Blueprint scripts to define specific behaviors to special rooms.
+	* @param Stream - Random generation stream. 
 	*/
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Inimigos", Keywords = "Spawn Inimigos"), Category = "Spawn")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Spawn Enemy", Keywords = "Spawn Enemy"), Category = "Enemy")
 		void SpawnEnemies(FRandomStream& Stream);
 	virtual void SpawnEnemies_Implementation(FRandomStream& Stream);
 
 	/*
-	* Função Get do tipo de inimigo a ser gerado para um determinado seed e para um tipo de dificuldade.
-	* O tipo resultante é gerado aleatoriamente de acordo com o seed de geração.
-	* @param InimigosDificuldade - Array com a classe dos inimigos que podem ser gerados.
-	* @param Stream - Stream randômico de geração
-	* @return O tipo de inimigo a ser gerado.
+	* Get function of the type of enemy to be spawned for a specific seed.
+	* The resulting type is chosen randomly using the specified seed.
+	* @param EnemyClassArray - Array of enemies classes that can be spawned.
+	* @param Stream - Random generation stream.
+	* @return TSubclassOf<AEnemy> enemy class pointer.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Tipo Inimigos", Keywords = "Get Tipo Inimigos"), Category = "Inimigos")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Enemy Type", Keywords = "Get Enemy Type"), Category = "Enemy")
 		TSubclassOf<AEnemy> GetEnemyType(const TArray <TSubclassOf<AEnemy>>& EnemyClassArray,FRandomStream& Stream);
 
 	/*
-	* Função a ser executada quando todos os inimigos da sala foram derrotados.
+	* Event triggered when all enemies in the room are defeated.
 	*/
 	UFUNCTION()
 		void OnEnemiesDefeated();
 
 	/*
-	* Função a ser executada para trancar todas as portas da sala.
+	* Function to lock all doors in the room.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Trancar Portas", Keywords = "Trancar Portas"), Category = "Room")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Lock Doors", Keywords = "Lock Doors"), Category = "Room")
 		void LockDoors();
 
 	/*
-	* Função a ser executada para destrancar todas as portas da sala.
+	* Function to unlock all doors in the room.
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Destrancar Portas", Keywords = "Destrancar Portas"), Category = "Room")
 		void UnlockDoors();
 	/*
-	* Evento para ativar o elevador da sala do boss.
+	* Event to trigger the elevator in the 
 	*/
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Ativar Elevador", Keywords = "Ativar Elevador"), Category = "Room")
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Activate Elevator", Keywords = "Activate Elevator"), Category = "Room")
 		void ActivateElevator();
 
 	/*
-		Evento para atualizar a barra de vida dos inimigos.
+		Event to update enemies health bar.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = Sala)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Room")
 		void UpdateEnemiesHealth(AProtuXPlayer* player);
 
 	/*
-	* Evento de overlap do trigger de ativação dos inimigos.
-	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentBeginOverlap.
+	* On overlap event for the activate enemies trigger.
 	*/
-	UFUNCTION(BlueprintCallable, Category = Sala)
+	UFUNCTION(BlueprintCallable, Category = Room)
 		void ActivateEnemiesTriggerOnOverlap(class AActor* OtherActor);
 
 	/*
-	* Evento de overlap do trigger de desativação dos inimigos.
-	* A assinatura da função segue a assinatura dos eventos do tipo OnComponentEndOverlap.
+	* End overlap event for the activate enemies trigger.
 	*/
-	UFUNCTION(BlueprintCallable, Category = Sala)
+	UFUNCTION(BlueprintCallable, Category = Room)
 		 void ActivateEnemiesTriggerEndOverlap(class AActor* OtherActor);
 
 	/*
-	* Função para alterar a cor dos detalhes da sala, indicando quando uma sala teve seus inimigos derrotados.
-	* @param novaCor - Nova cor da sala.
-	* @param sala - Componente do ator que contem os mesh da sala que teram os seus materiais alterados.
+	* Function to change the colors of the light bars in the room showing when enemies are defeated.
+	* @param newColor - New color of the lights.
+	* @param roomLights - The room lights components in the room.
 	*/
 	UFUNCTION(BlueprintCallable, Category = Glow)
-		void ChangeRoomColor(FLinearColor newColor, USceneComponent* room);
+		void ChangeRoomColor(FLinearColor newColor, USceneComponent* roomLights);
 
 	/*
-	* Override do Tick da sala.
+	* Called every frame.
 	*/
 	virtual void Tick(float DeltaTime) override;
 

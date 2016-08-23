@@ -6,8 +6,8 @@
 #include "Boss.generated.h"
 
 /**
- * Classe Derivada do AInimigo
- * Classe responsável pelas propriedades de um Boss do jogo.
+ * Class inherited from AEnemy
+ * Class responsible for the Boss for every level in the game.
  */
 UCLASS()
 class PROTUX_API ABoss : public AEnemy
@@ -15,31 +15,37 @@ class PROTUX_API ABoss : public AEnemy
 	GENERATED_BODY()
 public:
 
-	/* Armadura do boss, que é sempre um número menor ou igual a 1.0 */
+	/* Boss armor, which is always equals or lower to 1.0 */
 	UPROPERTY(EditDefaultsOnly, Category = Boss)
 		float Armor;
 
-	/* Componente de colisão do ponto fraco */
+	/* Collision component for the boss weak point */
 	UPROPERTY(VisibleDefaultsOnly, Category = Colisor)
 		USphereComponent* WeakPoint;
 
-	/* Booleano indicando se o boss foi derrotado */
+	/* boolean of true if the boss was defeated */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Boss)
 		bool bIsBossDefeated;
 
-	/* Construtor Padrão */
+	/* Standard constructor */
 	ABoss(const FObjectInitializer& ObjectInitializer);
 
 	/*
-	 Função de interface para receber dano.
-	 @param dano - float de dano.
-	 @param prjetil - ponteiro do projetil que causou dano.
-	 @param Hit - Resultados do hit do projétil.
+	 Interface function to receive damage.
+	 @param damage - float damage value.
+	 @param projectile - pointer to the projectile that caused damage.
+	 @param Hit - Hit struct.
 	*/
 	virtual void ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit) override;
 
+	/*
+	  Override of the calculate stats function.
+	*/
 	virtual void CalculateStats(int32 currentLevel) override;
 
+	/*
+		Event triggered when the boss is defeated.
+	*/
 	UFUNCTION(BlueprintCallable, Category = Boss)
 		void OnBossDefeated();
 	

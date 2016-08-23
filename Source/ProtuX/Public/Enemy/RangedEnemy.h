@@ -14,29 +14,29 @@ class PROTUX_API ARangedEnemy : public AEnemy
 {
 	GENERATED_BODY()
 
-#pragma region Propriedades
+#pragma region Properties
 public:
 		/* Classe do projétil a ser disparado. */
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		TSubclassOf<class AProjectile> Projectile;
 
 		/* Array de projeteis a serem disparados.s */
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			TArray<AProjectile*> ProjectilePool;
 		/* Número de projéteis. */
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil")
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			int32 NumProjectiles;
 		/* Booleando que indica quando o inimigo está atirando. */
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inimigo)
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Enemy)
 			bool bIsFiring;
-#pragma endregion Propriedades
+#pragma endregion Properties
 
 #pragma region Construtor
 		/* Construtor padrão. */
 		ARangedEnemy(const FObjectInitializer& ObjectInitializer);
 #pragma endregion Construtor
 
-#pragma region Funções
+#pragma region Functions
 		// Called when the game starts or when spawned
 		virtual void BeginPlay() override;
 
@@ -53,7 +53,7 @@ public:
 		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Inimgo")
 			void Attack();
 		virtual void Attack_Implementation();
-#pragma endregion Funções
+#pragma endregion Functions
 
 		
 	

@@ -7,7 +7,8 @@
 
 
 /*
-*	Classe que representa uma sala com três portas. Sala orientada com a orientação padrão (portas na direção Oeste/Sul/Norte)
+*	Class inherited from ARoom.
+*	Class that represents a room with three doors. A room with standard orientation ( doors in the West/South/North direction).
 */
 UCLASS()
 class PROTUX_API ARoom3D : public ARoom

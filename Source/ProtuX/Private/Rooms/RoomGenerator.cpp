@@ -185,7 +185,7 @@ FTransform ARoomGenerator::GenerateCorridorTrans(ARoom* previousRoom, const FRot
 
 TSubclassOf<ARoom> ARoomGenerator::SelectRoom(ARoom* previousRoom)
 {
-	TSubclassOf<ARoom> toReturn; //Sala a ser selecionada
+	TSubclassOf<ARoom> toReturn; //Room a ser selecionada
 
 	int32 index = 0; //Indice mínimo dentro do array de salas.
 	int32 limit = 0; //Indice máximo dentro do array de salas.
@@ -281,9 +281,9 @@ void ARoomGenerator::SaveRooms()
 		SaveInst->MinNumRooms = this->MinNumRooms;
 		SaveInst->RoomsWithEnemies.Empty();
 
-		for (const auto& Sala : Rooms) //Atulizar cada sala que teve os seus inimigos já derrotados
+		for (const auto& Room : Rooms) //Atulizar cada sala que teve os seus inimigos já derrotados
 		{
-			SaveInst->RoomsWithEnemies.Add(Sala->bRoomHasEnemies);
+			SaveInst->RoomsWithEnemies.Add(Room->bRoomHasEnemies);
 		}
 
 		//Salvar
@@ -419,7 +419,7 @@ void ARoomGenerator::AddToDoorArray(ARoom* room)
 
 void ARoomGenerator::GenerateLevel_Implementation(ARoom* currentRoom)
 {
-	currentRoom->bVisited = true; //Sala atual foi visitada
+	currentRoom->bVisited = true; //Room atual foi visitada
 
 	for (int32 i = currentRoom->ConectedRooms.Num() + 1; i <= (int32)currentRoom->GetNumDoors(); i++) //Loop em todas as salas geradas.
 	{
@@ -484,7 +484,7 @@ ARoom* ARoomGenerator::GenerateRoom(ARoom* previousRoom, const FRotator& doorDir
 
 	newRoom->SpawnEnemies(GeneratingStream); //Fazer o spawn dos inimigos na sala.
 
-	UE_LOG(LogTemp, Warning, TEXT(" Sala nome: %s numero: %d"), *newRoom->GetName(), Rooms.Num());
+	UE_LOG(LogTemp, Warning, TEXT(" Room nome: %s numero: %d"), *newRoom->GetName(), Rooms.Num());
 
 	return newRoom;
 }

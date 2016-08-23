@@ -49,7 +49,7 @@ void ARoom::Tick(float DeltaTime)
 
 }
 
-FVector ARoom::GetRoomScale()
+FVector ARoom::GetRoomScale() const
 {
 	return RoomScale;
 }
@@ -59,17 +59,17 @@ float ARoom::GetRoomOffset() const
 	return RoomOffset;
 }
 
-ENumberDoors ARoom::GetNumDoors()
+ENumberDoors ARoom::GetNumDoors() const
 {
 	return NumberDoors;
 }
 
-ERoomShape ARoom::GetRoomShape()
+ERoomShape ARoom::GetRoomShape() const
 {
 	return RoomDirection;
 }
 
-ERoomType ARoom::GetRoomType()
+ERoomType ARoom::GetRoomType() const
 {
 	return RoomType;
 }
@@ -167,7 +167,7 @@ void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 		{
 			newEnemy->SpawnDefaultController(); //Spawn do controlador do inimigo
 			Enemies.Add(newEnemy); //Adicionar o inimigo ao array de inimigos da sala.
-			newEnemy->ParentRoom = this; //Sala pai do inimigo é a sala atual.
+			newEnemy->ParentRoom = this; //Room pai do inimigo é a sala atual.
 		}
 
 		AEnemyController* controller = Cast<AEnemyController>(newEnemy->GetController());
@@ -261,11 +261,11 @@ void ARoom::ActivateEnemiesTriggerEndOverlap(class AActor* OtherActor)
 	}
 }
 
-void ARoom::ChangeRoomColor(FLinearColor newColor, USceneComponent* room)
+void ARoom::ChangeRoomColor(FLinearColor newColor, USceneComponent* roomLights)
 {
 	TArray<USceneComponent*> meshs;
 
-	room->GetChildrenComponents(true, meshs); //Pegando as meshs que terão o seus materiais alterados.
+	roomLights->GetChildrenComponents(true, meshs); //Pegando as meshs que terão o seus materiais alterados.
 
 	for (auto const& component : meshs)
 	{

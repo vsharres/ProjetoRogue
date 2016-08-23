@@ -7,7 +7,8 @@
 #include "RoomGenerator.generated.h"
 
 /*
-*	Classe que representa o gerador de salas. O gerador é responsável por gerar o level, gerar a navigação e fazer o spawn dos inimigos.
+*	Class inherited from ARoom.
+*	Class that represents the room generator. This class is responsible for the whole level generation.
 */
 UCLASS()
 class PROTUX_API ARoomGenerator : public AActor
@@ -17,134 +18,139 @@ class PROTUX_API ARoomGenerator : public AActor
 #pragma region Properties
 private:
 
-	/* Numero de salas a serem geradas. */
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	/* Number of rooms to be generated. */
+	UPROPERTY(VisibleAnywhere, Category = "Rooms")
 		int32 NumGeneratedRooms;
 
-	/* Index onde começam as salas com duas portas no array de salas. */
-	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "1"), Category = "Salas")
+	/* Index where rooms with 2 doors starts in the room array. */
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "1"), Category = "Rooms")
 		int32 Room2DIndex;
 
-	/* Index onde começam as salas com três portas no array de salas. */
-	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "2"), Category = "Salas")
+	/* Index where rooms with 3 doors starts in the room array. */
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "2"), Category = "Rooms")
 		int32 Room3DIndex;
 
-	/* Index onde começam as salas com quatro portas no array de salas. */
-	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "3"), Category = "Salas")
+	/* Index where rooms with 4 doors starts in the room array. */
+	UPROPERTY(EditDefaultsOnly, meta = (UIMin = "3"), Category = "Rooms")
 		int32 Room4DIndex;
 
-	/* Classe da sala que gera o item no level. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	/* Item room class. */
+	UPROPERTY(EditDefaultsOnly, Category = "Rooms")
 		TSubclassOf<class ARoom> ItemRoom;
 
-	/* Classe da sala que gera a chave da sala do boss no level. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	/* Key room class. */
+	UPROPERTY(EditDefaultsOnly, Category = "Rooms")
 		TSubclassOf<ARoom> KeyRoom;
 
-	/* Classe da sala que gera a chave da sala do boss no level. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	/* Boss room class. */
+	UPROPERTY(EditDefaultsOnly, Category = "Rooms")
 		TSubclassOf<ARoom> BossRoom;
 
-	/* Classe do corredor da loja. */
-	UPROPERTY(EditDefaultsOnly, Category = "Salas")
+	/* Corridor shop class. */
+	UPROPERTY(EditDefaultsOnly, Category = "Rooms")
 		TSubclassOf<ACorridor> ShopCorridor;
 
-	/* Booleano que indica se o corredor com a loja já foi gerado. */
-	UPROPERTY(VisibleAnywhere, Category = "Corredor")
+	/* Boolean indicating if the shop corridor was spawned. */
+	UPROPERTY(VisibleAnywhere, Category = "Corridor")
 		bool bIsShopSpawned;
 
-	/* Booleano que indica se a sala do item já foi gerada. */
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	/* Boolean indicating if the item room was spawned. */
+	UPROPERTY(VisibleAnywhere, Category = "Rooms")
 		bool bIsItemSpawned;
 
-	/* Booleano que indica se a sala da chave já foi gerada. */
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	/* Boolean indicating if the key room was spawned. */
+	UPROPERTY(VisibleAnywhere, Category = "Rooms")
 		bool bIsKeySpawned;
 
-	/* Booleano que indica se a sala do boss já foi gerada. */
-	UPROPERTY(VisibleAnywhere, Category = "Salas")
+	/* Boolean indicating if the boss room was spawned. */
+	UPROPERTY(VisibleAnywhere, Category = "Rooms")
 		bool bBossSpawned;
 
-	/* Sala que está sendo gerada atualmente. */
+	/* Current generated room. */
 	UPROPERTY()
 		TSubclassOf<ARoom> GeneratedRoom;
 
-	/* Array com as últimas salas geradas. */
+	/* Array with the last generated room. */
 	UPROPERTY()
 		TArray<TSubclassOf<ARoom>> PreviousGeneratedRooms;
 
-	/* Array para verificar se todas as salas foram carregadas de um save game. */
+	/* Array to be used during loading of the level. */
 	UPROPERTY()
 		TArray<bool> LoadedRooms;
 
-	/* Distância X máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
+	/* Max Length of the level. Which is the maximum distance a room can be from the starting room. */
+	UPROPERTY(EditDefaultsOnly, Category = "Generator")
 		float MaxLength;
 
-	/* Distância Y máxima que uma sala pode estar da sala inicial. */
-	UPROPERTY(EditDefaultsOnly, Category = "Gerador")
+	/* Max Width of the level. Which is the maximum distance a room can be from the starting room. */
+	UPROPERTY(EditDefaultsOnly, Category = "Generator")
 		float MaxWidth;
 
 public:
 
-	/* Array com a posição das salas geradas. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gerador Salas")
+	/* Array with the rooms positions. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Generator Rooms")
 		TArray<FVector> RoomsPositions;
 
-	/* Stream de geração randômica. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gerador)
+	/* Generator Random stream. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Generator")
 		FRandomStream GeneratingStream;
 
-	/* Array com os tipos de salas que podem ser gerados. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
+	/* Array with the types of rooms that can be spawned. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rooms")
 		TArray<TSubclassOf<ARoom>> TypesRooms;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Corredor")
+	/* Array with the types of corridors that can be spawned. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Corridor")
 		TArray<TSubclassOf<ACorridor>> CorridorTypes;
 
-	/* Número máximo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
+	/* Maximus number of rooms to be generated. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rooms", meta = (UIMin = "5", UIMax = "15"))
 		int32 MaxNumRooms;
 
-	/* Número mínimo de salas que podem ser geradas. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas", meta = (UIMin = "5", UIMax = "15"))
+	/* Minimum number of rooms to be generated.*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rooms", meta = (UIMin = "5", UIMax = "15"))
 		int32 MinNumRooms;
 
-	/* Seed de geração randômica. */
+	/* Random seed number. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Seed")
 		int32 Seed;
 
-	/* Ponteiro a sala inicial. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Salas")
+	/* Starting room pointer. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rooms")
 		ARoom* StartingRoom;
 
-	/* Número máximo de salas que podem ser geradas. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Salas")
+	/* Array of rooms in the level. */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Rooms")
 		TArray<ARoom*> Rooms;
+
 #pragma endregion Properties
 
 #pragma region Constructor
-	/*Constructor Padrão. */
+
+	/*Standard Constructor.*/
 	ARoomGenerator();
+
 #pragma endregion Constructor
 
 #pragma region Functions
+
 public:
 
 	/*
-	* Função estática que get do gerador de salas. Função utilizada por outras classes para acessar o gerador de salas.
+	* Função estática que get do Generator de Rooms. Função utilizada por outras classes para acessar o Generator de Rooms.
 	* @param WordlContextObject - Contexto de geração da sala.
-	* @return Ponteiro ao gerador de salas.
+	* @return Ponteiro ao Generator de Rooms.
 	*/
-	UFUNCTION(BlueprintPure, Category = "Gerador Salas", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
+	UFUNCTION(BlueprintPure, Category = "Generator Rooms", meta = (WorldContext = "WorldContextObject", UnsafeDuringActorConstruction = "true"))
 		static ARoomGenerator* GetRoomGenerator(UObject* WorldContextObject);
 
 	/*
-	* Função de inicialização do gerador de salas, iniciando o processo de geração do level.
+	* Função de inicialização do Generator de Rooms, iniciando o processo de geração do level.
 	* @param Inicial - Ponteiro a sala inicial.
-	* @param Seed - Novo seed do gerador.
+	* @param Seed - Novo seed do Generator.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void InitializeGenerator(ARoom* startRoom, int32 newSeed, int32 curLevel);
 
 	/*
@@ -153,21 +159,21 @@ public:
 	* @param Porta - Direção padrão da sala.
 	* @return Rotação da porta com relação a sala.
 	*/
-	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
+	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		FRotator GetRelativeDoorDirection(const FRotator roomDirection, const EDoorDirection& door);
 
 	/*
-	* Função de get do número total de portas vazias dentro do array de salas.
-	* @return O número de salas vazias.
+	* Função de get do número total de portas vazias dentro do array de Rooms.
+	* @return O número de Rooms vazias.
 	*/
-	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
+	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		int32 GetNumVoidDoors();
 
 	/*
-	* Função que retorna o índice da última sala válida dentro do array de salas.
+	* Função que retorna o índice da última sala válida dentro do array de Rooms.
 	* @return O número do índice.
 	*/
-	UFUNCTION(BlueprintPure, Category = "Gerador Salas")
+	UFUNCTION(BlueprintPure, Category = "Generator Rooms")
 		int32 LastValidRoom();
 
 	/*
@@ -180,7 +186,7 @@ public:
 		FTransform GenerateRoomTrans(ARoom* previousRoom, const FRotator doorDirection);
 
 	/*
-	* Função que gera o transforma do corredor a ser gerado.
+	* Função que gera o transforma do Corridor a ser gerado.
 	* @param SalaAnterior - Ponteiro a sala anterior.
 	* @param DirecaoPorta - Rotação da porta que está gerando a sala.
 	* @return O transforma do correodr a ser gerada.
@@ -189,7 +195,7 @@ public:
 		FTransform GenerateCorridorTrans(ARoom* previousRoom, const FRotator doorDirection);
 
 	/*
-	* Função que seleciona a sala a ser gerada, esta função checa quais salas podem ser geradas e garante que salas especiais serão geradas.
+	* Função que seleciona a sala a ser gerada, esta função checa quais Rooms podem ser geradas e garante que Rooms especiais serão geradas.
 	* @param SalaAnterior - Ponteiro a sala anterior.
 	* @return Classe da sala a ser gerada.
 	*/
@@ -197,24 +203,24 @@ public:
 		TSubclassOf<ARoom> SelectRoom(ARoom* previousRoom);
 
 	/*
-	* Função que utiliza o seed para o set do número de salas a serem geradas.
+	* Função que utiliza o seed para o set do número de Rooms a serem geradas.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void SetNumRooms(int32 currentLevel);
 
 	/*
-	* Função que adiciona uma nova sala ao array de salas.
+	* Função que adiciona uma nova sala ao array de Rooms.
 	* @param sala - Ponteiro a sala a ser adicionada
 	*/
 	UFUNCTION()
 		void AddToDoorArray(ARoom* room);
 
 	/*
-	* Função que gera o level com todas as salas, corredores e faz o spawn dos inimigos.
+	* Função que gera o level com todas as Rooms, Corridores e faz o spawn dos inimigos.
 	* Esta função é utilizada recursivamente.
 	* @param SalaAtual - Ponteiro a sala atual da geração.
 	*/
-	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Generator Rooms")
 		void GenerateLevel(ARoom* currentRoom);
 
 	/*
@@ -223,19 +229,19 @@ public:
 	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
 	* @return Ponteiro a sala gerada.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		ARoom* GenerateRoom (ARoom* previousRoom, const FRotator& doorDirection);
 
 	/*
-	* Função que gera um corredor.
+	* Função que gera um Corridor.
 	* @param SalaAnterior - Ponteiro a sala anterior.
-	* @param DirecaoPorta - Rotação da porta que vai gerar o corredor.
+	* @param DirecaoPorta - Rotação da porta que vai gerar o Corridor.
 	*/
 	UFUNCTION()
 		void GenerateCorridor(ARoom* previousRoom, const FRotator& doorDirection);
 
 	/*
-	* Função que impede a colisão de uma nova sala com salas que já foram geradas e com os limites de geração.
+	* Função que impede a colisão de uma nova sala com Rooms que já foram geradas e com os limites de geração.
 	* @param Trans - transform da sala a ser gerada para checar a colisão.
 	* @param DirecaoPorta - Rotação da porta que vai gerar a sala.
 	*/
@@ -268,19 +274,19 @@ public:
 	/*
 	* Evento que é disparado quando a geração foi terminada.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, Category = "Sala")
+	UFUNCTION(BlueprintImplementableEvent, Category = "Room")
 		void OnLevelGenerated();
 
 	/*
-	* Função que carregar de um save game as salas.
+	* Função que carregar de um save game as Rooms.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void LoadRooms();
 
 	/*
-	* Função que salva as salas em um save game.
+	* Função que salva as Rooms em um save game.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Gerador Salas")
+	UFUNCTION(BlueprintCallable, Category = "Generator Rooms")
 		void SaveRooms();
 #pragma endregion Functions
 

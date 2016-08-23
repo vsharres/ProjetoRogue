@@ -6,7 +6,8 @@
 #include "Room2DRight.generated.h"
 
 /*
-*	Classe que representa uma sala com duas portas. Sala orientada com a orientação virada para direita (portas na direção Oeste/Sul)
+*	Class inherited from ARoom.
+*	Class that represents a room with two doors. A room with Right orientation ( doors in the West/South direction).
 */
 UCLASS()
 class PROTUX_API ARoom2DRight : public ARoom

@@ -15,10 +15,10 @@ struct FProjectileStats
 public:
 
 	/* Intensidade da velocidade do projétil. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Struct")
 		float Speed;
 	/* Dano a ser causado pelo projétil. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projetil Struct")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Struct")
 		float Damage;
 
 	/* Construtor padrão. */
@@ -138,15 +138,15 @@ public:
 protected:
 
 	/* Componente de movimentação do projétil, responsável pelas propriedades de movimentação.*/
-	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		UProjectileMovementComponent* MovementComp;
 
 	/* Componente de colisão do projétil. */
-	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		USphereComponent* CollisionComp;
 
 	/* Componenete com o mesh do projétil. */
-	UPROPERTY(VisibleDefaultsOnly, Category = "Projetil")
+	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		UStaticMeshComponent* Mesh;
 
 	/* Efeitos de impacto do projétil. */
@@ -188,7 +188,7 @@ public:
 	* Função para inicializar o projétil.
 	* @param Inicializador - Ponteiro ao APawn responsável pela inicialização.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projetil"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projectile"), Category = "Projectile")
 		void InitializeProjectile(ACharacter* initializer);
 
 	/*
@@ -197,20 +197,20 @@ public:
 	* @param Rotacao - Vetor de rotacao de inicialização do projetil (Geralmente está apontado para a posição da mira)
 	* @param Inicializador - Ponteiro ao APawn responsável pela inicialização.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projetil", Keywords = "Ativar Projetil"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projectile", Keywords = "Ativar Projectile"), Category = "Projectile")
 		void ActivateProjectile(const FVector& location, const FRotator& rotator, ACharacter* initializer); //MUDAR LOCATION PARA LOCALICAZAO e ROTATOR PARA ROTACAO
 
 	/*
 	* Função para desatovar um projétil.(Geralmente chamada quando um projétil ativo atinge um objeto)
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projetil", Keywords = "Desativar Projetil"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projectile", Keywords = "Desativar Projectile"), Category = "Projectile")
 		void DeactivateProjectile();
 
 	/*
 	* Função para gerar os efeitos de impacto.
 	* @param Hit - Estrutura com as propriedades do ponto de colisão.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Impacto", Keywords = "Spawn Efeitos Impacto"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Impacto", Keywords = "Spawn Efeitos Impacto"), Category = "Projectile")
 		void SpawnImpactFX(const FHitResult& Hit);
 
 	/*
@@ -220,7 +220,7 @@ public:
 	* @param Componente - Componente do ator para acoplar o efeito.
 	* @param Nome -  Nome do bone do mesh a qual o efeito sera acoplado.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Tiro", Keywords = "Spawn Efeitos Tiro"), Category = "Projetil")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Tiro", Keywords = "Spawn Efeitos Tiro"), Category = "Projectile")
 		void SpawnShootFX(const FVector& location, const FRotator& rotator, USceneComponent* component, FName name);
 
 	/* Override da função de inicialização do ator. */

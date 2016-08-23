@@ -6,8 +6,8 @@
 #include "Corridor.generated.h"
 
 /*
-*	Classe derivada da classe AActor.
-*	Classe que representa uma dos corredores que conectam as salas. Os corredores são presets que seram gerados pelo gerador de salas.
+*	Class inherited from AActor.
+*	It represents a corridor between rooms, a corridor also has a shop for buying items.
 */
 UCLASS()
 class PROTUX_API ACorridor : public AActor
@@ -18,11 +18,11 @@ class PROTUX_API ACorridor : public AActor
 
 private:
 
-	/* Offset padrão do corredor, que é utilizado para determinar o transform do corredor durante a geração. */
+	/* Position offset, used to calculate the final transform of the corridor. */
 	UPROPERTY(EditDefaultsOnly)
 		float OffsetCorridor;
 
-	/* Escala padrão do corredor, que é utilizado para determinar a escala do corredor durante a geração. */
+	/* Standard scale of the corridor. */
 	UPROPERTY(EditDefaultsOnly)
 		FVector StandardScale;
 
@@ -31,7 +31,7 @@ private:
 #pragma region Constructor
 
 public:
-	/* Constructor padrão. */
+	/* Standard Constructor. */
 	ACorridor(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion
@@ -39,18 +39,18 @@ public:
 #pragma region Functions
 
 	/*
-	* Função Get da escala padrão do corredor.
-	* @return FVector com a escala do corredor.
+	* Get function of the corridor scale.
+	* @return FVector scale value.
 	*/
 	UFUNCTION(BlueprintPure, Category = Corredor)
 		FVector GetScale();
 
 	/*
-	* Função Get do Offset padrão do corredor.
-	* @return int32 com o Offset do corredor.
+	* Get function of the position offset.
+	* @return float offset value.
 	*/
 	UFUNCTION(BlueprintPure, Category = Corredor)
-		int32 GetOffset();
+		float GetOffset();
 
 #pragma endregion
 	

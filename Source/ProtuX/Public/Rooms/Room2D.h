@@ -7,7 +7,8 @@
 
 
 /*
-*	Classe que representa uma sala com duas portas. Sala orientada com a orientação padrão (portas na direção Oeste/Leste)
+*	Class inherited from ARoom.
+*	Class that represents a room with two doors. A room with standard orientation ( doors in the West/East direction).
 */
 UCLASS()
 class PROTUX_API ARoom2D : public ARoom
@@ -17,7 +18,7 @@ class PROTUX_API ARoom2D : public ARoom
 #pragma region Constructor
 public:
 
-	// Constructor
+	// Standard Constructor.
 	ARoom2D(const FObjectInitializer& ObjectInitializer);
 #pragma endregion Constructor
 

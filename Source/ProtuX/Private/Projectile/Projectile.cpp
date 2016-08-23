@@ -73,7 +73,7 @@ void AProjectile::InitializeProjectile(ACharacter* initializer)
 
 void AProjectile::ActivateProjectile(const FVector& location, const FRotator& rotator, ACharacter* initializer)
 {
-	bIsActive = true; //Projetil está ativado
+	bIsActive = true; //Projectile está ativado
 	
 	//Colocar o projétil na posição inicial, e rotacionado na direção que foi mirado. 
 	SetActorLocation(location);
