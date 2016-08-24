@@ -7,28 +7,29 @@
 #include "Enemy.h"
 #include "Projectile.generated.h"
 
-/* Estrutura que representa os stats do projétil. */
+/* Struct that represents the stats of a projectile. */
 USTRUCT()
 struct FProjectileStats
 {
 	GENERATED_USTRUCT_BODY()
 public:
 
-	/* Intensidade da velocidade do projétil. */
+	/* Speed of the projectile. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Struct")
 		float Speed;
-	/* Dano a ser causado pelo projétil. */
+
+	/* Damage caused by the projectile. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile Struct")
 		float Damage;
 
-	/* Construtor padrão. */
+	/* Standard Constructor. */
 	FProjectileStats(float speed = 200.0f, float damage = 1.0f)
 	{
 		Speed = speed;
 		Damage = damage;
 	}
 
-	/* Overload do operador para somar os stats do jogador aos stats do projétil.  */
+	/* Overload of the assignment operator to assign the player stats to the projectile. */
 	FORCEINLINE FProjectileStats& operator=(const FPlayerStats& playerStats)
 	{
 		this->Speed = playerStats.MuzzleSpeed;
@@ -37,7 +38,7 @@ public:
 		return *this;
 	}
 
-	/* Overload do operador para somar os stats do inimigo aos stats do projétil.  */
+	/* Overload of the assignment operator to assign the enemy stats to the projectile. */
 	FORCEINLINE FProjectileStats& operator=(const FEnemyStats& enemyStats)
 	{
 		this->Speed = enemyStats.MuzzleSpeed;
@@ -46,37 +47,36 @@ public:
 		return *this;
 	}
 
-
 };
 
-/* Estrutura que presenta os efeitos de impacto causados pelo projéil. */
+/* Struct that holds the impact effects spawned by the projectile. */
 USTRUCT()
 struct FProjectileImpactEffect
 {
 	GENERATED_USTRUCT_BODY()
 public:
 
-	/* Sistem de partículas gerado no impacto. */
+	/* Particle system spawned on impact. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		UParticleSystem* Effect;
 
-	/* Som gerado no impacto. */
+	/* SoundFX spawned on impact. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		USoundCue* ImpactSoundFX;
 
-	/* Material do decal gerado durante o impacto.*/
+	/* Decal material spawned on impact. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		UMaterial* DecalMaterial;
 
-	/* Tamanho do decal a ser gerado. */
+	/* Size of the decal. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float DecalSize;
 
-	/* Tempo de vida do decal. */
+	/* Life time of the decal. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float DecalHealth;
 
-	/* Construtor padrão. */
+	/* Standard Constructor. */
 	FProjectileImpactEffect()
 	{
 		Effect = NULL;
@@ -87,22 +87,22 @@ public:
 	}
 };
 
-/* Estrutura que representa os efeitos gerados quando o projétil é atirado. */
+/* Struct that holds the shooting effects spawned by the projectile.  */
 USTRUCT()
 struct FProjectileShootEffects
 {
 	GENERATED_USTRUCT_BODY()
 public:
 
-	/* Sistema de partículas gerado quando o projétil é atirado. */
+	/* Particle system spawned on shoot. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		UParticleSystem* ShootFlash;
 
-	/* Som gerado quando o projétil é atirado. */
+	/* Sound FX spawned on shoot. */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		USoundCue* ShootSound;
 
-	/* Construtor padrão.*/
+	/* Standard Constructor. */
 	FProjectileShootEffects()
 	{
 		ShootFlash = NULL;
@@ -111,134 +111,135 @@ public:
 };
 
 /*
-*	Classe derivada da classe AActor.
-*	Classe que represeta o projétil atirado pelo jogador e pelos inimigos.
+*	Class inherited from AActor.
+*	This class represents a projectile shoot by the player and enemies.
+*	This is an abstract class, it will be used on particle blueprint for specific behaviors on types of particles (bouncing on walls, following enemies..)
 */
 UCLASS(ABSTRACT, Blueprintable)
 class PROTUX_API AProjectile : public AActor
 {
 	GENERATED_BODY()
 
-#pragma region PROPRIEDADES
+#pragma region Properties
 
 public:
 
-	/* Booleano indicando se o projétil está ativo. O projétil apenas se move, é visível e causa dano quando ele estiver ativado. */
+	/* Boolean indicating if the projectile is active. The projectile only moves, is visible and causes damage when he is active. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		bool bIsActive;
 
-	/* Stats do projétil. */
+	/* Projectile Stats. */
 	UPROPERTY(VisibleAnywhere, Category = "Stats")
 		FProjectileStats Stats;
 
-	/* Classe da animação da camera que será realizada quando o projétil é atirado. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Efeitos")
+	/* Camera shake animation to be played when the projectile is shoot. */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Effects")
 		TSubclassOf<UCameraShake> ShootCameraShake;
 
 protected:
 
-	/* Componente de movimentação do projétil, responsável pelas propriedades de movimentação.*/
+	/* Projectile movement component. */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		UProjectileMovementComponent* MovementComp;
 
-	/* Componente de colisão do projétil. */
+	/* Projectile collision component. */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		USphereComponent* CollisionComp;
 
-	/* Componenete com o mesh do projétil. */
+	/* Projectile Mesh component. */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Projectile")
 		UStaticMeshComponent* Mesh;
 
-	/* Efeitos de impacto do projétil. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Efeitos")
+	/* Projectile impact effects struct. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effects")
 		FProjectileImpactEffect ImpactFX;
 
-	/* Efeitos de tiro do projétil. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Efeitos")
+	/* Projectile shoot effects struct. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effects")
 		FProjectileShootEffects ShootFX;
 
 #pragma endregion
 
 
-#pragma region CONSTRUTOR
+#pragma region Constructor
 
 public:
-	/* Construtor padrão. */
+	/* Standard Constructor. */
 	AProjectile(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion
 
-#pragma region FUNÇÕES
+#pragma region Functions
 
 	/*
-	* Função de get do mesh do projétl.
-	* @return - Ponteiro ao mesh do projétil.
+	* Get function for the projectile mesh component.
+	* @return - Pointer to the mesh component.
 	*/
 	UFUNCTION(BlueprintPure, Category = "Component")
 		UStaticMeshComponent* GetProjectileMesh();
 
 	/*
-	* Função de get do componente de movimentação do projétil.
-	* @return - Ponteiro ao componente de movimentação.
+	* Get function for the projectile movement component.
+	* @return - Pointer to the movement component.
 	*/
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Proj", Keywords = "Get Mov Proj"), Category = "Particula")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Mov Comp", Keywords = "Get Mov Comp"), Category = "Projectile")
 		UProjectileMovementComponent* GetMovComp();
 
 	/*
-	* Função para inicializar o projétil.
-	* @param Inicializador - Ponteiro ao APawn responsável pela inicialização.
+	* Function to initialize the projectile.
+	* @param initializer - Character pointer to the enemy or player that will be firing the projectile.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InicializarProj", Keywords = "Inicializar Projectile"), Category = "Projectile")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "InitProj", Keywords = "Initialize Projectile"), Category = "Projectile")
 		void InitializeProjectile(ACharacter* initializer);
 
 	/*
-	* Função para ativar um projétil.
-	* @param Localizacao - Vetor da localizao a onde o projétil será inicializado(Geralmente é ponto do canhao a onde sái o tiro).
-	* @param Rotacao - Vetor de rotacao de inicialização do projetil (Geralmente está apontado para a posição da mira)
-	* @param Inicializador - Ponteiro ao APawn responsável pela inicialização.
+	* Function to activate the projectile.
+	* @param location - Location vector where the projectile will be initialized.
+	* @param rotator - Rotation vector of the projectile to initialized.
+	* @param initializer - Pointer to the Character that fired the projectile.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Ativar Projectile", Keywords = "Ativar Projectile"), Category = "Projectile")
-		void ActivateProjectile(const FVector& location, const FRotator& rotator, ACharacter* initializer); //MUDAR LOCATION PARA LOCALICAZAO e ROTATOR PARA ROTACAO
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Activate Projectile", Keywords = "Activate Projectile"), Category = "Projectile")
+		void ActivateProjectile(const FVector& location, const FRotator& rotator, ACharacter* initializer);
 
 	/*
-	* Função para desatovar um projétil.(Geralmente chamada quando um projétil ativo atinge um objeto)
+	* Function to deactivate a projectile.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Desativar Projectile", Keywords = "Desativar Projectile"), Category = "Projectile")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Deactivate Projectile", Keywords = "Deactivate Projectile"), Category = "Projectile")
 		void DeactivateProjectile();
 
 	/*
-	* Função para gerar os efeitos de impacto.
-	* @param Hit - Estrutura com as propriedades do ponto de colisão.
+	* Function to spawn impact effects on collision with surfaces.
+	* @param Hit - Hit struct with data on the collision point.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Impacto", Keywords = "Spawn Efeitos Impacto"), Category = "Projectile")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Impact FX", Keywords = "Spawn Impacto Effects"), Category = "Projectile")
 		void SpawnImpactFX(const FHitResult& Hit);
 
 	/*
-	* Função para gerar os efeitos de tiro do canhão.
-	* @param Location - Local para gerar o efeito.
-	* @param Rotator - Rotação do efeito.
-	* @param Componente - Componente do ator para acoplar o efeito.
-	* @param Nome -  Nome do bone do mesh a qual o efeito sera acoplado.
+	* Function to spawn shooting effects.
+	* @param location - Location where to spawn the particle effects.
+	* @param rotator - Rotation of the particle effects.
+	* @param component - Component to bind the effect to. (Cannon muzzle usually)
+	* @param name -  Name of the bone mesh to bind the effect.
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Efeitos Tiro", Keywords = "Spawn Efeitos Tiro"), Category = "Projectile")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Spawn Shoot FX", Keywords = "Spawn Shoot Effects"), Category = "Projectile")
 		void SpawnShootFX(const FVector& location, const FRotator& rotator, USceneComponent* component, FName name);
 
-	/* Override da função de inicialização do ator. */
+	/* Event called when the game begins, initialize variables. */
 	virtual void BeginPlay() override;
 
-	/* Override do Tick do projétil. */
+	/* Called every frame. */
 	virtual void Tick(float DeltaSeconds) override;
 
 	/*
-	* Override do Tick da sala.
+	* Event called when a particle hits a target.
 	*/
-	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Particula")
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Projectile")
 		void OnHitTarget();
 
 	/*
-	* Delegate de hit do projetil.
+	* On hit delegate.
 	*/
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "On Hit", Keywords = "On Hit"), Category = "Particula")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "On Hit", Keywords = "On Hit"), Category = "Projectile")
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	virtual void OnHit_Implementation(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 

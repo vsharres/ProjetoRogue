@@ -5,7 +5,7 @@
 #include "Rooms/Corridor.h"
 #include "ShopCorridor.generated.h"
 
-/* Enumeração que representa o tipo de item que está num determinado slot. */
+/* Enum representing the type of slot in the shop. */
 UENUM(BlueprintType)
 enum class ESlotType : uint8
 {
@@ -15,33 +15,33 @@ enum class ESlotType : uint8
 
 };
 
-/* Estrutura que represent as propriedades de um dos slots da loja. */
+/* Struct that stores the properties of a given shop item slot.*/
 USTRUCT()
 struct FShopSlot{
 
 	GENERATED_USTRUCT_BODY()
 
-	/* Custo do item no slot. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+	/* Cost of the item in the slot. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ShopSlot Struct")
 		int32 Cost;
 
-	/* Efeito do item no slot. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+	/* Effect provided by the item in the slot. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ShopSlot Struct")
 		float Effect;
 
-	/* Tipo do item no slot. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+	/* Type of item in the slot. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ShopSlot Struct")
 		ESlotType Type;
 
-	/* Ponteiro ao item no slot. Essa variável apenas é válida se o tipo do slot for ESlotTipo::ITEM */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+	/* Pointer to the item in the slot. This variable is only valid if the type of slot is of type ESlotTipo::ITEM */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ShopSlot Struct")
 	class UItem* Item;
 
-	/* Booleano indicando se o slot foi comprado. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LojaSlot Struct")
+	/* Boolean indicating if the slot was bought. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ShopSlot Struct")
 		bool bBought;
 
-	/* Constructor Padrão */
+	/* Standard Constructor */
 	FShopSlot() : Cost(10),
 		Effect(0),
 		Type(ESlotType::ENERGY),
@@ -49,7 +49,7 @@ struct FShopSlot{
 		bBought(false)
 	{}
 
-	/* Destrutor */
+	/* Destructor */
 	~FShopSlot()
 	{
 		Item = NULL;
@@ -58,8 +58,8 @@ struct FShopSlot{
 };
 
 /**
-* Classe derivada da classe ACorredor.
-* Tipo específico de corredor que contêm um loja. Todo level tem uma loja em um dos seus corredores.
+* Class inherited from ACorridor.
+* This Class represents a special type of corridor that has a shop in it. On a shop the player can buy items, health and energy packs.
 */
 UCLASS()
 class PROTUX_API AShopCorridor : public ACorridor
@@ -70,22 +70,22 @@ class PROTUX_API AShopCorridor : public ACorridor
 
 private:
 
-	/* Componente raiz do corredor. Usado para o transform do corredor. */
+	/* Corridor root component. Used as the corridor transform.*/
 	UPROPERTY(VisibleDefaultsOnly, Category = "Root")
 		USceneComponent* ShopCorridorRoot;
 
-	/* Componente de colisão do trigger que ativa a loja. */
+	/* Collision trigger component that activates the shop. */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Trigger")
 		UBoxComponent* ShopTrigger;
 
-	/* Array com as classes dos possíveis itens que podem estar presentes na loja. */
+	/* Array with all possible item classes that can be in a slot in the shop. */
 	UPROPERTY(EditDefaultsOnly, Category = "Itens")
 		TArray<TSubclassOf<UItem>> Items;
 
 
 public:
 
-	/* Array com os slots da loja. O número padrão de slot é 3. */
+	/* Shop slots array. The standard number of slots is 3 slots. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Slots")
 		TArray<FShopSlot> Slots;
 
@@ -93,36 +93,35 @@ public:
 
 #pragma region Constructor
 
-	/* Constructor padrão. */
+	/* Standard Constructor */
 	AShopCorridor(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion
 
 #pragma region Functions
 
-	/* Override da função de inicialização do ator. */
+	/* Event called when the game begins, initialize variables. */
 	void BeginPlay() override;
 
 	/*
-	* Função responsável por inicializar a loja.
-	* Esta função criar os itens em cada slot.
+	* Function used to initialize the shop, populating the slots with items.
 	*/
 	UFUNCTION()
 		void InitializeShop();
 	/*
-	* Função para comprar um determinado slot.
-	* @param slot - Índice do slot na loja (0 a 2).
-	* @param jogador - Ponteiro ao jogador que comprou o slot.
+	* Function to buy a slot.
+	* @param slot - Index of the slot in the shop (0 to 2).
+	* @param player - Pointer to the player.
 	*/
-	UFUNCTION(BlueprintCallable, Category = "Loja")
+	UFUNCTION(BlueprintCallable, Category = "Shop")
 		void BuySlot(int32 slot, class AProtuXPlayer* player);
 
-	/* Função para salvar a loja. Essa função sempre é chamada depois que o jogador comprou um slot. */
-	UFUNCTION(BlueprintCallable, Category = "Loja")
+	/* Function to save the Shop. This function is always called after the player has bought a slot. */
+	UFUNCTION(BlueprintCallable, Category = "Shop")
 		void SaveShopState();
 
-	/* Função para carregar a loja de um save caso o jogador esteja continuando um jogo. */
-	UFUNCTION(BlueprintCallable, Category = "Loja")
+	/* Function to load a shop from a save game. */
+	UFUNCTION(BlueprintCallable, Category = "Shop")
 		void LoadShopState();
 
 #pragma endregion

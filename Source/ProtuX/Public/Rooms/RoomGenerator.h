@@ -104,7 +104,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Corridor")
 		TArray<TSubclassOf<ACorridor>> CorridorTypes;
 
-	/* Maximus number of rooms to be generated. */
+	/* Max number of rooms to be generated. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rooms", meta = (UIMin = "5", UIMax = "15"))
 		int32 MaxNumRooms;
 
