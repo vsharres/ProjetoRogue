@@ -1,4 +1,4 @@
-/*
+/**
 	
 	By Rama
 
@@ -21,7 +21,7 @@ class VICTORYBPLIBRARY_API UVictoryBPHTML : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 public:
 	
-	/** Is the current OS HTML5? This code will only run in games packaged for HTML5, it will not run in Editor builds :) Use this to customize particle FX for HTML5 vs PC builds! Or for any custom HTML5-specific game logic! <3 Rama*/
+	/*** Is the current OS HTML5? This code will only run in games packaged for HTML5, it will not run in Editor builds :) Use this to customize particle FX for HTML5 vs PC builds! Or for any custom HTML5-specific game logic! <3 Rama*/
 	UFUNCTION(BlueprintPure, Category = "VictoryBPLibrary|HTML5")
 	static bool IsHTML();
 	 

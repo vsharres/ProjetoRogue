@@ -8,7 +8,7 @@ ARoom4D::ARoom4D(const FObjectInitializer& ObjectInitializer)
 {
 	//Inicizalizando as propriedades.
 	NumberDoors = ENumberDoors::FOUR;
-	RoomDirection = ERoomShape::STANDARD;
+	RoomDirection = ERoomShape::Default;
 	ConectedRooms.Empty();
 	DoorsDirArray.Empty();
 	DoorsDirArray.Add(EDoorDirection::WEST);

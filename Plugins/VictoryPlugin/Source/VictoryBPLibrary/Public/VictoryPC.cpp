@@ -1,4 +1,4 @@
-/*
+/**
 
 	By Rama
 
@@ -36,7 +36,7 @@ UAudioComponent* AVictoryPC::VictoryPlaySpeechSound(
 		Audio->OnQueueSubtitles.BindDynamic(this, &AVictoryPC::Subtitles_CPPDelegate);
 	}      
 	
-	/*
+	/**
 		Note that the OnAudioFinished is BP assignable off of return of this node!
 		
 		//called when we finish playing audio, either because it played to completion or because a Stop() call turned it off early

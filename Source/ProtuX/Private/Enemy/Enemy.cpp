@@ -121,7 +121,7 @@ void AEnemy::SpawnPickUp()
 		if (index == 0 && EnemyType == EEnemyType::BOSS) //se o inimigo for um boss, o primeiro pickup é sempre um item
 		{
 			AItemPickUp* pickItem = GetWorld()->SpawnActor<AItemPickUp>(ItemPickUpClass, GetActorLocation(), GetActorRotation());
-			pickItem->ChoseItem(stream);
+			pickItem->ChooseItem(stream);
 
 			continue;
 		}

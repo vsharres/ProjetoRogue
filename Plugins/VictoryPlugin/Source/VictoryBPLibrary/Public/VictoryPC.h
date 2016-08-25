@@ -1,4 +1,4 @@
-/*
+/**
 
 	By Rama
 
@@ -20,11 +20,11 @@ struct FVictorySubtitleCue
 {
 	GENERATED_USTRUCT_BODY()
 
-	/** The text to appear in the subtitle. */
+	/*** The text to appear in the subtitle. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SubtitleCue)
 	FText SubtitleText;
 
-	/** The time at which the subtitle is to be displayed, in seconds relative to the beginning of the line. */
+	/*** The time at which the subtitle is to be displayed, in seconds relative to the beginning of the line. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=SubtitleCue)
 	float Time;
 
@@ -45,7 +45,7 @@ class VICTORYBPLIBRARY_API AVictoryPC : public APlayerController
 public:
 	AVictoryPC(const FObjectInitializer& ObjectInitializer);
 	
-	/** 
+	/*** 
 	* When the sound is played OnVictorySubtitlesQueued will be called with the subtitles!
 	* You can bind an event off of the audio component for OnAudioFinished to know hwen the sound is done! 
 	*/ 
@@ -59,11 +59,11 @@ public:
 	void Subtitles_CPPDelegate(const TArray<struct FSubtitleCue>& VictorySubtitles, float CueDuration);
 	
 public:
-	/** This node relies on http://api.ipify.org, so if this node ever stops working, check out http://api.ipify.org.  Returns false if the operation could not occur because HTTP module was not loaded or unable to process request. */
+	/*** This node relies on http://api.ipify.org, so if this node ever stops working, check out http://api.ipify.org.  Returns false if the operation could not occur because HTTP module was not loaded or unable to process request. */
 	UFUNCTION(BlueprintCallable, Category="Victory PC")
 	bool VictoryPC_GetMyIP_SendRequest();
 	
-	/** Implement this event to receive your IP once the request is processed! This requires that your computer has a live internet connection */
+	/*** Implement this event to receive your IP once the request is processed! This requires that your computer has a live internet connection */
 	UFUNCTION(BlueprintImplementableEvent, Category = "Victory PC", meta = (DisplayName = "Victory PC ~ GetMyIP ~ Data Received!"))
 	void VictoryPC_GetMyIP_DataReceived(const FString& YourIP);
 	

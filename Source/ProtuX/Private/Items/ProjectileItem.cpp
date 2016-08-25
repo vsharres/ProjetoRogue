@@ -17,11 +17,11 @@ void UProjectileItem::ApplyItem_Implementation()
 {
 	if (Player->IsValidLowLevelFast() && this->bIsStandardProjectile) //checar que o jogador é valido
 	{
-		Player->CurrentProjectil = this;
+		Player->CurrentProjectile = this;
 	}
 	else 
 	{
-		Player->FoundProjectil = this->GetClass();
+		Player->FoundProjectile = this->GetClass();
 	}
 }
 

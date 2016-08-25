@@ -6,7 +6,7 @@
 #include "ProtuXPlayer.h"
 #include "PickUp.generated.h"
 
-/* Enumeração que representa o tipo de pickup. O tipo é o stats que será modificado quando o jogador obtêm o pickup. */
+/** Enum that represents the type of item. The type of the is associated with the effect caused on the player */
 UENUM(BlueprintType)
 enum class EPickUpType : uint8 {
 	SCRAP,
@@ -15,8 +15,9 @@ enum class EPickUpType : uint8 {
 	ITEM
 };
 
-/*
-* Classe abstrata que representa um objeto que os inimigos criam quando são destruídos.
+/**
+* Class inherited from AActor
+* Abstract class which represents an object that the enemies drop as they are destroyed. PickUps can provide boost to health, energy, scrap or an item.
 */
 UCLASS(abstract)
 class PROTUX_API APickUp : public AActor
@@ -26,41 +27,41 @@ class PROTUX_API APickUp : public AActor
 	
 protected:
 
-	/* Componente de colisão. */
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
+	/** Collision component for the trigger to catch the PickUp */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
 		USphereComponent* TriggerCatch;
 
-	/* Trigger para ativar o efeito de outline.*/
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = PickUp)
+	/** Collision component for the trigger to show the outline of the PickUp */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Trigger")
 		USphereComponent* TriggerOutline;
 
-	/* Mesh do pickup. */
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
+	/** PickUp mesh component */
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UStaticMeshComponent* Mesh;
 
 public:
 
-	/* Delta do vetor de posição do centro da força de explosão. */
+	/** Position delta vector from the center of the explosion force */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "PickUp")
 		float ExplosionDelta;
 
-	/* Magnitude da força da explosão. */
+	/** Explosion force magnitude */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "PickUp")
 		float ExplosionForce;
 
-	/* Quanto o item potencialmente incrementa a vida do jogador. */
+	/** How much the PickUp increases health */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		float IncHealth;
 
-	/* Quanto o item potencialmente incrementa a energia do jogador. */
+	/** How much the PickUp increases energy */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		int32 IncEnergy;
 
-	/* Quanto o item potencialmente incrementa a quantidade de moedas do jogador. */
+	/** How much the PickUp increases scrap */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PickUp")
 		int32 IncScraps;
 
-	/* O tipo do pickup. */
+	/** PickUp type */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp")
 		EPickUpType	Type;
 
@@ -68,28 +69,28 @@ public:
 
 #pragma region Constructor
 
-/* Constructor Padrão. */
+/** Default Constructor */
 	APickUp(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion Constructor
 
 #pragma region Functions
 
-	/*
-	* Função Get para retornar o componente de colisão do Pickup.
-	* @return Ponteiro ao componente de colisão.
+	/**
+	* Get function to return the collision component
+	* @return Pointer to the collision component
 	*/
 	UFUNCTION(BlueprintPure, Category = "Colisor")
 		USphereComponent* GetCollider();
 
-	/*
-	* Função Get para retornar o Mesh do Pickup.
-	* @return Ponteiro ao Mesh.
+	/**
+	* Get function to return the PickUp Mesh component
+	* @return Pointer to the mesh component
 	*/
 	UFUNCTION(BlueprintPure, Category = "Mesh")
 		UStaticMeshComponent* GetMesh();
 
-	/* Override do evento de beginplay. */
+	/** BeginPlay event override */
 	virtual void BeginPlay() override;
 
 #pragma endregion Functions

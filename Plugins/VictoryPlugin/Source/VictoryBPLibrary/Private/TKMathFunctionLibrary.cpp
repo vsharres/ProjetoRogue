@@ -1,4 +1,4 @@
-/*
+/**
 	By TK-Master
 */
 #include "VictoryBPLibraryPrivatePCH.h"

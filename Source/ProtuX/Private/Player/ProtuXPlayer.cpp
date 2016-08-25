@@ -92,7 +92,7 @@ void AProtuXPlayer::GenerateName(int32 index)
 				break;
 			}
 
-			temp = temp - (temp / 100 * 100);
+			temp -= (temp / 100) * 100;
 		}
 		else if (temp >= 10)
 		{
@@ -130,7 +130,7 @@ void AProtuXPlayer::GenerateName(int32 index)
 				break;
 			}
 
-			temp = temp - (temp / 10 * 10);
+			temp -= (temp / 10) * 10;
 		}
 		else if (temp < 10)
 		{
@@ -173,7 +173,14 @@ void AProtuXPlayer::GenerateName(int32 index)
 
 	}
 
-	Name = "Mark " + num;
+	if (num != "")
+	{
+		Name = "Mark " + num;
+	}
+	else
+	{
+		Name = "Mark M";
+	}
 
 }
 
@@ -192,7 +199,7 @@ bool AProtuXPlayer::IsAlive()
 	return false;
 }
 
-void AProtuXPlayer::AddHelath(float health)
+void AProtuXPlayer::AddHealth(float health)
 {
 	this->Stats.AddHealth(health);
 
@@ -237,9 +244,9 @@ void AProtuXPlayer::SavePlayerState()
 		SaveInst->PlayerLocation = this->GetActorLocation();
 		SaveInst->PlayerRotation = this->GetActorRotation();
 
-		if (FoundProjectil) //salvar referência ao asset do projetil encontrado
+		if (FoundProjectile) //salvar referência ao asset do projetil encontrado
 		{
-			SaveInst->FoundProjectileRef = FStringAssetReference(this->FoundProjectil).ToString();
+			SaveInst->FoundProjectileRef = FStringAssetReference(this->FoundProjectile).ToString();
 		}
 
 		SaveInst->bHasFoundItem = this->bFoundItem;
@@ -283,7 +290,7 @@ void AProtuXPlayer::LoadPlayerState()
 
 			if (projectileItem)
 			{
-				this->FoundProjectil = projectileItem->GetClass();
+				this->FoundProjectile = projectileItem->GetClass();
 			}
 		}
 
@@ -319,44 +326,44 @@ void AProtuXPlayer::NewPlayer()
 
 }
 
-void AProtuXPlayer::UseItem(bool bIsDeactivated/*= false*/)
+void AProtuXPlayer::UseItem(bool bIsDeactivated/**= false*/)
 {
-	if (FoundProjectil->IsValidLowLevelFast()) //checar que o projetil encontrado é valido
+	if (FoundProjectile->IsValidLowLevelFast()) //checar que o projetil encontrado é valido
 	{
 		InitializeProjectile(bIsDeactivated); //inicializar o projetil e atulizar o mesh do canhão
 		UpdateMesh();
 	}
 }
 
-void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/*= false*/)
+void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/**= false*/)
 {
-	if (CurrentProjectil ==  NULL && !bIsDeactivated) //checar que o projetil atual é valido e não esta sendo desativado
+	if (CurrentProjectile ==  NULL && !bIsDeactivated) //checar que o projetil atual é valido e não esta sendo desativado
 	{
 		//Inicializar o projetil atual como o projetil inicial do jogo.
-		CurrentProjectil = NewObject<UProjectileItem>(this, StartingProjectil);
-		CurrentProjectil->InitializeItem(this);
+		CurrentProjectile = NewObject<UProjectileItem>(this, StartingProjectile);
+		CurrentProjectile->InitializeItem(this);
 		GenerateProjectilePool();
 
 	}
 	else if (bIsDeactivated)
 	{
 		//Desativar o item ativo e reverter o projetil ao projetil inicial do jogo.
-		CurrentProjectil->DeactivateItem();
-		CurrentProjectil->RemoveItem();
-		CurrentProjectil = NewObject<UProjectileItem>(this, StartingProjectil);
-		CurrentProjectil->InitializeItem(this);
+		CurrentProjectile->DeactivateItem();
+		CurrentProjectile->RemoveItem();
+		CurrentProjectile = NewObject<UProjectileItem>(this, StartingProjectile);
+		CurrentProjectile->InitializeItem(this);
 		GenerateProjectilePool();
 	}
 	else
 	{
 		//Ativar o item ativo e setar o projetil atual como o projetil do item ativo.
-		CurrentProjectil->DeactivateItem();
-		CurrentProjectil->RemoveItem();
-		CurrentProjectil = NewObject<UProjectileItem>(this, FoundProjectil);
-		CurrentProjectil->InitializeItem(this);
+		CurrentProjectile->DeactivateItem();
+		CurrentProjectile->RemoveItem();
+		CurrentProjectile = NewObject<UProjectileItem>(this, FoundProjectile);
+		CurrentProjectile->InitializeItem(this);
 		GenerateProjectilePool();
 
-		CurrentProjectil->ActivateItem();
+		CurrentProjectile->ActivateItem();
 	}
 
 }
@@ -373,7 +380,7 @@ void AProtuXPlayer::GenerateProjectilePool()
 		FVector firePos = FVector(0, 0, 1000);
 
 		//Spawn do projétil
-		AProjectile* shoot = GetWorld()->SpawnActor<AProjectile>(CurrentProjectil->Projectile, firePos, GetControlRotation());
+		AProjectile* shoot = GetWorld()->SpawnActor<AProjectile>(CurrentProjectile->Projectile, firePos, GetControlRotation());
 
 		if (shoot->IsValidLowLevelFast())
 		{
@@ -413,9 +420,9 @@ void AProtuXPlayer::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AProtuXPlayer::ItemCooldown(float DeltaTime)
 {
-	if (CurrentProjectil->bIsActive)
+	if (CurrentProjectile->bIsActive)
 	{
-		Stats.Energy -= CurrentProjectil->EnergyRequired * DeltaTime;
+		Stats.Energy -= CurrentProjectile->EnergyRequired * DeltaTime;
 
 		if (Stats.Energy <= 0.0f)
 		{

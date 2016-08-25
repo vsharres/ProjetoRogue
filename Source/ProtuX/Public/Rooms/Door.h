@@ -5,7 +5,7 @@
 #include "GameFramework/Actor.h"
 #include "Door.generated.h"
 
-/*
+/**
 * Enum with the door direction
 */
 UENUM(BlueprintType)
@@ -19,7 +19,7 @@ enum class EDoorDirection : uint8
 };
 
 
-/* 
+/** 
 * Class inherited from AActor.
 * Class that represents a rooms door.
 */
@@ -32,19 +32,19 @@ class PROTUX_API ADoor : public AActor
 
 public:	
 
-	/* Boolean indicating if the door is open. */
+	/** Boolean indicating if the door is open. */
 	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bOpenDoor;
 
-	/* Boolean indicating if the door is closed. */
+	/** Boolean indicating if the door is closed. */
 	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bCloseDoor;
 
-	/* Boolean indicating if the door is locked. */
+	/** Boolean indicating if the door is locked. */
 	UPROPERTY(BlueprintReadWrite, Category = "Door")
 		bool bIsDoorLocked;
 
-	/* Pointer to the parent room of the door. */
+	/** Pointer to the parent room of the door. */
 	UPROPERTY(BlueprintReadWrite, Category = "Room")
 	class ARoom* ParentRoom;
 
@@ -52,7 +52,7 @@ public:
 
 #pragma  region Constructor
 
-	/* Standard Constructor */
+	/** Default Constructor */
 	ADoor();
 
 #pragma endregion Constructor
@@ -61,13 +61,13 @@ public:
 
 public:
 
-	/*
+	/**
 	* Event triggered to lock the door.
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Lock Door", Keywords = "Lock Door"), Category = "Door")
 		void LockDoor();
 
-	/*
+	/**
 	* Event triggered to unlock the door.
 	*/
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, meta = (DisplayName = "Unlock Door", Keywords = "Unlock Door"), Category = "Door")

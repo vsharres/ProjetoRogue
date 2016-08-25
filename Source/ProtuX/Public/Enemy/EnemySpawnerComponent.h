@@ -6,7 +6,7 @@
 #include "Room.h"
 #include "EnemySpawnerComponent.generated.h"
 
-/*
+/**
  * Class inherited from UBillboardComponent
  * Room spawner component responsible for the enemy spawn location and logic.
  */
@@ -19,23 +19,23 @@ class PROTUX_API UEnemySpawnerComponent : public UBillboardComponent
 
 public:
 
-	/* Booleano para gerar o inimigo randomicamente. */
+	/** Booleano to generate the enemy randomly */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		bool bSpawnRandomly;
 
-	/* Array com as classes dos inimigos que podem ser gerados randomicamente. */
+	/** Array com as classes dos inimigos que podem ser gerados randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TArray<TSubclassOf<class AEnemy>> RandomEnemiesNormal;
 
-	/* Array com as classes dos inimigos que podem ser gerados randomicamente. */
+	/** Array com as classes dos inimigos que podem ser gerados randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TArray<TSubclassOf<class AEnemy>> RandomEnemiesHard;
 
-	/* Classe do inimigo a ser gerado não randomicamente. */
+	/** Classe do inimigo a ser gerado não randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TSubclassOf<AEnemy> EnemiesNormal;
 
-	/* Classe do inimigo a ser gerado não randomicamente. */
+	/** Classe do inimigo a ser gerado não randomicamente. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TSubclassOf<AEnemy> EnemiesHard;
 
@@ -43,7 +43,7 @@ public:
 	
 #pragma region Construtor
 
-	/* Standard constructor. */
+	/** Default constructor. */
 	UEnemySpawnerComponent();
 
 #pragma endregion Construtor
@@ -53,7 +53,7 @@ public:
 	UFUNCTION()
 		int32 GetNumEnemies(ERoomDifficulty difficulty);
 
-	/*
+	/**
 	* Função para selecionar o inimigo que vai ser gerado randomicamente a partir do array de inimigos.
 	* @param Stream - Stream randomico de geração.
 	*/

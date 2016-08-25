@@ -5,9 +5,10 @@
 #include "Item.h"
 #include "ProjectileItem.generated.h"
 
-/*
-* Classe derivada da classe UItem
-* Classe que representa um item projetil, que representa o item responsável pelo tiro do jogador. Items de projeteis são ativados pelo jogador explicitamente.
+/**
+* Class inherited from UItem
+* Class which represents a projectile item, which represents the item responsible for the player's shot. Projectile items are activated by the player explicitly.
+* 
 */
 UCLASS()
 class PROTUX_API UProjectileItem : public UItem
@@ -17,44 +18,44 @@ class PROTUX_API UProjectileItem : public UItem
 #pragma region Properties
 public:
 
-	/* Propriedade indicando se o item está ativo. */
+	/** Boolean value indicating if the projectile is active */
 	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		bool bIsActive;
 
-	/* Propriedade indicando se este item projétil é o item padrão(item com qual o jogador começa). */
+	/** Boolean value indicating if the projectile is a standard projectile(if the item is the one the player begins the game with) */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 		bool bIsStandardProjectile;
 
-	/* Propriedade que indica a quantidade de energia utilizado pelo item por deltatime. */
+	/** How much energy is consumed by the time per tick */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
 		float EnergyRequired;
 
-	/* Classe do projetil a ser gerado quando o item é ativado. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Projectile)
+	/** Class of the projectile to be spawn on firing */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Projectile")
 		TSubclassOf<class AProjectile> Projectile;
 
-	/* Mesh do detalhe do dano. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Cannon damage mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UStaticMesh* CannonDamageMesh;
 
-	/* Instancia do material do detalhe do dano. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Material instance of the Cannon damage mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UMaterialInstance* CannonDamageMaterial;
 
-	/* Mesh do detalhe de precisão. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Cannon accuracy mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UStaticMesh* CannonAccuracyMesh;
 
-	/*Instancia do material do detalhe de precisão.*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Material instance of the cannon accuracy mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UMaterialInstance* CannonAccuracyMAterial;
 
-	/* Mesh do detalhe de firerate. */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Cannon fire rate mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UStaticMesh* CannonFireRateMesh;
 
-	/*Instancia do material do detalhe de firerate */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Canhao)
+	/** Material instance of the cannon fire rate mesh */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 		UMaterialInstance* CannonFireRateMaterial;
 
 #pragma endregion Properties
@@ -62,34 +63,34 @@ public:
 	
 #pragma region Constructor
 
-	/* Constructor padrão. */
+	/** Default Constructor */
 	UProjectileItem();
 
 #pragma endregion Constructor
 
 #pragma region Functions
 
-	/*
-	* Função para ativar o item.
+	/**
+	* Function to activate the item
 	*/
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Ativar Item", Keywords = "Ativar item"), Category = "Item")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Activate Item", Keywords = "Activate item"), Category = "Item")
 		void ActivateItem();
 	virtual void ActivateItem_Implementation();
 
-	/*
-	* Função para desativar o item.
+	/**
+	* Function to deactivate the item
 	*/
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Desativar Item", Keywords = "Desativar item"), Category = "Item")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Deactivate Item", Keywords = "Deactivate item"), Category = "Item")
 		void DeactivateItem();
 	virtual void DeactivateItem_Implementation();
 
-	/*
-	* Override da função para aplicar os stats do item ativo ao jogador.
+	/**
+	* Override of the apply item function
 	*/
 	virtual void ApplyItem_Implementation() override;
 
-	/*
-	* Override da função para remover os stats do item passivo ao jogador.
+	/**
+	* Override of the remove item function
 	*/
 	virtual void RemoveItem_Implementation() override;
 

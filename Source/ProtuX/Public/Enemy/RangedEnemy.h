@@ -5,7 +5,7 @@
 #include "Enemy.h"
 #include "RangedEnemy.generated.h"
 
-/*
+/**
 * Classe derivada da classe AInimigo.
 * Classe do inimigo que pode atirar projéteis. 
 */
@@ -16,23 +16,23 @@ class PROTUX_API ARangedEnemy : public AEnemy
 
 #pragma region Properties
 public:
-		/* Classe do projétil a ser disparado. */
+		/** Classe do projétil a ser disparado. */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		TSubclassOf<class AProjectile> Projectile;
 
-		/* Array de projeteis a serem disparados.s */
+		/** Array de projeteis a serem disparados.s */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			TArray<AProjectile*> ProjectilePool;
-		/* Número de projéteis. */
+		/** Número de projéteis. */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			int32 NumProjectiles;
-		/* Booleando que indica quando o inimigo está atirando. */
+		/** Booleando que indica quando o inimigo está atirando. */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Enemy)
 			bool bIsFiring;
 #pragma endregion Properties
 
 #pragma region Construtor
-		/* Construtor padrão. */
+		/** Construtor padrão. */
 		ARangedEnemy(const FObjectInitializer& ObjectInitializer);
 #pragma endregion Construtor
 
@@ -45,11 +45,11 @@ public:
 
 		virtual void CalculateStats(int32 currentLevel) override;
 
-		/* Função para gerar o pool de projéteis a serem disparados. */
+		/** Função para gerar o pool de projéteis a serem disparados. */
 		UFUNCTION()
 			void GenerateProjectilesPool();
 
-		/* Função para atirar um projétil. */
+		/** Função para atirar um projétil. */
 		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Inimgo")
 			void Attack();
 		virtual void Attack_Implementation();

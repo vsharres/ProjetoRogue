@@ -5,7 +5,7 @@
 #include "Room.h"
 #include "Room3DLeft.generated.h"
 
-/*
+/**
 *	Class inherited from ARoom.
 *	Class that represents a room with three doors. A room with Left orientation ( doors in the West/North/East direction).
 */

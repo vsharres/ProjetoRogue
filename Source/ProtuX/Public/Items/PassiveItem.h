@@ -5,9 +5,9 @@
 #include "Item.h"
 #include "PassiveItem.generated.h"
 
-/*
-* Classe derivada da classe UItem
-* Classe que representa um item passivo, onde os stats do item são automaticamente aplicados ao jogador, e o jogador pode ter mais de um item passivo.
+/**
+* Class inherited from UItem
+* Class represents a passive item, where its effects give constant effects to the player, like increasing his accuracy, damage, fire rate...
 */
 UCLASS()
 class PROTUX_API UPassiveItem : public UItem
@@ -17,20 +17,20 @@ class PROTUX_API UPassiveItem : public UItem
 public:
 #pragma region Constructor
 
-	/* Constructor Padrão */
+	/** Default Constructor */
 	UPassiveItem();
 
 #pragma endregion Constructor
 
 #pragma region Functions
 
-	/*
-	* Override da função para aplicar os stats do item passivo ao jogador.
+	/**
+	* Override of the apply item function
 	*/
 	virtual void ApplyItem_Implementation() override;
 
-	/*
-	* Override da função para remover os stats do item passivo ao jogador.
+	/**
+	* Override of the remove item function
 	*/
 	virtual void RemoveItem_Implementation() override;
 

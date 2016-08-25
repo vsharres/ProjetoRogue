@@ -1,4 +1,4 @@
-/*
+/**
 	By Rama
 */
     
@@ -51,7 +51,7 @@
  
 #include <string>
    
-/*
+/**
 	~~~ Rama File Operations CopyRight ~~~ 
 	
 	If you use any of my file operation code below, 
@@ -232,7 +232,7 @@ static bool VCreateDirectory(FString FolderToMake) //not const so split can be u
 	
 	return true;
 }
-/*
+/**
 	~~~ Rama File Operations CopyRight ~~~ 
 	
 	If you use any of my file operation code above, 
@@ -254,7 +254,7 @@ UVictoryBPFunctionLibrary::UVictoryBPFunctionLibrary(const FObjectInitializer& O
 // 	Level Generation
 //~~~~~~~~~~~~~~~~~~
 
-/*
+/**
 	CHANGE RETURN TYPE TO KISMET (or remove the kismet part)
 		AND THEN GIVE OPTION TO ADD OR SET ROTATION OF A KISMET
 	
@@ -1194,7 +1194,7 @@ bool UVictoryBPFunctionLibrary::VictorySoundVolumeChange(USoundClass* SoundClass
 	SoundClassObject->Properties.Volume = NewVolume;
 	return true; 
 	   
-	 /*
+	 /**
 	FAudioDevice* Device = GEngine->GetAudioDevice();
 	if (!Device || !SoundClassObject)
 	{
@@ -1210,7 +1210,7 @@ bool UVictoryBPFunctionLibrary::VictorySoundVolumeChange(USoundClass* SoundClass
 	return false;
 	*/
 	
-	/*
+	/**
 		bool SetBaseSoundMix( class USoundMix* SoundMix );
 	
 	*/
@@ -1222,7 +1222,7 @@ float UVictoryBPFunctionLibrary::VictoryGetSoundVolume(USoundClass* SoundClassOb
 		return -1;
 	}
 	return SoundClassObject->Properties.Volume;
-	/*
+	/**
 	FAudioDevice* Device = GEngine->GetMainAudioDevice();
 	if (!Device || !SoundClassObject)
 	{
@@ -1290,7 +1290,7 @@ void UVictoryBPFunctionLibrary::Conversions__ColorToString(const FLinearColor& C
 
 
 //! not working yet, always getting 255
-/*
+/**
 uint8 UVictoryBPFunctionLibrary::Victory_ConvertStringToByte(UEnum* Enum, FString String)
 {  
 	if( !Enum ) return 255;
@@ -1616,7 +1616,7 @@ UObject* UVictoryBPFunctionLibrary::CreateObject(UObject* WorldContextObject,UCl
 	//See deprecation warning
 	//	Deprecation warning makes it no longer appear in context menu as a new node to add
 	return nullptr;
-	/*
+	/**
 	if(!TheObjectClass) return NULL;
 	//~~~~~~~~~~~~~~~~~
 	
@@ -1777,7 +1777,7 @@ FVector2D UVictoryBPFunctionLibrary::ProjectWorldToScreenPosition(const FVector&
 		// Calculate a view where the player is to update the streaming from the players start location
 		FVector ViewLocation;
 		FRotator ViewRotation;
-		FSceneView* SceneView = LocalPlayer->CalcSceneView( &ViewFamily, /*out*/ ViewLocation, /*out*/ ViewRotation, LocalPlayer->ViewportClient->Viewport );
+		FSceneView* SceneView = LocalPlayer->CalcSceneView( &ViewFamily, /**out*/ ViewLocation, /**out*/ ViewRotation, LocalPlayer->ViewportClient->Viewport );
 
 		//Valid Scene View?
 		if (SceneView) 
@@ -1842,7 +1842,7 @@ bool UVictoryBPFunctionLibrary::GetStaticMeshVertexLocations(UStaticMeshComponen
 	}
 	return true;
 	
-	/*
+	/**
 	//See this wiki for more info on getting triangles
 	//		https://wiki.unrealengine.com/Accessing_mesh_triangles_and_vertex_positions_in_build
 	*/
@@ -1884,7 +1884,7 @@ void UVictoryBPFunctionLibrary::DrawCircle(
 	if(!World) return;
 	//~~~~~~~~~~~
 	 
-	/* //FOR PULL REQUEST TO EPIC
+	/** //FOR PULL REQUEST TO EPIC
 	FMatrix TM;
 	TM.SetOrigin(Center);
 	TM.SetAxis(0, FVector(1,0,0));
@@ -2589,7 +2589,7 @@ void UVictoryBPFunctionLibrary::Draw__Thick3DLineFromCharacterSocket(AActor* The
 	);
 	
 }
-/** Draw 3D Line of Chosen Thickness From Mesh Socket to Destination */
+/*** Draw 3D Line of Chosen Thickness From Mesh Socket to Destination */
 void UVictoryBPFunctionLibrary::Draw__Thick3DLineFromSocket(USkeletalMeshComponent* Mesh, const FVector& EndPoint, FName Socket, FLinearColor LineColor, float Thickness, float Duration)
 {
 	if (!Mesh) return;
@@ -2618,7 +2618,7 @@ void UVictoryBPFunctionLibrary::Draw__Thick3DLineFromSocket(USkeletalMeshCompone
 		Thickness
 	);
 }
-/** Draw 3D Line of Chosen Thickness Between Two Actors */
+/*** Draw 3D Line of Chosen Thickness Between Two Actors */
 void UVictoryBPFunctionLibrary::Draw__Thick3DLineBetweenActors(AActor * StartActor, AActor * EndActor, FLinearColor LineColor, float Thickness, float Duration)
 {
 	if (!StartActor) return;
@@ -2747,7 +2747,7 @@ void UVictoryBPFunctionLibrary::Rendering__UnFreezeGameRendering()
 bool UVictoryBPFunctionLibrary::ClientWindow__GameWindowIsForeGroundInOS()
 {   
 	return FPlatformProcess::IsThisApplicationForeground();
-	/*
+	/**
 	//Iterate Over Actors
 	UWorld* TheWorld = NULL;
 	for ( TObjectIterator<AActor> Itr; Itr; ++Itr )
@@ -3552,7 +3552,7 @@ bool UVictoryBPFunctionLibrary::Physics__UpdateCharacterCameraToRagdollLocation(
 	
 	return true;
 }
-/*
+/**
 bool UVictoryBPFunctionLibrary::Accessor__GetSocketLocalTransform(const USkeletalMeshComponent* Mesh, FTransform& LocalTransform, FName SocketName)
 {
 	if(!Mesh) return false;
@@ -3621,7 +3621,7 @@ bool UVictoryBPFunctionLibrary::AnimatedVertex__GetAnimatedVertexLocations(
 	return true;
 }
 	
-/*
+/**
 bool UVictoryBPFunctionLibrary::AnimatedVertex__GetAnimatedVertexLocationsAndNormals(
 	USkeletalMeshComponent* Mesh, 
 	TArray<FVector>& Locations, 
@@ -3880,7 +3880,7 @@ void UVictoryBPFunctionLibrary::JoyGraphicsSettings__FullScreen_Set(TEnumAsByte<
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //			  Contributed by Others
 
-	/**
+	/***
 	* Contributed by: SaxonRah
 	* Better random numbers. Seeded with a random device. if the random device's entropy is 0; defaults to current time for seed.
 	* can override with seed functions;
@@ -3892,7 +3892,7 @@ void UVictoryBPFunctionLibrary::JoyGraphicsSettings__FullScreen_Set(TEnumAsByte<
 	std::mt19937 rand_MT;
 	std::default_random_engine rand_DRE;
 
-	/** Construct a random device and set seed for engines dependent on entropy */
+	/*** Construct a random device and set seed for engines dependent on entropy */
 	void UVictoryBPFunctionLibrary::constructRand()
 	{
 		seed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -3904,84 +3904,84 @@ void UVictoryBPFunctionLibrary::JoyGraphicsSettings__FullScreen_Set(TEnumAsByte<
 			seedRand(rd());
 		}
 	}
-	/** Set seed for Rand */
+	/*** Set seed for Rand */
 	void UVictoryBPFunctionLibrary::seedRand(int32 _seed)
 	{
 		seed = _seed;
 	}
 
-	/** Set seed with time for Rand */
+	/*** Set seed with time for Rand */
 	void UVictoryBPFunctionLibrary::seedRandWithTime()
 	{
 		seed = std::chrono::system_clock::now().time_since_epoch().count();
 	}
 
-	/** Set seed with entropy for Rand */
+	/*** Set seed with entropy for Rand */
 	void UVictoryBPFunctionLibrary::seedRandWithEntropy()
 	{
 		seedRand(rd());
 	}
 
-	/** Random Bool - Bernoulli distribution */
+	/*** Random Bool - Bernoulli distribution */
 	bool UVictoryBPFunctionLibrary::RandBool_Bernoulli(float fBias)
 	{
 		std::bernoulli_distribution dis(fBias);
 		return dis(rand_DRE);
 	}
 
-	/** Random Integer - Uniform distribution */
+	/*** Random Integer - Uniform distribution */
 	int32 UVictoryBPFunctionLibrary::RandInt_uniDis()
 	{
 		std::uniform_int_distribution<int32> dis(0, 1);
 		return dis(rand_DRE);
 	}
-	/** Random Integer - Uniform distribution */
+	/*** Random Integer - Uniform distribution */
 	int32 UVictoryBPFunctionLibrary::RandInt_MINMAX_uniDis(int32 iMin, int32 iMax)
 	{
 		std::uniform_int_distribution<int32> dis(iMin, iMax);
 		return dis(rand_DRE);
 	}
 
-	/** Random Float - Zero to One Uniform distribution */
+	/*** Random Float - Zero to One Uniform distribution */
 	float UVictoryBPFunctionLibrary::RandFloat_uniDis()
 	{
 		std::uniform_real_distribution<float> dis(0, 1);
 		return dis(rand_DRE);
 	}
-	/** Random Float - MIN to MAX Uniform distribution */
+	/*** Random Float - MIN to MAX Uniform distribution */
 	float UVictoryBPFunctionLibrary::RandFloat_MINMAX_uniDis(float iMin, float iMax)
 	{
 		std::uniform_real_distribution<float> dis(iMin, iMax);
 		return dis(rand_DRE);
 	}
 
-	/** Random Bool - Bernoulli distribution  -  Mersenne Twister */
+	/*** Random Bool - Bernoulli distribution  -  Mersenne Twister */
 	bool UVictoryBPFunctionLibrary::RandBool_Bernoulli_MT(float fBias)
 	{
 		std::bernoulli_distribution dis(fBias);
 		return dis(rand_MT);
 	}
 
-	/** Random Integer - Uniform distribution  -  Mersenne Twister */
+	/*** Random Integer - Uniform distribution  -  Mersenne Twister */
 	int32 UVictoryBPFunctionLibrary::RandInt_uniDis_MT()
 	{
 		std::uniform_int_distribution<int32> dis(0, 1);
 		return dis(rand_MT);
 	}
-	/** Random Integer - Uniform distribution  -  Mersenne Twister */
+	/*** Random Integer - Uniform distribution  -  Mersenne Twister */
 	int32 UVictoryBPFunctionLibrary::RandInt_MINMAX_uniDis_MT(int32 iMin, int32 iMax)
 	{
 		std::uniform_int_distribution<int32> dis(iMin, iMax);
 		return dis(rand_MT);
 	}
 
-	/** Random Float - Zero to One Uniform distribution  -  Mersenne Twister */
+	/*** Random Float - Zero to One Uniform distribution  -  Mersenne Twister */
 	float UVictoryBPFunctionLibrary::RandFloat_uniDis_MT()
 	{
 		std::uniform_real_distribution<float> dis(0, 1);
 		return dis(rand_MT);
 	}
-	/** Random Float - MIN to MAX Uniform distribution  -  Mersenne Twister */
+	/*** Random Float - MIN to MAX Uniform distribution  -  Mersenne Twister */
 	float UVictoryBPFunctionLibrary::RandFloat_MINMAX_uniDis_MT(float iMin, float iMax)
 	{
 		std::uniform_real_distribution<float> dis(iMin, iMax);
@@ -4073,7 +4073,7 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromDDSFile(const FString& 
 	FString TexturePath = FullFilePath;//FPaths::GameContentDir( ) + TEXT( "../Data/" ) + TextureFilename;
 	TArray<uint8> FileData;
 
-	/* Load DDS texture */
+	/** Load DDS texture */
 	if( FFileHelper::LoadFileToArray( FileData, *TexturePath, 0 ) )
 	{
 		FDDSLoadHelper DDSLoadHelper( &FileData[ 0 ], FileData.Num( ) );
@@ -4093,34 +4093,34 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromDDSFile(const FString& 
 				BlockSize = 8;
 			}
 
-			/* Create transient texture */
+			/** Create transient texture */
 			Texture = UTexture2D::CreateTransient( DDSLoadHelper.DDSHeader->dwWidth, DDSLoadHelper.DDSHeader->dwHeight, Format );
 			if(!Texture) return NULL;
 			Texture->PlatformData->NumSlices = 1;
 			Texture->NeverStream = true;
 		
-			/* Get pointer to actual data */
+			/** Get pointer to actual data */
 			uint8* DataPtr = (uint8*) DDSLoadHelper.GetDDSDataPointer( );
 
 			uint32 CurrentWidth = DDSLoadHelper.DDSHeader->dwWidth;
 			uint32 CurrentHeight = DDSLoadHelper.DDSHeader->dwHeight;
 
-			/* Iterate through mips */
+			/** Iterate through mips */
 			for( int32 i = 0; i < NumMips; i++ )
 			{
-				/* Lock to 1x1 as smallest size */
+				/** Lock to 1x1 as smallest size */
 				CurrentWidth = ( CurrentWidth < 1 ) ? 1 : CurrentWidth;
 				CurrentHeight = ( CurrentHeight < 1 ) ? 1 : CurrentHeight;
 
-				/* Get number of bytes to read */
+				/** Get number of bytes to read */
 				int32 NumBytes = CurrentWidth * CurrentHeight * 4;
 				if( Format == PF_DXT1 || Format == PF_DXT3 || Format == PF_DXT5 )
 				{
-					/* Compressed formats */
+					/** Compressed formats */
 					NumBytes = ( ( CurrentWidth + 3 ) / 4 ) * ( ( CurrentHeight + 3 ) / 4 ) * BlockSize;
 				}
 
-				/* Write to existing mip */
+				/** Write to existing mip */
 				if( i < Texture->PlatformData->Mips.Num( ) )
 				{
 					FTexture2DMipMap& Mip = Texture->PlatformData->Mips[ i ];
@@ -4130,7 +4130,7 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromDDSFile(const FString& 
 					Mip.BulkData.Unlock( );
 				}
 
-				/* Add new mip */
+				/** Add new mip */
 				else
 				{
 					FTexture2DMipMap* Mip = new( Texture->PlatformData->Mips ) FTexture2DMipMap( );
@@ -4146,7 +4146,7 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromDDSFile(const FString& 
 					Mip->BulkData.Unlock( );
 				}
 
-				/* Set next mip level */
+				/** Set next mip level */
 				CurrentWidth /= 2;
 				CurrentHeight /= 2;
 
@@ -4164,7 +4164,7 @@ UTexture2D* UVictoryBPFunctionLibrary::LoadTexture2D_FromDDSFile(const FString& 
 //this is how you can make cpp only internal functions!
 static EImageFormat::Type GetJoyImageFormat(EJoyImageFormats JoyFormat)
 {
-	/*
+	/**
 	ImageWrapper.h
 	namespace EImageFormat
 	{
@@ -4419,7 +4419,7 @@ bool UVictoryBPFunctionLibrary::Victory_SavePixels(
 		return FFileHelper::SaveArrayToFile(CompressedPNG, *FinalFilename);
 	} 
 	 
-	/*
+	/**
 	//Crashed for JPG, worked great for PNG
 	//Maybe also works for BMP so could offer those two as save options?
 	
@@ -4575,10 +4575,10 @@ class USoundWave* UVictoryBPFunctionLibrary::GetSoundWaveFromFile(const FString&
 	if (!sw)
 		return NULL;
 
-	//* If true the song was successfully loaded
+	//** If true the song was successfully loaded
 	bool loaded = false;
 
-	//* loaded song file (binary, encoded)
+	//** loaded song file (binary, encoded)
 	TArray < uint8 > rawFile;
 
 	loaded = FFileHelper::LoadFileToArray(rawFile, FilePath.GetCharArray().GetData());

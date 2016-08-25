@@ -26,7 +26,7 @@ ARoom::ARoom(const FObjectInitializer& ObjectInitializer)
 	//Inicializando propriedades.
 	bCanBeDamaged = false;
 	NumberDoors = ENumberDoors::ONE;
-	RoomDirection = ERoomShape::STANDARD;
+	RoomDirection = ERoomShape::Default;
 	RoomType = ERoomType::NORMAL;
 	Difficulty = ERoomDifficulty::NORMAL;
 	ConectedRooms.Empty();

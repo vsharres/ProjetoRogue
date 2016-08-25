@@ -5,9 +5,9 @@
 #include "PickUp.h"
 #include "ScrapPickUP.generated.h"
 
-/*
-* Classe derivada da classe PickUp.
-* Classe que representa o pickup que adiciona uma moeda ao jogador.
+/**
+* Class inherited from APickUp
+* Class that represents a PickUp that increases player's scrap
 */
 UCLASS()
 class PROTUX_API AScrapPickUP : public APickUp
@@ -16,30 +16,30 @@ class PROTUX_API AScrapPickUP : public APickUp
 
 #pragma region Constructor
 
-	/*Constructor Padrão. */
+	/** Default Constructor */
 	AScrapPickUP(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion Constructor
 
 #pragma region Functions
 
-	/*
-	* Função delegate a ser executada quando o colisor do pickup inicia um overlap com o jogador.
-	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	/**
+	* Delegate function to be executed when the collider begins an overlap with the player
+	* Delegate signature determined by the OnBeginOverlap Delegate
 	*/
 	UFUNCTION()
-	void ColliderOverlap(UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+		void ColliderOverlap(UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 
-	/*
-	* Função delegate a ser executada quando o trigger de outline inicia um overlap do jogador.
-	* Assinatura da função determinada pelo Delegate OnBeignOverlap.
+	/**
+	* Delegate function to be executed when the outline collider overlaps with the player
+	* Delegate signature determined by the OnBeginOverlap Delegate
 	*/
 	UFUNCTION()
 		void OutlineOnOverlap(UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 
-	/*
-	* Função delegate a ser executada quando o trigger de outline termina um overlap do jogador.
-	* Assinatura da função determinada pelo Delegate OnEndOverlap.
+	/**
+	* Delegate function to be executed when the outline collider end an overlap with the player
+	* Delegate signature determined by the OnEndOverlap Delegate
 	*/
 	UFUNCTION()
 		void OutlineEndOverlap(UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);

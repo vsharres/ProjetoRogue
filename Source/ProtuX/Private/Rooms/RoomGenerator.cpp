@@ -371,7 +371,7 @@ void ARoomGenerator::AddToDoorArray(ARoom* room)
 
 		switch (room->GetRoomShape()) //Cada tipo de sala de um determinado número de portas tem um padrão diferente de direção das portas.
 		{
-		case ERoomShape::STANDARD:
+		case ERoomShape::Default:
 			RoomsPositions.Contains<FVector>(room->GetActorLocation()) == false ? RoomsPositions.Add(room->GetActorLocation()) : NULL;
 			RoomsPositions.Add((GetRelativeDoorDirection(room->GetActorRotation(), EDoorDirection::EAST).Vector() * (room->GetRoomOffset() + (1150.0f * 2) + 1748.0f)) + room->GetActorLocation());
 			break;
@@ -389,7 +389,7 @@ void ARoomGenerator::AddToDoorArray(ARoom* room)
 	case ENumberDoors::THREE:
 		switch (room->GetRoomShape())
 		{
-		case ERoomShape::STANDARD:
+		case ERoomShape::Default:
 			RoomsPositions.Contains<FVector>(room->GetActorLocation()) == false ? RoomsPositions.Add(room->GetActorLocation()) : NULL;
 			RoomsPositions.Add((GetRelativeDoorDirection(room->GetActorRotation(), EDoorDirection::SOUTH).Vector() * (room->GetRoomOffset() + (1150.0f * 2) + 1748.0f)) + room->GetActorLocation());
 			RoomsPositions.Add((GetRelativeDoorDirection(room->GetActorRotation(), EDoorDirection::NORTH).Vector() * (room->GetRoomOffset() + (1150.0f * 2) + 1748.0f)) + room->GetActorLocation());
@@ -530,7 +530,7 @@ void ARoomGenerator::CheckColision(const FTransform& trans, const FRotator& door
 
 			switch (room->GetRoomShape()) //Checar para cada direcao e alterar a sala a ser gerada caso alguma colisao seja detectada.
 			{
-			case ERoomShape::STANDARD:
+			case ERoomShape::Default:
 				isColliding = false;
 				if (IsCollidingToDirection(EDoorDirection::EAST, trans))
 				{
@@ -566,7 +566,7 @@ void ARoomGenerator::CheckColision(const FTransform& trans, const FRotator& door
 				{
 					switch (room->GetRoomShape())
 					{
-					case ERoomShape::STANDARD:
+					case ERoomShape::Default:
 						GeneratedRoom = TypesRooms[3];
 						break;
 					case ERoomShape::LEFT:

@@ -8,7 +8,7 @@ ARoom2D::ARoom2D(const FObjectInitializer& ObjectInitializer)
 {
 	//Inicizalizando as propriedades.
 	NumberDoors = ENumberDoors::TWO;
-	RoomDirection = ERoomShape::STANDARD;
+	RoomDirection = ERoomShape::Default;
 	ConectedRooms.Empty();
 	DoorsDirArray.Empty();
 	DoorsDirArray.Add(EDoorDirection::WEST);

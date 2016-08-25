@@ -5,7 +5,7 @@
 #include "Room.h"
 #include "Room2DRight.generated.h"
 
-/*
+/**
 *	Class inherited from ARoom.
 *	Class that represents a room with two doors. A room with Right orientation ( doors in the West/South direction).
 */

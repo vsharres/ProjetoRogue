@@ -24,7 +24,7 @@ void AHealthPickUp::ColliderOverlap(UPrimitiveComponent* OverlappedComponent, cl
 	if (player->IsValidLowLevelFast() && OtherActor != this && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{
 		//Adicionar vida ao jogador.
-		player->AddHelath(IncHealth);
+		player->AddHealth(IncHealth);
 		player->GeneratePickUpPopUp(this);
 		Destroy();
 	}

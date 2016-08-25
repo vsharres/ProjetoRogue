@@ -6,9 +6,9 @@
 #include "Room3D.generated.h"
 
 
-/*
+/**
 *	Class inherited from ARoom.
-*	Class that represents a room with three doors. A room with standard orientation ( doors in the West/South/North direction).
+*	Class that represents a room with three doors. A room with Default orientation ( doors in the West/South/North direction).
 */
 UCLASS()
 class PROTUX_API ARoom3D : public ARoom

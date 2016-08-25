@@ -90,7 +90,7 @@ void AShopCorridor::BuySlot(int32 slot, AProtuXPlayer* player)
 	switch (Slots[slot].Type) //Dependendo do tipo do slot
 	{
 	case ESlotType::HEALTH:
-		player->AddHelath(Slots[slot].Effect); //adicionar vida ao jogador
+		player->AddHealth(Slots[slot].Effect); //adicionar vida ao jogador
 		break;
 	case ESlotType::ENERGY:
 		player->AddEnergy(Slots[slot].Effect); //adicionar energia ao jogador

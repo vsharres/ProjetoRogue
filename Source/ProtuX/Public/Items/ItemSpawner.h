@@ -5,8 +5,9 @@
 #include "GameFramework/Actor.h"
 #include "ItemSpawner.generated.h"
 
-/*
-* Classe responsável por fazer a geração do item do level.
+/**
+* Class inherited from AActor.
+* Class responsible for spawning an item on the item room on a level.
 */
 UCLASS()
 class PROTUX_API AItemSpawner : public AActor
@@ -16,26 +17,25 @@ class PROTUX_API AItemSpawner : public AActor
 #pragma region Properties
 protected:
 
-	/* Ponteiro ao item gerado. */
-	UPROPERTY(BlueprintReadWrite, Category = Itens)
+	/** Pointer to the spawned item */
+	UPROPERTY(BlueprintReadWrite, Category = "Item")
 	class UItem* SpawnedItem;
 
-	/* Classe do item a ser gerado. */
-	UPROPERTY(BlueprintReadWrite, Category = Itens)
+	/** Class of the item to be spawned */
+	UPROPERTY(BlueprintReadWrite, Category = "Item")
 		TSubclassOf<UItem> ItemClass;
 
-	/* Array com as classes dos itens que podem ser gerados. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Itens)
+	/** Class array with all possible items */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 		TArray<TSubclassOf<UItem>> PossibleItems;
 
-	/* Componente de colisão do gerador de itens. */
-	UPROPERTY(VisibleDefaultsOnly, Category = Collision)
+	/** Item spawner collision component */
+	UPROPERTY(VisibleDefaultsOnly, Category = "Collision")
 		UCapsuleComponent* Collider;
-
 
 public:
 
-	/* Seed de geração do item. Este seed é o mesmo utilizado pelo gerador de salas. */
+	/** Random generation seed. This is the same seed utilized by the room generator */
 	UPROPERTY(BlueprintReadWrite, Category = "Seed")
 		int32 Seed;
 
@@ -43,7 +43,7 @@ public:
 	
 #pragma region Constructor
 
-	/* Constructor padrão. */
+	/** Default Constructor */
 	AItemSpawner(const FObjectInitializer& ObjectInitializer);
 
 #pragma endregion Constructor

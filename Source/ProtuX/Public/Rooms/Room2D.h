@@ -6,9 +6,9 @@
 #include "Room2D.generated.h"
 
 
-/*
+/**
 *	Class inherited from ARoom.
-*	Class that represents a room with two doors. A room with standard orientation ( doors in the West/East direction).
+*	Class that represents a room with two doors. A room with Default orientation ( doors in the West/East direction).
 */
 UCLASS()
 class PROTUX_API ARoom2D : public ARoom
@@ -18,7 +18,7 @@ class PROTUX_API ARoom2D : public ARoom
 #pragma region Constructor
 public:
 
-	// Standard Constructor.
+	// Default Constructor.
 	ARoom2D(const FObjectInitializer& ObjectInitializer);
 #pragma endregion Constructor
 

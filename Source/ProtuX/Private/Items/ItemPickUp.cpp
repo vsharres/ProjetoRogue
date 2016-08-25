@@ -15,7 +15,7 @@ AItemPickUp::AItemPickUp(const FObjectInitializer& ObjectInitializer)
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &AItemPickUp::OutlineEndOverlap);
 }
 
-void AItemPickUp::ChoseItem(FRandomStream& Stream)
+void AItemPickUp::ChooseItem(FRandomStream& Stream)
 {
 	if (PossibleItems.Num() > 0)
 	{
@@ -31,12 +31,12 @@ void AItemPickUp::ColliderOverlap(UPrimitiveComponent* OverlappedComponent, clas
 	if (player->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
 	{	
 		//Spawn do novo item.
-		ItemGerado = NewObject<UItem>(this, ItemToSpawn);
+		SpawnedItem = NewObject<UItem>(this, ItemToSpawn);
 
-		if (ItemGerado)
+		if (SpawnedItem)
 		{
 			//Inicializar o item e gerar o popup
-			ItemGerado->InitializeItem(player);
+			SpawnedItem->InitializeItem(player);
 			player->GenerateItemPopUp(this);
 			Destroy();
 		}
