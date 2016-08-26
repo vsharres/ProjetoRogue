@@ -4,9 +4,8 @@
 #include "Room.h"
 #include "EnemyController.h"
 
-
 AEnemyController::AEnemyController()
 {
-	//Inicializando propriedades
+	//Initializing properties
 	ParentRoom = nullptr;
 }

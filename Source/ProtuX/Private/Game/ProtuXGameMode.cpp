@@ -6,7 +6,7 @@
 
 AProtuXGameMode::AProtuXGameMode(const FObjectInitializer& ObjectInitializer)
 {
-	//Inicializando as propriedades.
+	//Initializing properties
 	bIsNewGame = true;
 	bNoSave = false;
 	CurrentLevel = 0;
@@ -19,33 +19,34 @@ EGameState AProtuXGameMode::GetGameState() const
 
 void AProtuXGameMode::SetGameState(EGameState newState)
 {
-	State = newState; //Set novo estado
+	State = newState;
 
-	UpdateState(newState); //Atualizar state machine
+	UpdateState(newState); //update state machine
 }
 
 void AProtuXGameMode::UpdateState(EGameState newState)
 {
-	APlayerController* controller; //Controller do jogador
-	TArray<AActor*> enemyController; //Controladores dos inimigos
+	APlayerController* controller;
+	TArray<AActor*> enemyController;
 
 	switch (newState)
 	{
 
-	case EGameState::MAINMENU: //Abrir o menu principal
+	case EGameState::MAINMENU: //loading the main menu
 		UGameplayStatics::OpenLevel(this, TEXT("MenuPrincipal"), true);
 		break;
-	case EGameState::NEWGAME: //Fazer o load do profile de novo jogo e abrir o level inicial
+	case EGameState::NEWGAME: //Load a new game profile, and load the first level
 		LoadNewGame();
 		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), false);
 		break;
-	case EGameState::NEXTLEVEL: //Fazer o load do profile de nova fase e abrir o level.
+	case EGameState::NEXTLEVEL: //load the next level in the game
 		LoadNextLevel();
 		UGameplayStatics::OpenLevel(this, TEXT("ProximoLevel"), false);
 		break;
-	case EGameState::CONTINUEGAME:
+	case EGameState::CONTINUEGAME: //continuing a previous game, loading its profile
 		LoadContinueGame();
-		if (CurrentLevel > 1)
+
+		if (CurrentLevel > 1) //if the game stopped on the first level or not
 		{
 			UGameplayStatics::OpenLevel(this, TEXT("ProximoLevel"), false);
 		}
@@ -54,11 +55,11 @@ void AProtuXGameMode::UpdateState(EGameState newState)
 			UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), false);
 		}
 		break;
-	case EGameState::GAMEOVER: 
+	case EGameState::GAMEOVER: //game over screen
 
-		UGameplayStatics::GetAllActorsOfClass(this, AAIController::StaticClass(), enemyController);
+		UGameplayStatics::GetAllActorsOfClass(this, AAIController::StaticClass(), enemyController); //find all AI controllers
 
-		for (auto Actor : enemyController) //Desativar todos os inimigos
+		for (auto Actor : enemyController) //deactivate every enemy
 		{
 			AEnemyController* inimgControlador = Cast<AEnemyController>(Actor);
 
@@ -68,15 +69,15 @@ void AProtuXGameMode::UpdateState(EGameState newState)
 			}
 		}
 
-		controller = UGameplayStatics::GetPlayerController(this, 0); //Desativar o controle do jogador.
+		controller = UGameplayStatics::GetPlayerController(this, 0); //Deactivate player controller
 
 		if (controller->IsValidLowLevelFast())
 		{
-			controller->SetCinematicMode(true, true, true);
+			controller->SetCinematicMode(true, true, true); //set to cinematic mode
 			controller->bShowMouseCursor = true;
 		}
 		break;
-	case  EGameState::RESTART: //Fazer o load do profile de novo jogo e o level inicial.
+	case  EGameState::RESTART: //Restart the game loading the first level
 		LoadNewGame();
 		UGameplayStatics::OpenLevel(this, TEXT("LevelInicial"), true);
 		break;
@@ -87,32 +88,33 @@ void AProtuXGameMode::UpdateState(EGameState newState)
 
 void AProtuXGameMode::LoadNewGame()
 {
-	if (bNoSave)
+	if (bNoSave) //sanity check
 		return;
 
-	//Criando o objeto de save.
+	//instantiate a save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex)) //Case o save não exista, criar um novo.
+	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex)) //if there is no save game slot, create a new one
 	{
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 
-	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
+	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex)); //loading save game
 
-	if (SaveInst->IsValidLowLevelFast()) 
+	if (SaveInst->IsValidLowLevelFast())
 	{
-		SaveInst->bIsNewGame = true; //Por ser um novo jogo, o save game está como jogo novo.
+		//loading variables
+		SaveInst->bIsNewGame = true;
 		SaveInst->bIsContinuingGame = false;
 		SaveInst->bHasKey = false;
 		SaveInst->bIsBossDefeated = false;
 		SaveInst->bHasFoundItem = false;
 		SaveInst->ItemsBought.Empty();
 		SaveInst->Scrap = 0;
-		SaveInst->NumGames += 1;	
-		SaveInst->CurrentLevel = 1; //Level atual
-		
-		//Salvar
+		SaveInst->NumGames += 1;
+		SaveInst->CurrentLevel = 1; //current level
+
+		//salving changes made
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 
 	}
@@ -120,10 +122,10 @@ void AProtuXGameMode::LoadNewGame()
 
 void AProtuXGameMode::LoadContinueGame()
 {
-	if (bNoSave)
+	if (bNoSave) //sanity check
 		return;
 
-	//Criando o objeto de save.
+	//instantiate a save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
@@ -132,33 +134,33 @@ void AProtuXGameMode::LoadContinueGame()
 	{
 		SaveInst->bIsNewGame = false;
 		SaveInst->bIsContinuingGame = true;
-		NumGames = SaveInst->NumGames; //Nao incrementar o número de jogos.
-		//Salvar
+		NumGames = SaveInst->NumGames; 
+
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }
 
 void AProtuXGameMode::LoadNextLevel()
 {
-	if (bNoSave)
+	if (bNoSave) //sanity check
 		return;
-	
-	//Criando o objeto de save.
+
+	//instantiate a save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst->IsValidLowLevelFast())
 	{
-		SaveInst->bIsNewGame = false; //por ser uma transição para a proxima fase, não incrementar o número de jogos.
+		SaveInst->bIsNewGame = false; //as the level is changing, remove the isANewGame flag
 		SaveInst->bIsContinuingGame = false;
-		SaveInst->CurrentLevel++; //Incrementar o level atual.
+		SaveInst->CurrentLevel++; //increment the number of the current level.
 		SaveInst->bHasFoundItem = false;
 		SaveInst->bHasKey = false;
 		SaveInst->ItemsBought.Empty();
 		SaveInst->bIsBossDefeated = false;
 
-		//Salvar
+		//Saving
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }

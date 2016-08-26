@@ -5,9 +5,9 @@
 #include "DamageInterface.generated.h"
 
 /**
-*	Classe derivada da classe UInterface
-*	Interface responsável pela implementação do dano a objetos que podem receber dano. (Player e inimigos).
-*	A diferença entre UDanoInterface e IDanoInterface é apenas para tanto o código quanto blueprints poderem acessar a interface.
+*	Class inherited from UInterface
+*	Interface responsible for the implementation of the damage to the player and enemies.
+*	The diference between UdamageInterface and IDamageInterface is only so that blueprints can access the interface.
 */
 UINTERFACE(MinimalAPI, Blueprintable, meta = (CannotImplementInterfaceInBlueprint))
 class UDamageInterface : public UInterface
@@ -23,16 +23,17 @@ class IDamageInterface
 #pragma region Functions
 
 	/**
-	*	Função virtual para receber dano.
-	*	@param dano - O dano a ser relizado.
-	*	@param projetil - O projétil responsável pelo dano causado.
+	*	Virtual function to receive damage.
+	*	@param damage - Damage dealt
+	*	@param projectile - Projectile that caused the damage
+	*	@param Hit - Hit results of the point of impact 
 	*/
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Receber Dano", Keywords = "Receber Dano"), Category = "DanoInterface")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Receive Damage", Keywords = "Receive Damage"), Category = "Interface")
 	virtual void ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit);
 
 	/**
-	*	Função virtual para aplicar os stats ao projétil
-	*	@param projetil - O projétil que aplicara o seus stats ao objeto que chama esta função
+	*	Virtual function to apply the stats to the projectile
+	*	@param projectile - Projectile that will apply the stats to the caller of this function.
 	*/
 	virtual void ApplyProjectileStats(AProjectile* projectile);
 

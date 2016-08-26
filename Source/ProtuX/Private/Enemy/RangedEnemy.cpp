@@ -7,7 +7,7 @@
 ARangedEnemy::ARangedEnemy(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicializando as propriedades
+	//Initializing properties
 	Stats.AttackType = EAttackType::RANGE;
 	EnemyType = EEnemyType::TOWER;
 	NumProjectiles = 10;
@@ -17,12 +17,12 @@ void ARangedEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GenerateProjectilesPool(); //gerar o pool de projeteis
+	GenerateProjectilesPool(); //generating projectile pool
 }
 
 void ARangedEnemy::Destroyed()
 {
-	ProjectilePool.Empty(); //esvaziar o pool de projeteis
+	ProjectilePool.Empty(); //emptying the projectile pool
 
 	Super::Destroyed();
 }
@@ -31,6 +31,7 @@ void ARangedEnemy::CalculateStats(int32 currentLevel)
 {
 	Super::CalculateStats(currentLevel);
 
+	//calculating stats for a ranged enemy
 	Stats.FireRate += (currentLevel - 1)* 1.0f;
 	Stats.Accuracy += (currentLevel - 1) * 0.5f;
 	Stats.MuzzleSpeed += (currentLevel - 1) * 400.0f;
@@ -38,39 +39,38 @@ void ARangedEnemy::CalculateStats(int32 currentLevel)
 
 void ARangedEnemy::GenerateProjectilesPool()
 {
-	if (ProjectilePool.Num() > 0) //se o pool já possui projéteis, esvaziar o pool
+	if (ProjectilePool.Num() > 0) //sanity check to empty the projectile pool
 	{
 		ProjectilePool.Empty();
 	}
 
-	for (int32 index = 0; index < NumProjectiles; index++) //criar um novo pool de projéteis
+	for (int32 index = 0; index < NumProjectiles; index++) //generating a new pool of projectiles
 	{
-		FVector firingPos = FVector(GetActorLocation().X, GetActorLocation().Y, 1000);
+		FVector firingPos = FVector(GetActorLocation().X, GetActorLocation().Y, 1000); //hiding the projectiles at a height of 1000
 
-		AProjectile* shoot = GetWorld()->SpawnActor<AProjectile>(Projectile, firingPos, GetControlRotation());
+		AProjectile* shoot = GetWorld()->SpawnActor<AProjectile>(Projectile, firingPos, GetControlRotation()); //spawning the projectile
 
 		if (shoot->IsValidLowLevelFast())
 		{
-			shoot->Instigator = this; //setar esse inimigo como o responsável pelo dano causado pelo projetil.
-			shoot->SetActorHiddenInGame(true); //esconder o projétil
-			shoot->Instigator = this;
-			ProjectilePool.Add(shoot);
+			shoot->Instigator = this; //setting this enemy as the instigator when this projectile causes damage to the player
+			shoot->SetActorHiddenInGame(true); //hide the projectile
+			ProjectilePool.Add(shoot); //adding the projectile to the pool
 		}
 	}
 }
 
-void ARangedEnemy::Attack_Implementation()
+void ARangedEnemy::Attack_Implementation() //Implementation in the case where blueprints don't override the basic implementation 
 {
-	for (auto const& proj : ProjectilePool) //checar o primeiro projétil nao ativo dentro do pool de projéteis
+	for (auto const& proj : ProjectilePool) 
 	{
-		if (!proj->bIsActive)
+		if (!proj->bIsActive) //check if the projectile is not active
 		{
-			//Determinar a posicao da onde o tiro sai, com a rotação apontada para o jogador com um desvio randômico.
+			//Setting the firing position and direction, giving a random deviation for the aim
 			FVector posShoot = GetFiringPos();
 			FRotator shootDirection = GetFiringDir();
 			FVector direction = FMath::VRandCone(shootDirection.Vector(), FMath::DegreesToRadians(Stats.Accuracy / 2.0f));
 
-			//Ativar o projétil atirado e gerar os efeitos de tiro.
+			//Activate the projectile and spawning the effects
 			proj->ActivateProjectile(posShoot, direction.Rotation(), this);
 			proj->SpawnShootFX(posShoot, shootDirection, GetMesh(), TEXT("Tiro_Bocal"));
 			break;

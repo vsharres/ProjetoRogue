@@ -6,7 +6,7 @@
 
 UEnemySpawnerComponent::UEnemySpawnerComponent()
 {
-	//Inicializando propriedades
+	//Initializing properties
 	bSpawnRandomly = false;
 }
 
@@ -14,7 +14,7 @@ int32 UEnemySpawnerComponent::GetNumEnemies(ERoomDifficulty difficulty)
 {
 	int32 num;
 
-	switch (difficulty) //retornar o número de inimigos de acordo com a dificuldade
+	switch (difficulty) //return the number of enemies of a given difficulty
 	{
 	case ERoomDifficulty::NORMAL:
 		num = RandomEnemiesNormal.Num();
@@ -32,18 +32,18 @@ int32 UEnemySpawnerComponent::GetNumEnemies(ERoomDifficulty difficulty)
 
 TSubclassOf<AEnemy> UEnemySpawnerComponent::SelectEnemyRand(FRandomStream& Stream, ERoomDifficulty difficulty)
 {
-	TSubclassOf<AEnemy> classe;
+	TSubclassOf<AEnemy> chosenClass;
 
-	//selecionar randomicamente um inimigo de acordo com a dificuldade
+	//select an enemy of a given difficulty randomly inside the enemies array
 	switch (difficulty)
 	{
 	case ERoomDifficulty::NORMAL:
-		classe = RandomEnemiesNormal[Stream.FRandRange(0, RandomEnemiesNormal.Num() - 1)]; 
+		chosenClass = RandomEnemiesNormal[Stream.FRandRange(0, RandomEnemiesNormal.Num() - 1)]; 
 		break;
 	case ERoomDifficulty::HARD:
-		classe = RandomEnemiesHard[Stream.FRandRange(0, RandomEnemiesHard.Num() - 1)];
+		chosenClass = RandomEnemiesHard[Stream.FRandRange(0, RandomEnemiesHard.Num() - 1)];
 		break;
 	}
 
-	return classe;
+	return chosenClass;
 }

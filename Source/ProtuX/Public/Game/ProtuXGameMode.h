@@ -5,7 +5,7 @@
 #include "GameFramework/GameMode.h"
 #include "ProtuXGameMode.generated.h"
 
-/** Enumeração resposável pelo estado atual do jogo. */
+/** Enum of the state of the game. */
 UENUM()
 enum class EGameState : uint8{
 	MAINMENU,
@@ -16,73 +16,89 @@ enum class EGameState : uint8{
 	GAMEOVER
 };
 
-/** Classe derivada da classe AGameMode
-*  Classe responsável por gerências as regras e o estado atual do jogo e fazendo a alteração dos leveis.
+/**
+*	Class inherited from AGameMode
+*	Class responsible for managing the rules of the game, its current state, saving, loading and changing of levels.
 */
 UCLASS()
 class PROTUX_API AProtuXGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
+#pragma region Properties
+
 private:
-	/** Estado atual do jogo. */
+	/** Game current state. */
 	UPROPERTY(VisibleAnywhere, Category = "GameMode")
 		EGameState State;
 
 public:
-	/** Booleano de teste usado para testar o jogo sem salvar. */
+	/** Testing variable use to test the game without saving. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		bool bNoSave;
-	/** Booleano indicando se o jogo é um novo jogo. */
+
+	/** Boolean indicating if the current game is a new game. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		bool bIsNewGame;
-	/** Número de jogos iniciados. */
+
+	/** Number of games initiated */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		int32 NumGames;
-	/** Número do level atual. */
+
+	/** Current level of the game */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode")
 		int32 CurrentLevel;
 
+#pragma endregion Properties
 
+#pragma region Constructor
+
+	/** Default Constructor */
 	AProtuXGameMode(const FObjectInitializer& ObjectInitializer);
 	
+#pragma endregion Constructor
+
+#pragma region Functions
+
 	/**
-	* Função de get do estado atual do jogo.
-	* @return EJogoEstado atual.
+	* Get function to get the current state of the game
+	* @return EJogoEstado current state.
 	*/
 	UFUNCTION()
 		EGameState GetGameState() const;
 
 	/**
-	* Função para setar o estado do jogo atual.
-	* @param NovoEstado - Enumerador EJogoEstado com o novo estado.
+	* Set function to set a new game state
+	* @param newState - new state of the game
 	*/
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 		void SetGameState(EGameState newState);
 
 	/**
-	* Função para atualizar o estado do jogo. Função apenas realizada pela classe pai.
-	* @param NovoEstado - Enumerador EJogoEstado com o novo estado.
+	* Function to update the game state. Function only called by the Game Mode.
+	* @param NovoEstado - New state of the game
 	*/
 	UFUNCTION()
 		void UpdateState(EGameState newState);
 
 	/**
-	* Função para fazer o load do profile de um novo jogo.
+	* Function to load a new game from a save game slot
 	*/
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 		void LoadNewGame();
 	
 	/**
-	* Função para fazer o load do profile para continuar um jogo.
+	* Function to load a previous game to continue
 	*/
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 		void LoadContinueGame();
 	
 	/**
-	* Função para fazer o load do profile para a próxima fase.
+	* Function to load the next level of the game.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "GameMode")
 		void LoadNextLevel();
 	
+#pragma endregion Functions
+
 };

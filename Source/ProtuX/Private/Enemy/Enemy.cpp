@@ -12,7 +12,7 @@
 AEnemy::AEnemy(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicializando as propriedades
+	//Initializing the base properties
 	PrimaryActorTick.bCanEverTick = true;
 
 	EnemyType = EEnemyType::DRONE;
@@ -31,14 +31,15 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!IsAlive()) //checando se o inimigo está vivo, e se não estiver, remover o inimigo do array de inimigos da salapai
+	//Checking if the enemy is still alive, and if it is not, remove the enemy from the array of enemies in the room
+	if (!IsAlive()) 
 	{
 		if (ParentRoom->IsValidLowLevelFast())
 		{
 			ParentRoom->RemoveEnemy(this);
 		}
 
-		OnEnemyDeath(); //disparar o evento para destruir o inimigo.
+		OnEnemyDeath(); //trigger the event to destroy the enemy
 	}
 
 }
@@ -47,12 +48,11 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//Criar objeto de save
+	//loading the level to calculate the enemy stats
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	int32 level = 1;
-
 	if (SaveInst)
 	{
 		level = SaveInst->CurrentLevel;
@@ -64,7 +64,7 @@ void AEnemy::BeginPlay()
 
 FVector AEnemy::GetFiringPos()
 {
-	return GetMesh()->GetSocketLocation("Tiro_Bocal");
+	return GetMesh()->GetSocketLocation("Tiro_Bocal"); //the firing position is the a socket in the mesh
 }
 
 FRotator AEnemy::GetFiringDir()
@@ -75,21 +75,21 @@ FRotator AEnemy::GetFiringDir()
 void AEnemy::ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit)
 {
 	Stats.Health -= damage;
-	this->FlashDamage(); //evento para gerar o efeito de flash do mesh do inimigo
+	this->FlashDamage(); //trigger the flashing effect on the enemy's mesh material
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(GetWorld()->GetFirstPlayerController()->GetPawn());
 
 	if (player->IsValidLowLevelFast())
 	{
-		player->GenerateDamagePopUp(damage, this, projectile); //gerar o popup de dano para o jogador
+		player->GenerateDamagePopUp(damage, this, projectile); //spawn the damage pop up on the player HUD
 	}
 
 }
 
 void AEnemy::ApplyProjectileStats(AProjectile* projectile)
 {
-	if (projectile->IsValidLowLevelFast()) //aplicar os stats do inimigo ao projetil
+	if (projectile->IsValidLowLevelFast()) 
 	{
-		projectile->Stats = this->Stats;
+		projectile->Stats = this->Stats; //Applying the the projectile stats on the enemy
 	}
 }
 
@@ -105,6 +105,7 @@ bool AEnemy::IsAlive()
 
 void AEnemy::CalculateStats(int32 currentLevel)
 {
+	//calculating the stats per level
 	Stats.Damage += (currentLevel - 1) * 2.5f;
 	Stats.Health += (currentLevel - 1) * 15.0f;
 	Stats.MaxHealth += (currentLevel - 1) * 15.0f;
@@ -114,11 +115,12 @@ void AEnemy::CalculateStats(int32 currentLevel)
 void AEnemy::SpawnPickUp()
 {
 	FRandomStream stream = FRandomStream();
-	stream.GenerateNewSeed(); //criar novo seed de geração do pickup
+	stream.GenerateNewSeed(); //generate a new random stream for generating pickups
 
+	//spawning each pickup
 	for (int32 index = 0; index < PickUpNumber; index++)
 	{
-		if (index == 0 && EnemyType == EEnemyType::BOSS) //se o inimigo for um boss, o primeiro pickup é sempre um item
+		if (index == 0 && EnemyType == EEnemyType::BOSS) //If the defeated enemy is a boss, the first pickuip is always an item
 		{
 			AItemPickUp* pickItem = GetWorld()->SpawnActor<AItemPickUp>(ItemPickUpClass, GetActorLocation(), GetActorRotation());
 			pickItem->ChooseItem(stream);
@@ -126,7 +128,7 @@ void AEnemy::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= HealthPickUpSpawnChance) //tentar fazer o spawn de um pickup de vida
+		if (stream.FRandRange(0, 100) >= HealthPickUpSpawnChance) //trying to spawn a health pickup
 		{
 
 			AHealthPickUp* pickSpawn = GetWorld()->SpawnActor<AHealthPickUp>(HealthPickUpClass, GetActorLocation(), GetActorRotation());
@@ -134,7 +136,7 @@ void AEnemy::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= EnergyPickUpSpawnChance) //tentar fazer o spawn de um pickup de energia
+		if (stream.FRandRange(0, 100) >= EnergyPickUpSpawnChance) //trying to spawn an energy pickup
 		{
 
 			AEnergyPickUp* pickSpawn = GetWorld()->SpawnActor<AEnergyPickUp>(EnergyPickUpClass, GetActorLocation(), GetActorRotation());
@@ -142,7 +144,7 @@ void AEnemy::SpawnPickUp()
 			continue;
 		}
 
-		if (stream.FRandRange(0, 100) >= ScrapPickUpSpawnChance) //tentar fazer o spawn de um pickup de scrap
+		if (stream.FRandRange(0, 100) >= ScrapPickUpSpawnChance) //trying to spawn a scrap pickup
 		{
 			AScrapPickUP* pickSpawn = GetWorld()->SpawnActor<AScrapPickUP>(ScrapPickUpClass, GetActorLocation(), GetActorRotation());
 

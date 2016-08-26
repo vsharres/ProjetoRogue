@@ -3,16 +3,15 @@
 #include "ProtuX.h"
 #include "ProtuXGameSettings.h"
 
-
 UProtuXGameSettings::UProtuXGameSettings()
 {
-	//Inicializando as propriedades, pegando os settings atuais do jogador.
+	//Initializing properties
 	UserSettings = GetUserGameSettings();
 }
 
 UGameUserSettings* UProtuXGameSettings::GetUserGameSettings()
 {
-	if (GEngine != nullptr) //Checando validade do ponteiro da instancia do jogo.
+	if (GEngine != nullptr) //sanity check
 	{
 		return GEngine->GameUserSettings;
 	}

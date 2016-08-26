@@ -6,8 +6,8 @@
 #include "RangedEnemy.generated.h"
 
 /**
-* Classe derivada da classe AInimigo.
-* Classe do inimigo que pode atirar projéteis. 
+* Class inherited from AEnemy.
+* Class that represents a type of enemy that can shoot projectiles. 
 */
 UCLASS()
 class PROTUX_API ARangedEnemy : public AEnemy
@@ -16,43 +16,54 @@ class PROTUX_API ARangedEnemy : public AEnemy
 
 #pragma region Properties
 public:
-		/** Classe do projétil a ser disparado. */
+		/** Class of the projectile that will be fired */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 		TSubclassOf<class AProjectile> Projectile;
 
-		/** Array de projeteis a serem disparados.s */
+		/** Projectiles pool */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			TArray<AProjectile*> ProjectilePool;
-		/** Número de projéteis. */
+
+		/** Number of projectiles in the pool */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
 			int32 NumProjectiles;
-		/** Booleando que indica quando o inimigo está atirando. */
+
+		/** Boolean value of true when the enemy is firing */
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Enemy)
 			bool bIsFiring;
+
 #pragma endregion Properties
 
 #pragma region Construtor
-		/** Construtor padrão. */
+
+		/** Default Constructor */
 		ARangedEnemy(const FObjectInitializer& ObjectInitializer);
+
 #pragma endregion Construtor
 
 #pragma region Functions
+
 		// Called when the game starts or when spawned
 		virtual void BeginPlay() override;
 
 		// Called every frame
 		virtual void Destroyed() override;
 
+		/**
+		* Override of the calculate stats, so that the enemy stats are calculates for a given level
+		* @param currentLevel - Current game level
+		*/
 		virtual void CalculateStats(int32 currentLevel) override;
 
-		/** Função para gerar o pool de projéteis a serem disparados. */
+		/** Function to generate the projectile pool */
 		UFUNCTION()
 			void GenerateProjectilesPool();
 
-		/** Função para atirar um projétil. */
-		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Atirar", Keywords = "Atirar"), Category = "Inimgo")
+		/** Function to fire an projectile. */
+		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, meta = (DisplayName = "Attack", Keywords = "Attack"), Category = "Enemy")
 			void Attack();
 		virtual void Attack_Implementation();
+
 #pragma endregion Functions
 
 		

@@ -19,23 +19,23 @@ class PROTUX_API UEnemySpawnerComponent : public UBillboardComponent
 
 public:
 
-	/** Booleano to generate the enemy randomly */
+	/** Boolean to generate the enemy randomly */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		bool bSpawnRandomly;
 
-	/** Array com as classes dos inimigos que podem ser gerados randomicamente. */
+	/** Array with the enemy normal classes that can be generated.  */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TArray<TSubclassOf<class AEnemy>> RandomEnemiesNormal;
 
-	/** Array com as classes dos inimigos que podem ser gerados randomicamente. */
+	/** Array with the enemy hard classes that can be generated. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TArray<TSubclassOf<class AEnemy>> RandomEnemiesHard;
 
-	/** Classe do inimigo a ser gerado não randomicamente. */
+	/** Class of the normal enemy to be used not randomly */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TSubclassOf<AEnemy> EnemiesNormal;
 
-	/** Classe do inimigo a ser gerado não randomicamente. */
+	/** Class of the hard enemy to be used not randomly*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EnemySpawner")
 		TSubclassOf<AEnemy> EnemiesHard;
 
@@ -50,12 +50,19 @@ public:
 
 #pragma region Functions
 
-	UFUNCTION()
+	/**
+	* Function to get the number of enemies.
+	* @param difficulty - Difficulty of enemies to get
+	* @return The number of enemies
+	*/
+	UFUNCTION(BlueprintPure, Category = "EnemySpawner")
 		int32 GetNumEnemies(ERoomDifficulty difficulty);
 
 	/**
-	* Função para selecionar o inimigo que vai ser gerado randomicamente a partir do array de inimigos.
-	* @param Stream - Stream randomico de geração.
+	* Function to select the enemy that will be generated randomly from the enemy array of a given difficulty
+	* @param Stream - Random stream generator
+	* @param difficulty - Difficulty of the room that is generating the enemy
+	* @return The class of the enemy to be generated
 	*/
 	UFUNCTION(BlueprintCallable, Category = "EnemySpawner")
 	TSubclassOf<AEnemy> SelectEnemyRand(FRandomStream& Stream, ERoomDifficulty difficulty);

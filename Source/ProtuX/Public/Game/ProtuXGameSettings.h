@@ -6,132 +6,144 @@
 #include "Runtime/Core/Public/GenericPlatform/GenericWindow.h"
 #include "ProtuXGameSettings.generated.h"
 
-/***
- * Classe utilizada para determinar com os settings do jogo.
+/**
+*	Class inherited from UObject
+*	Class that manages the game setting. It changes video and audio settings.
  */
 UCLASS(BlueprintType)
 class PROTUX_API UProtuXGameSettings : public UObject
 {
 	GENERATED_BODY()
 
+#pragma region Properties
+
 private:
-	/** Ponteiro aos settings atuais do jogador. */ 
+	/** Pointer to the current user settings. */ 
 		UPROPERTY()
 		UGameUserSettings* UserSettings;
 
+#pragma endregion Properties
+
+#pragma region Constructor
+
 public:
-	/** Constructor Padrão. */
+	/** Default Constructor */
 	UProtuXGameSettings();
+#pragma endregion Constructor
+
+#pragma region Functions
 	
 	/**
-	* Função de Get dos settings atuais.
-	* @return Ponteiro ao UGameUserSettings atual.
+	* Function to get the current user settings
+	* @return Pointer to the current user settings
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		UGameUserSettings* GetUserGameSettings();
 	
 	/**
-	* Função do Get do Mudo.
-	* @return booleano com o mudo.
+	* Function to get the is muted boolean
+	* @return boolean of true if the game is muted
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		bool GetIsMuted();
 
 	/**
-	* Função do Get do volume total do jogo.
-	* @return float com o volume
+	* Function to get the master volume in the game
+	* @return float with the master volume
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		float GetMasterVol();
 
 	/**
-	* Função do Get do volume da música do jogo.
-	* @return float com o volume
+	* Function to get the music volume in the game
+	* @return float with the music volume
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		float GetMusicVol();
 	
 	/**
-	* Função do Get do volume dos efeitos do jogo.
-	* @return float com o volume
+	* Function to get the effects volume in the game
+	* @return float with the effects volume
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		float GetEffectVol();
 
 	/**
-	* Função do Get da qualidade gráfica do jogo.
-	* @return valor inteiro que varia entre 0 a 3, sendo que (0=low, 1=medium, 2=high, 3=epic)
+	* Function to get the graphics quality settings of the game
+	* @return integer value between 0 and 3, where (0=low, 1=medium, 2=high, 3=epic)
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		int32 GetQualitySettings();
 
 	/**
-	* Função para saber se a tela deve ser totalmente preenchida.
-	* @return booleano indicando se a tela está preenchida.
+	* Function to get if the window is in full screen mode
+	* @return boolean of true if the window is in full screen mode
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		bool IsFullScreen();
 
 	/**
-	* Função para saber o VSync está ativado.
-	* @return booleano indicando se o VSync está ativado.
+	* Function to get the VSync setting
+	* @return boolean of true if VSync is activated
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		bool GetVSync();
 	
 	/**
-	* Função de Get da resolução atual da tela.
-	* @return FIntPoint, que é um vetor 2D com inteiros com a resolução atual.
+	* Function to get the screen resolution
+	* @return A 2D vector with the values of the resolution width and height.
 	*/
 	UFUNCTION(BlueprintPure, Category = "UserSettings")
 		FIntPoint GetResolution();
 	
 	/**
-	* Função de Set do mudo.
-	* @param newMute - Booleano indicando se o jogo de ser mudo.
+	* Function to set is muted.
+	* @param newMute - boolean of the new muted state
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetIsMuted(bool newMute);
 	
 	/**
-	* Função de Set do volume total do jogo.
-	* @param newVol - float com o novo volume.
+	* Function to set the master volume of the game
+	* @param newVol - float with the new value of the master volume
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetMasterVol(float newVol);
 	
 	/**
-	* Função de Set da qualidade gráfica.
-	* @param newSetting - int32 com o novo setting gráfico.
+	* Function to set the quality settings
+	* @param newSetting - new graphics setting  (between 0 and 3)
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetQualitySettings(int32 newSetting);
 	
 	/**
-	* Função de Set da resolução da tela.
-	* @param newResolution - FIntPoint com a nova resolução.
+	* Function to set the screen resolution
+	* @param newResolution - FIntPoint com with the new resolution.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetResolution(FIntPoint newResolution);
 	/**
-	* Função de Set da tela totalmente preenchida.
-	* @param bFullScreen - Booleano indicando se a tela deve ser preenchida.
+	* Function to set the window to full screen mode
+	* @param bFullScreen - boolean to set the full screen mode
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetFullScreenMode(bool bFullScreen);
 	
 	/**
-	* Função de Set do VSync
-	* @param bFullScreen - Booleano indicando se o VSync deve ser ativado.
+	* Function to set the VSync
+	* @param bEnable - boolean value to enable the VSync
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void SetVSyncEnable(bool bEnable);
 	
 	/**
-	* Função para aplicar os settings escolhidos pelo jogador.
-	* @param bApply - Booleano indicando se os settings devem ser ativados.
+	* Function to apply the settings chosen by the player
+	* @param bApply - Boolean value to apply settings
 	*/
 	UFUNCTION(BlueprintCallable, Category = "UserSettings")
 		void ApplySettings(bool bApply);
+
+#pragma endregion Functions
 
 };
