@@ -6,7 +6,7 @@
 ARoom2DRight::ARoom2DRight(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::TWO;
 	RoomDirection = ERoomShape::RIGHT;
 	DoorsDirArray.Empty();

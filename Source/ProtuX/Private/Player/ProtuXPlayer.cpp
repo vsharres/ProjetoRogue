@@ -9,7 +9,7 @@
 AProtuXPlayer::AProtuXPlayer(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	//Inicializando propriedades
+	//Initializing properties
 	PrimaryActorTick.bCanEverTick = true;
 
 	Stats = FPlayerStats();
@@ -31,13 +31,15 @@ void AProtuXPlayer::InitializePlayer()
 {
 	AProtuXGameMode* gameMode = Cast<AProtuXGameMode>(UGameplayStatics::GetGameMode(this));
 
+	//Instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
+	//check if save game exist, if not create one
 	UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex) == false ? UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex) : NULL;
 
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->bIsNewGame && !SaveInst->bIsContinuingGame || gameMode->bNoSave) //caso nao seja um novo novo, carregar o jogador
+	if (SaveInst->bIsNewGame && !SaveInst->bIsContinuingGame || gameMode->bNoSave) //checking if it is a new game, if not, load player state
 	{
 		NewPlayer();
 	}
@@ -46,7 +48,7 @@ void AProtuXPlayer::InitializePlayer()
 		LoadPlayerState();
 	}
 
-	InitializeProjectile(false); //inicializar o projetil.
+	InitializeProjectile(false); //initialize projectile.
 }
 
 void AProtuXPlayer::GenerateName(int32 index)
@@ -55,7 +57,7 @@ void AProtuXPlayer::GenerateName(int32 index)
 
 	int32 temp = index;
 
-	while (temp != 0 && temp <= 999) //gerar o nome da versão do prototipo em numeral romanos
+	while (temp != 0 && temp <= 999) //generate the version of the robot using roman numerals
 	{
 		if (temp >= 100)
 		{
@@ -186,12 +188,13 @@ void AProtuXPlayer::GenerateName(int32 index)
 
 void AProtuXPlayer::UpdateProjectileStats()
 {
-	GetCharacterMovement()->MaxWalkSpeed = Stats.Speed; //atualizar a velocidade de movimentação do personagem do jogador com os stats
+	//Update the player movement speed with its current stats
+	GetCharacterMovement()->MaxWalkSpeed = Stats.Speed;
 }
 
 bool AProtuXPlayer::IsAlive()
 {
-	if (Stats.Health > 0.01) //checar vida
+	if (Stats.Health > 0.01)
 	{
 		return true;
 	}
@@ -202,7 +205,6 @@ bool AProtuXPlayer::IsAlive()
 void AProtuXPlayer::AddHealth(float health)
 {
 	this->Stats.AddHealth(health);
-
 }
 
 void AProtuXPlayer::AddEnergy(float energy)
@@ -227,24 +229,24 @@ void AProtuXPlayer::SavePlayerState()
 	if (!gameMode || gameMode->bNoSave)
 		return;
 
-	//Criando objeto de save
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
+	//load save game slot
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
-		//salvar as propriedades do jogador
+		//save player's properties
 		SaveInst->bIsNewGame = false;
 		SaveInst->Stats.SetStats(this->Stats);
 		SaveInst->Scrap = this->Coins;
 		SaveInst->bHasKey = this->bHasKey;
-
-		//Salvando transform do jogador
 		SaveInst->PlayerLocation = this->GetActorLocation();
 		SaveInst->PlayerRotation = this->GetActorRotation();
 
-		if (FoundProjectile) //salvar referência ao asset do projetil encontrado
+		//save asset reference of the found projectile item
+		if (FoundProjectile)
 		{
 			SaveInst->FoundProjectileRef = FStringAssetReference(this->FoundProjectile).ToString();
 		}
@@ -252,40 +254,42 @@ void AProtuXPlayer::SavePlayerState()
 		SaveInst->bHasFoundItem = this->bFoundItem;
 
 		SaveInst->PassiveItemsRef.Empty();
-		for (const auto& item : PassiveItems) //salvar as referências aos assets dos itens passivos.
+		for (const auto& item : PassiveItems) //save asset references for the passive item the player currently has
 		{
 
 			SaveInst->PassiveItemsRef.Add(FStringAssetReference(item->GetClass()).ToString());
 		}
 
-		//Salvar jogador.
+		//save to slot
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }
 
 void AProtuXPlayer::LoadPlayerState()
 {
-	//Criar objeto de save
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
+	//Load slot
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
-		//Carregando propriedades
+		//loading properties and generating name
 		GenerateName(SaveInst->NumGames);
 		this->Stats.SetStats(SaveInst->Stats);
 		this->Coins = SaveInst->Scrap;
 		
 		if (SaveInst->bIsContinuingGame)
 		{
-			//Carregando transform do jogador
+			//loading transform information
 			this->SetActorLocation(SaveInst->PlayerLocation);
 			this->SetActorRotation(SaveInst->PlayerRotation);
 			this->bHasKey = SaveInst->bHasKey;
 		}
 
-		if (!SaveInst->FoundProjectileRef.IsEmpty()) //criando o projetil encontrando
+		if (!SaveInst->FoundProjectileRef.IsEmpty()) //spawning the found item
 		{
+			//using the ref to find the blueprint asset that generated the item
 			UProjectileItem* projectileItem = NewObject<UProjectileItem>(this, StaticLoadClass(UProjectileItem::StaticClass(), NULL, *SaveInst->FoundProjectileRef));
 
 			if (projectileItem)
@@ -295,15 +299,16 @@ void AProtuXPlayer::LoadPlayerState()
 		}
 
 
-		if (SaveInst->PassiveItemsRef.Num() > 0) //criando os itens passivos encontrados
+		if (SaveInst->PassiveItemsRef.Num() > 0)  //generating the passive item
 		{
 			this->PassiveItems.Empty();
-			for (const auto& passivo : SaveInst->PassiveItemsRef)
+			for (const auto& passive : SaveInst->PassiveItemsRef)
 			{
-				UPassiveItem* passiveItem = NewObject<UPassiveItem>(this, StaticLoadClass(UPassiveItem::StaticClass(), NULL, *passivo));
+				UPassiveItem* passiveItem = NewObject<UPassiveItem>(this, StaticLoadClass(UPassiveItem::StaticClass(), NULL, *passive));
 
 				if (passiveItem)
 				{
+					//initialize passive item
 					passiveItem->InitializeItem(this);
 				}
 			}
@@ -315,31 +320,32 @@ void AProtuXPlayer::LoadPlayerState()
 
 void AProtuXPlayer::NewPlayer()
 {
-	//Criando um novo jogador
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
+	//Load slot
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
-		GenerateName(SaveInst->NumGames); //isar o número de jogos para determinar o número da versão do prototipo
+		GenerateName(SaveInst->NumGames); //generating new name
 	}
 
 }
 
 void AProtuXPlayer::UseItem(bool bIsDeactivated/**= false*/)
 {
-	if (FoundProjectile->IsValidLowLevelFast()) //checar que o projetil encontrado é valido
+	if (FoundProjectile->IsValidLowLevelFast())
 	{
-		InitializeProjectile(bIsDeactivated); //inicializar o projetil e atulizar o mesh do canhão
+		InitializeProjectile(bIsDeactivated); //initialize projectile and update cannon mesh
 		UpdateMesh();
 	}
 }
 
 void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/**= false*/)
 {
-	if (CurrentProjectile ==  NULL && !bIsDeactivated) //checar que o projetil atual é valido e não esta sendo desativado
+	if (CurrentProjectile ==  NULL && !bIsDeactivated) //checking that the current projectile does not exist and is active
 	{
-		//Inicializar o projetil atual como o projetil inicial do jogo.
+		//initialize the currenc projectile as the starting projectile
 		CurrentProjectile = NewObject<UProjectileItem>(this, StartingProjectile);
 		CurrentProjectile->InitializeItem(this);
 		GenerateProjectilePool();
@@ -347,7 +353,7 @@ void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/**= false*/)
 	}
 	else if (bIsDeactivated)
 	{
-		//Desativar o item ativo e reverter o projetil ao projetil inicial do jogo.
+		//deactivate the projectile item and revert to the starting projectile
 		CurrentProjectile->DeactivateItem();
 		CurrentProjectile->RemoveItem();
 		CurrentProjectile = NewObject<UProjectileItem>(this, StartingProjectile);
@@ -356,7 +362,7 @@ void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/**= false*/)
 	}
 	else
 	{
-		//Ativar o item ativo e setar o projetil atual como o projetil do item ativo.
+		//activate the projectile item and set the current projectile as the found projectile
 		CurrentProjectile->DeactivateItem();
 		CurrentProjectile->RemoveItem();
 		CurrentProjectile = NewObject<UProjectileItem>(this, FoundProjectile);
@@ -370,28 +376,28 @@ void AProtuXPlayer::InitializeProjectile(bool bIsDeactivated/**= false*/)
 
 void AProtuXPlayer::GenerateProjectilePool()
 {
-	if (ProjectilePool.Num() > 0) //Deletar os projeteis que já estão no array.
+	if (ProjectilePool.Num() > 0) //save checking and delete all projectile currently in the projectile pool
 	{
 		ProjectilePool.Empty();
 	}
 
-	for (int32 index = 0; index < NumProjectiles; index++) //criar os projeteis do pool
+	for (int32 index = 0; index < NumProjectiles; index++) //generate each projectile in the projectile pool
 	{
 		FVector firePos = FVector(0, 0, 1000);
 
-		//Spawn do projétil
+		//Spawn projectile
 		AProjectile* shoot = GetWorld()->SpawnActor<AProjectile>(CurrentProjectile->Projectile, firePos, GetControlRotation());
 
 		if (shoot->IsValidLowLevelFast())
 		{
-			shoot->Instigator = this; //Player é o responsável pelo dano do jogador.
-			shoot->SetActorHiddenInGame(true); //Esconder o projetil
-			shoot->Instigator = this;
-			ProjectilePool.Add(shoot); //Adicionar ao pool
+			shoot->Instigator = this; //setting the player as the instigator
+			shoot->SetActorHiddenInGame(true); 
+			ProjectilePool.Add(shoot); //add projectile to the pool
 		}
 	}
 
 	//pegar a cor do projetil atual e salvar na variável projetilCor
+	//get the current projectile color and save it in ts variable
 	UMaterialInstanceDynamic* MID;
 	MID = ProjectilePool[0]->GetProjectileMesh()->CreateDynamicMaterialInstance(0, ProjectilePool[0]->GetProjectileMesh()->GetMaterial(0));
 
@@ -412,6 +418,7 @@ void AProtuXPlayer::Tick(float DeltaTime)
 
 void AProtuXPlayer::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	//empty arrays
 	ProjectilePool.Empty(); 
 	PassiveItems.Empty();
 
@@ -420,10 +427,11 @@ void AProtuXPlayer::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AProtuXPlayer::ItemCooldown(float DeltaTime)
 {
-	if (CurrentProjectile->bIsActive)
+	if (CurrentProjectile->bIsActive) //check if the item is active
 	{
-		Stats.Energy -= CurrentProjectile->EnergyRequired * DeltaTime;
+		Stats.Energy -= CurrentProjectile->EnergyRequired * DeltaTime; //update energy
 
+		//if energy is bigger than 0, use the item
 		if (Stats.Energy <= 0.0f)
 		{
 			Stats.Energy = 0.0f;
@@ -436,10 +444,10 @@ void AProtuXPlayer::ItemCooldown(float DeltaTime)
 
 void AProtuXPlayer::ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit)
 {
-	this->Stats.Health -= damage; //receber o dano
-	GenerateDamageCircleUI(Hit); //gerar o círculo de dano.
+	this->Stats.Health -= damage;
+	GenerateDamageCircleUI(Hit);
 
-	if (Stats.Health <= 0) //se a vida for menor do que 0, o jogador morreu
+	if (Stats.Health <= 0) 
 	{
 		OnPlayerDeath();
 	}
@@ -449,7 +457,7 @@ void AProtuXPlayer::ApplyProjectileStats(AProjectile* projectile)
 {
 	if (projectile->IsValidLowLevelFast())
 	{
-		projectile->Stats = this->Stats; //aplicar os stats do jogador ao projétil.
+		projectile->Stats = this->Stats;
 	}
 }
 

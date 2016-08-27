@@ -15,7 +15,7 @@
 
 ARoomGenerator::ARoomGenerator()
 {
-	//Inicizalizando as propriedades.
+	//Initializing properties
 	PrimaryActorTick.bCanEverTick = false;
 	Room2DIndex = 1;
 	Room3DIndex = 2;
@@ -39,10 +39,10 @@ ARoomGenerator* ARoomGenerator::GetRoomGenerator(UObject* level)
 {
 	if (level)
 	{
-		UWorld* World = GEngine->GetWorldFromContextObject(level); //Ponteiro ao UWorld atual, para encontrar o gerador de salas.
+		UWorld* World = GEngine->GetWorldFromContextObject(level); //Pointer to the UWorld, to find the room generator
 		if (World != nullptr)
 		{
-			for (TActorIterator<ARoomGenerator> ActorItr(World); ActorItr; ++ActorItr) //Iterando sobre todos os atores até encontrar o gerador de salas.
+			for (TActorIterator<ARoomGenerator> ActorItr(World); ActorItr; ++ActorItr) //iterating on all actors to find the room generator
 			{
 				if ((*ActorItr))
 				{
@@ -59,13 +59,16 @@ void ARoomGenerator::InitializeGenerator(ARoom* startRoom, int32 newSeed, int32 
 {
 	AProtuXGameMode* game = Cast<AProtuXGameMode>(GetWorld()->GetAuthGameMode());
 
+	//Save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
+
+	//check if a save game exist
 	UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex) == false ? UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex) : NULL;
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	int32 Level;
 
-	if (!SaveInst->bIsNewGame && SaveInst->bIsContinuingGame && !game->bNoSave) //Se não for um novo jogo, fazer o load das salas.
+	if (!SaveInst->bIsNewGame && SaveInst->bIsContinuingGame && !game->bNoSave) //if it is not a new game, load the rooms
 	{
 		LoadRooms();
 		Level = SaveInst->CurrentLevel;
@@ -76,19 +79,19 @@ void ARoomGenerator::InitializeGenerator(ARoom* startRoom, int32 newSeed, int32 
 		Level = curLevel;
 	}
 
-	GeneratingStream = FRandomStream(Seed); //Inicializando o stream randomico com o novo seed.
+	GeneratingStream = FRandomStream(Seed);
 
-	SetNumRooms(Level); //Set do num de salas a ser gerado.
+	SetNumRooms(Level);
 
-	//Adicionando a sala inicial ao array de salas.
+	//add the starting room to the room array
 	Rooms.Add(startRoom);
 	Rooms.Add(NULL);
 
 	AddToDoorArray(startRoom);
 
-	GenerateLevel(startRoom); //Gerar o level em si
+	GenerateLevel(startRoom); //Generate level
 
-	OnLevelGenerated(); //Evento para o blueprint.
+	OnLevelGenerated(); //Blueprint event to trigger the navmesh recalculations
 }
 
 
@@ -98,7 +101,7 @@ FRotator ARoomGenerator::GetRelativeDoorDirection(const FRotator roomDirection, 
 	FRotator toReturn;
 	FVector vec;
 
-	switch (door) //escolhendo qual porta terá a sua rotação retornada.
+	switch (door)//choosing the door which will be rotated
 	{
 	case EDoorDirection::WEST:
 		toReturn = roomDirection;
@@ -128,6 +131,7 @@ int32 ARoomGenerator::GetNumVoidDoors()
 	int32 empty = 0;
 
 	//Contar o número de salas nulas dentro do array de salas, sabendo assim quantas salas ainda podem ser geradas.
+	//Count the number of empty rooms in the rooms array, to know how many rooms can still be generated
 	for (const auto& Room : Rooms)
 	{
 		if (!(*Room).IsValidLowLevel())
@@ -143,7 +147,7 @@ int32 ARoomGenerator::LastValidRoom()
 {
 
 	int32 index = -1;
-	//Encontrar a última sala válida.
+	//Find last valid room
 	for (int32 i = 0; i < Rooms.Num(); i++)
 	{
 		if (Rooms[i])
@@ -161,10 +165,10 @@ int32 ARoomGenerator::LastValidRoom()
 
 FTransform ARoomGenerator::GenerateRoomTrans(ARoom* SalaAnterior, const FRotator DirecaoPorta)
 {
-	//Para determinar o transform da proxima sala, usamos a direção da porta que vai estar conecatada a sala, o offset da sala a ser gerada, o offset da sala anterior e o offset do corredor.
+	//To determine the transform of the next room, we use the direction of the door to which the room will be connected, the room offset, the previous room offset and the corridor offset
 	FVector Trans = (DirecaoPorta.Vector() * (((ARoom*)GeneratedRoom->GetDefaultObject(true))->GetRoomOffset() + SalaAnterior->GetRoomOffset() + (1150.0f * 2))) + SalaAnterior->GetActorLocation();
 
-	//Rodar a sala para ficar virada a porta.
+	//rotate the room to face the correct door
 	FVector dir = -(DirecaoPorta.Vector());
 	FRotator Rot = dir.Rotation();
 
@@ -173,10 +177,10 @@ FTransform ARoomGenerator::GenerateRoomTrans(ARoom* SalaAnterior, const FRotator
 
 FTransform ARoomGenerator::GenerateCorridorTrans(ARoom* previousRoom, const FRotator doorDirection)
 {
-	//Parar determinar o transform do corredor, usamos a direção da porta com o offset da sala anterior e o offset do corredor em si.
+	//To determine the corridor transform, we use the direction of the door, the previous room offset and the corridor offset
 	FVector Trans = (doorDirection.Vector() * (1150.0f + previousRoom->GetRoomOffset())) + previousRoom->GetActorLocation();
 
-	//Rodar o corredor para ficar virada a porta.
+	//Rotate the corridor to face the door
 	FVector dir = -(doorDirection.Vector());
 	FRotator Rot = dir.Rotation();
 
@@ -185,35 +189,39 @@ FTransform ARoomGenerator::GenerateCorridorTrans(ARoom* previousRoom, const FRot
 
 TSubclassOf<ARoom> ARoomGenerator::SelectRoom(ARoom* previousRoom)
 {
-	TSubclassOf<ARoom> toReturn; //Room a ser selecionada
+	TSubclassOf<ARoom> toReturn;
 
-	int32 index = 0; //Indice mínimo dentro do array de salas.
-	int32 limit = 0; //Indice máximo dentro do array de salas.
+	//min index in the rooms array
+	int32 index = 0; 
+	//Max index in the rooms array
+	int32 limit = 0; 
 
-	int32 diff = NumGeneratedRooms - Rooms.Num(); //Saber a diferença entre o número de salas já geradas e o quantas ainda devem ser.
+	//the difference between the number of generated rooms and the total number of rooms allowed
+	int32 diff = NumGeneratedRooms - Rooms.Num();
 
-	if (diff == 0) //Se o número é igual, apenas a sala com 1 porta pode ser gerada.
+	//If the number is equals to 0, only rooms with 1 door can be generated
+	if (diff == 0) 
 	{
 		index = 0;
 		limit = 0;
 
 	}
-	else if (diff == 1) //Se a diferença é igual a 1, apenas a sala com 2 portas pode ser gerada.
+	else if (diff == 1)//If the difference is equals to 1, only rooms with 2 doors can be generated
 	{
 		index = Room2DIndex;
 		limit = Room2DIndex;
 	}
-	else if (diff == 2) //Se a diferença é igual a 2, apenas a sala com 3 portas pode ser gerada.
+	else if (diff == 2) //if the difference is equals to 2, only rooms with 3 doors can be generated
 	{
 		index = Room3DIndex;
 		limit = Room3DIndex;
 	}
-	else if (diff == 3) //Se a diferença é igual a 4, apenas a sala com 4 portas pode ser gerada.
+	else if (diff == 3) //if the difference is equals to 4, only rooms with 4 doors can be generated
 	{
 		index = Room4DIndex;
 		limit = Room4DIndex;
 	}
-	else //Caso contrario, qualquer sala que tenha mais de 1 porta pode ser gerada.
+	else //else, any room can be generated
 	{
 
 		index = Room2DIndex;
@@ -221,7 +229,7 @@ TSubclassOf<ARoom> ARoomGenerator::SelectRoom(ARoom* previousRoom)
 
 	}
 
-	toReturn = TypesRooms[GeneratingStream.FRandRange(index, limit)]; //Escolher randomicamente dentre as salas que podem ser escolhidas.
+	toReturn = TypesRooms[GeneratingStream.FRandRange(index, limit)]; //Choose randomly between the limits of generations
 
 	return toReturn;
 }
@@ -230,7 +238,9 @@ bool ARoomGenerator::IsCollidingToDirection(EDoorDirection direction, const FTra
 {
 
 	ARoom* room = (ARoom*)GeneratedRoom->GetDefaultObject();
-	FVector Pos = (GetRelativeDoorDirection(trans.Rotator(), direction).Vector() * (room->GetRoomOffset() + (1150.0f * 2) + 1748.0f)) + trans.GetLocation(); //Get o transformo da sala que vai ser gerada para testar colisao.
+
+	//Get the room transform generated to test collisions
+	FVector Pos = (GetRelativeDoorDirection(trans.Rotator(), direction).Vector() * (room->GetRoomOffset() + (1150.0f * 2) + 1748.0f)) + trans.GetLocation();
 
 	bool result = InPositionArray(Pos);
 
@@ -240,13 +250,15 @@ bool ARoomGenerator::IsCollidingToDirection(EDoorDirection direction, const FTra
 
 void ARoomGenerator::LoadRooms()
 {
-	//Criar o objeto de save.
+	//instantiate the save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
+
+	//Load game from slot
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bIsNewGame) //Checar validade de ponteiro.
+	if (SaveInst->IsValidLowLevelFast() && !SaveInst->bIsNewGame)
 	{
-		//Atualizar as propriedadas do gerador com as do save.
+		//Update the properties of the room generator
 		this->Seed = SaveInst->Seed;
 		this->MaxNumRooms = SaveInst->MaxNumRooms;
 		this->MinNumRooms = SaveInst->MinNumRooms;
@@ -263,39 +275,38 @@ void ARoomGenerator::SaveRooms()
 	if (!gameMode || gameMode->bNoSave)
 		return;
 
-	//Criar o objeto de save.
+	//instantiate the save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex)) //Checar se o savegame já existe, e caso não, criar um novo.
+	if (!UGameplayStatics::DoesSaveGameExist(SaveInst->SaveSlot, SaveInst->Userindex)) //check if the save game slot already exists, if not, create a new one
 	{
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
-	if (SaveInst->IsValidLowLevelFast()) //Checar validade de ponteiro.
+	if (SaveInst->IsValidLowLevelFast()) 
 	{
-		//Atulizar as propriedades do save com as propriedades do gerador.
+		//Update the save properties with the generator properties
 		SaveInst->Seed = this->Seed;
 		SaveInst->MaxNumRooms = this->MaxNumRooms;
 		SaveInst->MinNumRooms = this->MinNumRooms;
 		SaveInst->RoomsWithEnemies.Empty();
 
-		for (const auto& Room : Rooms) //Atulizar cada sala que teve os seus inimigos já derrotados
+		for (const auto& Room : Rooms)//Update each room that have had its enemies defeated
 		{
 			SaveInst->RoomsWithEnemies.Add(Room->bRoomHasEnemies);
 		}
 
-		//Salvar
+		//Save rooms
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }
 
 void ARoomGenerator::GenerateSpecialRoom()
 {
-	if (((ARoom*)GeneratedRoom->GetDefaultObject())->GetNumDoors() == ENumberDoors::ONE) //Apenas selecionar salas especiais para o caso de salas com 1 porta.
+	if (((ARoom*)GeneratedRoom->GetDefaultObject())->GetNumDoors() == ENumberDoors::ONE) //Only select special rooms in the case with 1 door rooms
 	{
-
 		int32 prob = GeneratingStream.FRandRange(0, 100); //Probablidade de gerar um tipo de sala.
 
 		if (!bIsItemSpawned &&

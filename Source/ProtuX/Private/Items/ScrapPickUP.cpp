@@ -7,11 +7,11 @@
 AScrapPickUP::AScrapPickUP(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicializando as propriedades
+	//Initializing properties
 	IncScraps = 2;
 	Type = EPickUpType::SCRAP;
 
-	//Criando os delegates de overlap
+	//Assigning trigger delegates
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &AScrapPickUP::ColliderOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &AScrapPickUP::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &AScrapPickUP::OutlineEndOverlap);
@@ -22,14 +22,13 @@ void AScrapPickUP::ColliderOverlap(UPrimitiveComponent* OverlappedComponent, cla
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherActor != this && OtherComp) //checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherActor != this && OtherComp) //check if the overlap was caused by the player
 	{
-		//Adicionar scrap ao jogador.
+		//Adding scrap to the player
 		player->AddCoins(IncScraps);
 		player->GeneratePickUpPopUp(this);
 		Destroy();
 	}
-
 	
 }
 
@@ -37,9 +36,9 @@ void AScrapPickUP::OutlineOnOverlap(UPrimitiveComponent* OverlappedComponent, cl
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
+		Mesh->SetRenderCustomDepth(true); //activate outline effect
 	}
 }
 
@@ -47,8 +46,8 @@ void AScrapPickUP::OutlineEndOverlap(UPrimitiveComponent* OverlappedComponent, c
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
+		Mesh->SetRenderCustomDepth(false); //deactivate outline effect
 	}
 }

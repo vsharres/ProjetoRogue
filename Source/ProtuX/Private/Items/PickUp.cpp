@@ -6,13 +6,15 @@
 
 APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 {
- 	//Inicializando as propriedades e criando os componenetes
-	PrimaryActorTick.bCanEverTick = false;
+ 	//Initializing properties and creating subcomponents
+	PrimaryActorTick.bCanEverTick = false; //never tick
 
+	//Mesh components
 	Mesh = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
 	Mesh->SetSimulatePhysics(true);
 	RootComponent = Mesh;
 	
+	//trigger to catch the pickup
 	TriggerCatch = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerCatch"));
 	FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, true);
 	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -22,6 +24,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	TriggerCatch->SetSphereRadius(50.0f);
 	TriggerCatch->AttachToComponent(Mesh, Rules);
 
+	//trigger to outline the pickup
 	TriggerOutline = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerOutline"));
 	TriggerOutline->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	TriggerOutline->SetCollisionObjectType(ECC_WorldDynamic);
@@ -52,17 +55,17 @@ void APickUp::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
 	FRandomStream random;
 
 	random.GenerateNewSeed();
 
 	//Direcao da força de spawn do pickup usando um vetor randomico
+	//Direction of the force to spawn the pickup, using and random cone to send the pickup
 	FVector direction = FVector(random.FRandRange(GetActorLocation().X - ExplosionDelta, GetActorLocation().X + ExplosionDelta),
 		random.FRandRange(GetActorLocation().Y - ExplosionDelta, GetActorLocation().Y + ExplosionDelta),
 		GetActorLocation().Z + ExplosionDelta * 2.0f);
 
-	//Impulsionar o pick up
+	//adding impulse to apply the force
 	Mesh->AddImpulse(direction.GetSafeNormal() * ExplosionForce);
 	
 }

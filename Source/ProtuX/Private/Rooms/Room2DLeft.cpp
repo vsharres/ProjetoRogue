@@ -6,7 +6,7 @@
 ARoom2DLeft::ARoom2DLeft(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::TWO;
 	RoomDirection = ERoomShape::LEFT;
 	DoorsDirArray.Empty();

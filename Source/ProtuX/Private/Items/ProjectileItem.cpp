@@ -6,7 +6,7 @@
 
 UProjectileItem::UProjectileItem()
 {
-	//Inicializando as propriedades
+	//Initializing properties
 	Type = EItemType::PROJECTILE;
 	bIsActive = false;
 	bIsStandardProjectile = false;
@@ -15,7 +15,7 @@ UProjectileItem::UProjectileItem()
 
 void UProjectileItem::ApplyItem_Implementation()
 {
-	if (Player->IsValidLowLevelFast() && this->bIsStandardProjectile) //checar que o jogador é valido
+	if (Player->IsValidLowLevelFast() && this->bIsStandardProjectile)
 	{
 		Player->CurrentProjectile = this;
 	}
@@ -27,12 +27,13 @@ void UProjectileItem::ApplyItem_Implementation()
 
 void UProjectileItem::RemoveItem_Implementation()
 {
-	this->ConditionalBeginDestroy(); //Destruir o item
+	this->ConditionalBeginDestroy();
 }
 
 void UProjectileItem::ActivateItem_Implementation()
 {
-	if (Player->Stats.Energy >= EnergyRequired) //se a energia do jogador é maior do que a energia utilizado pelo item, o item pode ser ativado
+	//if player's energy is more than the energy required, the projectile item is active
+	if (Player->Stats.Energy >= EnergyRequired) 
 	{
 		bIsActive = true;
 		Super::ApplyStats();

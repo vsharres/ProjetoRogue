@@ -5,10 +5,10 @@
 
 AItemSpawner::AItemSpawner(const FObjectInitializer& ObjectInitializer)
 {
- 	//Inicilizando as propriedades
+ 	//Initializing properties
 	PrimaryActorTick.bCanEverTick = true;
 
-	Collider = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Colisor"));
+	Collider = ObjectInitializer.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("Collider"));
 	Collider->SetCapsuleHalfHeight(32.0f);
 	Collider->SetCapsuleRadius(15.0f);
 	RootComponent = Collider;

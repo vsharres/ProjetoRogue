@@ -9,21 +9,19 @@
 #include "RoomGenerator.h"
 #include "EnemySpawnerComponent.h"
 
-// Constructor
 ARoom::ARoom(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
 	//Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	//Inicializando o trigger de ativação dos inimigos
+	//Initializing trigger to activate enemies
 	TriggerEnemiesActivate = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("TriggerAtivarInimigos"));
 	TriggerEnemiesActivate->SetBoxExtent(FVector(300.0f, 300.0f, 32.0f));
 	
-	//Trigger é o componente raiz do ator.
 	RootComponent = TriggerEnemiesActivate;
 	
-	//Inicializando propriedades.
+	//initializing properties
 	bCanBeDamaged = false;
 	NumberDoors = ENumberDoors::ONE;
 	RoomDirection = ERoomShape::Default;
@@ -43,9 +41,9 @@ ARoom::ARoom(const FObjectInitializer& ObjectInitializer)
 
 void ARoom::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime); //Interface do Tick
+	Super::Tick(DeltaTime); 
 
-	OnEnemiesDefeated(); //Checando se os inimigos foram derrotados
+	OnEnemiesDefeated();//check if enemies where defeated
 
 }
 
@@ -86,6 +84,7 @@ void ARoom::SetOffset(float novoOffset)
 
 void ARoom::DeactivateTrigger()
 {
+	//unbind delegate functions
 	TriggerEnemiesActivate->OnComponentBeginOverlap.RemoveAll(this);
 	TriggerEnemiesActivate->OnComponentEndOverlap.RemoveAll(this);
 }
@@ -100,15 +99,15 @@ void ARoom::RemoveEnemy(AEnemy* enemy)
 
 void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 {
-	if (!bRoomHasEnemies)//Se a sala não tem inimigos, nao fazer o spawn.
+	if (!bRoomHasEnemies)//if the room has no enemies, skip spawn
 		return;
 
 	TInlineComponentArray<UEnemySpawnerComponent*> Components; 
-	this->GetComponents(Components); //Encontrar todos os componentes de spawn no ator.
+	this->GetComponents(Components); //Find all spawner components in the room
 
-	TArray<TSubclassOf<AEnemy>> EnemyType; // Tipo do inimigo a ser feito spawn
+	TArray<TSubclassOf<AEnemy>> EnemyType;
 
-	switch (Difficulty) //Escolher o inimigos baseado na dificuldade da sala.
+	switch (Difficulty) //chose enemy based on the room's difficulty
 	{
 	case ERoomDifficulty::NORMAL:
 		EnemyType = ListEnemiesNormal;
@@ -121,19 +120,19 @@ void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 		break;
 	}
 
-	for (const auto& Spawner : Components) //Para cada ponto de spawn, escolher um inimigo e fazer o spawn
+	for (const auto& Spawner : Components) //for each spawner, spawn an enemy
 	{
 		AEnemy* newEnemy =  NULL;
 
 		if (Spawner->bSpawnRandomly) 
 		{
-			//check(TipoInimigo.Num() > 0);
-			if (Spawner->GetNumEnemies(Difficulty) > 0) //Garantir que nenhuma classe nula vai ser usada e que o ponto de spawn tem um tipo de inimigo especifico a ser usado.
+			//check that only valid classes are used
+			if (Spawner->GetNumEnemies(Difficulty) > 0)
 			{
-				//Spawn do inimigo randomicamente
+				//randomly spawn enemy
 				newEnemy = GetWorld()->SpawnActor<AEnemy>(Spawner->SelectEnemyRand(Stream,Difficulty), Spawner->GetComponentLocation(), FRotator::ZeroRotator); 
 			}
-			else //usando os inimigos da sala.
+			else 
 			{
 				newEnemy = GetWorld()->SpawnActor<AEnemy>(GetEnemyType(EnemyType,Stream), Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 			}
@@ -143,7 +142,7 @@ void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 			TSubclassOf<AEnemy> NonRandEnemyClass;
 			
 
-			switch (Difficulty) //Escolher o inimigos baseado na dificuldade da sala.
+			switch (Difficulty) //chose enemy based on the room's difficulty
 			{
 			case ERoomDifficulty::NORMAL:
 				NonRandEnemyClass = Spawner->EnemiesNormal;
@@ -156,23 +155,23 @@ void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 				break;
 			}
 
-			if (NonRandEnemyClass->IsValidLowLevelFast()) //Checando que a classe é não nula.
+			if (NonRandEnemyClass->IsValidLowLevelFast())
 			{
-				//Spawn do inimigo não randomicamente
+				//Spawn enemy non randomly
 				newEnemy = GetWorld()->SpawnActor<AEnemy>(NonRandEnemyClass, Spawner->GetComponentLocation(), FRotator::ZeroRotator);
 			}
 		}
 
-		if (newEnemy->IsValidLowLevelFast()) //Checando se o inimigo gerado é valido.
+		if (newEnemy->IsValidLowLevelFast())
 		{
-			newEnemy->SpawnDefaultController(); //Spawn do controlador do inimigo
-			Enemies.Add(newEnemy); //Adicionar o inimigo ao array de inimigos da sala.
-			newEnemy->ParentRoom = this; //Room pai do inimigo é a sala atual.
+			newEnemy->SpawnDefaultController(); //spawn the enemy controller
+			Enemies.Add(newEnemy); 
+			newEnemy->ParentRoom = this;
 		}
 
 		AEnemyController* controller = Cast<AEnemyController>(newEnemy->GetController());
 
-		if (controller->IsValidLowLevelFast()) //Checando a validade do controlador e fazendo com que a sala pai do controlador seja a sala atual.
+		if (controller->IsValidLowLevelFast())
 		{
 			controller->ParentRoom = this;
 		}
@@ -181,7 +180,8 @@ void ARoom::SpawnEnemies_Implementation(FRandomStream& Stream)
 
 TSubclassOf<AEnemy> ARoom::GetEnemyType(const TArray <TSubclassOf<AEnemy>>& EnemyClassArray,FRandomStream& Stream)
 {
-	TSubclassOf<AEnemy> enemyType = EnemyClassArray[Stream.FRandRange(0, EnemyClassArray.Num() - 1)]; //Usando um stream randomico para retornar o um inimigo dentro do array de inimigos de uma determinada dificuldade.
+	//Using a randmly stream to choose an enemy of a given difficulty
+	TSubclassOf<AEnemy> enemyType = EnemyClassArray[Stream.FRandRange(0, EnemyClassArray.Num() - 1)]; 
 
 	return enemyType;
 
@@ -189,23 +189,23 @@ TSubclassOf<AEnemy> ARoom::GetEnemyType(const TArray <TSubclassOf<AEnemy>>& Enem
 
 void ARoom::OnEnemiesDefeated()
 {
-	if (Enemies.Num() == 0 && bRoomHasEnemies) //Apenas checar se a sala tem inimigos
+	if (Enemies.Num() == 0 && bRoomHasEnemies)
 	{
-		for (const auto& Porta : Doors) //Destrancar todas as portas da sala.
+		for (const auto& Porta : Doors) //Unlock all doors in the room
 		{
 			Porta->UnlockDoor();
 		}
 		
-		//Desativando o delegate de overlap do trigger.
+		//deactivating the overlap trigger delegate
 		bRoomHasEnemies = false;
 		TriggerEnemiesActivate->OnComponentBeginOverlap.RemoveAll(this);
 		TriggerEnemiesActivate->OnComponentEndOverlap.RemoveAll(this);
-		UnlockDoors(); //Evento para o blueprint das portas
+		UnlockDoors(); //Blueprint event
 
 		AProtuXPlayer* player = Cast<AProtuXPlayer>(GetWorld()->GetFirstPlayerController()->GetPawn());
 		ARoomGenerator* spawner = ARoomGenerator::GetRoomGenerator(GetWorld());
 
-		if (player->IsValidLowLevelFast() && spawner->IsValidLowLevelFast()) //Salvar o jogador e as salas.
+		if (player->IsValidLowLevelFast() && spawner->IsValidLowLevelFast()) //Save player and rooms
 		{
 			player->SavePlayerState();
 			spawner->SaveRooms();
@@ -217,7 +217,7 @@ void ARoom::OnEnemiesDefeated()
 
 void ARoom::LockDoors()
 {
-	for (const auto& door : Doors) //Trancar todas as portas
+	for (const auto& door : Doors) //Lock all doors in the room
 	{
 		door->LockDoor();
 	}
@@ -228,9 +228,9 @@ void ARoom::ActivateEnemiesTriggerOnOverlap(class AActor* OtherActor)
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && bRoomHasEnemies) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
+	if (player->IsValidLowLevelFast() && bRoomHasEnemies) //Checking that is a player that is overlapping with the trigger and that the room has enemies
 	{
-		for (auto const& Enemy : Enemies) //Ativando o controlador de cada inimigo na sala.
+		for (auto const& Enemy : Enemies) //activate each enemy controller
 		{
 			AEnemyController* controller = Cast<AEnemyController>(Enemy->GetController());
 
@@ -241,15 +241,15 @@ void ARoom::ActivateEnemiesTriggerOnOverlap(class AActor* OtherActor)
 		}
 
 		UpdateEnemiesHealth(player);
-		LockDoors(); //Trancando as portas
+		LockDoors();
 	}
 }
 
 void ARoom::ActivateEnemiesTriggerEndOverlap(class AActor* OtherActor)
 {
-	if (Cast<AProtuXPlayer>(OtherActor) && bRoomHasEnemies) //Checando que quem faz o overlap é do tipo do jogador e que a sala tem inimigos.
+	if (Cast<AProtuXPlayer>(OtherActor) && bRoomHasEnemies) //Checking that is a player that is overlapping with the trigger and that the room has enemies
 	{
-		for (auto const& Enemy : Enemies) //Desativando os controladores
+		for (auto const& Enemy : Enemies) //Deactivating each enemy controller
 		{
 			AEnemyController* controller = Cast<AEnemyController>(Enemy->GetController());
 
@@ -265,7 +265,7 @@ void ARoom::ChangeRoomColor(FLinearColor newColor, USceneComponent* roomLights)
 {
 	TArray<USceneComponent*> meshs;
 
-	roomLights->GetChildrenComponents(true, meshs); //Pegando as meshs que terão o seus materiais alterados.
+	roomLights->GetChildrenComponents(true, meshs); //Get all meshes that will change
 
 	for (auto const& component : meshs)
 	{
@@ -273,11 +273,12 @@ void ARoom::ChangeRoomColor(FLinearColor newColor, USceneComponent* roomLights)
 
 		if (instMesh)
 		{
-			UMaterialInstanceDynamic* MID =  instMesh->CreateDynamicMaterialInstance(1); //Criando o material dinamico que tera a cor alterada.
+			
+			UMaterialInstanceDynamic* MID =  instMesh->CreateDynamicMaterialInstance(1); 
 
 			if (MID)
 			{
-				MID->SetVectorParameterValue("Base_Color", newColor); //Alterando a cor do material.
+				MID->SetVectorParameterValue("Base_Color", newColor);
 			}
 		}
 	}

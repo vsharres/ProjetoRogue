@@ -6,7 +6,7 @@
 ARoom3DRight::ARoom3DRight(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::THREE;
 	RoomDirection = ERoomShape::RIGHT;
 	DoorsDirArray.Empty();

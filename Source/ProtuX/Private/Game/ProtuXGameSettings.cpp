@@ -20,10 +20,10 @@ UGameUserSettings* UProtuXGameSettings::GetUserGameSettings()
 
 bool UProtuXGameSettings::GetIsMuted()
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 	if (SaveInst)
 	{
@@ -35,15 +35,15 @@ bool UProtuXGameSettings::GetIsMuted()
 
 float UProtuXGameSettings::GetMasterVol()
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
-		return SaveInst->MasterVol;
+		return SaveInst->MasterVol; 
 	}
 
 	return 1.0f;
@@ -51,10 +51,10 @@ float UProtuXGameSettings::GetMasterVol()
 
 float UProtuXGameSettings::GetMusicVol()
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
@@ -67,10 +67,10 @@ float UProtuXGameSettings::GetMusicVol()
 
 float UProtuXGameSettings::GetEffectVol()
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 	
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
@@ -83,9 +83,9 @@ float UProtuXGameSettings::GetEffectVol()
 
 int32 UProtuXGameSettings::GetQualitySettings()
 {
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
-		return UserSettings->ScalabilityQuality.EffectsQuality; //Qualidade dos gráficos.
+		return UserSettings->ScalabilityQuality.EffectsQuality;
 	}
 
 	return 0;
@@ -97,7 +97,7 @@ bool UProtuXGameSettings::IsFullScreen()
 
 	if (UserSettings)
 	{
-		switch (UserSettings->GetLastConfirmedFullscreenMode()) //usando o último modo de tela escolhido pelo jogador
+		switch (UserSettings->GetLastConfirmedFullscreenMode()) //Get the last confirmed screen mode
 		{
 		case EWindowMode::Type::Fullscreen:
 			inFullscreen = true;
@@ -116,7 +116,7 @@ bool UProtuXGameSettings::GetVSync()
 {
 	bool vsyncActive = true;
 
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
 		vsyncActive = UserSettings->bUseVSync;
 	}
@@ -126,21 +126,22 @@ bool UProtuXGameSettings::GetVSync()
 
 FIntPoint UProtuXGameSettings::GetResolution()
 {
-	return (GEngine->GameViewport->Viewport->GetSizeXY()); //Resolução atual da tela
+	return (GEngine->GameViewport->Viewport->GetSizeXY()); //Current screen resolution
 }
 
 void UProtuXGameSettings::SetIsMuted(bool newMute)
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
 		SaveInst->bMute = newMute;
-		//Salvando nova propriedade
+		
+		//Saving new properties
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 
@@ -148,16 +149,17 @@ void UProtuXGameSettings::SetIsMuted(bool newMute)
 
 void UProtuXGameSettings::SetMasterVol(float newVol)
 {
-	//criando objeto de save.
+	//instantiate save game object
 	UProtuXSaveGame* SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::CreateSaveGameObject(UProtuXSaveGame::StaticClass()));
 
-	//carregando propriedades.
+	//Loading property
 	SaveInst = Cast<UProtuXSaveGame>(UGameplayStatics::LoadGameFromSlot(SaveInst->SaveSlot, SaveInst->Userindex));
 
 	if (SaveInst)
 	{
 		SaveInst->MasterVol = newVol;
-		//Salvando nova propriedade
+
+		//Saving new properties
 		UGameplayStatics::SaveGameToSlot(SaveInst, SaveInst->SaveSlot, SaveInst->Userindex);
 	}
 }
@@ -165,7 +167,7 @@ void UProtuXGameSettings::SetMasterVol(float newVol)
 
 void UProtuXGameSettings::SetQualitySettings(int32 newSetting)
 {
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
 		UserSettings->ScalabilityQuality.SetFromSingleQualityLevel(newSetting);
 	}
@@ -173,7 +175,7 @@ void UProtuXGameSettings::SetQualitySettings(int32 newSetting)
 
 void UProtuXGameSettings::SetResolution(FIntPoint newResolution)
 {
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
 		UserSettings->SetScreenResolution(newResolution);
 	}
@@ -181,7 +183,7 @@ void UProtuXGameSettings::SetResolution(FIntPoint newResolution)
 
 void UProtuXGameSettings::SetFullScreenMode(bool bFullscreen)
 {
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
 		if (bFullscreen)
 		{
@@ -198,7 +200,7 @@ void UProtuXGameSettings::SetFullScreenMode(bool bFullscreen)
 
 void UProtuXGameSettings::SetVSyncEnable(bool bEnable)
 {
-	if (UserSettings)
+	if (UserSettings) //checking if the player has changed the user settings
 	{
 		UserSettings->SetVSyncEnabled(bEnable);
 	}
@@ -208,18 +210,18 @@ void UProtuXGameSettings::ApplySettings(bool bApply)
 {
 	if (UserSettings)
 	{
-		if (bApply) //Aplicando os novos settings.
+		if (bApply) //applying the user settings
 		{
-			UserSettings->ConfirmVideoMode(); //confirmando as opções visuais
+			UserSettings->ConfirmVideoMode(); //confirm video mode
 
 			UserSettings->SetScreenResolution(UserSettings->GetLastConfirmedScreenResolution());
 			UserSettings->SetFullscreenMode(UserSettings->GetLastConfirmedFullscreenMode());
 			UserSettings->ApplySettings(false);
-			UserSettings->SaveSettings(); //Salvando novos settings
+			UserSettings->SaveSettings(); //save new settings
 		}
 		else
 		{
-			UserSettings->RevertVideoMode(); //revertendo para o modo de vídeo anterior.
+			UserSettings->RevertVideoMode(); //revert to last video mode, before the player had made any changes
 		}
 	}
 }

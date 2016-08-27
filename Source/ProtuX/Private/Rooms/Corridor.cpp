@@ -8,7 +8,7 @@
 ACorridor::ACorridor(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
- 	//Inicializando as propriedades
+ 	//initializing properties
 	PrimaryActorTick.bCanEverTick = true;
 	bCanBeDamaged = false;
 

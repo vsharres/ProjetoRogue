@@ -6,15 +6,15 @@
 UDamageInterface::UDamageInterface(const class FObjectInitializer& PCIP)
 	:Super(PCIP)
 {
-	//Constructor PADRÃO
+	//Default constructor is needed for to compile project, but no implementation
 }
 
 void IDamageInterface::ReceiveDamage(const float& damage, class AProjectile* projectile, const FHitResult& Hit)
 {
-	//FUNÇÃO VIRTUAL, SOBRE OVERRIDE DE CLASSES QUE POSSUEM A INTERFACE
+	//VIRTUAL FUNCTION, NO BASIC IMPLEMENTATION
 }
 
 void IDamageInterface::ApplyProjectileStats(AProjectile* projectile)
 {
-	//FUNÇÃO VIRTUAL, SOBRE OVERRIDE DE CLASSES QUE POSSUEM A INTERFACE
+	//VIRTUAL FUNCTION, NO BASIC IMPLEMENTATION
 }

@@ -6,7 +6,7 @@
 ARoom4D::ARoom4D(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::FOUR;
 	RoomDirection = ERoomShape::Default;
 	ConectedRooms.Empty();

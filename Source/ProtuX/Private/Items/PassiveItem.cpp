@@ -6,27 +6,29 @@
 
 UPassiveItem::UPassiveItem()
 {
-	//Inicializando propriedades
+	//Initializing properties
 	Type = EItemType::PASSIVE;
 }
 
 void UPassiveItem::ApplyItem_Implementation()
 {
-	if (Player->IsValidLowLevelFast()) //checando se o jogador é valido
+	if (Player->IsValidLowLevelFast())
 	{
-		Player->PassiveItems.Add(this); //adicionando o item ao array de itens passivos do jogador
+		//Adding item to the passive items array
+		Player->PassiveItems.Add(this); 
 
-		Super::ApplyItem(); //aplicar o item
+		Super::ApplyItem(); //calling parent function
 	}
 }
 
 void UPassiveItem::RemoveItem_Implementation()
 {
-	if (Player->IsValidLowLevelFast()) //checar se o jogador é valido
+	if (Player->IsValidLowLevelFast()) 
 	{
-		Player->PassiveItems.Remove(this); //remover o item do array de itens passivos do jogador.
+		//remove item from the passive items array
+		Player->PassiveItems.Remove(this); 
 
-		Super::RemoveItem(); //remover o items
+		Super::RemoveItem(); //calling parent function
 	}
 	
 }

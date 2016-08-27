@@ -6,10 +6,10 @@
 AItemPickUp::AItemPickUp(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicializando as propriedades
+	//Initializing properties
 	Type = EPickUpType::ITEM;
 
-	//Criando os delegates de overlap
+	//Assigning trigger delegates
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &AItemPickUp::ColliderOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &AItemPickUp::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &AItemPickUp::OutlineEndOverlap);
@@ -19,7 +19,7 @@ void AItemPickUp::ChooseItem(FRandomStream& Stream)
 {
 	if (PossibleItems.Num() > 0)
 	{
-		//Escolher randomicamente o item a ser gerado.
+		//randomly pick an item to spawn
 		ItemToSpawn = PossibleItems[Stream.FRandRange(0, PossibleItems.Num() - 1)];
 	}
 }
@@ -28,14 +28,14 @@ void AItemPickUp::ColliderOverlap(UPrimitiveComponent* OverlappedComponent, clas
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{	
-		//Spawn do novo item.
+		//spawn new item
 		SpawnedItem = NewObject<UItem>(this, ItemToSpawn);
 
 		if (SpawnedItem)
 		{
-			//Inicializar o item e gerar o popup
+			//Initialize item and generate item pop up and destroy the pop up
 			SpawnedItem->InitializeItem(player);
 			player->GenerateItemPopUp(this);
 			Destroy();
@@ -48,9 +48,9 @@ void AItemPickUp::OutlineOnOverlap(UPrimitiveComponent* OverlappedComponent, cla
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
+		Mesh->SetRenderCustomDepth(true); //activate outline effect
 	}
 }
 
@@ -58,8 +58,8 @@ void AItemPickUp::OutlineEndOverlap(UPrimitiveComponent* OverlappedComponent, cl
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) //checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
+		Mesh->SetRenderCustomDepth(false); //deactivate outline effect
 	}
 }

@@ -6,7 +6,7 @@
 
 UItem::UItem()
 {
-	//Inicializando os stats do item
+	//Initializing item stats
 	Stats = FItemStats();
 }
 
@@ -14,7 +14,7 @@ TArray<FString> UItem::GetEffectsNames()
 {
 	TArray<FString> toReturn;
 
-	//Criar o array com o nome dos stats que são modificados pelo item
+	//Generating array with the name of the stats that are modified by the item
 	if (Stats.AddDamage != 0.0f)
 	{
 		toReturn.Add("Damage");
@@ -68,7 +68,7 @@ TArray<float> UItem::GetEffects()
 {
 	TArray<float> toReturn;
 
-	//Criar o array com o valor das propriedades que são alteradas pelo item
+	//Generating the array with the value of the stats that are changed by the item
 	if (Stats.AddDamage != 0.0f)
 	{
 		toReturn.Add(Stats.AddDamage);
@@ -122,21 +122,21 @@ void UItem::InitializeItem(AProtuXPlayer* initializer)
 	if (initializer->IsValidLowLevelFast())
 	{
 		this->Player = initializer;
-		Stats = Player->Stats.ClampAddStats(Stats); //aplicar os stats do item ao jogador, levando em consideração os limites dos stats.
+		Stats = Player->Stats.ClampAddStats(Stats); //applying the stats to the player, clamping values
 		ApplyItem();
 	}
 }
 
 void UItem::ApplyStats()
 {
-	Player->Stats += Stats; //aplicar os stats
-	Player->UpdateProjectileStats(); //checar os limites 
+	Player->Stats += Stats; //apply stats
+	Player->UpdateProjectileStats(); //update current projectile item stats
 }
 
 void UItem::RemoveStats()
 {
-	Player->Stats -= Stats; //remover os stats
-	Player->UpdateProjectileStats(); //checar os limites 
+	Player->Stats -= Stats; //remove stats
+	Player->UpdateProjectileStats();  //update current projectile item stats
 }
 
 void UItem::ApplyItem_Implementation()
@@ -148,15 +148,15 @@ void UItem::RemoveItem_Implementation()
 {
 	RemoveStats();
 
-	this->ConditionalBeginDestroy(); //destuir o item
+	this->ConditionalBeginDestroy(); //destroy item
 }
 
 UObject* UItem::InstantiateItem_Blueprint(UObject* WorldContextObject, TSubclassOf<UItem> Classe)
 {
-	if (GEngine) //checar o ponteiro da instancia do jogo
+	if (GEngine) //checking if engine is valid
 	{
 		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject);
-		//spawn do item
+		//Item spawn
 		UObject* temp = NewObject<UObject>(World,Classe);
 
 		return temp;

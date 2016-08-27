@@ -6,7 +6,7 @@
 ARoom2D::ARoom2D(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::TWO;
 	RoomDirection = ERoomShape::Default;
 	ConectedRooms.Empty();

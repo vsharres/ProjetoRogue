@@ -5,7 +5,7 @@
 
 ADoor::ADoor()
 {
- 	//Inicializando as propriedades.
+ 	//Initializing properties
 	PrimaryActorTick.bCanEverTick = true;
 	bOpenDoor = false;
 	bCloseDoor = false;
@@ -16,14 +16,14 @@ ADoor::ADoor()
 // Called when the game starts or when spawned
 void ADoor::BeginPlay()
 {
-	Super::BeginPlay(); //Interface de inicialização
+	Super::BeginPlay(); 
 	
 }
 
 // Called every frame
 void ADoor::Tick( float DeltaTime )
 {
-	Super::Tick( DeltaTime ); //Interface de tick
+	Super::Tick( DeltaTime );
 
 }
 

@@ -6,11 +6,11 @@
 AHealthPickUp::AHealthPickUp(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicializando as propriedades
+	//Initializing properties
 	IncHealth = 25;
 	Type = EPickUpType::HEALTH;
 
-	//Criando os delegates de overlap
+	//Assigning trigger delegates
 	TriggerCatch->OnComponentBeginOverlap.AddDynamic(this, &AHealthPickUp::ColliderOverlap);
 	TriggerOutline->OnComponentBeginOverlap.AddDynamic(this, &AHealthPickUp::OutlineOnOverlap);
 	TriggerOutline->OnComponentEndOverlap.AddDynamic(this, &AHealthPickUp::OutlineEndOverlap);
@@ -21,9 +21,9 @@ void AHealthPickUp::ColliderOverlap(UPrimitiveComponent* OverlappedComponent, cl
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherActor != this && OtherComp) //checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherActor != this && OtherComp) //check if the overlap was caused by the player
 	{
-		//Adicionar vida ao jogador.
+		//adding health to the player and destroy the pickup
 		player->AddHealth(IncHealth);
 		player->GeneratePickUpPopUp(this);
 		Destroy();
@@ -35,9 +35,9 @@ void AHealthPickUp::OutlineOnOverlap(UPrimitiveComponent* OverlappedComponent, c
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(true); //Ativar o outline do pickup
+		Mesh->SetRenderCustomDepth(true); //active outline effect
 	}
 }
 
@@ -45,8 +45,8 @@ void AHealthPickUp::OutlineEndOverlap(UPrimitiveComponent* OverlappedComponent, 
 {
 	AProtuXPlayer* player = Cast<AProtuXPlayer>(OtherActor);
 
-	if (player->IsValidLowLevelFast() && OtherComp) // checar que o overlap foi causado pelo jogador.
+	if (player->IsValidLowLevelFast() && OtherComp) //check if the overlap was caused by the player
 	{
-		Mesh->SetRenderCustomDepth(false); //desativar o outline do pickup
+		Mesh->SetRenderCustomDepth(false); //deactivate the outline effect
 	}
 }

@@ -5,7 +5,7 @@
 
 UProtuXSaveGame::UProtuXSaveGame(const FObjectInitializer& ObjectInitializer)
 {
-	//Inicializando as propriedades de um save game.
+	//Initializing save game properties
 	SaveSlot = "ProtuX_Save";
 	Userindex = 0;
 

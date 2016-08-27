@@ -3,11 +3,10 @@
 #include "ProtuX.h"
 #include "Room3D.h"
 
-
 ARoom3D::ARoom3D(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::THREE;
 	RoomDirection = ERoomShape::Default;
 	ConectedRooms.Empty();

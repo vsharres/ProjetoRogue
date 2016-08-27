@@ -6,7 +6,7 @@
 ARoom3DLeft::ARoom3DLeft(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	//Inicizalizando as propriedades.
+	//initializing properties
 	NumberDoors = ENumberDoors::THREE;
 	RoomDirection = ERoomShape::LEFT;
 	DoorsDirArray.Empty();
