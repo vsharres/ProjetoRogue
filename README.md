@@ -13,3 +13,17 @@ Jogo em primeira pessoa roguelike, onde o mapa que o jogador vai explorar é ger
 
 Game feito usando Unreal Engine 4
 
+# ProjetoRogue
+Capstone project from the Pontifícia Universidade Católica de São Paulo Digital Games
+November 2015
+
+Developers:
+Vinicius Harres - Programming/Design
+Caio Contó - 3D ambient modeling/Ui artist/Design
+Tiago Higa - Characters modeling/Animaton artisti/Design
+
+Game: ProtuX
+
+ProtuX is a first-person action game. The game follows a "roguelike" structure, where the level and enemies are proceduraly generated. The game is the story of a prototype robot that is begin perfected and tested inside a lab, where he has to combat and defeat other (and previous) prototypes to prove who is the strongest.
+
+Game made using <a href="https://www.unrealengine.com/blog"> Unreal Engine 4 </a>
