@@ -11,9 +11,8 @@ ABoss::ABoss(const FObjectInitializer& ObjectInitializer)
 	Armor = 0.5f;
 
 	//Attaching the weak point collision component
-	WeakPoint = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this,TEXT("PontoFraco"));
-	FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, true);
-	WeakPoint->AttachToComponent(GetMesh(),Rules);
+	WeakPoint = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this,TEXT("WeakPoint"));
+	WeakPoint->SetupAttachment(GetMesh(),"WeakPoint");
 
 }
 

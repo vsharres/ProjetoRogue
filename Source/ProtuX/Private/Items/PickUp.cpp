@@ -16,13 +16,12 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	
 	//trigger to catch the pickup
 	TriggerCatch = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerCatch"));
-	FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, true);
 	TriggerCatch->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	TriggerCatch->SetCollisionObjectType(ECC_WorldDynamic);
 	TriggerCatch->SetCollisionResponseToAllChannels(ECR_Ignore);
 	TriggerCatch->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	TriggerCatch->SetSphereRadius(50.0f);
-	TriggerCatch->AttachToComponent(Mesh, Rules);
+	TriggerCatch->SetupAttachment(Mesh, "TriggerCatch");
 
 	//trigger to outline the pickup
 	TriggerOutline = ObjectInitializer.CreateDefaultSubobject<USphereComponent>(this, TEXT("TriggerOutline"));
@@ -31,7 +30,7 @@ APickUp::APickUp(const FObjectInitializer& ObjectInitializer)
 	TriggerOutline->SetCollisionResponseToAllChannels(ECR_Ignore);
 	TriggerOutline->SetCollisionResponseToChannel(ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	TriggerOutline->SetSphereRadius(100.0f);
-	TriggerOutline->AttachToComponent(Mesh, Rules);
+	TriggerOutline->SetupAttachment(Mesh, "TriggerOutline");
 
 	IncHealth = 0.0f;
 	IncEnergy = 0;

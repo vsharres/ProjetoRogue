@@ -307,10 +307,10 @@ void ARoomGenerator::GenerateSpecialRoom()
 {
 	if (((ARoom*)GeneratedRoom->GetDefaultObject())->GetNumDoors() == ENumberDoors::ONE) //Only select special rooms in the case with 1 door rooms
 	{
-		int32 prob = GeneratingStream.FRandRange(0, 100); //Probablidade de gerar um tipo de sala.
+		int32 prob = GeneratingStream.FRandRange(0, 100); //Probability to generate a room
 
 		if (!bIsItemSpawned &&
-			(prob > 66 || GetNumVoidDoors() == 3 && Rooms.Num() == NumGeneratedRooms)) //Gerar sala do item
+			(prob > 66 || GetNumVoidDoors() == 3 && Rooms.Num() == NumGeneratedRooms)) //Generate the item room
 		{
 			GeneratedRoom = ItemRoom;
 			bIsItemSpawned = true;
@@ -318,7 +318,7 @@ void ARoomGenerator::GenerateSpecialRoom()
 		}
 
 		if (!bIsKeySpawned &&
-			(prob > 33 || GetNumVoidDoors() == 2 && Rooms.Num() == NumGeneratedRooms)) //Gerar sala da chave
+			(prob > 33 || GetNumVoidDoors() == 2 && Rooms.Num() == NumGeneratedRooms)) //Generate the key room
 		{
 			GeneratedRoom = KeyRoom;
 			bIsKeySpawned = true;
@@ -326,7 +326,7 @@ void ARoomGenerator::GenerateSpecialRoom()
 		}
 
 		if (!bBossSpawned &&
-			(prob < 33 || GetNumVoidDoors() == 1 && Rooms.Num() == NumGeneratedRooms)) //Gerar sala do boss.
+			(prob < 33 || GetNumVoidDoors() == 1 && Rooms.Num() == NumGeneratedRooms)) //Generate the boos room
 		{
 			GeneratedRoom = BossRoom;
 			bBossSpawned = true;
@@ -338,9 +338,10 @@ void ARoomGenerator::GenerateSpecialRoom()
 
 bool ARoomGenerator::InPositionArray(const FVector& pos)
 {
-	float threshold = 800.0f; //Tolerancia para comparar as posições
+	//threshold to compare positions
+	float threshold = 800.0f; 
 
-	for (const auto& position : RoomsPositions) //Comparar a pos com todas as salas dentro do array.
+	for (const auto& position : RoomsPositions) //check room position to all rooms inside the rooms arrays
 	{
 		if (FMath::Abs(pos.X - position.X) <= threshold && FMath::Abs(pos.Y - position.Y) <= threshold)
 		{
@@ -365,22 +366,22 @@ void ARoomGenerator::SetNumRooms(int32 currentLevel)
 		MinNumRooms = MaxNumRooms;
 	}
 
-	NumGeneratedRooms = GeneratingStream.FRandRange(MinNumRooms, MaxNumRooms) + (currentLevel * 2); //Aumentar o número de salas de acordo com o level atual.
+	NumGeneratedRooms = GeneratingStream.FRandRange(MinNumRooms, MaxNumRooms) + (currentLevel * 2); //increase the total number of rooms multiplying by the current level
 
 }
 
 void ARoomGenerator::AddToDoorArray(ARoom* room)
 {
-	ENumberDoors numDoors = room->GetNumDoors(); //Pegar o numero de portas e adicionar ao array de portas da sala.
+	ENumberDoors numDoors = room->GetNumDoors(); //Get all doors in a room and add it to the doors array
 
-	switch (numDoors) //Para cada número de portas o padro de portas é diferente.
+	switch (numDoors) //set the doors array using the number of doors
 	{
 	case ENumberDoors::ONE:
 		RoomsPositions.Contains<FVector>(room->GetActorLocation()) == false ? RoomsPositions.Add(room->GetActorLocation()) : NULL;
 		break;
 	case ENumberDoors::TWO:
 
-		switch (room->GetRoomShape()) //Cada tipo de sala de um determinado número de portas tem um padrão diferente de direção das portas.
+		switch (room->GetRoomShape()) // for each room type there is a different array of doors, the order in the array is used to get the correct room direction
 		{
 		case ERoomShape::Default:
 			RoomsPositions.Contains<FVector>(room->GetActorLocation()) == false ? RoomsPositions.Add(room->GetActorLocation()) : NULL;
@@ -430,15 +431,16 @@ void ARoomGenerator::AddToDoorArray(ARoom* room)
 
 void ARoomGenerator::GenerateLevel_Implementation(ARoom* currentRoom)
 {
-	currentRoom->bVisited = true; //Room atual foi visitada
+	currentRoom->bVisited = true; //set current room to be visited
 
-	for (int32 i = currentRoom->ConectedRooms.Num() + 1; i <= (int32)currentRoom->GetNumDoors(); i++) //Loop em todas as salas geradas.
+	for (int32 i = currentRoom->ConectedRooms.Num() + 1; i <= (int32)currentRoom->GetNumDoors(); i++) //loop to all generated rooms
 	{
 		if (currentRoom->ConectedRooms.Num() <= (int32)currentRoom->GetNumDoors())
 		{
-			ARoom* room = GenerateRoom(currentRoom, GetRelativeDoorDirection(currentRoom->GetActorRotation(), (currentRoom->GetArrayDoors())[i - 1])); //Gerar uma nova sala conectada a sala atual numa determinada porta.
+			//generate a new room connected to the current room
+			ARoom* room = GenerateRoom(currentRoom, GetRelativeDoorDirection(currentRoom->GetActorRotation(), (currentRoom->GetArrayDoors())[i - 1]));
 
-			if (!room->bVisited) //Se a sala gerada não foi visitada, recursivamente gerar uma nova sala.
+			if (!room->bVisited) //if the room was not visited yet, recursively call the function to generate the next room
 			{
 				GenerateLevel(room);
 			}
@@ -451,49 +453,50 @@ ARoom* ARoomGenerator::GenerateRoom(ARoom* previousRoom, const FRotator& doorDir
 {
 	GeneratedRoom = NULL;
 
-	GeneratedRoom = SelectRoom(previousRoom); //Selecionar sala a ser gerada.
+	GeneratedRoom = SelectRoom(previousRoom); //Select the type of room to be generates
 
-	GenerateSpecialRoom(); //Checar se a sala pode ser transformada numa sala especial.
+	GenerateSpecialRoom(); //check if the selected room will chage to a special room
 
-	FTransform roomTrans = GenerateRoomTrans(previousRoom, doorDirection); //Gerar o transform da nova sala.
+	FTransform roomTrans = GenerateRoomTrans(previousRoom, doorDirection); //Generate the transform of the new room
 
-	CheckColision(roomTrans, doorDirection); //Mudar o tipo da sala se a sala a ser gerada colide com alguma sala já existente.
+	CheckColision(roomTrans, doorDirection); //check the room for collision, the type of room can change if there is collisions with other rooms
 
-	//Spawn da nova sala.
+	//Spawn new room
 	ARoom* newRoom = GetWorld()->SpawnActor<ARoom>(GeneratedRoom, roomTrans.GetLocation(), roomTrans.GetRotation().Rotator());
 
 	if (newRoom->IsValidLowLevelFast())
 	{
-		newRoom->SetActorScale3D(newRoom->GetRoomScale()); //Mudar escala da sala.
-		newRoom->ConectedRooms.Add(previousRoom); //Conectar a sala gerada a sala anterior.
+		newRoom->SetActorScale3D(newRoom->GetRoomScale()); //set correct scale
+		newRoom->ConectedRooms.Add(previousRoom); //Connect the new room to previous room
 		previousRoom->ConectedRooms.Add(newRoom);
 		PreviousGeneratedRooms.Add(GeneratedRoom);
 
 	}
 
-	GenerateCorridor(previousRoom, doorDirection); //Gerar o corredor que conecta as salas.
+	GenerateCorridor(previousRoom, doorDirection); //Generate the corridor between rooms
 
-	if (newRoom->GetNumDoors() > ENumberDoors::ONE) //Se a sala gerada tem mais de 1 porta, adicionar ao array de salas o número necessários de espaços para as salas que serão conectadas a sala gerada. ( por exemplo uma sala de 4 portas precisa da sala anterior e mais 3 salas para serem conectadas)
+	//if the new room has more than 1 door, add to the rooms array the number of rooms that we already know we have to generate to guarantee that there will be no doors connected to nowhere.
+	if (newRoom->GetNumDoors() > ENumberDoors::ONE)
 	{
 		Rooms.AddZeroed((int32)newRoom->GetNumDoors() - 1);
 	}
 
-	Rooms[LastValidRoom() + 1] = newRoom; //Nova sala é a ultima sala gerada.
+	Rooms[LastValidRoom() + 1] = newRoom; //new room is the last valid room
 
-	AddToDoorArray(newRoom); //Adicionar a nova sala ao array de portas.
+	AddToDoorArray(newRoom); //Add doors from the new room to the doors array
 
-	if (LoadedRooms.Num() >= Rooms.Num()) //Checar se o level foi carregado ou se é um novo level.
+	if (LoadedRooms.Num() >= Rooms.Num()) //Check if the room is being loaded or is from a new level
 	{
-		newRoom->bRoomHasEnemies = LoadedRooms[Rooms.Find(newRoom)]; //Atulizar o estado dos inimigos.
+		newRoom->bRoomHasEnemies = LoadedRooms[Rooms.Find(newRoom)]; //find the room in the loaded rooms array
 
 		if (newRoom->bRoomHasEnemies)
 		{
-			newRoom->DeactivateTrigger();
+			newRoom->DeactivateTrigger(); //update the enemies state in the room
 		}
 		
 	}
 
-	newRoom->SpawnEnemies(GeneratingStream); //Fazer o spawn dos inimigos na sala.
+	newRoom->SpawnEnemies(GeneratingStream); //spawn enemies in the rooms
 
 	UE_LOG(LogTemp, Warning, TEXT(" Room nome: %s numero: %d"), *newRoom->GetName(), Rooms.Num());
 
@@ -503,11 +506,11 @@ ARoom* ARoomGenerator::GenerateRoom(ARoom* previousRoom, const FRotator& doorDir
 void ARoomGenerator::GenerateCorridor(ARoom* previousRoom, const FRotator& doorDirection)
 {
 
-	FTransform CorridorTrans = GenerateCorridorTrans(previousRoom, doorDirection); //Gerar o transform do corredor.
+	FTransform CorridorTrans = GenerateCorridorTrans(previousRoom, doorDirection); //Generate the corridor transform
 
-	int32 value = GeneratingStream.FRandRange(0, 100); //Probablidade de gerar o corredor com a loja
+	int32 value = GeneratingStream.FRandRange(0, 100); //Probability to generate a type of room
 
-	//Se a probablidade for alta, e a loja ainda nao foi gerada, ou se a última sala gerada foi a do boss, fazer o spawn da loja
+	//guarantee that the shop will be generated
 	if ((value >= 70 && !bIsShopSpawned) ||
 		(!bIsShopSpawned && ((ARoom*)GeneratedRoom->GetDefaultObject(true))->GetRoomType() == ERoomType::BOSS))
 	{
@@ -517,7 +520,7 @@ void ARoomGenerator::GenerateCorridor(ARoom* previousRoom, const FRotator& doorD
 	}
 	else
 	{
-		//Spawn do corredor normal.
+		//Spawn of a normal corridor
 		ACorridor* newCorridor = GetWorld()->SpawnActor<ACorridor>(CorridorTypes[GeneratingStream.FRandRange(0, CorridorTypes.Num() - 1)], CorridorTrans.GetLocation(), CorridorTrans.GetRotation().Rotator());
 		newCorridor->SetActorScale3D(newCorridor->GetScale());
 	}
@@ -530,16 +533,17 @@ void ARoomGenerator::CheckColision(const FTransform& trans, const FRotator& door
 {
 	bool isColliding = false;
 
-	do //Checar cada direcao das salas para colisao, e caso colide, mudar o tipo de sala até encontrar um tipo de sala que não colida.
+	//Check each doors direction in the room for collision, if there is a collision, change the type of room to a type that has no collision
+	do
 	{
 		ARoom* room = (ARoom*)GeneratedRoom->GetDefaultObject();
 		ENumberDoors numDoors = room->GetNumDoors();
 
-		switch (numDoors) //Para o número de portas da sala, um tipo de direcao difernte deve ser checado.
+		switch (numDoors) 
 		{
 		case ENumberDoors::TWO:
 
-			switch (room->GetRoomShape()) //Checar para cada direcao e alterar a sala a ser gerada caso alguma colisao seja detectada.
+			switch (room->GetRoomShape())
 			{
 			case ERoomShape::Default:
 				isColliding = false;

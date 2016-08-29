@@ -15,8 +15,7 @@ AShopCorridor::AShopCorridor(const FObjectInitializer& ObjectInitializer)
 	RootComponent = ShopCorridorRoot;
 
 	ShopTrigger = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(this, TEXT("Trigger Loja"));
-	FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, true);
-	ShopTrigger->AttachToComponent(RootComponent,Rules);
+	ShopTrigger->SetupAttachment(RootComponent,"ShopTrigger");
 
 	//Defaulting slots
 	Slots.AddDefaulted(3);

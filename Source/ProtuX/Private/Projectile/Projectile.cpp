@@ -27,8 +27,7 @@ AProjectile::AProjectile(const FObjectInitializer& ObjectInitializer)
 	RootComponent = CollisionComp;
 
 	Mesh = ObjectInitializer.CreateAbstractDefaultSubobject<UStaticMeshComponent>(this, TEXT("Mesh"));
-	FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, EAttachmentRule::KeepRelative, true);
-	Mesh->AttachToComponent(RootComponent, Rules); 
+	Mesh->SetupAttachment(RootComponent, "Mesh");
 	
 	//initializing the movement component, which is responsible for moving the projectile
 	MovementComp = ObjectInitializer.CreateAbstractDefaultSubobject<UProjectileMovementComponent>(this, TEXT("CompMovimentacao"));
